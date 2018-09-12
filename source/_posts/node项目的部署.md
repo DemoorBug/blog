@@ -9,7 +9,6 @@ tags: [node,mongodb,nginx,linux,ubuntu]
 **696px网站的部署以及linux一些命令记录，还有nginx是怎么用的，到底是个什么东西**
 <!-- more -->
 
->可以吗啊？
 
 ## 4-1~2
 ### 通过ssh实现无密码登陆
