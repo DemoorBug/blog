@@ -2,6 +2,7 @@
 title: node项目的部署
 date: 2018-09-11 19:42:40
 tags: [node,mongodb,nginx,linux,ubuntu]
+categories: [node]
 ---
 
 ## Node+mongodb+nginx+linux
