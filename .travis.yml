@@ -15,7 +15,7 @@ after_script:
     - git push --force --quiet "https://${BLOG_TOKEN}@${GH_REF}" master:gh-pages 
 branches:
     only:
-        - dev 
+        - master 
 env:
     global:
         - GH_REF: github.com/DemoorBug/blog.git 
