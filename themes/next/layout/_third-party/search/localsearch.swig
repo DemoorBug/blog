@@ -34,15 +34,18 @@
       $localSearchInput.focus();
     }
 
+
     // search function;
     var searchFunc = function(path, search_id, content_id) {
       'use strict';
 
       // start loading animation
       $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
           '</div>' +
           '</div>')
         .css('overflow', 'hidden');
@@ -285,7 +288,7 @@
           }
 
           // remove loading animation
-          $(".local-search-pop-overlay").remove();
+          $(".loader").remove();
           $('body').css('overflow', '');
 
           proceedsearch();
