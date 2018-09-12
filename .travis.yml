@@ -15,6 +15,7 @@ install:
 # before_script: 
 
 script:
+- hexo clean
 - hexo g # 执行 hexo generate，把文章编译到public中
 
 after_success: # 执行script成功后，进入到public，把里面的代码提交到博客的gh-pages分支
