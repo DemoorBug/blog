@@ -18,7 +18,7 @@ npm install hexo-cli -g
 npm install hexo-deployer-git --save
 
 ```
-
+<!-- more -->
 hexo-cli 安装hexo
 hexo-deployer-git 是一个git组件，用到hexo d 时候没有的话，会报错
 
