@@ -136,11 +136,21 @@
     width: 980px;
   }
 }
-
+@media (min-width: 768px) {
+  body .menu .menu-item a {
+    transition-property:box-shadow;
+    padding: 0 15px;
+  }
+}
 @media (max-width: 767px) {
   body .menu .menu-item a {
     padding: 10px 20px;
   }
+  .site-nav-toggle {
+    display: block;
+    margin-right: 10px;
+}
+
 }
 
 /*搜索*/
@@ -345,10 +355,7 @@ body .header-inner {
 body .menu {
   margin: 6px 0 0 0;
 }
-body .menu .menu-item a {
-    transition-property:box-shadow;
-        padding: 0 15px;
-}
+
 
 body .menu .menu-item a:hover {
     background: none;
