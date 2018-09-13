@@ -11,9 +11,7 @@
 
     <div class="custom-logo-site-title">
       <a href="{{ config.root }}"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
         <span class="site-title">{{ config.title }}</span>
-        <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       {% if theme.seo %}
@@ -41,9 +39,9 @@
         {% set itemName = name.toLowerCase() %}
         <li class="menu-item menu-item-{{ itemName | replace(' ', '-') }}">
           <a href="{{ url_for(path.split('||')[0]) | trim }}" rel="section">
-            {% if theme.menu_icons.enable %}
+            <!-- {% if theme.menu_icons.enable %}
               <i class="menu-item-icon fa fa-fw fa-{{ path.split('||')[1] | trim | default('question-circle') }}"></i> <br />
-            {% endif %}
+            {% endif %} -->
             {{ __('menu.' + name) | replace('menu.', '') }}
           </a>
         </li>
@@ -59,7 +57,7 @@
             {% if theme.menu_icons.enable %}
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             {% endif %}
-            {{ __('menu.search') }}
+
           </a>
         </li>
       {% endif %}
