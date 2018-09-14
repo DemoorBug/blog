@@ -1,18 +1,19 @@
 ---
-title: node项目的部署
+title: Node+mongodb+nginx+linux
 date: 2018-09-11 19:42:40
 tags: [node,mongodb,nginx,linux,ubuntu]
-categories: [node]
+categories: [github项目笔记,node]
 ---
 
-## Node+mongodb+nginx+linux
+## node项目的部署
+项目地址：[Node+mongodb+nginx+linux](https://github.com/DemoorBug/Node-mongodb-nginx-linux)
 **本次服务器为centos，只是临时在虚拟机建立的，虚拟机密码为1004041672**
 **696px网站的部署以及linux一些命令记录，还有nginx是怎么用的，到底是个什么东西**
 <!-- more -->
 
 
 ## 4-1~2
-### 通过ssh实现无密码登陆
+## 通过ssh实现无密码登陆
 **客户机**
 ```bash
 pwd
@@ -45,7 +46,7 @@ _以上方法我是没搞定_
 **我就有点晕，明明可以很简单的ssh-keygen 为什么要那么麻烦呢，秀操作啊老师MMP**
 
 ## 5-1~2
-### 增加服务器安全性
+## 增加服务器安全性
 > 如果你买了一个服务器没有修改的话登陆端口就是**22**虽然不知道你的用户名但是出于安全性考虑还是得修改这个
 
 ```bash
@@ -80,7 +81,7 @@ passwordAuthentication no 禁止密码登陆
 ```
 > ctrl+a 回到行首 ctrl+e 回到行尾
 
-### 配置iptables  Fail2Ban
+## 配置iptables  Fail2Ban
 
 [yum (rpm) 和 apt-get的对应关系](http://blog.csdn.net/robertsong2004/article/details/36677689)
 ```bash
@@ -166,9 +167,9 @@ iptables-restore /etc/iptables.up.rules
 sudo chmod +x iptables
 ```
 
-### 搞了几个小时02点17分 居然把iptables弄没见了？明天重新创建吧RLG
+## 搞了几个小时02点17分 居然把iptables弄没见了？明天重新创建吧RLG
 
-### 重新安装，重新来了一遍更熟练了
+## 重新安装，重新来了一遍更熟练了
 [Fail2ban源码安装方法](http://blog.csdn.net/Gekkoou/article/details/51119549)
 > 源码安装
 
@@ -179,7 +180,7 @@ cd fail2ban-0.9.3
 python setup.py install
 ```
 
-### 说实话 fail2ban这里了 00点55分 睡觉去了  明天下载ubuntu把 能把我累死，我也是醉了
+## 说实话 fail2ban这里了 00点55分 睡觉去了  明天下载ubuntu把 能把我累死，我也是醉了
 
 
 ## 经研究，还是用ubuntu系统把 重新记录新命令，以上均为centos命令
@@ -214,7 +215,7 @@ sudo service fail2ban status 查看状态 想要停掉 stop就好了
 > 以上都是一些基础性的比较简单的安全配置，这些配置呢都算是基础之劳，但是可以让一台裸的服务器大大提高安全防护等级，虽然防护等级不够，但是抵御一些基础的东西还是ok的，想做更高级的东西需要做很多运维知识的储备，比如说可以给生产的服务器登陆设置ip的绑定或者是限制，只有特定内网的机器才能登陆这台服务器， 也就是通俗所讲的在内网假设一台跳板机 ，通过本地电脑连接跳板机再从跳板机登陆到服务器，
 
 ## 6-1~2
-### 开始搭建环境了 呜呜呜呜呜 终于到了
+## 开始搭建环境了 呜呜呜呜呜 终于到了
 
 ```
 首先再更新一边
@@ -268,10 +269,10 @@ pm2 logs 查看实时日志
 ```
 > 哇咔咔咔咔  原来用node搭建好就可以访问了啊 啊？？？？？？？？WDMY
 
-### 下节预告 我们想要通过不带端口号的ip或者域名直接访问到80端口的服务，但是现在的用户权限又不足以让我们再80端口进行监听 下一节使用nginx来实现更加**魔法的效果**
+## 下节预告 我们想要通过不带端口号的ip或者域名直接访问到80端口的服务，但是现在的用户权限又不足以让我们再80端口进行监听 下一节使用nginx来实现更加**魔法的效果**
 
 ## 7-1.mp4
-### nginx
+## nginx
 > 这里介绍下为什么要用到nginx，以及nginx的主要作用
 
 ```
@@ -336,13 +337,13 @@ sudo service nginx reload 就好了
 
 
 ## 8-1~2
-### 主要就是域名解析以及七牛云的用法(七牛云耶终于找到可以用的地方了，第一次接触也不知道是啥时候？)
+## 主要就是域名解析以及七牛云的用法(七牛云耶终于找到可以用的地方了，第一次接触也不知道是啥时候？)
 
 > 就是不知道DNSPOD比域名厂商免费提供的解析好多少。
 
 
 ## 9 1-2
-### 安装mongoDB
+## 安装mongoDB
 >老师说可以购买一个现成的服务器，但是我这毕竟自己用，那样的话成本太大
 
 > google搜索  install mongodb on ubuntu 找到后将manual改为V3.4(当然我没改了喽)
@@ -433,7 +434,7 @@ mongoimprot --host 127.0.0.1:8081 -d 696px -c users ./movie-users.json
 mongo --host 127.0.0.1:8081 696px --eval "db.dropDatabase()"
 ```
 
-### 管理mongodb安全性
+## 管理mongodb安全性
 > 最好是再数据库导入后再增加安全性
 
 进入mongo
@@ -477,7 +478,7 @@ mongo 127.0.0.1:8081/admin -u 696px_cases_owner -p 1004041672
 > 2018/1/21/01点39分 睡觉睡觉 溜了溜了
 
 ## 9-3~6
-### 迁移数据库
+## 迁移数据库
 
 > 如果服务器上线后有密码的如何导入导出呢？其实大家搜索一下官网的话就能自己摸索出来
 
