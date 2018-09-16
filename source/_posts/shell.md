@@ -12,7 +12,7 @@ categories: [github项目笔记]
 # 所学命令的一些大致顺序 以及简介
 |命令|常用参数|命令英文原意|简介|
 |:--:|:--:|:--:|:--|
-|2016-9-22|
+|2016-9-22| | | |
 |pwd|no|print working directory|查询所在目录位置|
 |ls|-aldhi||查询目录内容|
 |-rw-r--r--||no|r读w写x执行|
@@ -23,7 +23,7 @@ categories: [github项目笔记]
 |rm|-rf|remove|删除文件或目录|
 |cp|-rpd -a|copy|复制命令-a相当于-rpd|
 |mv||move|剪切或改名命令|
-|2016-9-23|
+|2016-9-23| | | |
 |ln|-s|link|链接命令 **最好使用-s(软链接)方式创建**|
 |locate|||文件搜索命令，搜索速度快,在/var/lib/mlocate 下搜索后台数据库|
 |updatedb|||每天更新一次，所以可以手动更新|

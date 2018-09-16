@@ -8,7 +8,7 @@ categories: [github项目笔记]
 # MVC 只是手段，终极目标是模块化和复用
 项目地址：[angular](https://github.com/DemoorBug/angular)
 |时间|简介|内容|
-|:--:|:--:|:--:|
+|--|--|--|
 |9-13|开始||
 <!-- more -->
 ## 核心特效
@@ -37,7 +37,7 @@ MVC
 ## AngularJS的MVC是借助$scope实现的，就是说全部借助于作用域实现的
 
 ## 神器的$scope
-```js
+```javascript
 $scope 是一个POJO(Plain Old javascript)  普通的js对象pojo
 $scope 提供了一些工具方法$watch()实时监测属性变化/$apply() 一般来说不会手动调用，它会帮我们在内部监控这些属性的实时变化
 $scope 是表达式的执行环境(或者叫作用域)
@@ -60,7 +60,7 @@ $scope的生命周期
 ```
 
 ## 用到的指令记录
-```
+```javascript
 ng-repeat 迭代数组
 $emit() 向上去传播 向根          树型结构
 $broadcast() 向下去传播 向叶子   树型结构
@@ -72,7 +72,7 @@ ng-hide
 ```
 
 ## 路由、模块、依赖注入
-```
+```javascript
 使用 ngRoute 进行视图直接的路由
 $routeProvider  有两个方法
     when        /demo
@@ -83,7 +83,7 @@ $routeProvider  有两个方法
 ## github 搜索  Angular-ui项目
 
 ## 指令
-```
+```javascript
 myModule.directive("hello",function(){
     return {
         restrict: 'AEMC',  E 元素 C class A 自定义属性 M 注释<!-- directive:hello --> 注意两边有空格   
