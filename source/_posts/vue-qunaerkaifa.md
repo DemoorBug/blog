@@ -7,6 +7,7 @@ categories: [[github项目笔记]]
 
 ## Vue 去哪儿网站开发
 项目地址：[VueLearn -> vue-qunaerkaifa](https://github.com/DemoorBug/VueLearn/tree/master/vue-qunaerkaifa)
+Vue官方文档：老师都是和官方文档一起讲解的，[vue官方文档](https://cn.vuejs.org/v2/guide/)
 ## mvvm开发模式2-4
 ```
 平常我们用的是mvp开发模式   Model 数据ajax presenter 控制器 View 视图
@@ -131,4 +132,54 @@ style绑定
 <div :style="[styleName,{fontSize: '20px'}]"></div>
 
 需要注意 style需要试用驼峰式写法
+```
+
+这里是样式绑定这一节的代码块，
+```vue
+	<style>
+		.activated {
+			color: red;
+		}
+	</style>
+	<div id="app">
+		<div @Click="handleClick"
+			 :class="{activated: isActivated}">Hell world</div>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				isActivated: false
+			},
+			methods: {
+				handleClick: function(){
+					this.isActivated = !this.isActivated
+				}
+			}
+		})
+	</script>
+```
+
+三元表达式
+```
+	普通写法：
+	if(this.activated === "activated"){
+		this.activated= "";
+	}else {
+		this.activated= "activated;
+	}
+
+ this.activated= this.activated === "activated" ? "" : "activated"
+```
+
+## 3-7 Vue中的条件渲染
+通过v-if 指令结合js表达式的返回值来决定一个标签是否在页面上显示或者是觉得这个标签是否在页面上存在
+
+```vue
+v-show 增加display：none属性 性能高√
+v-if 从DOM结构移除 
+v-else   要和v-if紧贴使用
+v-else-if=""
+key  当一个元素被加key值后，vue会知道他是页面上唯一一个值，如果两个东西(应该没有同样的key值吧)的key值不一样，vue就不会去复用以前的dom
 ```
