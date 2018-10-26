@@ -21,6 +21,7 @@ categories: [github项目笔记]
 ```vue
 指令：
 
+
 v-on:简写 @
 v-bind: 简写:
 v-for 循环

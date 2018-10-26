@@ -183,3 +183,41 @@ v-else   要和v-if紧贴使用
 v-else-if=""
 key  当一个元素被加key值后，vue会知道他是页面上唯一一个值，如果两个东西(应该没有同样的key值吧)的key值不一样，vue就不会去复用以前的dom
 ```
+
+## 3-8 Vue中的列表渲染
+
+```
+<div id="app">
+		<div v-for="(item, index) of list" :key="item.id">
+			{{item.text}} ---- {{index}}
+		</div>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				list: [{
+					id: "01",
+					text: "hello"
+				},{
+					id: "02",
+					text: "blue"
+				},{
+					id: "03",
+					text: "less"
+				}]
+			}
+		})
+	</script>
+```
+item 得到的数据，index下标，of是什么东西(以前用的in)，list数组
+
+key值不要使用index，使用项目中自带的id，
+
+这几个编译方法可以达到数据变内容变
+push pop shift unshift spilce sort reverse
+第二种方法是改变数据的引用地址，从而改变内容
+
+对象列表有3个值v-for="(item, key, index) of info",
+item 对象里面的键名，key键值， index位置信息，下标
