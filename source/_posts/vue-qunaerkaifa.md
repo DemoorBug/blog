@@ -215,9 +215,86 @@ item 得到的数据，index下标，of是什么东西(以前用的in)，list数
 
 key值不要使用index，使用项目中自带的id，
 
-这几个编译方法可以达到数据变内容变
+这几个变异(？)方法可以达到数据变内容变
 push pop shift unshift spilce sort reverse
 第二种方法是改变数据的引用地址，从而改变内容
 
 对象列表有3个值v-for="(item, key, index) of info",
 item 对象里面的键名，key键值， index位置信息，下标
+
+## 3-9Vue中的set方法
+通过set方法，注入数据，页面也会跟着变
+对象中的set方法:
+```vue
+Vue.set(vm.userinfo,"address","beijing")
+vm.$set(vm.userinfo,"address","beijing")
+```
+数组中set方法使用:
+Vue.set(vm.userinfo,1,5)  1是下标
+vm.$set(vm.userInfo,2,10)
+
+**想改变页面上内容数组有三种方法(改变引用，变异方法，set方法)，对象有两种方法(改变引用，set方法)**
+
+## 4-1组件使用的细节点
+
+一、因为html5规范，tbody里面只能放tr，所以用vue模板的时候要这样写
+```
+<tr is="row"></tr>
+```
+使用is属性解决模板bug
+
+二、子组件定义data，后面必须是一个函数(function),之所以这么设计，是因为一个子组件不像根组件那样只被调用一次，它可能在不同的地方被调用
+```
+data: function() {
+	return {
+		content: 'this is content'
+	}
+},
+```
+三、通过ref='hello'获取dom节点，达成更改dom的操作
+```
+methods: {
+	handleClick: function() {
+	this.$refs.hello.innerHTML
+}
+}
+```
+当ref在一个标签上的时候通过this.$refs.名字获取到的内容实际上是获取到的dom节点
+当ref在一个组件上的时候通过this.$refs.名字获取到里面的内容的时候你获取到的实际上是子组件的**引用**
+本节的代码。。
+```html
+	<div id="root">
+		<row @change="changeClick" ref='woder'></row>
+		<row @change="changeClick" ref='hello'></row>
+		<div>{{numberAll}}</div>
+	</div>
+
+	<script>
+		Vue.component('row',{
+			template: '<div @click="handleClick">{{number}}</div>',
+			data: function(){
+				return {
+					number: 0
+				}
+			},
+			methods: {
+				handleClick: function(){
+					this.number ++
+					this.$emit('change')
+				}
+			}
+
+		})
+		var vm = new Vue({
+			el: "#root",
+			data: {
+				numberAll: 0
+			},
+			methods: {
+				changeClick: function(){
+					this.numberAll = this.$refs.hello.number + this.$refs.woder.number
+				}
+			}
+		})
+	</script>
+```
