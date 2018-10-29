@@ -298,3 +298,79 @@ methods: {
 		})
 	</script>
 ```
+## 4-2父子组件的数据传递 
+更多的传递方式，上一节只是一种
+一丶父组件通过属性的方式传递数据
+```vue
+	<counter :count="0"></counter>
+
+	var counter = {
+		props: ['count'],
+		template: '<div @click="handleClick">{{count}}</div>',
+		methods: {
+			handleClick: function(){
+				this.count ++          这里不能直接修改
+			}
+		}
+	}
+```
+单项数据流，子组件不能直接修改父组件参数
+```vue
+	var counter = {
+		props: ['count'],
+		data: function(){
+			return {
+				number: this.count
+			}
+		},
+		template: '<div @click="handleClick">{{number}}</div>',
+		methods: {
+			handleClick: function(){
+				this.number ++          这里不能直接修改
+			}
+		}
+	}
+
+```
+本节代码:
+```html
+	<div id="root">
+		<counter :count="0" @change='char'></counter>
+		<counter :count="1" @change='char'></counter> 
+		<div>{{chas}}</div>
+	</div>
+
+	<script>
+		var counter = {
+			props: ['count'],
+			data: function(){
+				return {
+					number: this.count
+				}
+			},
+			template: '<div @click="handleClick">{{number}}</div>',
+			methods: {
+				handleClick: function(){
+					this.number ++ 
+					this.$emit('change', 1)         
+				}
+			}
+		}
+
+		var vm = new Vue({
+			el: '#root',
+			components: {
+				counter: counter
+			},
+			data: {
+				chas: 1
+			},
+			methods: {
+				char: function(step){
+					this.chas += step
+				}
+
+			}
+		})
+	</script>
+```
