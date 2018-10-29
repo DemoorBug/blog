@@ -40,6 +40,10 @@ components: 模板
 @delete 自定义事件 ?
 应该是创建一个'delete'事件 ?
 this.$emit('delete',this.index)
+
+
+
+@click.native=""          .native 是事件修饰符
 ```
 >安装vue-cli
 

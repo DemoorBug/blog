@@ -326,7 +326,7 @@ methods: {
 		template: '<div @click="handleClick">{{number}}</div>',
 		methods: {
 			handleClick: function(){
-				this.number ++          这里不能直接修改
+				this.number ++          
 			}
 		}
 	}
@@ -374,3 +374,86 @@ methods: {
 		})
 	</script>
 ```
+
+## 4-3组件参数效验于非props特性
+传递参数的时候，:content="这里是差值表达式，自然就是Number类型"
+content="这样就是字符串"
+**一丶props可以是一个对象，规定接收的是什么类型的值(可以接收多个值)**
+```html
+		Vue.component('child',{
+			props: {
+				content: [String, Number]
+			},
+			template: '<div>{{content}}</div>'
+		})
+```
+还可以更复杂props,还可以跟一个对象
+```html
+		Vue.component('child',{
+			props: {
+				content: {
+					type: String,
+					required: true,  //content不能没有
+					default: 'default value',  //默认值
+					validator: function(value) {
+						return (value.length > 5)
+					}  //规定长度
+				}
+			},
+			template: '<div>{{content}}</div>'
+		})
+```
+非props个人理解，父组件传，子组件不接收，子组件就不能用这个参数(那不是p话？)，参数会显示到标签上
+非props特性，是什么鬼呦
+
+## 4-4给组件绑定原生事件
+原生事件就是组件本事绑定事件，组件拿出来用给的事件就是自定义事件
+```html
+	<div id="root">
+		<child @click='handleClick'></child>   //自定义事件
+	</div>
+
+	<script>
+		Vue.component('child',{
+			template: '<div @click="handbas">child</div>',  //原生事件
+			methods: {
+				handbas: function(){
+					alert('handbas')
+					this.$emit('click')
+				}
+			}
+		})
+		var vm = new Vue({
+			el: '#root',
+			methods: {
+				handleClick: function() {
+					alert('click')
+				}
+			}
+		})
+	</script>
+ ```
+ 但是上面的需要两层传递，很麻烦，还有下面的方法
+ ```html
+	<div id="root">
+		<child @click.native='handleClick'></child>
+	</div>
+
+	<script>
+		Vue.component('child',{
+			template: '<div>child</div>',
+		})
+		var vm = new Vue({
+			el: '#root',
+			methods: {
+				handleClick: function() {
+					alert('click')
+				}
+			}
+		})
+	</script>
+ ```
+
+ 总结：绑定.native修饰符就可以了
+
+ ## 4-5
