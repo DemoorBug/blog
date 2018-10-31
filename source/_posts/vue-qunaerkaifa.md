@@ -456,4 +456,305 @@ content="这样就是字符串"
 
  总结：绑定.native修饰符就可以了
 
- ## 4-5
+ ## 4-5非父子组件间的传值(Bus/总线/发布订阅模式/观察者模式)
+Vuex
+ ```
+	<div id="root">
+		<child content='Dell'></child>
+		<child content='Lee'></child>
+  	</div>
+
+	<script>
+		Vue.prototype.bus = new Vue()  //prototype
+
+		Vue.component('child',{
+			props: {
+				content: String
+			},
+			data: function() {
+				return {
+					number: this.content
+				}
+			},
+			template: '<div @click="handleClick">{{number}}</div>',
+			methods: {
+				handleClick: function() {
+					this.bus.$emit('change', this.number)    //this.bus
+				}
+			},
+			mounted: function() {    //
+				var this_ = this
+				this.bus.$on('change', function(msg){
+					this_.number = msg
+				})
+			}
+		})
+
+		var vm = new Vue({
+			el: '#root',
+			methods: {
+				hands: function(step) {
+
+				}
+			}
+		})
+
+	</script>
+
+ ```
+
+4-6 在Vue中使用插槽(slot)
+**一、插槽**
+
+```html
+	<div id="root">
+		<child>
+			<p>Dell</p>  插槽
+		</child>
+  	</div>
+
+	<script>
+		
+		Vue.component('child',{
+			props: {
+				content: String
+			},
+			template: `<div>
+							<p>hello</p>
+							<slot>默认内容</slot>  //slot语法接收，当没有内容的时候就会使用默认内容
+					   </div>`
+		})
+
+		var vm = new Vue({
+			el: '#root',
+		})
+
+	</script>
+
+```
+
+**二、句名插槽**
+```html
+	<div id="root">
+		<body-content>
+			<div class="header" slot='header'>header</div>
+			<div class="footer" slot='footer'>footer</div>
+		</body-content>
+  	</div>
+
+	<script>
+		
+		Vue.component('bodyContent',{
+			props: {
+				content: String
+			},
+			template: `<div>
+							<slot name='header'></slot>
+							<div class="content">content</div>
+							<slot name='footer'></slot>
+					   </div>`
+		})
+
+		var vm = new Vue({
+			el: '#root',
+		})
+
+```
+
+4-7 Vue中的作用域插槽
+
+```html
+	<div id="root">
+		<child>
+			<template slot-scope="props">   <!-- 固定写法 -->
+				<li>{{props.item}}</li>
+			</template>
+		</child>
+  	</div>
+
+	<script>
+		
+		Vue.component('child',{
+			data: function() {
+				return {
+					list: [1,2,3,4]
+				}
+			},
+			template: `<div>
+							<ul>
+								<slot v-for="item of list" :item="item"></slot>
+							</ul>
+						</div>`
+		})
+
+		var vm = new Vue({
+			el: '#root',
+		})
+
+	</script>
+```
+
+4-8动态组件与v-once指令
+**一、普通写法，实现(toggle)互相展示隐藏的效果**
+```html
+	<div id="root">
+		<child-one v-if='type === "child-one"'></child-one>
+		<child-two v-if='type === "child-two"'></child-two>
+		<button @click="handClik">change</button>
+  	</div>
+
+	<script>
+		
+		Vue.component('childOne',{
+			template: '<div>child-one</div>'
+		})
+
+		Vue.component('childTwo',{
+			template: '<div>child-two</div>'
+		})
+
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				type: 'child-one'
+			},
+			methods: {
+				handClik: function() {
+					this.type = this.type === 'child-one' ? 'child-two' : 'child-one'
+				}
+			}
+		})
+
+	</script>
+```
+**二、动态组件**
+script部分就是上面的
+```html
+	<div id="root">
+		<component :is='type'></component>  <!-- 动态组件 -->
+		<button @click="handClik">change</button>
+  	</div>
+```
+**三、v-once指令**
+保存到内存，高效
+```html
+		Vue.component('childOne',{
+			template: '<div v-once>child-one</div>'
+		})
+
+		Vue.component('childTwo',{
+			template: '<div v-once >child-two</div>'
+		})
+```
+v-once提高静态资源的效率
+
+## Vue中的css动画原理
+
+transition标签，工作原理
+显示标签的时候enter
+即将运行的第一帧就存在了class： 
+fade-enter  
+fade-enter-active
+运行到第二帧class：
+删除fade-enter
+fade-enter-to
+最后就是删除所有帧
+
+删除标签的时候leave，原理和上面一样
+
+```html
+如果没有name="fade" class名字就是v-enter以此类推
+
+<transition name="fade">  <!-- 包裹的内容有过渡效果 -->
+</transition>
+
+```
+v-if,
+v-show　　都可以实现
+本节源码
+```html
+	<style>
+		.fade-enter,
+		.fade-leave-to {
+			opacity: 0;
+		}
+		.fade-enter-active,
+		.fade-leave-active {
+			transition: opacity 1s;
+		}
+	</style>
+
+	<div id="root">
+		<transition name="fade">  <!-- 包裹的内容有过渡效果 -->
+			<div v-if="show">hello world</div>
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+
+	<script>
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				show: true
+			},
+			methods: {
+				handclick: function() {
+					this.show = !this.show
+				}
+			}
+		})
+	</script>
+
+```
+
+## 在Vue中使用Animate.css库
+enter-active-class  可以替换 v-enter-active这个class，所以我们可以利用这个特性使用Animate库
+
+```
+<link rel="stylesheet" href="node_modules/animate.css/animate.css">
+
+	<div id="root">
+		<transition 
+		name="fade"
+		enter-active-class="animated bounce"
+		leave-active-class="animated bounce"
+		>  <!-- 使用animate动画 -->
+			<div v-if="show">hello world</div>
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+
+
+	<script>
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				show: true
+			},
+			methods: {
+				handclick: function() {
+					this.show = !this.show
+				}
+			}
+		})
+	</script>
+```
+
+**需要注意的是自定义class，animated添加这个class，根据喜欢的**
+
+## 5-3在Vue中同时使用过度和动画
+
+```html
+	<div id="root">
+		<transition 
+		name="fade"
+		appear
+		enter-active-class="animated zoomInDown"
+		leave-active-class="animated zoomIn"
+		appear-active-class="animated zoomInLeft"
+		>  <!-- 使用animate动画 --> <!-- 自定义class  appear -->
+			<div v-show="show" class="nams">hello world</div>
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+```
