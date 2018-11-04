@@ -1010,7 +1010,9 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 自己用了下velocity.js动画
 *封装动画为什么不能用v-show,搞了半天原来是这个问题，我还以为老师代码有错，插入的内容我没有去v-show,<div v-show="show">hello world
 			</div>写成这样了，怪不得错呢*
-```
+```html
+	<script src="velocity.min.js"></script>
+
 	<div id="root">
 		<fade :show="show"
 		>
@@ -1072,3 +1074,80 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 可以参考官方的文档，来完成作业
 动态过度
 状态过度
+
+一、动态过渡
+**vue props接收值用data替换,props值改变data值不变？**所遇到的问题，还没有解决
+百度到的答案，深度拷贝
+(google到的，明天看吧)[https://blog.csdn.net/o_Mario_o/article/details/77035451]
+
+这个代码虽然实现了，但是还有问题，就是props接收的值我直接修改了
+```html
+	<script src="velocity.min.js"></script>
+
+	<div id="root">
+		<input type="range" min="0" max="2000" model="500" v-model="indexnames1">
+		<input type="range" min="0" max="2000" model="500" v-model="indexnames2">
+		<fade :show="showa" :index1="indexnames1" :index2="indexnames2"
+		>
+			<div>hello world
+			</div>
+		</fade>
+		<button @click="handclick">mos</button>
+  	</div>
+
+	<script>
+		Vue.component('fade', {
+			props: ['show','index1','index2'],
+			template: `
+				<transition @before-enter="handleBeforeEnter" @enter="handleEnter" @leave="hanleave">
+					<slot v-if="show"></slot>
+				</transition>
+			`,
+			methods: {
+				handleBeforeEnter: function(el) {
+					el.style.opacity = 0;
+				},
+				handleEnter: function(el,done) {
+					var this_ = this
+					Velocity(el, {
+						opacity: 1,
+					},{
+						duration: this_.index1,
+						complete: function() {
+							done()
+							this_.show= !this_.show
+						}
+					})
+				},
+				hanleave: function(el,done) {
+					var this_ = this
+					Velocity(el, {
+						opacity: 0
+					},{
+						duration: this_.index2,
+						complete: function() {
+							done()
+							this_.show= !this_.show
+						}
+					})
+				}
+
+			}
+		})
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				showa: false,
+				indexnames1: '1000',
+				indexnames2: '1000'
+			},
+			methods: {
+				handclick: function() {
+					cas: '2'
+					this.showa = !this.showa
+				}
+			}
+			
+		})
+	</script>
+```
