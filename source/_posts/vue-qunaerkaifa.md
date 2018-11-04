@@ -216,7 +216,7 @@ item 得到的数据，index下标，of是什么东西(以前用的in)，list数
 key值不要使用index，使用项目中自带的id，
 
 这几个变异(？)方法可以达到数据变内容变
-push pop shift unshift spilce sort reverse
+push pop shift unshift splice(记录成spilce了，我服了) sort reverse
 第二种方法是改变数据的引用地址，从而改变内容
 
 对象列表有3个值v-for="(item, key, index) of info",
@@ -743,12 +743,12 @@ enter-active-class  可以替换 v-enter-active这个class，所以我们可以�
 **需要注意的是自定义class，animated添加这个class，根据喜欢的**
 
 ## 5-3在Vue中同时使用过度和动画
-
+appear 进入动画
 ```html
 	<div id="root">
 		<transition 
 		name="fade"
-		appear
+		appear 
 		enter-active-class="animated zoomInDown"
 		leave-active-class="animated zoomIn"
 		appear-active-class="animated zoomInLeft"
@@ -758,3 +758,317 @@ enter-active-class  可以替换 v-enter-active这个class，所以我们可以�
 		<button @click="handclick">切换</button>
   	</div>
 ```
+animate.css提供的动画是@keyframes类型的动画
+
+```html
+	<!-- type="transition" 确认动画时长以transition为准 -->
+		<transition 
+		name="fade"
+		type="transition" 
+		appear
+		enter-active-class="animated zoomInDown"
+		leave-active-class="animated zoomIn"
+		appear-active-class="animated zoomInLeft"
+		>
+
+```
+
+通过
+type
+:duration 属性可以控制动画总时长
+存在即合理
+```html
+	<style>
+		.fade-enter,
+		.fade-leave-to {
+			opacity: 0;
+		}
+
+		.fade-enter-active,
+		.fade-leave-active {
+			transition: all 10s;
+		}
+		.nams {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+		}
+	</style>
+	<div id="root">
+		<!-- type="transition" 确认动画时长以transition为准 -->
+		<transition
+		:duration="{enter: 5000, leave: 10000}"
+		type="transition"
+		name="fade"
+		appear
+		enter-active-class="animated zoomInDown fade-enter-active"
+		leave-active-class="animated zoomIn fade-leave-active"
+		appear-active-class="animated zoomInLeft"
+		>  <!-- 使用animate动画 --> <!-- 自定义class  appear -->
+			<div v-show="show" class="nams">hello world</div>
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+
+```
+使用type属性需要注意transition必须存在，不然动画就==没有时长了
+
+## 5-4Vue中的js动画与Velocity.js结合
+
+**一，js钩子实现动画**
+
+```
+	<div id="root">
+		<transition
+		@before-enter="handleBeforeEnter"
+		@enter="handleEnter"
+		@after-enter="handAfterEnter"
+		>  <!-- 出场动画就是将enter改为leave -->
+			<div v-show="show" class="nams">hello world</div>
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+
+	<script>
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				show: true
+			},
+			methods: {
+				handclick: function() {
+					this.show = !this.show
+				},
+				handleBeforeEnter: function(el) {
+					 el.style.color = 'red'
+				},
+				handleEnter: function(el,done) { /*done回调函数*/
+					setTimeout(() => {
+						el.style.color = 'green'
+					},2000)
+					setTimeout(() => {
+						done()   /*这里调用done()触发@after-enter事件*/
+					},4000)
+				},
+				handAfterEnter: function(el){
+					el.style.color = 'black'
+				}
+			}
+		})
+	</script>
+```
+
+**二、velocity.js实现动画**
+(velocity官网)[http://velocityjs.org/]
+
+样式部分没有变
+```
+	<script src="velocity.min.js"></script>
+
+	<script>
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				show: true
+			},
+			methods: {
+				handclick: function() {
+					this.show = !this.show
+				},
+				handleBeforeEnter: function(el) {
+					el.style.opacity = 0;
+				},
+				handleEnter: function(el,done) { /*done回调函数*/
+					Velocity(el, {
+						opacity: 1
+					},{
+						duration: 1000,
+						complete: done   <!-- 当Velocity执行完动画后 后面内容会被自动执行 -->
+					})
+				},
+				handAfterEnter: function(el){
+					alert('动画结束')
+				}
+			}
+		})
+	</script>
+
+```
+
+## Vue中多个元素或组件的过渡
+一、多个元素中的过渡效果
+因为vue复用组件的关系，所以要加key
+mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
+```html
+	<style>
+		.v-enter , .v-leave-to{
+			opacity: 0
+		}
+		.v-enter-active, .v-leave-active {
+			transition: opacity 1s;
+		}
+	</style>
+	<div id="root">
+		<transition
+		mode="out-in"
+		> <!-- mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示 -->
+			<div v-if="show" class="nams" key="hello">hello world</div>
+			<div v-else key="bye">Bye World change Account login</div>
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+
+```
+二、多个组件间的过渡
+
+动态组件实现过渡效果
+<component></component> 动态组件
+
+```html
+	<div id="root">
+		<transition
+		mode="out-in"
+		> <!-- mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示 -->
+			<component :is="type"></component> <!-- 动态组件 -->
+		</transition>
+		<button @click="handclick">切换</button>
+  	</div>
+
+	<script>
+		Vue.component('child', {
+			template: '<div>child</div>'
+		})
+		Vue.component('child-on', {
+			template: '<div>child-on</div>'
+		})
+
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				type: 'child'
+			},
+			methods: {
+				handclick: function() {
+					this.type = this.type === 'child' ? 'child-on' : 'child'
+				},
+
+			}
+		})
+	</script>
+```
+
+## 5-6、Vue中的列表过渡
+<transition-group></transition-group>相当于给每一个标签加了一层<transition></transition>
+自己加了个删除，还不错
+```html
+	<style>
+		.v-enter , .v-leave-to {
+			opacity: 0;
+		}
+		.v-enter-active, .v-leave-active {
+			transition: opacity 1s;
+		}
+	</style>
+	<div id="root">
+		<transition-group
+		>
+			<div v-for="item of list" :key="item.id">
+				{{item.title}}
+				{{item.id}} 
+			</div>
+		</transition-group>
+		<button @click="handclick">Add</button>
+		<button @click="remos">remove</button>
+  	</div>
+
+	<script>
+		var count = 0;
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				list: []
+			},
+			methods: {
+				handclick: function() {
+					this.list.push({
+						id: count ++,
+						title: 'modelist'
+					})
+				},
+				remos: function() {
+					console.log(this.list.length)
+					this.list.splice(this.list.length-1,1)
+				}
+			}
+		})
+	</script>
+
+
+```
+## 5-7 Vue中的动画封装
+自己用了下velocity.js动画
+*封装动画为什么不能用v-show,搞了半天原来是这个问题，我还以为老师代码有错，插入的内容我没有去v-show,<div v-show="show">hello world
+			</div>写成这样了，怪不得错呢*
+```
+	<div id="root">
+		<fade :show="show"
+		>
+			<div>hello world
+			</div>
+		</fade>
+		<button @click="handclick">mos</button>
+  	</div>
+
+	<script>
+		Vue.component('fade', {
+			props: ['show'],
+			template: `
+				<transition @before-enter="handleBeforeEnter" @enter="handleEnter">
+					<slot v-if="show"></slot>
+				</transition>
+			`,
+			methods: {
+				handleBeforeEnter: function(el) {
+					el.style.opacity = 0;
+					console.log(1)
+				},
+				handleEnter: function(el,done) {
+					console.log(2)
+					Velocity(el, {
+						opacity: 1,
+					},{
+						duration: 1000,
+						complete: done
+					})
+				}
+
+			}
+		})
+		var vm = new Vue({
+			el: '#root',
+			data: {
+				show: false
+			},
+			methods: {
+				handclick: function() {
+					this.show = !this.show
+				}
+			}
+			
+		})
+	</script>
+```
+
+## 5-8 章节小节
+第5节主要讲解了过渡动画
+@keyframes动画
+在vue中通过js如何实现动画
+同时我们简单的说了下vue和css或者Velocity.js这样的动画库
+多个元素切换过程中的动画  
+最后是列表动画的内容
+
+**课后作业**
+可以参考官方的文档，来完成作业
+动态过度
+状态过度
