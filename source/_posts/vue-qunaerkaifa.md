@@ -860,7 +860,7 @@ type
 ```
 
 **二、velocity.js实现动画**
-(velocity官网)[http://velocityjs.org/]
+[velocity官网](http://velocityjs.org/)
 
 样式部分没有变
 ```
@@ -1078,9 +1078,10 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 一、动态过渡
 **vue props接收值用data替换,props值改变data值不变？**所遇到的问题，还没有解决
 百度到的答案，深度拷贝
-(google到的，明天看吧)[https://blog.csdn.net/o_Mario_o/article/details/77035451]
+[google到的，明天看吧](https://blog.csdn.net/o_Mario_o/article/details/77035451)
 
 这个代码虽然实现了，但是还有问题，就是props接收的值我直接修改了
+**这个坑留这里把，看看教程后面有解决方法没**
 ```html
 	<script src="velocity.min.js"></script>
 
@@ -1151,3 +1152,40 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 		})
 	</script>
 ```
+## 6-1 项目环境准备
+安装node什么的，我自然都会了，还有git，我用的是桌面端，有机会用用字符的
+
+```html
+npm install -g vue-cli
+vue init webpack vue
+cd vue
+npm install
+npm run dev
+
+```
+
+## 6-2项目代码结构介绍
+项目地址：[VueLearn -> VueQuNaEr](https://github.com/DemoorBug/VueLearn/tree/master/VueQuNaEr)
+-	README.md 项目初始化文件
+-	package.json 项目依赖
+-	package-lock.json 一个锁文件，可以确定安装第三方包的具体版本，保持团队编程的统一
+-	index.html 项目默认首页模板文件
+-	.gitignore  禁止git上传文件
+-	.eslintrc.js js代码规范，必须按照这个规范写
+-	.eslintignore 这里面的目录及文件不会受到eslint规范影响
+-	.editorconfig 规范书写代码
+-	.babeirc 写ES6语法，转换为浏览器可以解析的代码，这个是配置文件
+-	static 存放静态资源，图片，模拟json数据
+-	node_modules 
+-	src 整个项目源代码
+	-	main.js项目入口文件
+	-	App.vue 最原始的根组件
+	-	router 路由
+	-	components 组件
+	-	assets 图片类资源
+-	config 文件夹下放的是项目配置文件
+	-	index.js 基础配置信息
+	-	dev.env.js 开发环境配置信息
+	-	prod.env.js 线上环境配置信息
+-	 build 项目打包webpack配置内容，一般来说不需要修改
+**一般来说不需要对这些文件修改，我们要做的就是在src源代码目录下进行我们业务代码的开发**
