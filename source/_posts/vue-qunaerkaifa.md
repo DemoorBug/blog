@@ -1189,3 +1189,54 @@ npm run dev
 	-	prod.env.js 线上环境配置信息
 -	 build 项目打包webpack配置内容，一般来说不需要修改
 **一般来说不需要对这些文件修改，我们要做的就是在src源代码目录下进行我们业务代码的开发**
+## 6-3 单文件组件与Vue中的路由
+
+// 路由就是根据网址的不同，返回不同的内容给用户
+**路由这章没什么好说的，angular的时候就已经很熟了**
+
+## 6-4 多页应用VS单页应用
+代替a
+ <router-link to="/list">列表页</router-link>
+
+服务器渲染可以完美解决单页面中的问题
+首屏时间稍慢，SEO差
+
+## 6-5 项目代码初始化
+
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+```
+添加了不允许用户放大缩小的代码
+-	移动端重置代码引入reset.css文件
+-	移动端1像素边框问题引入border.css文件
+-	移动端延迟300秒点击延迟问题
+	-	安装第三方模块 
+	-	npm install fastclick --save
+	-	import fastClick from 'fastclick'
+	-	fastClick.attach(document.body)
+-	iconfont
+上传代码git 
+```bash
+git add . 
+git commit -m 'project init '
+git push
+```
+
+## 7-1 首页header区域开发
+四百勒斯类似less，cass
+安装stylus
+```bash
+npm install stylus --save
+npm install stylus-loader --save
+```
+-	home拆分成很多部分，在script里面引入就可以了
+	-	import HomeHeader from './components/Header'
+-	样式部分用stylus写，而且是不影响全局作用域
+	-	<style lang="stylus" scoped></style>
+-	移动端采用rem布局，rem是根据html设置的font-size规定的大小
+-	引入全局的stylus文件，通用样式可以放到这里面，就可以复用了
+-	@import '~styles/varibles' 在style中使用的技巧，加~符号，不然会报错
+-	创建别名webpack.base.conf.js
+	-	'styles': resolve('src/assets/styles')
+-	修改webpack配置项的时候，一定要重启服务
+**display: flex这个属性很好用，以后应该会经常遇到**
