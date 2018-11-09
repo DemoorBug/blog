@@ -1240,3 +1240,60 @@ npm install stylus-loader --save
 	-	'styles': resolve('src/assets/styles')
 -	修改webpack配置项的时候，一定要重启服务
 **display: flex这个属性很好用，以后应该会经常遇到**
+
+## 首页轮播图
+####分支
+```bash
+git pull   线上的分支拉到本地
+git checkout index-swiper   切换分支
+git status 查看分支
+```
+####轮播插件
+[vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
+```bash
+npm install vue-awesome-swiper@2.6.7 --save
+```
+####全局引入
+```html
+import Vue from 'vue'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+```
+####不懂的css
+```css
+	width: 100%
+	height: 31.25vw   == 31.25%相当于宽的
+```
+####兼容性更高的写法
+```css
+	width: 100%
+    height: 0
+    overflow: hidden
+    padding-bottom: 31.25%  这个比例算法有问题，莫名其妙
+```
+####鼠标移动到下方5-10像素距离还是可以拖动
+[解决方法参考这个文章，遇到的问题里面也有描述](https://github.com/surmon-china/vue-awesome-swiper/issues/423)
+大概就是给html元素添加
+```css
+touch-action: none;
+```
+####样式穿透
+在有scope作用域的style下可以这样给其他页面应用样式
+```css
+.wrapper >>> .swiper-pagination-bullet-active
+    background: #fff
+```
+添加  >>>
+####git提交以及合并
+```bash
+git add
+git commit -m 'change'
+git push
+git checkout master          #切换分支
+git merge origin/index-swiper  #线上内容合并
+git push 
+```
