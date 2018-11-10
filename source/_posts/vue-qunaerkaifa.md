@@ -1263,32 +1263,32 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 ```
-####不懂的css
+#### 不懂的css
 ```css
 	width: 100%
 	height: 31.25vw   == 31.25%相当于宽的
 ```
-####兼容性更高的写法
+#### 兼容性更高的写法
 ```css
 	width: 100%
     height: 0
     overflow: hidden
     padding-bottom: 31.25%  这个比例算法有问题，莫名其妙
 ```
-####鼠标移动到下方5-10像素距离还是可以拖动
+#### 鼠标移动到下方5-10像素距离还是可以拖动
 [解决方法参考这个文章，遇到的问题里面也有描述](https://github.com/surmon-china/vue-awesome-swiper/issues/423)
 大概就是给html元素添加
 ```css
 touch-action: none;
 ```
-####样式穿透
+#### 样式穿透
 在有scope作用域的style下可以这样给其他页面应用样式
 ```css
 .wrapper >>> .swiper-pagination-bullet-active
     background: #fff
 ```
 添加  >>>
-####git提交以及合并
+#### git提交以及合并
 ```bash
 git add
 git commit -m 'change'
