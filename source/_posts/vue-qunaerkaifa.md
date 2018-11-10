@@ -1241,19 +1241,19 @@ npm install stylus-loader --save
 -	修改webpack配置项的时候，一定要重启服务
 **display: flex这个属性很好用，以后应该会经常遇到**
 
-## 首页轮播图
-####分支
+## 7-2首页轮播图
+#### 分支
 ```bash
 git pull   线上的分支拉到本地
 git checkout index-swiper   切换分支
 git status 查看分支
 ```
-####轮播插件
+#### 轮播插件
 [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
 ```bash
 npm install vue-awesome-swiper@2.6.7 --save
 ```
-####全局引入
+#### 全局引入
 ```html
 import Vue from 'vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
