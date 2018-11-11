@@ -51,3 +51,33 @@ this.$emit('delete',this.index)
 npm install -g vue-cli
 vue init webpack {{项目名}}
 ```
+
+#### 不懂的css
+```
+box-sizing border-box
+
+```
+
+#### 好的css布局
+```html
+.icons
+    height: 0
+    padding-bottom: 50%
+    overflow: hidden
+    background: #ccc
+    .icon
+      position relative
+      overflow hidden
+      float: left
+      width: 25%
+      height 0
+      padding-bottom: 25%
+      background: red
+```
+
+#### 文字超出显示...
+```
+overflow: hidden
+white-space: nowrap
+text-overflow: ellipsis
+```

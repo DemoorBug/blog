@@ -1241,7 +1241,7 @@ npm install stylus-loader --save
 -	修改webpack配置项的时候，一定要重启服务
 **display: flex这个属性很好用，以后应该会经常遇到**
 
-## 7-2首页轮播图
+## 7-3首页轮播图
 #### 分支
 ```bash
 git pull   线上的分支拉到本地
@@ -1296,4 +1296,27 @@ git push
 git checkout master          #切换分支
 git merge origin/index-swiper  #线上内容合并
 git push 
+```
+## 7-4 图标区域页面布局
+#### github线上创建分支，拉过来
+```
+git pull
+git checkout index-icons
+
+```
+## 7-5 图标区域逻辑实现
+#### js真滴神奇，
+
+```
+	pages () {
+      const pages = []
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+        pages[page].push(item)
+      })
+      return pages
+    }
 ```
