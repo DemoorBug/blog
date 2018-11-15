@@ -1342,3 +1342,40 @@ git checkout index-recommend
       min-width 0
 ```
 ## 7-7 周末游组件开发
+
+
+## Ajax获取首页数据
+#### 老师切换分支的时候发现一个本地错误
+```
+git status
+git checkout . 去除更改
+git status 这次查看本地分支和线上分支一致
+
+```
+#### vue中使用ajax
+-	fech 浏览器自带函数
+-	vue-resource
+-	官方推荐axios跨平台请求
+	-	浏览器端可以帮你发送shr请求
+	-	node端可以帮你发送http请求
+
+#### 使用axios
+```
+npm install axios --save
+```
+#### 开发环境转发
+Paths这个功能是webpack-dev-server提供的
+> config/index.js
+```
+	proxyTable: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/api': '/static/mock'
+        }
+      }
+    }
+```
+改变配置文件需要重启
+
+## 首页父子组件数据传递
