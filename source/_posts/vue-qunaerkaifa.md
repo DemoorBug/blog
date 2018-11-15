@@ -1320,3 +1320,25 @@ git checkout index-icons
       return pages
     }
 ```
+## 7-6 推荐组件开发
+#### 本地创建分支
+
+```bash
+git checkout -b index-recommend //创建并切换到newbranch分支下
+
+git push origin index-recommend //推送到远程仓库的newbranch分支下，没有就创建
+```
+> 他是下面命令的简写
+
+```bash
+git branch index-recommend
+git checkout index-recommend
+```
+#### 没什么讲究的，就是一个
+```html
+	.item-info
+      flex 1
+      padding .1rem
+      min-width 0
+```
+## 7-7 周末游组件开发
