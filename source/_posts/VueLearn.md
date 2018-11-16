@@ -56,6 +56,10 @@ vue init webpack {{项目名}}
 ```
 box-sizing border-box
 
+display flex
+flex-direction column
+justify-content center
+
 ```
 
 #### 好的css布局

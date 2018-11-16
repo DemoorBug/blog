@@ -1242,18 +1242,18 @@ npm install stylus-loader --save
 **display: flex这个属性很好用，以后应该会经常遇到**
 
 ## 7-3首页轮播图
-#### 分支
+### 分支
 ```bash
 git pull   线上的分支拉到本地
 git checkout index-swiper   切换分支
 git status 查看分支
 ```
-#### 轮播插件
+### 轮播插件
 [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
 ```bash
 npm install vue-awesome-swiper@2.6.7 --save
 ```
-#### 全局引入
+### 全局引入
 ```html
 import Vue from 'vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -1263,32 +1263,32 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 ```
-#### 不懂的css
+### 不懂的css
 ```css
 	width: 100%
 	height: 31.25vw   == 31.25%相当于宽的
 ```
-#### 兼容性更高的写法
+### 兼容性更高的写法
 ```css
 	width: 100%
     height: 0
     overflow: hidden
     padding-bottom: 31.25%  这个比例算法有问题，莫名其妙
 ```
-#### 鼠标移动到下方5-10像素距离还是可以拖动
+### 鼠标移动到下方5-10像素距离还是可以拖动
 [解决方法参考这个文章，遇到的问题里面也有描述](https://github.com/surmon-china/vue-awesome-swiper/issues/423)
 大概就是给html元素添加
 ```css
 touch-action: none;
 ```
-#### 样式穿透
+### 样式穿透
 在有scope作用域的style下可以这样给其他页面应用样式
 ```css
 .wrapper >>> .swiper-pagination-bullet-active
     background: #fff
 ```
 添加  >>>
-#### git提交以及合并
+### git提交以及合并
 ```bash
 git add
 git commit -m 'change'
@@ -1298,14 +1298,14 @@ git merge origin/index-swiper  #线上内容合并
 git push 
 ```
 ## 7-4 图标区域页面布局
-#### github线上创建分支，拉过来
+### github线上创建分支，拉过来
 ```
 git pull
 git checkout index-icons
 
 ```
 ## 7-5 图标区域逻辑实现
-#### js真滴神奇，
+### js真滴神奇，
 
 ```
 	pages () {
@@ -1321,7 +1321,7 @@ git checkout index-icons
     }
 ```
 ## 7-6 推荐组件开发
-#### 本地创建分支
+### 本地创建分支
 
 ```bash
 git checkout -b index-recommend //创建并切换到newbranch分支下
@@ -1334,7 +1334,7 @@ git push origin index-recommend //推送到远程仓库的newbranch分支下，�
 git branch index-recommend
 git checkout index-recommend
 ```
-#### 没什么讲究的，就是一个
+### 没什么讲究的，就是一个
 ```html
 	.item-info
       flex 1
@@ -1345,25 +1345,25 @@ git checkout index-recommend
 
 
 ## Ajax获取首页数据
-#### 老师切换分支的时候发现一个本地错误
+### 老师切换分支的时候发现一个本地错误
 ```
 git status
 git checkout . 去除更改
 git status 这次查看本地分支和线上分支一致
 
 ```
-#### vue中使用ajax
+### vue中使用ajax
 -	fech 浏览器自带函数
 -	vue-resource
 -	官方推荐axios跨平台请求
 	-	浏览器端可以帮你发送shr请求
 	-	node端可以帮你发送http请求
 
-#### 使用axios
+### 使用axios
 ```
 npm install axios --save
 ```
-#### 开发环境转发
+### 开发环境转发
 Paths这个功能是webpack-dev-server提供的
 > config/index.js
 ```
@@ -1379,3 +1379,42 @@ Paths这个功能是webpack-dev-server提供的
 改变配置文件需要重启
 
 ## 首页父子组件数据传递
+```
+methods: {
+    getHomeInfo () {
+      axios.get('/api/index.json')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.city = data.city
+        this.swiperList = data.swiperList
+        this.iconList = data.iconList
+        this.recommendList = data.recommendList
+        this.weekendList = data.WeekendList
+      }
+    }
+  },
+  mounted () {
+    this.getHomeInfo()
+  }
+```
+
+## 8-1城市选择页面路由配置
+页面a链接替换组件
+```html
+<router-link to='/city'></router-link>
+```
+
+## 8-2搜索框布局
+
+
+## 8-3列表布局
+
+## 8-4Better-scroll的使用及字母表布局
+安装
+```
+npm install better-scroll --save
+```
