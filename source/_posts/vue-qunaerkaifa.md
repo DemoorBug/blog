@@ -1418,3 +1418,41 @@ methods: {
 ```
 npm install better-scroll --save
 ```
+
+## 8-5页面动态数据渲染
+
+
+## 8-6兄弟组件联动
+```
+this.scroll.srollToElement()
+```
+首先确定自己的位置
+获得a字母距离顶部高度
+滑动的时候确定手指位置距离顶部高度
+做一个差值就能够算出当前手指位置和a顶部的差值，再除以每个字母的高度就可以知道当前是第几个字母了
+
+```js
+		this.startY = this.$refs['A'][0].offsetTop
+		const touchY = e.touches[0].clientY - 79
+        const index = Math.floor((touchY - this.startY) / 20)
+        if (index >= 0 && index < this.letters.length) {
+          this.$emit('change', this.letters[index])
+        }
+```
+生命周期钩子
+```
+updated () {
+    this.startY = this.$refs['A'][0].offsetTop
+  }
+```
+## 8-7列表切换性能优化
+
+函数截留
+```
+	timer: null
+
+	if (this.timer) {
+      clearTimeout(this.timer)
+    }
+    this.timer = setTimeout(() => {},16)
+```
