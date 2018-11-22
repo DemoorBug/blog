@@ -85,3 +85,31 @@ overflow: hidden
 white-space: nowrap
 text-overflow: ellipsis
 ```
+
+#### try catch语法是es6的？
+```
+let defaultCity = '上海'
+try {
+  if (localStorage.city) {
+    defaultCity = localStorage.city
+  }
+} catch (e) {}
+```
+
+#### 超出能力范围的es6
+```
+import { mapState } from 'vuex'
+export default {
+  name: 'HomeHeader',
+  computed: {
+    ...mapState(['city'])   //不懂
+  }
+}
+```
+
+```
+this.$store.state.city
+```
+```
+this.currentCity
+```

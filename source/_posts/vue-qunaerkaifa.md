@@ -1456,3 +1456,97 @@ updated () {
     }
     this.timer = setTimeout(() => {},16)
 ```
+
+## 8-8s搜索功能实现
+```javascript
+import Bscroll from 'better-scroll'
+export default {
+  name: 'CitySearch',
+  props: {
+    cities: Object
+  },
+  data () {
+    return {
+      keyword: '',
+      list: [],
+      timer: null
+    }
+  },
+  computed: {
+    hasNoData () {
+      return !this.list.length
+    }
+  },
+  watch: {
+    keyword () {
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      if (!this.keyword) {
+        this.list = []
+        return
+      }
+      this.timer = setTimeout(() => {
+        const result = []
+        for (let i in this.cities) {
+          this.cities[i].forEach((value) => {
+            if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+              result.push(value)
+            }
+          })
+        }
+        this.list = result
+      }, 100)
+    }
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.search)
+  }
+}
+```
+
+## 8-9使用vuex实现数据共享
+[vuex](https://vuex.vuejs.org/zh-cn/intro.html)
+
+## Vuex的高级使用及localStorage
+一些复杂的可以简写要引入vuex模块
+```js
+import { mapState, mapMutations } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  methods: {
+    handclick (city) {
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
+  }
+}
+```
+
+## 使用keep-alive 优化网页性能
+```
+<keep-alive></keep-alive>
+```
+将内容放到内存中，就不会出现重复请求ajax了
+
+```
+mounted () {
+    this.lastCity = this.city
+    this.getHomeInfo()
+  },
+  activated () {
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeInfo()
+    }
+  }
+```
+当有keep-alive的话就会多一个生命周期钩子，activated
+这个钩子会在页面重新出现的时候执行
+> 原来是ok的，老师的逻辑没问题，我自己搞错了
