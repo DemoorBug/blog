@@ -106,10 +106,26 @@ export default {
   }
 }
 ```
+#### 引入vuex优化代码
+```
+import { mapState, mapMutations } from 'vuex'
 
-```
+computed: {
+...mapState({
+  currentCity: 'city'
+})
+},
+methods: {
+...mapMutations(['changeCity'])
+}
+
+
 this.$store.state.city
-```
-```
+简写为
 this.currentCity
+
+
+this.$store.commit('changeCity', city)
+简写为
+this.changeCity(city)
 ```
