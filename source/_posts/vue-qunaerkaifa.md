@@ -33,8 +33,8 @@ VM层做的事情就是当M层数据改变去更改V层，这个都是VUE帮我�
 全局模板-组件
 
 Vue.component('TodoItem',{                   创建全局模板
-	props: ['content'],        {'item':content}                     接收
-	template: '<li>{{content}}</li>',
+    props: ['content'],        {'item':content}                     接收
+    template: '<li>{{content}}</li>',
 })
 使用：上面创建的时候使用了驼峰，所以下面可以这样使用 还真是智能
 <todo-item></todo-item>
@@ -42,14 +42,14 @@ Vue.component('TodoItem',{                   创建全局模板
 局部模板-组件
 
 var TodoItem = {
-	props: ['content'], 
-	template: '<li>{{content}}</li>',
+    props: ['content'], 
+    template: '<li>{{content}}</li>',
 }
 
 var app = new Vue({
-	components: {
-		TodoItem: TodoItem
-	}
+    components: {
+        TodoItem: TodoItem
+    }
 })
 
 ```
@@ -71,7 +71,7 @@ this.$emit('delete',this.index)
 ```
 vm = new Vue({
 
-	})
+    })
 vm.$el 
 
 vm.$data
@@ -105,14 +105,14 @@ watch: {
 
 ```
 coputed: {
-	fullName: {
-		get: function() {
-			return
-			},
-		set: function(value) {    value值是get的返回值
-			console.log(value)
-		}
-	}
+    fullName: {
+        get: function() {
+            return
+            },
+        set: function(value) {    value值是get的返回值
+            console.log(value)
+        }
+    }
 }
 
 更改set表示设置了fullName就会更改set值
@@ -136,39 +136,39 @@ style绑定
 
 这里是样式绑定这一节的代码块，
 ```vue
-	<style>
-		.activated {
-			color: red;
-		}
-	</style>
-	<div id="app">
-		<div @Click="handleClick"
-			 :class="{activated: isActivated}">Hell world</div>
-	</div>
+    <style>
+        .activated {
+            color: red;
+        }
+    </style>
+    <div id="app">
+        <div @Click="handleClick"
+             :class="{activated: isActivated}">Hell world</div>
+    </div>
 
-	<script>
-		var vm = new Vue({
-			el: "#app",
-			data: {
-				isActivated: false
-			},
-			methods: {
-				handleClick: function(){
-					this.isActivated = !this.isActivated
-				}
-			}
-		})
-	</script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isActivated: false
+            },
+            methods: {
+                handleClick: function(){
+                    this.isActivated = !this.isActivated
+                }
+            }
+        })
+    </script>
 ```
 
 三元表达式
 ```
-	普通写法：
-	if(this.activated === "activated"){
-		this.activated= "";
-	}else {
-		this.activated= "activated;
-	}
+    普通写法：
+    if(this.activated === "activated"){
+        this.activated= "";
+    }else {
+        this.activated= "activated;
+    }
 
  this.activated= this.activated === "activated" ? "" : "activated"
 ```
@@ -188,28 +188,28 @@ key  当一个元素被加key值后，vue会知道他是页面上唯一一个值
 
 ```
 <div id="app">
-		<div v-for="(item, index) of list" :key="item.id">
-			{{item.text}} ---- {{index}}
-		</div>
-	</div>
+        <div v-for="(item, index) of list" :key="item.id">
+            {{item.text}} ---- {{index}}
+        </div>
+    </div>
 
-	<script>
-		var vm = new Vue({
-			el: "#app",
-			data: {
-				list: [{
-					id: "01",
-					text: "hello"
-				},{
-					id: "02",
-					text: "blue"
-				},{
-					id: "03",
-					text: "less"
-				}]
-			}
-		})
-	</script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    id: "01",
+                    text: "hello"
+                },{
+                    id: "02",
+                    text: "blue"
+                },{
+                    id: "03",
+                    text: "less"
+                }]
+            }
+        })
+    </script>
 ```
 item 得到的数据，index下标，of是什么东西(以前用的in)，list数组
 
@@ -246,16 +246,16 @@ vm.$set(vm.userInfo,2,10)
 二、子组件定义data，后面必须是一个函数(function),之所以这么设计，是因为一个子组件不像根组件那样只被调用一次，它可能在不同的地方被调用
 ```
 data: function() {
-	return {
-		content: 'this is content'
-	}
+    return {
+        content: 'this is content'
+    }
 },
 ```
 三、通过ref='hello'获取dom节点，达成更改dom的操作
 ```
 methods: {
-	handleClick: function() {
-	this.$refs.hello.innerHTML
+    handleClick: function() {
+    this.$refs.hello.innerHTML
 }
 }
 ```
@@ -263,116 +263,116 @@ methods: {
 当ref在一个组件上的时候通过this.$refs.名字获取到里面的内容的时候你获取到的实际上是子组件的**引用**
 本节的代码。。
 ```html
-	<div id="root">
-		<row @change="changeClick" ref='woder'></row>
-		<row @change="changeClick" ref='hello'></row>
-		<div>{{numberAll}}</div>
-	</div>
+    <div id="root">
+        <row @change="changeClick" ref='woder'></row>
+        <row @change="changeClick" ref='hello'></row>
+        <div>{{numberAll}}</div>
+    </div>
 
-	<script>
-		Vue.component('row',{
-			template: '<div @click="handleClick">{{number}}</div>',
-			data: function(){
-				return {
-					number: 0
-				}
-			},
-			methods: {
-				handleClick: function(){
-					this.number ++
-					this.$emit('change')
-				}
-			}
+    <script>
+        Vue.component('row',{
+            template: '<div @click="handleClick">{{number}}</div>',
+            data: function(){
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                handleClick: function(){
+                    this.number ++
+                    this.$emit('change')
+                }
+            }
 
-		})
-		var vm = new Vue({
-			el: "#root",
-			data: {
-				numberAll: 0
-			},
-			methods: {
-				changeClick: function(){
-					this.numberAll = this.$refs.hello.number + this.$refs.woder.number
-				}
-			}
-		})
-	</script>
+        })
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                numberAll: 0
+            },
+            methods: {
+                changeClick: function(){
+                    this.numberAll = this.$refs.hello.number + this.$refs.woder.number
+                }
+            }
+        })
+    </script>
 ```
 ## 4-2父子组件的数据传递 
 更多的传递方式，上一节只是一种
 一丶父组件通过属性的方式传递数据
 ```vue
-	<counter :count="0"></counter>
+    <counter :count="0"></counter>
 
-	var counter = {
-		props: ['count'],
-		template: '<div @click="handleClick">{{count}}</div>',
-		methods: {
-			handleClick: function(){
-				this.count ++          这里不能直接修改
-			}
-		}
-	}
+    var counter = {
+        props: ['count'],
+        template: '<div @click="handleClick">{{count}}</div>',
+        methods: {
+            handleClick: function(){
+                this.count ++          这里不能直接修改
+            }
+        }
+    }
 ```
 单项数据流，子组件不能直接修改父组件参数
 ```vue
-	var counter = {
-		props: ['count'],
-		data: function(){
-			return {
-				number: this.count
-			}
-		},
-		template: '<div @click="handleClick">{{number}}</div>',
-		methods: {
-			handleClick: function(){
-				this.number ++          
-			}
-		}
-	}
+    var counter = {
+        props: ['count'],
+        data: function(){
+            return {
+                number: this.count
+            }
+        },
+        template: '<div @click="handleClick">{{number}}</div>',
+        methods: {
+            handleClick: function(){
+                this.number ++          
+            }
+        }
+    }
 
 ```
 本节代码:
 ```html
-	<div id="root">
-		<counter :count="0" @change='char'></counter>
-		<counter :count="1" @change='char'></counter> 
-		<div>{{chas}}</div>
-	</div>
+    <div id="root">
+        <counter :count="0" @change='char'></counter>
+        <counter :count="1" @change='char'></counter> 
+        <div>{{chas}}</div>
+    </div>
 
-	<script>
-		var counter = {
-			props: ['count'],
-			data: function(){
-				return {
-					number: this.count
-				}
-			},
-			template: '<div @click="handleClick">{{number}}</div>',
-			methods: {
-				handleClick: function(){
-					this.number ++ 
-					this.$emit('change', 1)         
-				}
-			}
-		}
+    <script>
+        var counter = {
+            props: ['count'],
+            data: function(){
+                return {
+                    number: this.count
+                }
+            },
+            template: '<div @click="handleClick">{{number}}</div>',
+            methods: {
+                handleClick: function(){
+                    this.number ++ 
+                    this.$emit('change', 1)         
+                }
+            }
+        }
 
-		var vm = new Vue({
-			el: '#root',
-			components: {
-				counter: counter
-			},
-			data: {
-				chas: 1
-			},
-			methods: {
-				char: function(step){
-					this.chas += step
-				}
+        var vm = new Vue({
+            el: '#root',
+            components: {
+                counter: counter
+            },
+            data: {
+                chas: 1
+            },
+            methods: {
+                char: function(step){
+                    this.chas += step
+                }
 
-			}
-		})
-	</script>
+            }
+        })
+    </script>
 ```
 
 ## 4-3组件参数效验于非props特性
@@ -380,28 +380,28 @@ methods: {
 content="这样就是字符串"
 **一丶props可以是一个对象，规定接收的是什么类型的值(可以接收多个值)**
 ```html
-		Vue.component('child',{
-			props: {
-				content: [String, Number]
-			},
-			template: '<div>{{content}}</div>'
-		})
+        Vue.component('child',{
+            props: {
+                content: [String, Number]
+            },
+            template: '<div>{{content}}</div>'
+        })
 ```
 还可以更复杂props,还可以跟一个对象
 ```html
-		Vue.component('child',{
-			props: {
-				content: {
-					type: String,
-					required: true,  //content不能没有
-					default: 'default value',  //默认值
-					validator: function(value) {
-						return (value.length > 5)
-					}  //规定长度
-				}
-			},
-			template: '<div>{{content}}</div>'
-		})
+        Vue.component('child',{
+            props: {
+                content: {
+                    type: String,
+                    required: true,  //content不能没有
+                    default: 'default value',  //默认值
+                    validator: function(value) {
+                        return (value.length > 5)
+                    }  //规定长度
+                }
+            },
+            template: '<div>{{content}}</div>'
+        })
 ```
 非props个人理解，父组件传，子组件不接收，子组件就不能用这个参数(那不是p话？)，参数会显示到标签上
 非props特性，是什么鬼呦
@@ -409,49 +409,49 @@ content="这样就是字符串"
 ## 4-4给组件绑定原生事件
 原生事件就是组件本事绑定事件，组件拿出来用给的事件就是自定义事件
 ```html
-	<div id="root">
-		<child @click='handleClick'></child>   //自定义事件
-	</div>
+    <div id="root">
+        <child @click='handleClick'></child>   //自定义事件
+    </div>
 
-	<script>
-		Vue.component('child',{
-			template: '<div @click="handbas">child</div>',  //原生事件
-			methods: {
-				handbas: function(){
-					alert('handbas')
-					this.$emit('click')
-				}
-			}
-		})
-		var vm = new Vue({
-			el: '#root',
-			methods: {
-				handleClick: function() {
-					alert('click')
-				}
-			}
-		})
-	</script>
+    <script>
+        Vue.component('child',{
+            template: '<div @click="handbas">child</div>',  //原生事件
+            methods: {
+                handbas: function(){
+                    alert('handbas')
+                    this.$emit('click')
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#root',
+            methods: {
+                handleClick: function() {
+                    alert('click')
+                }
+            }
+        })
+    </script>
  ```
  但是上面的需要两层传递，很麻烦，还有下面的方法
  ```html
-	<div id="root">
-		<child @click.native='handleClick'></child>
-	</div>
+    <div id="root">
+        <child @click.native='handleClick'></child>
+    </div>
 
-	<script>
-		Vue.component('child',{
-			template: '<div>child</div>',
-		})
-		var vm = new Vue({
-			el: '#root',
-			methods: {
-				handleClick: function() {
-					alert('click')
-				}
-			}
-		})
-	</script>
+    <script>
+        Vue.component('child',{
+            template: '<div>child</div>',
+        })
+        var vm = new Vue({
+            el: '#root',
+            methods: {
+                handleClick: function() {
+                    alert('click')
+                }
+            }
+        })
+    </script>
  ```
 
  总结：绑定.native修饰符就可以了
@@ -459,47 +459,47 @@ content="这样就是字符串"
  ## 4-5非父子组件间的传值(Bus/总线/发布订阅模式/观察者模式)
 Vuex
  ```
-	<div id="root">
-		<child content='Dell'></child>
-		<child content='Lee'></child>
-  	</div>
+    <div id="root">
+        <child content='Dell'></child>
+        <child content='Lee'></child>
+    </div>
 
-	<script>
-		Vue.prototype.bus = new Vue()  //prototype
+    <script>
+        Vue.prototype.bus = new Vue()  //prototype
 
-		Vue.component('child',{
-			props: {
-				content: String
-			},
-			data: function() {
-				return {
-					number: this.content
-				}
-			},
-			template: '<div @click="handleClick">{{number}}</div>',
-			methods: {
-				handleClick: function() {
-					this.bus.$emit('change', this.number)    //this.bus
-				}
-			},
-			mounted: function() {    //
-				var this_ = this
-				this.bus.$on('change', function(msg){
-					this_.number = msg
-				})
-			}
-		})
+        Vue.component('child',{
+            props: {
+                content: String
+            },
+            data: function() {
+                return {
+                    number: this.content
+                }
+            },
+            template: '<div @click="handleClick">{{number}}</div>',
+            methods: {
+                handleClick: function() {
+                    this.bus.$emit('change', this.number)    //this.bus
+                }
+            },
+            mounted: function() {    //
+                var this_ = this
+                this.bus.$on('change', function(msg){
+                    this_.number = msg
+                })
+            }
+        })
 
-		var vm = new Vue({
-			el: '#root',
-			methods: {
-				hands: function(step) {
+        var vm = new Vue({
+            el: '#root',
+            methods: {
+                hands: function(step) {
 
-				}
-			}
-		})
+                }
+            }
+        })
 
-	</script>
+    </script>
 
  ```
 
@@ -507,144 +507,144 @@ Vuex
 **一、插槽**
 
 ```html
-	<div id="root">
-		<child>
-			<p>Dell</p>  插槽
-		</child>
-  	</div>
+    <div id="root">
+        <child>
+            <p>Dell</p>  插槽
+        </child>
+    </div>
 
-	<script>
-		
-		Vue.component('child',{
-			props: {
-				content: String
-			},
-			template: `<div>
-							<p>hello</p>
-							<slot>默认内容</slot>  //slot语法接收，当没有内容的时候就会使用默认内容
-					   </div>`
-		})
+    <script>
+        
+        Vue.component('child',{
+            props: {
+                content: String
+            },
+            template: `<div>
+                            <p>hello</p>
+                            <slot>默认内容</slot>  //slot语法接收，当没有内容的时候就会使用默认内容
+                       </div>`
+        })
 
-		var vm = new Vue({
-			el: '#root',
-		})
+        var vm = new Vue({
+            el: '#root',
+        })
 
-	</script>
+    </script>
 
 ```
 
 **二、句名插槽**
 ```html
-	<div id="root">
-		<body-content>
-			<div class="header" slot='header'>header</div>
-			<div class="footer" slot='footer'>footer</div>
-		</body-content>
-  	</div>
+    <div id="root">
+        <body-content>
+            <div class="header" slot='header'>header</div>
+            <div class="footer" slot='footer'>footer</div>
+        </body-content>
+    </div>
 
-	<script>
-		
-		Vue.component('bodyContent',{
-			props: {
-				content: String
-			},
-			template: `<div>
-							<slot name='header'></slot>
-							<div class="content">content</div>
-							<slot name='footer'></slot>
-					   </div>`
-		})
+    <script>
+        
+        Vue.component('bodyContent',{
+            props: {
+                content: String
+            },
+            template: `<div>
+                            <slot name='header'></slot>
+                            <div class="content">content</div>
+                            <slot name='footer'></slot>
+                       </div>`
+        })
 
-		var vm = new Vue({
-			el: '#root',
-		})
+        var vm = new Vue({
+            el: '#root',
+        })
 
 ```
 
 4-7 Vue中的作用域插槽
 
 ```html
-	<div id="root">
-		<child>
-			<template slot-scope="props">   <!-- 固定写法 -->
-				<li>{{props.item}}</li>
-			</template>
-		</child>
-  	</div>
+    <div id="root">
+        <child>
+            <template slot-scope="props">   <!-- 固定写法 -->
+                <li>{{props.item}}</li>
+            </template>
+        </child>
+    </div>
 
-	<script>
-		
-		Vue.component('child',{
-			data: function() {
-				return {
-					list: [1,2,3,4]
-				}
-			},
-			template: `<div>
-							<ul>
-								<slot v-for="item of list" :item="item"></slot>
-							</ul>
-						</div>`
-		})
+    <script>
+        
+        Vue.component('child',{
+            data: function() {
+                return {
+                    list: [1,2,3,4]
+                }
+            },
+            template: `<div>
+                            <ul>
+                                <slot v-for="item of list" :item="item"></slot>
+                            </ul>
+                        </div>`
+        })
 
-		var vm = new Vue({
-			el: '#root',
-		})
+        var vm = new Vue({
+            el: '#root',
+        })
 
-	</script>
+    </script>
 ```
 
 4-8动态组件与v-once指令
 **一、普通写法，实现(toggle)互相展示隐藏的效果**
 ```html
-	<div id="root">
-		<child-one v-if='type === "child-one"'></child-one>
-		<child-two v-if='type === "child-two"'></child-two>
-		<button @click="handClik">change</button>
-  	</div>
+    <div id="root">
+        <child-one v-if='type === "child-one"'></child-one>
+        <child-two v-if='type === "child-two"'></child-two>
+        <button @click="handClik">change</button>
+    </div>
 
-	<script>
-		
-		Vue.component('childOne',{
-			template: '<div>child-one</div>'
-		})
+    <script>
+        
+        Vue.component('childOne',{
+            template: '<div>child-one</div>'
+        })
 
-		Vue.component('childTwo',{
-			template: '<div>child-two</div>'
-		})
+        Vue.component('childTwo',{
+            template: '<div>child-two</div>'
+        })
 
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				type: 'child-one'
-			},
-			methods: {
-				handClik: function() {
-					this.type = this.type === 'child-one' ? 'child-two' : 'child-one'
-				}
-			}
-		})
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                type: 'child-one'
+            },
+            methods: {
+                handClik: function() {
+                    this.type = this.type === 'child-one' ? 'child-two' : 'child-one'
+                }
+            }
+        })
 
-	</script>
+    </script>
 ```
 **二、动态组件**
 script部分就是上面的
 ```html
-	<div id="root">
-		<component :is='type'></component>  <!-- 动态组件 -->
-		<button @click="handClik">change</button>
-  	</div>
+    <div id="root">
+        <component :is='type'></component>  <!-- 动态组件 -->
+        <button @click="handClik">change</button>
+    </div>
 ```
 **三、v-once指令**
 保存到内存，高效
 ```html
-		Vue.component('childOne',{
-			template: '<div v-once>child-one</div>'
-		})
+        Vue.component('childOne',{
+            template: '<div v-once>child-one</div>'
+        })
 
-		Vue.component('childTwo',{
-			template: '<div v-once >child-two</div>'
-		})
+        Vue.component('childTwo',{
+            template: '<div v-once >child-two</div>'
+        })
 ```
 v-once提高静态资源的效率
 
@@ -673,37 +673,37 @@ v-if,
 v-show　　都可以实现
 本节源码
 ```html
-	<style>
-		.fade-enter,
-		.fade-leave-to {
-			opacity: 0;
-		}
-		.fade-enter-active,
-		.fade-leave-active {
-			transition: opacity 1s;
-		}
-	</style>
+    <style>
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
 
-	<div id="root">
-		<transition name="fade">  <!-- 包裹的内容有过渡效果 -->
-			<div v-if="show">hello world</div>
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+    <div id="root">
+        <transition name="fade">  <!-- 包裹的内容有过渡效果 -->
+            <div v-if="show">hello world</div>
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 
-	<script>
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				show: true
-			},
-			methods: {
-				handclick: function() {
-					this.show = !this.show
-				}
-			}
-		})
-	</script>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                show: true
+            },
+            methods: {
+                handclick: function() {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
 
 ```
 
@@ -713,31 +713,31 @@ enter-active-class  可以替换 v-enter-active这个class，所以我们可以�
 ```
 <link rel="stylesheet" href="node_modules/animate.css/animate.css">
 
-	<div id="root">
-		<transition 
-		name="fade"
-		enter-active-class="animated bounce"
-		leave-active-class="animated bounce"
-		>  <!-- 使用animate动画 -->
-			<div v-if="show">hello world</div>
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+    <div id="root">
+        <transition 
+        name="fade"
+        enter-active-class="animated bounce"
+        leave-active-class="animated bounce"
+        >  <!-- 使用animate动画 -->
+            <div v-if="show">hello world</div>
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 
 
-	<script>
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				show: true
-			},
-			methods: {
-				handclick: function() {
-					this.show = !this.show
-				}
-			}
-		})
-	</script>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                show: true
+            },
+            methods: {
+                handclick: function() {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
 ```
 
 **需要注意的是自定义class，animated添加这个class，根据喜欢的**
@@ -745,31 +745,31 @@ enter-active-class  可以替换 v-enter-active这个class，所以我们可以�
 ## 5-3在Vue中同时使用过度和动画
 appear 进入动画
 ```html
-	<div id="root">
-		<transition 
-		name="fade"
-		appear 
-		enter-active-class="animated zoomInDown"
-		leave-active-class="animated zoomIn"
-		appear-active-class="animated zoomInLeft"
-		>  <!-- 使用animate动画 --> <!-- 自定义class  appear -->
-			<div v-show="show" class="nams">hello world</div>
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+    <div id="root">
+        <transition 
+        name="fade"
+        appear 
+        enter-active-class="animated zoomInDown"
+        leave-active-class="animated zoomIn"
+        appear-active-class="animated zoomInLeft"
+        >  <!-- 使用animate动画 --> <!-- 自定义class  appear -->
+            <div v-show="show" class="nams">hello world</div>
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 ```
 animate.css提供的动画是@keyframes类型的动画
 
 ```html
-	<!-- type="transition" 确认动画时长以transition为准 -->
-		<transition 
-		name="fade"
-		type="transition" 
-		appear
-		enter-active-class="animated zoomInDown"
-		leave-active-class="animated zoomIn"
-		appear-active-class="animated zoomInLeft"
-		>
+    <!-- type="transition" 确认动画时长以transition为准 -->
+        <transition 
+        name="fade"
+        type="transition" 
+        appear
+        enter-active-class="animated zoomInDown"
+        leave-active-class="animated zoomIn"
+        appear-active-class="animated zoomInLeft"
+        >
 
 ```
 
@@ -778,38 +778,38 @@ type
 :duration 属性可以控制动画总时长
 存在即合理
 ```html
-	<style>
-		.fade-enter,
-		.fade-leave-to {
-			opacity: 0;
-		}
+    <style>
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
 
-		.fade-enter-active,
-		.fade-leave-active {
-			transition: all 10s;
-		}
-		.nams {
-			width: 100px;
-			height: 100px;
-			text-align: center;
-			line-height: 100px;
-		}
-	</style>
-	<div id="root">
-		<!-- type="transition" 确认动画时长以transition为准 -->
-		<transition
-		:duration="{enter: 5000, leave: 10000}"
-		type="transition"
-		name="fade"
-		appear
-		enter-active-class="animated zoomInDown fade-enter-active"
-		leave-active-class="animated zoomIn fade-leave-active"
-		appear-active-class="animated zoomInLeft"
-		>  <!-- 使用animate动画 --> <!-- 自定义class  appear -->
-			<div v-show="show" class="nams">hello world</div>
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all 10s;
+        }
+        .nams {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+    <div id="root">
+        <!-- type="transition" 确认动画时长以transition为准 -->
+        <transition
+        :duration="{enter: 5000, leave: 10000}"
+        type="transition"
+        name="fade"
+        appear
+        enter-active-class="animated zoomInDown fade-enter-active"
+        leave-active-class="animated zoomIn fade-leave-active"
+        appear-active-class="animated zoomInLeft"
+        >  <!-- 使用animate动画 --> <!-- 自定义class  appear -->
+            <div v-show="show" class="nams">hello world</div>
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 
 ```
 使用type属性需要注意transition必须存在，不然动画就==没有时长了
@@ -819,44 +819,44 @@ type
 **一，js钩子实现动画**
 
 ```
-	<div id="root">
-		<transition
-		@before-enter="handleBeforeEnter"
-		@enter="handleEnter"
-		@after-enter="handAfterEnter"
-		>  <!-- 出场动画就是将enter改为leave -->
-			<div v-show="show" class="nams">hello world</div>
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+    <div id="root">
+        <transition
+        @before-enter="handleBeforeEnter"
+        @enter="handleEnter"
+        @after-enter="handAfterEnter"
+        >  <!-- 出场动画就是将enter改为leave -->
+            <div v-show="show" class="nams">hello world</div>
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 
-	<script>
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				show: true
-			},
-			methods: {
-				handclick: function() {
-					this.show = !this.show
-				},
-				handleBeforeEnter: function(el) {
-					 el.style.color = 'red'
-				},
-				handleEnter: function(el,done) { /*done回调函数*/
-					setTimeout(() => {
-						el.style.color = 'green'
-					},2000)
-					setTimeout(() => {
-						done()   /*这里调用done()触发@after-enter事件*/
-					},4000)
-				},
-				handAfterEnter: function(el){
-					el.style.color = 'black'
-				}
-			}
-		})
-	</script>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                show: true
+            },
+            methods: {
+                handclick: function() {
+                    this.show = !this.show
+                },
+                handleBeforeEnter: function(el) {
+                     el.style.color = 'red'
+                },
+                handleEnter: function(el,done) { /*done回调函数*/
+                    setTimeout(() => {
+                        el.style.color = 'green'
+                    },2000)
+                    setTimeout(() => {
+                        done()   /*这里调用done()触发@after-enter事件*/
+                    },4000)
+                },
+                handAfterEnter: function(el){
+                    el.style.color = 'black'
+                }
+            }
+        })
+    </script>
 ```
 
 **二、velocity.js实现动画**
@@ -864,35 +864,35 @@ type
 
 样式部分没有变
 ```
-	<script src="velocity.min.js"></script>
+    <script src="velocity.min.js"></script>
 
-	<script>
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				show: true
-			},
-			methods: {
-				handclick: function() {
-					this.show = !this.show
-				},
-				handleBeforeEnter: function(el) {
-					el.style.opacity = 0;
-				},
-				handleEnter: function(el,done) { /*done回调函数*/
-					Velocity(el, {
-						opacity: 1
-					},{
-						duration: 1000,
-						complete: done   <!-- 当Velocity执行完动画后 后面内容会被自动执行 -->
-					})
-				},
-				handAfterEnter: function(el){
-					alert('动画结束')
-				}
-			}
-		})
-	</script>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                show: true
+            },
+            methods: {
+                handclick: function() {
+                    this.show = !this.show
+                },
+                handleBeforeEnter: function(el) {
+                    el.style.opacity = 0;
+                },
+                handleEnter: function(el,done) { /*done回调函数*/
+                    Velocity(el, {
+                        opacity: 1
+                    },{
+                        duration: 1000,
+                        complete: done   <!-- 当Velocity执行完动画后 后面内容会被自动执行 -->
+                    })
+                },
+                handAfterEnter: function(el){
+                    alert('动画结束')
+                }
+            }
+        })
+    </script>
 
 ```
 
@@ -901,23 +901,23 @@ type
 因为vue复用组件的关系，所以要加key
 mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 ```html
-	<style>
-		.v-enter , .v-leave-to{
-			opacity: 0
-		}
-		.v-enter-active, .v-leave-active {
-			transition: opacity 1s;
-		}
-	</style>
-	<div id="root">
-		<transition
-		mode="out-in"
-		> <!-- mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示 -->
-			<div v-if="show" class="nams" key="hello">hello world</div>
-			<div v-else key="bye">Bye World change Account login</div>
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+    <style>
+        .v-enter , .v-leave-to{
+            opacity: 0
+        }
+        .v-enter-active, .v-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+    <div id="root">
+        <transition
+        mode="out-in"
+        > <!-- mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示 -->
+            <div v-if="show" class="nams" key="hello">hello world</div>
+            <div v-else key="bye">Bye World change Account login</div>
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 
 ```
 二、多个组件间的过渡
@@ -926,140 +926,140 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 <component></component> 动态组件
 
 ```html
-	<div id="root">
-		<transition
-		mode="out-in"
-		> <!-- mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示 -->
-			<component :is="type"></component> <!-- 动态组件 -->
-		</transition>
-		<button @click="handclick">切换</button>
-  	</div>
+    <div id="root">
+        <transition
+        mode="out-in"
+        > <!-- mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示 -->
+            <component :is="type"></component> <!-- 动态组件 -->
+        </transition>
+        <button @click="handclick">切换</button>
+    </div>
 
-	<script>
-		Vue.component('child', {
-			template: '<div>child</div>'
-		})
-		Vue.component('child-on', {
-			template: '<div>child-on</div>'
-		})
+    <script>
+        Vue.component('child', {
+            template: '<div>child</div>'
+        })
+        Vue.component('child-on', {
+            template: '<div>child-on</div>'
+        })
 
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				type: 'child'
-			},
-			methods: {
-				handclick: function() {
-					this.type = this.type === 'child' ? 'child-on' : 'child'
-				},
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                type: 'child'
+            },
+            methods: {
+                handclick: function() {
+                    this.type = this.type === 'child' ? 'child-on' : 'child'
+                },
 
-			}
-		})
-	</script>
+            }
+        })
+    </script>
 ```
 
 ## 5-6、Vue中的列表过渡
 <transition-group></transition-group>相当于给每一个标签加了一层<transition></transition>
 自己加了个删除，还不错
 ```html
-	<style>
-		.v-enter , .v-leave-to {
-			opacity: 0;
-		}
-		.v-enter-active, .v-leave-active {
-			transition: opacity 1s;
-		}
-	</style>
-	<div id="root">
-		<transition-group
-		>
-			<div v-for="item of list" :key="item.id">
-				{{item.title}}
-				{{item.id}} 
-			</div>
-		</transition-group>
-		<button @click="handclick">Add</button>
-		<button @click="remos">remove</button>
-  	</div>
+    <style>
+        .v-enter , .v-leave-to {
+            opacity: 0;
+        }
+        .v-enter-active, .v-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+    <div id="root">
+        <transition-group
+        >
+            <div v-for="item of list" :key="item.id">
+                {{item.title}}
+                {{item.id}} 
+            </div>
+        </transition-group>
+        <button @click="handclick">Add</button>
+        <button @click="remos">remove</button>
+    </div>
 
-	<script>
-		var count = 0;
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				list: []
-			},
-			methods: {
-				handclick: function() {
-					this.list.push({
-						id: count ++,
-						title: 'modelist'
-					})
-				},
-				remos: function() {
-					console.log(this.list.length)
-					this.list.splice(this.list.length-1,1)
-				}
-			}
-		})
-	</script>
+    <script>
+        var count = 0;
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                list: []
+            },
+            methods: {
+                handclick: function() {
+                    this.list.push({
+                        id: count ++,
+                        title: 'modelist'
+                    })
+                },
+                remos: function() {
+                    console.log(this.list.length)
+                    this.list.splice(this.list.length-1,1)
+                }
+            }
+        })
+    </script>
 
 
 ```
 ## 5-7 Vue中的动画封装
 自己用了下velocity.js动画
 *封装动画为什么不能用v-show,搞了半天原来是这个问题，我还以为老师代码有错，插入的内容我没有去v-show,<div v-show="show">hello world
-			</div>写成这样了，怪不得错呢*
+            </div>写成这样了，怪不得错呢*
 ```html
-	<script src="velocity.min.js"></script>
+    <script src="velocity.min.js"></script>
 
-	<div id="root">
-		<fade :show="show"
-		>
-			<div>hello world
-			</div>
-		</fade>
-		<button @click="handclick">mos</button>
-  	</div>
+    <div id="root">
+        <fade :show="show"
+        >
+            <div>hello world
+            </div>
+        </fade>
+        <button @click="handclick">mos</button>
+    </div>
 
-	<script>
-		Vue.component('fade', {
-			props: ['show'],
-			template: `
-				<transition @before-enter="handleBeforeEnter" @enter="handleEnter">
-					<slot v-if="show"></slot>
-				</transition>
-			`,
-			methods: {
-				handleBeforeEnter: function(el) {
-					el.style.opacity = 0;
-					console.log(1)
-				},
-				handleEnter: function(el,done) {
-					console.log(2)
-					Velocity(el, {
-						opacity: 1,
-					},{
-						duration: 1000,
-						complete: done
-					})
-				}
+    <script>
+        Vue.component('fade', {
+            props: ['show'],
+            template: `
+                <transition @before-enter="handleBeforeEnter" @enter="handleEnter">
+                    <slot v-if="show"></slot>
+                </transition>
+            `,
+            methods: {
+                handleBeforeEnter: function(el) {
+                    el.style.opacity = 0;
+                    console.log(1)
+                },
+                handleEnter: function(el,done) {
+                    console.log(2)
+                    Velocity(el, {
+                        opacity: 1,
+                    },{
+                        duration: 1000,
+                        complete: done
+                    })
+                }
 
-			}
-		})
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				show: false
-			},
-			methods: {
-				handclick: function() {
-					this.show = !this.show
-				}
-			}
-			
-		})
-	</script>
+            }
+        })
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                show: false
+            },
+            methods: {
+                handclick: function() {
+                    this.show = !this.show
+                }
+            }
+            
+        })
+    </script>
 ```
 
 ## 5-8 章节小节
@@ -1083,74 +1083,74 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
 这个代码虽然实现了，但是还有问题，就是props接收的值我直接修改了
 **这个坑留这里把，看看教程后面有解决方法没**
 ```html
-	<script src="velocity.min.js"></script>
+    <script src="velocity.min.js"></script>
 
-	<div id="root">
-		<input type="range" min="0" max="2000" model="500" v-model="indexnames1">
-		<input type="range" min="0" max="2000" model="500" v-model="indexnames2">
-		<fade :show="showa" :index1="indexnames1" :index2="indexnames2"
-		>
-			<div>hello world
-			</div>
-		</fade>
-		<button @click="handclick">mos</button>
-  	</div>
+    <div id="root">
+        <input type="range" min="0" max="2000" model="500" v-model="indexnames1">
+        <input type="range" min="0" max="2000" model="500" v-model="indexnames2">
+        <fade :show="showa" :index1="indexnames1" :index2="indexnames2"
+        >
+            <div>hello world
+            </div>
+        </fade>
+        <button @click="handclick">mos</button>
+    </div>
 
-	<script>
-		Vue.component('fade', {
-			props: ['show','index1','index2'],
-			template: `
-				<transition @before-enter="handleBeforeEnter" @enter="handleEnter" @leave="hanleave">
-					<slot v-if="show"></slot>
-				</transition>
-			`,
-			methods: {
-				handleBeforeEnter: function(el) {
-					el.style.opacity = 0;
-				},
-				handleEnter: function(el,done) {
-					var this_ = this
-					Velocity(el, {
-						opacity: 1,
-					},{
-						duration: this_.index1,
-						complete: function() {
-							done()
-							this_.show= !this_.show
-						}
-					})
-				},
-				hanleave: function(el,done) {
-					var this_ = this
-					Velocity(el, {
-						opacity: 0
-					},{
-						duration: this_.index2,
-						complete: function() {
-							done()
-							this_.show= !this_.show
-						}
-					})
-				}
+    <script>
+        Vue.component('fade', {
+            props: ['show','index1','index2'],
+            template: `
+                <transition @before-enter="handleBeforeEnter" @enter="handleEnter" @leave="hanleave">
+                    <slot v-if="show"></slot>
+                </transition>
+            `,
+            methods: {
+                handleBeforeEnter: function(el) {
+                    el.style.opacity = 0;
+                },
+                handleEnter: function(el,done) {
+                    var this_ = this
+                    Velocity(el, {
+                        opacity: 1,
+                    },{
+                        duration: this_.index1,
+                        complete: function() {
+                            done()
+                            this_.show= !this_.show
+                        }
+                    })
+                },
+                hanleave: function(el,done) {
+                    var this_ = this
+                    Velocity(el, {
+                        opacity: 0
+                    },{
+                        duration: this_.index2,
+                        complete: function() {
+                            done()
+                            this_.show= !this_.show
+                        }
+                    })
+                }
 
-			}
-		})
-		var vm = new Vue({
-			el: '#root',
-			data: {
-				showa: false,
-				indexnames1: '1000',
-				indexnames2: '1000'
-			},
-			methods: {
-				handclick: function() {
-					cas: '2'
-					this.showa = !this.showa
-				}
-			}
-			
-		})
-	</script>
+            }
+        })
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                showa: false,
+                indexnames1: '1000',
+                indexnames2: '1000'
+            },
+            methods: {
+                handclick: function() {
+                    cas: '2'
+                    this.showa = !this.showa
+                }
+            }
+            
+        })
+    </script>
 ```
 ## 6-1 项目环境准备
 安装node什么的，我自然都会了，还有git，我用的是桌面端，有机会用用字符的
@@ -1166,28 +1166,28 @@ npm run dev
 
 ## 6-2项目代码结构介绍
 项目地址：[VueLearn -> VueQuNaEr](https://github.com/DemoorBug/VueLearn/tree/master/VueQuNaEr)
--	README.md 项目初始化文件
--	package.json 项目依赖
--	package-lock.json 一个锁文件，可以确定安装第三方包的具体版本，保持团队编程的统一
--	index.html 项目默认首页模板文件
--	.gitignore  禁止git上传文件
--	.eslintrc.js js代码规范，必须按照这个规范写
--	.eslintignore 这里面的目录及文件不会受到eslint规范影响
--	.editorconfig 规范书写代码
--	.babeirc 写ES6语法，转换为浏览器可以解析的代码，这个是配置文件
--	static 存放静态资源，图片，模拟json数据
--	node_modules 
--	src 整个项目源代码
-	-	main.js项目入口文件
-	-	App.vue 最原始的根组件
-	-	router 路由
-	-	components 组件
-	-	assets 图片类资源
--	config 文件夹下放的是项目配置文件
-	-	index.js 基础配置信息
-	-	dev.env.js 开发环境配置信息
-	-	prod.env.js 线上环境配置信息
--	 build 项目打包webpack配置内容，一般来说不需要修改
+-   README.md 项目初始化文件
+-   package.json 项目依赖
+-   package-lock.json 一个锁文件，可以确定安装第三方包的具体版本，保持团队编程的统一
+-   index.html 项目默认首页模板文件
+-   .gitignore  禁止git上传文件
+-   .eslintrc.js js代码规范，必须按照这个规范写
+-   .eslintignore 这里面的目录及文件不会受到eslint规范影响
+-   .editorconfig 规范书写代码
+-   .babeirc 写ES6语法，转换为浏览器可以解析的代码，这个是配置文件
+-   static 存放静态资源，图片，模拟json数据
+-   node_modules 
+-   src 整个项目源代码
+    -   main.js项目入口文件
+    -   App.vue 最原始的根组件
+    -   router 路由
+    -   components 组件
+    -   assets 图片类资源
+-   config 文件夹下放的是项目配置文件
+    -   index.js 基础配置信息
+    -   dev.env.js 开发环境配置信息
+    -   prod.env.js 线上环境配置信息
+-    build 项目打包webpack配置内容，一般来说不需要修改
 **一般来说不需要对这些文件修改，我们要做的就是在src源代码目录下进行我们业务代码的开发**
 ## 6-3 单文件组件与Vue中的路由
 
@@ -1207,14 +1207,14 @@ npm run dev
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 ```
 添加了不允许用户放大缩小的代码
--	移动端重置代码引入reset.css文件
--	移动端1像素边框问题引入border.css文件
--	移动端延迟300秒点击延迟问题
-	-	安装第三方模块 
-	-	npm install fastclick --save
-	-	import fastClick from 'fastclick'
-	-	fastClick.attach(document.body)
--	iconfont
+-   移动端重置代码引入reset.css文件
+-   移动端1像素边框问题引入border.css文件
+-   移动端延迟300秒点击延迟问题
+    -   安装第三方模块 
+    -   npm install fastclick --save
+    -   import fastClick from 'fastclick'
+    -   fastClick.attach(document.body)
+-   iconfont
 上传代码git 
 ```bash
 git add . 
@@ -1229,16 +1229,16 @@ git push
 npm install stylus --save
 npm install stylus-loader --save
 ```
--	home拆分成很多部分，在script里面引入就可以了
-	-	import HomeHeader from './components/Header'
--	样式部分用stylus写，而且是不影响全局作用域
-	-	<style lang="stylus" scoped></style>
--	移动端采用rem布局，rem是根据html设置的font-size规定的大小
--	引入全局的stylus文件，通用样式可以放到这里面，就可以复用了
--	@import '~styles/varibles' 在style中使用的技巧，加~符号，不然会报错
--	创建别名webpack.base.conf.js
-	-	'styles': resolve('src/assets/styles')
--	修改webpack配置项的时候，一定要重启服务
+-   home拆分成很多部分，在script里面引入就可以了
+    -   import HomeHeader from './components/Header'
+-   样式部分用stylus写，而且是不影响全局作用域
+    -   <style lang="stylus" scoped></style>
+-   移动端采用rem布局，rem是根据html设置的font-size规定的大小
+-   引入全局的stylus文件，通用样式可以放到这里面，就可以复用了
+-   @import '~styles/varibles' 在style中使用的技巧，加~符号，不然会报错
+-   创建别名webpack.base.conf.js
+    -   'styles': resolve('src/assets/styles')
+-   修改webpack配置项的时候，一定要重启服务
 **display: flex这个属性很好用，以后应该会经常遇到**
 
 ## 7-3首页轮播图
@@ -1265,12 +1265,12 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 ```
 ### 不懂的css
 ```css
-	width: 100%
-	height: 31.25vw   == 31.25%相当于宽的
+    width: 100%
+    height: 31.25vw   == 31.25%相当于宽的
 ```
 ### 兼容性更高的写法
 ```css
-	width: 100%
+    width: 100%
     height: 0
     overflow: hidden
     padding-bottom: 31.25%  这个比例算法有问题，莫名其妙
@@ -1308,7 +1308,7 @@ git checkout index-icons
 ### js真滴神奇，
 
 ```
-	pages () {
+    pages () {
       const pages = []
       this.iconList.forEach((item, index) => {
         const page = Math.floor(index / 8)
@@ -1336,7 +1336,7 @@ git checkout index-recommend
 ```
 ### 没什么讲究的，就是一个
 ```html
-	.item-info
+    .item-info
       flex 1
       padding .1rem
       min-width 0
@@ -1353,11 +1353,11 @@ git status 这次查看本地分支和线上分支一致
 
 ```
 ### vue中使用ajax
--	fech 浏览器自带函数
--	vue-resource
--	官方推荐axios跨平台请求
-	-	浏览器端可以帮你发送shr请求
-	-	node端可以帮你发送http请求
+-   fech 浏览器自带函数
+-   vue-resource
+-   官方推荐axios跨平台请求
+    -   浏览器端可以帮你发送shr请求
+    -   node端可以帮你发送http请求
 
 ### 使用axios
 ```
@@ -1367,7 +1367,7 @@ npm install axios --save
 Paths这个功能是webpack-dev-server提供的
 > config/index.js
 ```
-	proxyTable: {
+    proxyTable: {
       '/api': {
         target: 'http://localhost:8080',
         pathRewrite: {
@@ -1432,8 +1432,8 @@ this.scroll.srollToElement()
 做一个差值就能够算出当前手指位置和a顶部的差值，再除以每个字母的高度就可以知道当前是第几个字母了
 
 ```js
-		this.startY = this.$refs['A'][0].offsetTop
-		const touchY = e.touches[0].clientY - 79
+        this.startY = this.$refs['A'][0].offsetTop
+        const touchY = e.touches[0].clientY - 79
         const index = Math.floor((touchY - this.startY) / 20)
         if (index >= 0 && index < this.letters.length) {
           this.$emit('change', this.letters[index])
@@ -1449,9 +1449,9 @@ updated () {
 
 函数截留
 ```
-	timer: null
+    timer: null
 
-	if (this.timer) {
+    if (this.timer) {
       clearTimeout(this.timer)
     }
     this.timer = setTimeout(() => {},16)
@@ -1550,3 +1550,42 @@ mounted () {
 当有keep-alive的话就会多一个生命周期钩子，activated
 这个钩子会在页面重新出现的时候执行
 > 原来是ok的，老师的逻辑没问题，我自己搞错了
+
+
+## 详情页动态路由及banner布局
+
+## 公用图片画廊组件拆分
+
+## 9-3实现Header渐隐渐显效果
+js绑定事件。。。好久没用过了
+```
+activated () {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+```
+js动画+限制最大值
+```
+handleScroll () {
+      const top = document.documentElement.scrollTop
+      if (top > 60) {
+        let opacity = top / 140    //动画原理
+        opacity = opacity > 1 ? 1 : opacity  //限制最大值
+        this.opacityStyle = {
+          opacity
+        }
+        this.showAbs = false
+      } else {
+        this.showAbs = true
+      }
+    }
+  },
+```
+
+## 9-4对全局事件的解绑
+这个生命周期钩子，在页面关闭时执行
+```
+deactivated () {}
+```
+## 9-5 使用递归组件实现详情页列表
+自己调用自己，太6了
+原来name主要作用就是递归组件自己调用自己的时候使用
