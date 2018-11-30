@@ -1589,3 +1589,34 @@ deactivated () {}
 ## 9-5 使用递归组件实现详情页列表
 自己调用自己，太6了
 原来name主要作用就是递归组件自己调用自己的时候使用
+
+
+## 9-6使用ajax获取动态数据
+```
+<template>
+  <div id="app">
+    <keep-alive exclude="Detail">
+      <router-view/>
+    </keep-alive>
+  </div>
+</template>
+```
+
+```
+exclude="Detail"
+```
+不缓存Detail组件的数据
+
+name到底什么作用，使用递归组件会用到，相对某个页面取消换成可以用到，vue开发组件可以获得name名字
+
+每次进行路由切换显示都会初始化
+```
+scrollBehavior (to, from, savedPosition) {
+    return { x:0, y:0 }
+  }
+```
+
+## 在项目中加入基础动画
+animation动画
+
+## vue项目的接口联调
