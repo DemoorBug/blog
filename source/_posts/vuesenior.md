@@ -1,5 +1,5 @@
 ---
-title: vuesenior.md
+title: vuesenior
 date: 2018-12-13 22:57:37
 tags: [vue,SSR,Koa2]
 categories: [vue]
@@ -140,9 +140,120 @@ net start MongoDB
 ```
 但是我不可以这样写,会报错，这里的MongoDB，是默认名字吗？有待证实
 
+搞明白了，MongoDB是默认名字，net start 也是windows独有的
+
 关闭服务
 ```bash
 mongo
 use admin
 db.shutdownServer()
 ```
+
+发送post请求
+```bash
+curl -d "name=haimeimei&age=27" http://localhost:3000/users/addPerson
+```
+- -d post请求
+
+
+读数据
+```js
+const result = await Person.findOne({
+    name: ctx.request.body.name
+  })
+```
+写数据要创建实例
+```js
+new Person({
+  name: ctx.request.body.name,
+  age: ctx.request.body.age
+})
+```
+
+更新数据
+```js
+const result = await Person.where({
+  name: ctx.request.body.name
+  }).update({
+    age: ctx.request.bdoy.age
+  })
+```
+删除数据
+```js
+const result = await Person.where({
+  name: ctx.request.body.name
+  }).remove()
+```
+Redis
+-----------
+[安装教程](http://www.runoob.com/redis/redis-install.html)
+服务端用session来保持用户状态，浏览器用cookie保存session，服务器把session种植到cookie中然后下次访问的时候cookie就会带着session过来，进而达到身份认证的过程
+
+安装中间件
+```bash
+npm i koa-generic-session koa-redis
+```
+操作Redis方法
+```bash
+redis-cli
+
+keys *
+get key
+```
+
+Redis可以直接存储数据，不用配合session也行
+```js
+const Redis = require('koa-redis')
+
+const Store = new Redis().client
+
+router.get('/fix',async function(ctx) {
+  const st = await Store.hset('fix', 'name', Math.random())
+  ctx.body = {
+    code: 0
+  }
+})
+
+```
+Redis 查看
+```bash
+keys *
+hget fix name
+```
+
+Nuxt.js 是做vue ssr的一个框架
+--------------
+1. 是基于vue2这个框架做的
+2. 包含了vue Router
+  - vue本身不带路由，是通过插件的方式支持，Nuxt.js整合了这些
+  - Nuxt.js将Router的配置设置的很简单，甚至你可以不配置就可以用
+3. 可以支持vuex
+  - vuex是一个跨组件的管理工具
+4. 支持Vue Server Renderer
+  - ssr,整合
+5. 支持vue-meta
+  - html meta管理
+
+
+Nuxt生命周期
+
+1. Incoming Request l浏览器发出请求
+2. 检查有没有 nuxtServerInit 如果有的话就执行这个函数store action
+3. middleware 中间件是跟路由相关，可以实现你想要的功能，都可以在这里完成
+4. validate() 配合高级动态路由去做一些验证，比如说是不是允许跳到这个页面来，如果没有得到我的校验，就跳走之类的，
+5. asyncData() & fetch() 获取数据
+  - asyncData() 是用来获取渲染vue组件的
+  - fetch() 通常是用来修改vuex的
+6. Render 最后一步就是渲染
+
+Navigate <nuxt-link> 如果要是有这个的话，会发起一个非(色沃)的路由他会重新循环3-6的内容，
+如果<nuxt-link>发起的是一个新的路由，这个时候就从第一部开始循环1-6
+
+Nuxt.js安装
+[Nuxt.js安装](https://zh.nuxtjs.org/guide/installation)
+```bash
+vue init nuxt-community/koa-template .
+
+```
+
+latest
