@@ -36,7 +36,8 @@ git init
 vi README.md
 git add README.md
 git commit -m "上传简介"
-git remote add origin git@github.com:DemoorBug@vuesenior.git
+git remote add origin git@github.com:DemoorBug/vuesenior.git
+
 git push -u origin master      -u代表了关联本地分支和线上分支的master分支，以后就可以直接git push了
 
 ```
@@ -255,5 +256,57 @@ Nuxt.js安装
 vue init nuxt-community/koa-template .
 
 ```
+今天研究了半天的bug，这玩意安装不成功呀
+```
+npm install jquery@latest 更新到最新版本
 
-latest
+```
+Nuxt.js官方安装，以前不支持koa，现在官方就可以自己支持
+[Nuxt官网](https://zh.nuxtjs.org)
+
+```bash
+npx create-nuxt-app
+```
+安装的时候会有选项，可以选koa，不过这个koa是不支持import写法
+
+#### 创建即配置，异步获取
+创建及配置
+vue里面是用mounted()方法发出ajax请求，但是这个不会在服务器端执行，只在浏览器端执行，
+而asyncData()可以在服务端渲染，这样得到的数据更利于seo
+
+Nuxtjs里面使用模板是要用到layout
+```
+export default {
+  layout: 'search',
+  data () {}
+}
+```
+
+**SSR的作用，就是页面闪动的时候，ssr就可以做到**
+
+环境准备与项目安装 6-2   6-1略过
+-------------
+用babel编译文件，这样就可以用import写法了
+```bash
+package.json 的dev后面增加babel编译
+--exec babel-node
+
+.babelrc 增加babel配置文件
+{
+  "presets": ["es2015"]
+}
+
+npm install babel-preset-es2015
+```
+
+支持sass编译
+```bash
+npm i sass-loader node-sass --save-dev
+```
+我也是醉了，安装sass后，`lang="scss"` 写成这样的，差点被坑了
+
+nuxt.config.js
+build,添加这个，增加缓存，不知道什么鬼
+```bash
+  cache: ture
+```
