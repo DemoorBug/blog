@@ -332,3 +332,123 @@ build,添加这个，增加缓存，不知道什么鬼
 mdzz，后缀也是scss，而且header.scss内容也有问题，我TM也是醉了，搞我呢，一下午白忙
 
   
+开发搜索模块
+------------------------
+搜索这个模块，原理特简单
+判断是否获取焦点，是否有内容即可完成搜索框
+return 是否焦点 && 是否有内容 //常规搜索
+return 是否焦点 && !是否有内容  //热门搜索
+还有要注意的是，没有焦点后搜索框就会瞬间消失，a链接就点不上了，所以要给个延迟
+数据：
+```js
+  data () {
+    return {
+      isFocus: false,
+      search: '',
+      hotPlace: ['热门搜索', 'nice'],
+      searchDate: ['哈哈2哈哈1', '也没2有那么1', '搜索2吗1', '北京1烤鸭', '偶是1'],
+      searchList: [],
+      show: true,
+      number: 0,
+      what: false,
+      hidone: false
+    }
+  }
+```
+搜索框热门搜索出现逻辑代码:
+```js
+  computed: {
+    isHotPlace () {
+      return this.isFocus && !this.search
+    },
+    isSearchList () {
+      return this.isFocus && this.search
+    }
+  },
+  methods: {
+    focus () {
+      this.isFocus = true
+    },
+    blur () {
+      setTimeout(() => {
+        this.isFocus = false
+      },200)
+    },
+```
+
+
+
+搜索框代码：
+```js
+  watch: {
+    search () {
+      if (!this.search) {
+        this.searchList = []
+        return
+      }
+      if (this.what) {
+        return
+      }
+      const result = []
+      this.searchDate.forEach((value, index) => {
+        if (value.indexOf(this.search) > -1) {
+          result.push(value)
+        }
+      })
+      /*和这层代码没关系*/
+      for (let i = 0; i < this.searchList.length; i++) {
+        this.$refs[i][0].className = ''
+      }
+      this.number = 0
+      /*-------------*/
+      this.searchList = result
+    }
+
+```
+
+搜索框的down 和 up事件操控逻辑
+写了很多冗余代码
+```js
+  numberSerace () {
+      // 点击键盘down执行事件，写的很乱，不过功能还可以
+      if (!this.search) return
+      this.what = true
+      this.hidone = true
+      if (this.number >= this.searchList.length) {
+        this.number = 0
+      }
+      for (let i = 0; i < this.searchList.length; i++) {
+        this.$refs[i][0].className = ''
+      }
+      this.$refs[this.number][0].className = "msg"
+      this.search = this.searchList[this.number]
+      setTimeout(() => {
+        this.what = false
+      }, 200)
+
+      this.number++
+    },
+    upSerace () {
+      //点击键盘up执行事件
+      if (!this.search) return
+
+      this.what = true
+      if (this.hidone) {
+        this.number--
+      }
+      this.hidone = false
+      this.number--
+      if (this.number < 0) {
+        this.number = this.searchList.length-1
+      }
+      for (let i = 0; i < this.searchList.length; i++) {
+        this.$refs[i][0].className = ''
+      }
+      this.$refs[this.number][0].className = "msg"
+      this.search = this.searchList[this.number]
+      setTimeout(() => {
+        this.what = false
+      }, 200)
+```
+搜索框全代码地址：
+[github地址](https://github.com/DemoorBug/vuesenior/blob/master/components/public/header/searchBar.vue)
