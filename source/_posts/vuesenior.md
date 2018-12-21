@@ -452,3 +452,110 @@ return 是否焦点 && !是否有内容  //热门搜索
 ```
 搜索框全代码地址：
 [github地址](https://github.com/DemoorBug/vuesenior/blob/master/components/public/header/searchBar.vue)
+
+
+7-8左侧边栏实现原理
+---------------------
+首先是结构布局
+```html
+<div>
+  <dl>
+    <dt>全部分类</dt>
+    <dd><i>图标标签i</i>美食<span>>箭头标签</span></dd>
+  </dl>
+  <div> 这个div就是用来存放弹出内容的，是实时渲染，就是获得数据然后渲染，方便到爆
+    <template> 这个标签控制循环，不然外面就要套一层，冗余
+      <h4></h4>
+      <span></span>
+    </template>
+  </div>
+</div>
+```
+方法部分的实现原理分析：
+- this.menu.filter((item) => item.type==this.kind)[0].child
+  - 比对this.kind来获取想应数据，filter是什么？
+- this.kind = e.target.querySelector('i').className
+  - 获取当前鼠标对应的元素，赋值给this.kind
+```html
+  this._timer = setTimeout(() => {
+    this.kind= ''
+  }, 150)
+这块代码延迟，可以在鼠标进入右侧边栏的时候有个反应时间，来让右侧响应标签取消这个定时器，从而达到可以防止鼠标到弹出框，弹出框就消失的问题
+```
+本节源码
+```html
+<template>
+  <div class="m-menu">
+    <dl
+      class="nav"
+      @mouseleave="mouseleave">
+      <dt>全部分类</dt>
+      <dd
+        v-for="(item, index) of menu"
+        :key="index"
+        @mouseenter="enter">
+        <i :class="item.type"/>{{ item.name }}<span class="arrow"/>
+      </dd>
+    </dl>
+    <div
+      v-if="kind"
+      class="detail"
+      @mouseleave="Eenter"
+      @mouseenter="Emousele">
+      <template v-for="(item, index) of curdetail">
+        <h4 :key="index">{{ item.title }}</h4>
+        <span
+          v-for="v of item.child"
+          :key="v">{{ v }}</span>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      kind: '',
+      menu: [{
+        type: 'food',
+        name: '美食',
+        child: [{
+          title: '美食',
+          child: ['代金券','饮品','火锅','自助餐']
+        }]
+      }, {
+        type: 'takeout',
+        name: '外卖',
+        child: [{
+          title: '外卖',
+          child: ['美团','饿了么','百度外卖','自助餐']
+        }]
+      }]
+    }
+  },
+  computed: {
+    curdetail () {
+      return this.menu.filter((item) => item.type==this.kind)[0].child
+    }
+  },
+  methods: {
+    mouseleave () {
+      this._timer = setTimeout(() => {
+        this.kind= ''
+      }, 150)
+    },
+    enter (e) {
+      console.log(e.target)
+      this.kind = e.target.querySelector('i').className
+    },
+    Emousele () {
+      clearTimeout(this._timer)
+    },
+    Eenter () {
+      this.kind = ''
+    }
+  }
+}
+</script>
+```
