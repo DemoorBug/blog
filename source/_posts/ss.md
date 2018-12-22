@@ -76,7 +76,8 @@ kcptun 待验证
 
 6. 开启 kcptun 服务
 
-- `./server_linux_amd64 -t "服务器ip:shadowsocks设置的端口" -l ":4001" --key 密码 --log 4001.log`
+- `./server_linux_amd64 -t "服务器ip:shadowsocks设置的端口" -l ":4001" --key 密码 --log 4001.log &`
+  - & 表示后台运行
 
 7. 本地配置
 - 下载相对应的客户端文件。（如上面server安装的是v20170904的kcptun，client就下载对应版本的）
