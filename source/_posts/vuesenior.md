@@ -704,3 +704,342 @@ export default {
 
 
 ```
+8-1注册
+-----------------------------
+这章就是介绍接口的设计，很重要把，对于后台来说
+
+
+
+
+|user表|areas表|menu表|city表|
+|--|--|--|--|
+|username||||
+|pasword||||
+|email||||
+
+接口
+/users/signup
+/users/signin
+/users/verify
+/users/exit
+/users/getUser
+
+
+这一章涵盖太多不知道的东西了，必须要搞明白，为什么这么写，实现的是什么功能，再开始继续，把每一个代码都记录下来，不管是百度还是什么
+
+
+nodemailer  控制邮箱的一个应用
+npm install nodemailer
+
+[axios教程](https://blog.csdn.net/qq_36801710/article/details/79528013)
+创建一个axios实例
+axios.create({
+  baseURL:
+})
+
+passport 权限认证中间件，本地用户登陆，第三方登陆
+[passport教程](https://segmentfault.com/a/1190000011557953)
+
+
+这个老师写了一大堆错误，简直逻辑不同，根本无法用，然后老师一笔带过，简直就是误人子弟
+我自己解决了所有遇到的问题
+这节可以去看代码的编写，很简单
+接口代码实现笔记：
+[users.js本节项目地址](https://github.com/DemoorBug/vuesenior/tree/master/server/interface/users.js)
+```html
+import Router from 'koa-router'                 //路由
+import Redis from 'koa-redis'                   //redis数据库，主要是提交验证码的时候写入验证码数据
+import nodeMailer from 'nodemailer'             //发邮件的app
+import User from '../dbs/models/users.js'       //mongoose
+import Passport from './utils/passport.js'      //自动登陆？
+import Email from '../dbs/config.js'            //配置文件
+import axios from './utils/axios.js'            //跨平台请求
+
+let router = new Router({                       //这个页面放到/users下
+  prefix: '/users'
+})
+
+let Store = new Redis().client
+
+router.post('/signup', async (ctx) => {  //注册
+  const {
+    username,
+    password,
+    email,
+    code
+  } = ctx.request.body    //解构赋值
+
+  if (code) {    //判断是否输入code
+    const saveCode = await Store.hget(`nodeMailer:${username}`,'code')
+    const saveExpire = await Store.hget(`nodeMailer:${username}`,'expire')
+    if (code === saveCode) { //判断是否和redis数据库的code生成的验证码一致
+      if (new Date().getTime-saveExpire>0) { //判断是否和redis数据库时间过期
+        ctx.body = {
+          code: -1,
+          msg: '验证码过期，请重新尝试'
+        }
+        return false
+      }
+    } else {   //saveCode 错误执行
+      ctx.body = {
+        code: -1,
+        msg: '请填写正确的验证码 '
+      }
+      return false
+    }
+  } else {  //不存在code
+    ctx.body= {
+      code: -1,
+      msg: '请填写验证码'
+    }
+    return false
+  }
+
+  let user = await User.find({  //查询mongodb数据库
+    username
+  })
+
+  if (user.length) {  //如果有用户，提示报错
+    ctx.body = {
+      code: -1,
+      msg: '已被注册'
+    }
+    return
+  }
+
+  let nuser = await User.create({   //写入mongodb数据库，这里是创建一个实例
+    username,
+    password,
+    email
+  })
+  if (nuser) {  //写入成功执行
+    let res = await axios.post('/users/signin', {username, password})
+    //自动登陆？大概吧
+    if (res.data && res.data.code === 0) { 
+      ctx.body = {
+        code: 0,
+        msg: '注册成功',
+        user: res.data.user
+      }
+    } else {
+      ctx.body = {
+        code: -1,
+        msg: 'error'
+      }
+    }
+  } else {
+    ctx.body = {
+      code: -1,
+      msg: '注册失败'
+    }
+  }
+})
+
+router.post('/signin', async (ctx, next) => {  //自动登陆？
+  return Passport.authenticate('local', function(err, user, info, status) {
+    if (err) {
+      ctx.body = {
+        code: -1,
+        msg: err
+      }
+    } else {
+      if (user) {
+        ctx.body = {
+          code: 0,
+          msg: '登录成功',
+          user
+        }
+        return ctx.login(user)
+      } else {
+        ctx.body = {
+          code: 1,
+          msg: info
+        }
+      }
+    }
+  })(ctx, next)
+})
+
+router.post('/verify', async (ctx, next) => { //验证码接口
+  let username = ctx.request.body.username   //用户名
+  const saveExpire = await Store.hget(`nodeMailer:${username}`,'expire')
+  if (saveExpire && new Date().getTime-saveExpire<0) {
+    ctx.body = {
+      code: -1,
+      msg: '验证请求过于频繁，1分钟一次'
+    }
+    return false
+  }
+  let transporter = nodeMailer.createTransport({
+    host: Email.smtp.host,
+    port: 587,
+    secure: false,
+    auth: {
+      user: Email.smtp.user,
+      pass: Email.smtp.pass
+    }
+  })
+  let ko = {
+    code: Email.smtp.code(),
+    expire: Email.smtp.expire(),
+    email: ctx.request.body.email,
+    user: ctx.request.body.username
+  }
+  let mailOptions = {
+    from: `"您的邮件"<${Email.smtp.user}>`,
+    to: ko.email,
+    subject: '《demoorbug》注册码',
+    html: `您的验证码是${ko.code}`
+  }
+  await transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log('error')
+    } else { //写入redis数据库
+      Store.hmset(`nodeMailer:${ko.user}`, 'code', ko.code, 'expire', ko.expire, 'email', ko.email)
+    }
+  })
+  ctx.body = {
+    code: 0,
+    msg: '验证码已发送，可能会有延迟，有效期1分钟'
+  }
+})
+
+router.get('/exit', async (ctx, next) => {
+  await ctx.logout()
+  if (!ctx.isAuthenticated()) {
+    code: 0
+  } else {
+    ctx: -1
+  }
+})
+
+router.get('/getUser', async (ctx) => {
+  if(ctx.isAuthenticated()) {
+    const {username, email} = ctx.session.passport.user
+    ctx.body = {
+      user: username,
+      email
+    }
+  } else {
+    ctx.body = {
+      user: '',
+      email: ''
+    }
+  }
+})
+
+export default router
+
+
+```
+目前就学习到/verify接口，前面的接口bug都已经解决，这段还没有解决，因为我感觉是有问题的代码，后面可以深入一下这个地方，多注意下，有问题就回来解决:
+
+
+register.vue 的验证码函数和提交函数的编写
+[register.vue文件地址](https://github.com/DemoorBug/vuesenior/tree/master/pages/register.vue)
+```html
+  methods: {  //验证码函数
+    sendMsg () {  
+      let namePass  
+      let emailPass
+      if(this.timerid) {
+        return false
+      }
+      this.$refs['ruleForm'].validateField('name', (valid) => { //validateField这是饿了么组件自带的方法，应该是。查询name是否有值，没有值，则valid返回提示的值，比如name不输入提示"请输入昵称"
+        namePass = valid
+      })
+      this.statusMsg = '' //验证码的双向绑定数据
+      if(namePass) {  //
+        return false
+      }
+      this.$refs['ruleForm'].validateField('email', (valid) => { //和上面同理
+        emailPass = valid
+      })  
+      if (!namePass && !emailPass) { //如果都填写了，则不会赋值就为空所以是false,要取反
+        this.$axios.post('/users/verify', { //可以直接用$axios是因为nuxtjs内置了
+          username: encodeURIComponent(this.ruleForm.name),  用户名转换为字符串
+          email: this.ruleForm.email 
+        }).then(({status, data}) => {  //回调函数，解构赋值
+          if (status === 200 && data && data.code === 0) {
+            let count = 60;   
+            console.log('1')
+            this.statusMsg = `验证码已发送,剩余${count--}秒`
+            this.timerid = setInterval(() => {  //定时器刷新
+              this.statusMsg = `验证码已发送,剩余${count--}秒`
+              if (count === 0) {
+                this.statusMsg = ''
+                clearInterval(this.timerid)
+              }
+            }, 1000)
+          } else {
+            this.statusMsg = data.msg
+          }
+        })
+      }
+    },
+    register () {
+      this.$refs['ruleForm'].validate((valid) => {  //饿了么组件自带的方法,全部验证通过valid = true
+        if (valid) {
+          this.$axios.post('/users/signup', {
+            username: window.encodeURIComponent(this.ruleForm.name),
+            password: CryptoJs.MD5(this.ruleForm.pwd).toString(),
+            email: this.ruleForm.email,
+            code: this.ruleForm.code
+          }).then(({status, data}) => {
+            if (status ===200) {
+              if (data && data.code ===0) {
+                // this.error = data.msg
+                location.href = '/login'
+              } else {
+              this.error = data.msg
+              }
+            } else {
+              this.error = `服务器出错，错误码: ${status}`
+            }
+            setTimeout(() => {
+              this.error = ''
+            }, 1500)
+          })
+        }
+      })
+    }
+  }
+
+```
+
+index 的一些修改备注
+[index.js地址](https://github.com/DemoorBug/vuesenior/blob/master/server/index.js)
+
+```html
+import mongoose from 'mongoose'              //mongoose
+import bodyParser from 'koa-bodyparser'      //unkown
+import session from 'koa-generic-session'    //session
+import Redis from 'koa-redis'                //redis
+import json from 'koa-json'                  //格式化json
+import dbConfig from './dbs/config'
+import passport from './interface/utils/passport.js'  
+import users from './interface/users'
+
+app.keys= ['debug', 'keyskeys']    //unkown
+app.proxy = true                   //unkown
+app.use(session({                  //session
+  key: 'debug',
+  prefix: 'debug:uid',
+  store: new Redis()
+}))
+app.use(bodyParser({                
+  extendTypes: ['json', 'form', 'text']
+}))
+app.use(json())             //格式化diamagnetic
+
+mongoose.connect(dbConfig.dbs, {    //mongodb地址？应该是
+  useNewUrlParser: true
+})
+
+app.use(passport.initialize())       //unkown
+app.use(passport.session())          //unkown
+
+
+
+app.use(users.routes()).use(users.allowedMethods())  //将我们写好的路由引入
+```

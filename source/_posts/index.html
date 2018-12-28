@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+</head>
+<body>
+  <audio src=""></audio>
+  <script>
+    (function(window) {
+      function Player(audio) {
+        return new Player.prototype.init(audio)
+      }
+      Player.prototype = {
+        constructor: Player,
+        init: function(audio) {
+          this.audio = audio;
+          this._audio = audio.get(0)
+        }
+      }
+      Player.prototype.init.prototype = Player.prototype
+      window.Player = Player
+    })(window)
+
+    var audio = $('audio')
+
+    var i = new Player(audio)
+    console.log(i)
+
+  </script>
+</body>
+</html>
