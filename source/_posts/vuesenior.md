@@ -1043,3 +1043,57 @@ app.use(passport.session())          //unkown
 
 app.use(users.routes()).use(users.allowedMethods())  //将我们写好的路由引入
 ```
+
+## 接口设计(需求分析)
+/geo/getPosition
+/geo/province
+/geo/province/:id
+/geo/city
+/geo/hotCity     /geo/menu
+
+查询接口
+/search/top
+/search/resultsByKeywords
+/search/hotPlace
+/search/products
+/search/product/:id
+
+`mongoimport -d dbs -c test pois.dat`
+dbs对应database
+test对应Collections
+pois.dat 对应数据源
+
+签名：没有签名获取不到数据
+http://cp-tools.cn/sign
+c6a3d36c8d43371e21550e1420f0d19e
+https://www.imooc.com/u/3164558/bbs
+从这个人获取到了UID。。
+
+怎么说呢，还行吧，不过是用wsl(windows的子系统ubuntu)提交会出问题，有些东西提交了两遍
+
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+import geo from './modules/geo'
+import home from './modules/home'
+
+Vue.use(Vuex)
+
+const store = () => new Vuex.Store({
+  modules: {
+    geo,
+    home
+  },
+  actions: {
+    async nuxtServerInit({commit}, {req, app}) {
+      //nuxtServerInit这个是nuxtjs提供的生命周期钩子
+      const {status, data: {province, city}} = await app.$axios.get('/geo/getPosition')
+      commit('geo/setPosition', status ===200 ? {city, province}: {city: '', province: ''})
+      const {status: status2, data: {menu}} = await app.$axios.get('/geo/menu')
+      commit('home/setMenu', status2 === 200 ? menu : [])
+    }
+  }
+})
+
+export default store
+```
