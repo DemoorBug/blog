@@ -1097,3 +1097,5 @@ const store = () => new Vuex.Store({
 
 export default store
 ```
+
+放弃，只是带我抄了一遍代码，基本没什么学的，垃圾
