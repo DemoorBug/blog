@@ -107,3 +107,42 @@ jQuery.prototype.init.prototype = jQuery.prototype
 jQuery().css()
 
 ```
+
+## 第七节
+1. 为什么要把constructor重新指向的原因：
+
+```
+function Arr() {
+
+}
+Arr.prototype = {
+  name = 'hhh'
+}
+var a1 = new Arr()
+console.log(a1.constructor) //Object() 
+
+```
+因为这样写会把prototype赋值一个新的对象
+而这样写就不会
+```
+function Arr () {
+
+}
+Arr.prototype.name = 'hhh'
+var a1 = new Arr()
+console.log(a1.constructor) //Arr() 
+```
+这样写就不会改变constructor
+不过对象的方式比较方便，常用所以改下成下面的写法
+```
+function Arr() {}
+Arr.prototype = {
+  constructor: Arr,
+  name: 'hhh'
+}
+var a1 = new Arr()
+console.log(a1.constructor) //Arr()
+
+```
+
+
