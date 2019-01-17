@@ -1040,3 +1040,153 @@ module.exports = {
 }
 
 ```
+
+# 文件处理
+## 1. 图片处理
+css中引入的图片
+file-loader
+
+
+自动合成雪碧图，减少http请求
+postcss-sprites
+
+压缩图片
+img-loader
+小图片可以使用Base64编码
+url-loader
+
+字体文件
+
+第三方js库 CDN地址
+
+## 首先安装前面所提到的模块
+```bash
+npm install file-loader url-loader img-loader postcss-sprites
+//放到一起安装会出错?有毒,多安装两遍就好了，postcss-sprites单独安装
+```
+新版本还要安装
+```bash
+npm install imagemin imagemin-mozjpeg 
+
+```
+研究了一小时的bug，原来是我的图片有问题，哔了狗，500px下的图片。。。
+
+```
+var path = require('path')
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+var imagemin = require('imagemin');
+module.exports = {
+  entry: {
+    app: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: {
+            loader: 'style-loader',
+            options: {
+              singleton: true
+            }
+          },
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'less-loader'
+            }
+          ]
+        })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          /*{ // file-loader 把图片打包
+            loader: 'file-loader',
+            options: {
+              name: '[name].img.[hash:5].[ext]',
+              outputPath: 'assets',
+              publicPath: 'assets'
+            }
+          }*/
+          { //可以将图片转换为bash64编码格式，厉害了，而且配置项和file-loader一样
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: '[name].img.[hash:5].[ext]',
+              outputPath: 'assets',
+              publicPath: 'assets'
+            }
+          }, 
+          {
+            loader: "img-loader",
+            options: {
+              plugins: [
+                require("imagemin-mozjpeg")({
+                  quality: 30 // the quality of zip
+                })
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextWebpackPlugin({
+      filename: '[name].min.css'
+    })
+  ]
+}
+```
+需要另外安装
+```bash
+npm i imagemin-webp imagemin-svgo imagemin-mozjpeg imagemin-pngquant imagemin-optipng imagemin-gifsicle imagemin cwebp-bin
+```
+其中webp打包的时候报过一个错
+```error
+ERROR in ./src/css/base.less
+Module build failed: ModuleBuildError: Module build failed: Error: spawn /mnt/f/webpack/4-1/node_modules/cwebp-bin/vendor/cwebp ENOENT
+```
+安装cwebp-bin解决
+```
+npm i cwebp-bin
+```
+
+
+使用images-webapack-loader
+
+```
+{
+  loader: "image-webpack-loader",
+  options: {
+    mozjpeg: {
+      quality: 30
+    },
+    // optipng.enabled: false will disable optipng
+    optipng: {
+      enabled: false,
+    },
+    pngquant: {
+      quality: '65-90',
+      speed: 4
+    },
+    gifsicle: {
+      interlaced: false,
+    },
+    webp: { // 转换为webp格式文件
+      quality: 60
+    }
+  }
+}
+```
+
+没搞懂webp是干什么的
+好像webp没什么用啊，头疼
