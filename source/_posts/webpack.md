@@ -12,7 +12,7 @@ categories:
 
 
 ## js模块化
-1. 命名空间
+### 1. 命名空间
 库名.类别名.方法名
 ```js
 var NameSpace = {}
@@ -23,7 +23,7 @@ NameSpace.type.method = function () {
 }
 ```
 
-2. COMMONJS 
+### 2. COMMONJS 
 诞生于node社区，只能在服务器端使用
 一个文件为一个模块
 通过module.exports 暴露模块接口
@@ -33,7 +33,7 @@ NameSpace.type.method = function () {
 同步执行[http://wiki.commonjs.org/wiki/Modules/1.1.1]()
 
 
-3. AMD/CMD/UMD
+### 3. AMD/CMD/UMD
 **AMD**
 全称Async Module Definition
 使用define定义模块
@@ -91,7 +91,7 @@ Universal Module Definition
   如果都没有使用全局变量
 
 
-4. es module
+### 4. es module
 EcmaScript Module
 一个文件一个模块
 export / import
@@ -149,7 +149,7 @@ console.log(myname.mapNict) //map
 myname.name() //name
 ```
 
-5. Webpack支持
+### 5. Webpack支持
   - AMD(RequireJs) //只需要一些了解
   - ES Modules(推荐的) //主流
   - CommonJs //主流
@@ -159,7 +159,7 @@ myname.name() //name
 这点没看，以后有需要回来看吧，感觉没什么用
 
 # 核心概念
-1. Entry
+## **1. Entry**
   - 代码的入口
   - 打包的入口
   - 单个或多个
@@ -185,7 +185,7 @@ module.exports = {
 ```
 
 ---
-2. Output
+## 2. Output
   - 输出
   - 打包成的文件(bundle)
   - 一个或多个
@@ -218,7 +218,7 @@ module.exports = {
 
 
 ---
-3. loaders
+## 3. loaders
 靠loaders处理其他类型的文件
 处理文件
 转化为模块
@@ -244,7 +244,7 @@ style-loader、css-loader、less-loader、postcss-loader
 file-loader、url-loader
 
 ----
-4. plugins
+## 4. plugins
 压缩代码，混淆，代码分割
 参与打包整个过程
 打包优化和压缩
@@ -275,7 +275,7 @@ Bundle 打包过以后的
 Module 模块
 
 # 编译ES6/7
-1. Babel
+## **1. Babel**
 使用Babel
 安装最新版
 ```
@@ -285,7 +285,7 @@ npm install babel-loader@8.0.0-beta.0 @babel/core
 ```
 npm install --save-dev babel-loader babel-core
 ```
-2. Babel-presets(针对语法)
+## 2. Babel-presets(针对语法)
 
 es2015
 es2016 
@@ -314,7 +314,7 @@ targets.browsers: '> 1%' 大于全球占有率1的浏览器都可以支持
 数据从github的browserslist项目获得
 Can I use
 
-3. Babel Polyfill(针对函数和方法)
+## 3. Babel Polyfill(针对函数和方法)
 Generator
 set
 Map
@@ -362,7 +362,7 @@ module.exports = {
 
 ```
 
-4. Babel Runtime Transform(针对函数和方法)
+## 4. Babel Runtime Transform(针对函数和方法)
 
 局部垫片
 为开发框架准备
@@ -377,9 +377,20 @@ npm install @babel/plugin-transform-runtime --save-dev
 npm install @babel/runtime --save
 ```
 这种方法无法实现，不知道为什么，打包后只有2.6k大小
+找到解决方法了，增加{ "corejs": 2 }
+```
+{
+  "presets": [["@babel/env", {
+    "targets": {
+      "browsers" : ["last 2 versions"] 
+    }
+  }]],
+  "plugins": [["@babel/plugin-transform-runtime", { "corejs": 2 }]]
+}
+```
 
 # 提取公用代码
-1. 减少代码冗余
+**1. 减少代码冗余**
 
 2. 提高加载速度
 
@@ -444,7 +455,7 @@ module.exports = {
 # 代码分割和懒加载
 
 可以通过两种方式懒加载
-1. webpack methods
+## **1. webpack** methods
 - require.ensure([],callback, [errorCallback], chunkName)
   - [] : dependencies 加载进来并不会执行
   - callback
@@ -473,7 +484,7 @@ require.ensure(['lodash'], function () { //打包lodash
 
 export default 'pageA'
 ```
-2. ES 2015 Loader spec
+## 2. ES 2015 Loader spec
 
 ```
 import(/* webpackChunkName: 'subpageA' */'./subPageA').then(function(subPageA) {
@@ -496,7 +507,7 @@ import(/* webpackChunkName: 'subpageB' */'./subPageB').then(function(subPageA) {
 export default 'pageA'
 ```
 
-3. 如果我们想把异步加载进来模块的代码进行提取，除了require.include('./moduleA.js') ，还可以用webpack.config.js完成
+## 3. 如果我们想把异步加载进来模块的代码进行提取，除了require.include('./moduleA.js') ，还可以用webpack.config.js完成
 
 ```
 var webpack = require('webpack')
@@ -541,7 +552,7 @@ module.exports = {
 
 # 处理css
 
-1. style-loader
+## **1. style**-loader
 创建标签，如何把css放到html中
 
 style-loader
@@ -648,7 +659,7 @@ module.exports = function (css) {
 }
 ```
 
-2. css-loader
+## 2. css-loader
 如何让js一个import引入css
 怎么使用呢，去官方看，老师教的那个minimze已经弃用了
 中文官网还是很久之前的文档，所以这里是英文的
@@ -660,9 +671,372 @@ module.exports = function (css) {
   - Minimze(是否压缩)
   - modules (启用css-modules)
 
-3. css-modules css模块化
+## 3. css-modules css模块化
 
 - :local 可以给定一个本地的样式
 - :global 可以给定一个全局的样式
 - compose 可以继承一段样式
 - compose ... from path 从某一个文件引入样式
+
+4. less cass 3-12节
+很简单只需要安装所需要的loader
+```
+npm install less-loader less --save-dev
+npm install sass-loader node-sass --save-dev
+```
+编译less
+```
+var path = require('path')
+
+module.exports = {
+  entry: {
+    app: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              singleton: true,
+            }
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+# 提取css
+
+**1. extract**-loader
+
+## 2. ExtractTextWebpackPlugin 主流
+安装
+```
+npm install extract-text-webpack-plugin
+```
+```
+var path = require('path')
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+
+
+module.exports = {
+  entry: {
+    app: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: {
+            loader: 'style-loader',
+            options: {
+              singleton: true,
+            }
+          },
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'less-loader'
+            }
+          ]
+        })
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextWebpackPlugin({
+      filename: '[name].min.css'
+    })
+  ]
+}
+
+```
+提取出来的文件要自己引入到页面
+
+# PostCSS
+安装 ：
+```
+postcss
+postcss-loader
+Atuoprefixer //帮助你写各个浏览器之间的前缀
+postcss-cssnano  //帮助我们压缩css
+postcss-cssnext  //使用最新的css语法：CSS Variables, custom selectors, calc()
+```
+npm:
+```
+npm install postcss postcss-loader autoprefixer cssnano postcss-cssnext
+```
+本节的代码
+```
+var path = require('path')
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+
+
+module.exports = {
+  entry: {
+    app: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: {
+            loader: 'style-loader',
+            options: {
+              singleton: true,
+            }
+          },
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader', //引入的位置必须是css-loader之后，less预处理语音之前
+              options: {
+                ident: 'postcss', //表明后面的插件是给postcss使用的
+                plugins: [
+                  // require('autoprefixer')(),
+                  require('postcss-cssnext')()  //这个里面包含了autoprefixer
+                ]
+              }
+            },
+            {
+              loader: 'less-loader'
+            }
+          ]
+        })
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextWebpackPlugin({
+      filename: '[name].min[hash:5].css'
+    })
+  ]
+}
+
+
+```
+browserslist:
+所有插件共用
+package.json
+```
+"browserslist": [
+  ">= 1%",
+  "last 2 versions"
+]
+```
+.browserslistrc
+
+---
+postcss-import
+postcss-url
+postcss-assets
+后面会讲到
+
+# Tree Shaking
+
+Webpack.optimize.uglifyJs
+```
+var webpack = require('webpack')
+
+plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ]
+```
+
+lodash 要借助别的插件才可以完成Tree Shaking
+```
+npm install babel-plugin-lodash --save-dev
+npm install babel-loader babel-core babel-preset-env
+```
+webpack.config.js
+```
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+            plugins: ['lodash']
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+新建了个ces文件夹，明天里面搞
+
+找到问题了，如果用babel 6就要安装
+```
+npm install babel-loader@7 babel-core babel-preset-env css-loader@1 //css-loader是上节用的
+```
+安装babel 7
+```
+npm install babel-loader @babel/core @babel/preset-env css-loader //新版本方便
+
+```
+本节代码
+```
+var path = require('path')
+var webpack = require('webpack')
+module.exports = {
+  entry: {
+    app: './index.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+            plugins: ['lodash']
+          }
+        }
+      }
+    ]
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({  
+      names: ['manifest'], //manifest打包的是webpack公用代码
+      minChunks: Infinity
+    }),
+    new webpack.optimize.UglifyJsPlugin() //Tree Shaking，Webpack.optimize.uglifyJs
+  ]
+}
+
+```
+
+# CSS Tree Shaking
+
+## Purify CSS
+很多打包工具都可以用，比如gulp
+针对webpack，purifycss-webpack 
+- options
+  - paths: glob.sync([])
+  - `npm install glob-all --save-dev` //处理多路径
+
+```
+npm install purifycss-webpack glob-all
+```
+新版本还要安装purify-css
+```
+npm install purify-css
+```
+
+```
+var path = require('path')
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
+var Purifycss = require('purifycss-webpack')
+var glob = require('glob-all')
+
+module.exports = {
+  entry: {
+    app: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: {
+            loader: 'style-loader',
+            options: {
+              singleton: true,
+            }
+          },
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader', //引入的位置必须是css-loader之后，less预处理语音之前
+              options: {
+                ident: 'postcss', //表明后面的插件是给postcss使用的
+                plugins: [
+                  require('autoprefixer')(),
+                  // require('postcss-cssnext')()  //这个里面包含了autoprefixer
+                ]
+              }
+            },
+            {
+              loader: 'less-loader'
+            }
+          ]
+        })
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+            plugins: ['lodash']
+          }
+        },
+        exclude: '/node_modules'
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextWebpackPlugin({
+      filename: '[name].min[hash:5].css'
+    }),
+    new Purifycss({
+      paths: glob.sync([
+        path.join(__dirname, './*.html') //本节代码
+      ])
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+  ]
+}
+
+```
