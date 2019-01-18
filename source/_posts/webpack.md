@@ -5,6 +5,9 @@ tags: [webpack]
 categories:
 ---
 
+
+![方爷](https://photo.tuchong.com/1139905/f/190646269.jpg)
+<!-- more -->
 [webpack版本更迭](https://github.com/webpack/webpack/releases)
 [社区投票](https://webpack.js.org/vote)
 [官方文档](https://webpack.docschina.org/concepts/)
