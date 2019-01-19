@@ -13,7 +13,7 @@ categories:
 <!-- more -->
 # 模块化开发
 
-![方爷]()
+方爷,图虫
 
 ## js模块化
 ### 1. 命名空间
@@ -72,7 +72,7 @@ define(
 产物SeaJs
 尽可能懒执行
 
-```
+```js
 // 所有模块都通过define定义
 define(function (require, exports, module) {
   var $ = require('jquery');
@@ -99,19 +99,19 @@ Universal Module Definition
 EcmaScript Module
 一个文件一个模块
 export / import
-```
+```js
 import { name as myNamed, named } from 'src/mylib'
 ```
 这样的写法和这个貌似是一样的
-```
+```js
 import { name : myNamed, named } from 'src/mylib'
 ```
 拿到全部方法，mylib可以使用他
-```
+```js
 import * as mylib from 'src/mylib'
 ```
 只是加载进来，没有任何引用
-```
+```js
 import 'src/mylib'
 ```
 ---
@@ -121,7 +121,7 @@ import 'src/mylib'
 - export default一个文件只能有一个
 - 通过export方式导出，在导入时要加{},export default 则不用
 - export 能直接导出变量表达式，export default则不行
-```
+```js
 main.js
 export const mapNict = 'map'
 export const name = function () {
@@ -134,7 +134,7 @@ export default {
 }
 ```
 导入步骤
-```
+```js
 app.js
 import { mapNict, name } from './main.js'
 import m from './main.js'
@@ -168,19 +168,19 @@ myname.name() //name
   - 打包的入口
   - 单个或多个
 可以直接是一个文件
-```
+```js
 module.exports = {
   entry: './index.js'
 }
 ```
 还可以是一个数组
-```
+```js
 module.exports = {
   entry: ['index.js', 'vendor.js']
 }
 ```
 还可以是一个对象
-```
+```js
 module.exports = {
   entry: {
     index: 'index.js'
@@ -196,7 +196,7 @@ module.exports = {
   - 自定义规则
   - 融合CDN
 一个
-```
+```js
 module.exports = {
   entry: 'index.js',
   output: {
@@ -205,7 +205,7 @@ module.exports = {
 }
 ```
 多个
-```
+```js
 module.exports = {
   entry: {
     index: 'index.js',
@@ -227,7 +227,7 @@ module.exports = {
 处理文件
 转化为模块
 处理css的loader
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -254,7 +254,7 @@ file-loader、url-loader
 打包优化和压缩
 配置编译时的变量
 极其灵活
-```
+```js
 const webpack = require('webpack')
 
 module.exports = {
@@ -262,7 +262,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin() //压缩混淆
   ]
 }
-```
+```js
 常用Plugins
 优化相关
 CommonsChunkPlugin 
@@ -282,11 +282,11 @@ Module 模块
 ## **1. Babel**
 使用Babel
 安装最新版
-```
+```js
 npm install babel-loader@8.0.0-beta.0 @babel/core
 ```
 普通版本
-```
+```js
 npm install --save-dev babel-loader babel-core
 ```
 ## 2. Babel-presets(针对语法)
@@ -300,18 +300,18 @@ babel-preset-react  //和React相关的
 babel-preset-stage 0-3 //还没有发布的
 
 安装的是最新的loader就可以使用这一句
-```
+```js
 npm install @babel/preset-env --save-dev
 ```
 安装的是普通版本
 
-```
+```js
 npm install babel-preset-env --save-dev
 ```
 
 targets 可以指定那些语法编译，那些语法不编译
 targets.browsers 指定浏览器，还可以指定nodejs版本
-```
+```js
 targets.browsers: 'last 2 versions' //指定浏览器最后的两个版本
 targets.browsers: '> 1%' 大于全球占有率1的浏览器都可以支持
 ```
@@ -327,14 +327,14 @@ Array.prototype.includes
 全局垫片，会对全局污染
 为开发应用准备，写一个网站
 写vue就不能用Polyfill
-```
+```js
 npm install babel-polyfill --save
 ```
 import "babel-polyfill"
 
 ---js
 webpack.config.js
-```
+```js
 module.exports = {
   entry : {
     app: './app.js'
@@ -371,18 +371,18 @@ module.exports = {
 局部垫片
 为开发框架准备
 不会污染全局
-```
+```bash
 npm install babel-plugin-transform-runtime --save-dev
 npm install babel-runtime --save
 ```
 不知道@babel这种安装方式是为什么？
-```
+```bash
 npm install @babel/plugin-transform-runtime --save-dev
 npm install @babel/runtime --save
 ```
 这种方法无法实现，不知道为什么，打包后只有2.6k大小
 找到解决方法了，增加{ "corejs": 2 }
-```
+```js
 {
   "presets": [["@babel/env", {
     "targets": {
@@ -403,13 +403,13 @@ npm install @babel/runtime --save
 webpack.optimize.CommonsChunkPlugin
 
 4. 配置
-```
+```js
 {
   plugins: [
     new weback.optimize.CommonsChunkPlugin(option)
   ]
 }
-```
+```js
 options配置是什么样的呢：
 - options.name or options.names
   - name names 表示Chunk的名称
@@ -427,7 +427,7 @@ options配置是什么样的呢：
 需要把webpack安装到本地，因为这个插件是webpack自带的
 
 
-```
+```js
 var webpack = require('webpack')
 var path = require('path')
 
@@ -468,7 +468,7 @@ module.exports = {
 - require.include([])只接受一个参数，但是不执行
   - 当你的子模块都依赖一个第三方模块，就可以把第三方模块放到父模块里面
 
-```
+```js
 require.include('./moduleA.js')  //提取公共代码，subPageA和subPageB都引用了moduleA.js
 
 require.ensure(['./subPageA'], function () {  //打包subPageA
@@ -490,7 +490,7 @@ export default 'pageA'
 ```
 ## 2. ES 2015 Loader spec
 
-```
+```js
 import(/* webpackChunkName: 'subpageA' */'./subPageA').then(function(subPageA) {
   console.log(subPageA)
 })
@@ -498,7 +498,7 @@ import(/* webpackChunkName: 'subpageA' */'./subPageA').then(function(subPageA) {
 /* webpackChunkName: 'subpageA' */是webpack支持的魔法函数
 ```
 pageA.js
-```
+```js
 import * as _ from 'lodash'
 
 import(/* webpackChunkName: 'subpageA' */'./subPageA').then(function(subPageA) {
@@ -513,7 +513,7 @@ export default 'pageA'
 
 ## 3. 如果我们想把异步加载进来模块的代码进行提取，除了require.include('./moduleA.js') ，还可以用webpack.config.js完成
 
-```
+```js
 var webpack = require('webpack')
 var path = require('path')
 
@@ -564,7 +564,7 @@ style-loader/url
 style-loader/useable
 
 style-loader
-```
+```js
 var path = require('path')
 
 module.exports = {
@@ -599,7 +599,7 @@ module.exports = {
 
 ---
 style-loader/useable
-```
+```js
 module: {
     rules: [
       {
@@ -618,7 +618,7 @@ module: {
 ```
 app.js
 
-```
+```bash
 import base from './css/base.css'
  
 base.use() //引入
@@ -633,7 +633,7 @@ base.unuse() //删除
   - singleton(是否使用一个style标签)
   - transform (转化，浏览器环境下，插入页面前)
 webpack.config.js
-```
+```js
   module: {
     rules: [
       {
@@ -684,12 +684,12 @@ module.exports = function (css) {
 
 4. less cass 3-12节
 很简单只需要安装所需要的loader
-```
+```bash
 npm install less-loader less --save-dev
 npm install sass-loader node-sass --save-dev
 ```
 编译less
-```
+```js
 var path = require('path')
 
 module.exports = {
@@ -731,10 +731,10 @@ module.exports = {
 
 ## 2. ExtractTextWebpackPlugin 主流
 安装
-```
+```bash
 npm install extract-text-webpack-plugin
 ```
-```
+```js
 var path = require('path')
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 
@@ -783,7 +783,7 @@ module.exports = {
 
 # PostCSS
 安装 ：
-```
+```js
 postcss
 postcss-loader
 Atuoprefixer //帮助你写各个浏览器之间的前缀
@@ -791,11 +791,11 @@ postcss-cssnano  //帮助我们压缩css
 postcss-cssnext  //使用最新的css语法：CSS Variables, custom selectors, calc()
 ```
 npm:
-```
+```bash
 npm install postcss postcss-loader autoprefixer cssnano postcss-cssnext
 ```
 本节的代码
-```
+```js
 var path = require('path')
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 
@@ -854,7 +854,7 @@ module.exports = {
 ## browserslist:
 所有插件共用
 package.json
-```
+```js
 "browserslist": [
   ">= 1%",
   "last 2 versions"
@@ -871,7 +871,7 @@ postcss-assets
 # Tree Shaking
 
 Webpack.optimize.uglifyJs
-```
+```js
 var webpack = require('webpack')
 
 plugins: [
@@ -885,7 +885,7 @@ npm install babel-plugin-lodash --save-dev
 npm install babel-loader babel-core babel-preset-env
 ```
 webpack.config.js
-```
+```js
 module: {
   rules: [
     {
@@ -907,16 +907,16 @@ module: {
 新建了个ces文件夹，明天里面搞
 
 找到问题了，如果用babel 6就要安装
-```
+```bash
 npm install babel-loader@7 babel-core babel-preset-env css-loader@1 //css-loader是上节用的
 ```
 安装babel 7
-```
+```bash
 npm install babel-loader @babel/core @babel/preset-env css-loader //新版本方便
 
 ```
 本节代码
-```
+```js
 var path = require('path')
 var webpack = require('webpack')
 module.exports = {
@@ -970,7 +970,7 @@ npm install purifycss-webpack glob-all
 npm install purify-css
 ```
 
-```
+```js
 var path = require('path')
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 var webpack = require('webpack')
@@ -1075,7 +1075,7 @@ npm install imagemin imagemin-mozjpeg
 ```
 研究了一小时的bug，原来是我的图片有问题，哔了狗，500px下的图片。。。
 
-```
+```js
 var path = require('path')
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 var imagemin = require('imagemin');
@@ -1160,14 +1160,14 @@ ERROR in ./src/css/base.less
 Module build failed: ModuleBuildError: Module build failed: Error: spawn /mnt/f/webpack/4-1/node_modules/cwebp-bin/vendor/cwebp ENOENT
 ```
 安装cwebp-bin解决
-```
+```bash
 npm i cwebp-bin
 ```
 
 
 使用images-webapack-loader
 
-```
+```js
 {
   loader: "image-webpack-loader",
   options: {
@@ -1204,7 +1204,7 @@ npm i pngquant-bin
 
 ## postcss-sprites 雪碧图
 这个是postcss的一个雪碧图插件
-```
+```js
 {
   loader: 'postcss-loader',
   options: {
@@ -1315,10 +1315,9 @@ module.exports = {
 ```
 
 # 字体文件
-file-loader
-url-loader
+`file-loader` 这个或 `url-loader` 都可以
 很简单，新加配置项
-
+这个就是这部分添加的，完整文件参考上面
 ```js
 {
   test: /\.(eot|svg|ttf|woff?)$/,
