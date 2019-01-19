@@ -6,13 +6,14 @@ categories:
 ---
 
 
-![方爷](https://photo.tuchong.com/1139905/f/190646269.jpg)
-<!-- more -->
+
 [webpack版本更迭](https://github.com/webpack/webpack/releases)
 [社区投票](https://webpack.js.org/vote)
 [官方文档](https://webpack.docschina.org/concepts/)
+<!-- more -->
 # 模块化开发
 
+![方爷]()
 
 ## js模块化
 ### 1. 命名空间
@@ -850,7 +851,7 @@ module.exports = {
 
 
 ```
-browserslist:
+## browserslist:
 所有插件共用
 package.json
 ```
@@ -1193,3 +1194,144 @@ npm i cwebp-bin
 
 没搞懂webp是干什么的
 好像webp没什么用啊，头疼
+
+## imagemin-pngquant 压缩png图片
+嗯，bug出现的问题是npm安装的时候我退出了，要安装个什么pngquant-bin,前面那个webp-bin也是我自己退出了，毕竟以前没遇到过这种问题
+```
+npm i pngquant-bin
+```
+还有就是压缩图片还要用上file-loader,url-loader
+
+## postcss-sprites 雪碧图
+这个是postcss的一个雪碧图插件
+```
+{
+  loader: 'postcss-loader',
+  options: {
+    ident: 'postcss',
+    plugins: [
+      require('postcss-sprites')(), //雪碧图
+      //Atuoprefixer 帮助你写各个浏览器之间的前缀
+      require('postcss-cssnext')()  //使用最新的css语法，这个里面包含了autoprefixer
+    ]
+  }
+}
+```
+
+## 本节代码：
+```js
+var path = require('path')
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+var imagemin = require('imagemin');
+module.exports = {
+  entry: {
+    app: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: {
+            loader: 'style-loader',
+            options: {
+              singleton: true
+            }
+          },
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  require('postcss-sprites')(),
+                  // require('postcss-sprites')(),
+                  require('postcss-cssnext')()
+                ]
+              }
+            },
+            {
+              loader: 'less-loader'
+            }
+          ]
+        })
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          /*{ // file-loader 把图片打包
+            loader: 'file-loader',
+            options: {
+              name: '[name].img.[hash:5].[ext]',
+              outputPath: 'assets',
+              publicPath: 'assets'
+            }
+          }*/
+          { //可以将图片转换为bash64编码格式，厉害了，而且配置项和file-loader一样
+            loader: 'url-loader',
+            options: {
+              limit: 100,
+              name: '[name].img.[hash:5].[ext]',
+              outputPath: 'assets',
+              publicPath: 'assets'
+            }
+          }, 
+          {
+            loader: "img-loader",
+            options: {
+              /*plugins: [
+                // require("imagemin-mozjpeg")({  //压缩jpg
+                //   quality: 60 // the quality of zip
+                // }),
+                // require("imagemin-webp")({  //压缩为webp
+                //   quality: 80 // the quality of zip
+                // })
+              ]*/
+                plugins: [
+                  require("imagemin-pngquant")({
+                    quality: [0.6, 0.7]
+                  })
+                ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextWebpackPlugin({
+      filename: '[name].min.css'
+    })
+  ]
+}
+```
+
+# 字体文件
+file-loader
+url-loader
+很简单，新加配置项
+
+```js
+{
+  test: /\.(eot|svg|ttf|woff?)$/,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 1000,
+        name: '[name].font.[hash:6].[ext]',
+        outputPath: 'assets',
+        publicPath: 'assets'
+      }
+    }
+  ]
+}
+```
