@@ -188,18 +188,25 @@ b === Number.prototype.toString   //true
 spread是三个点，和rest参数的逆运算一样
 没有理解的想法
 ```
-let arrayLike = {
-    '0': 'a',
-    '1': 'b',
-    '2': 'c',
-    length: 3
+let 让arrayLike = { 
+    '0': ：'a',，
+    '1': ：'b',，
+    '2': ：'c',，
+    length: 3长度：3 
 };
 
-// ES5的写法
-var arr1 = [].slice.call(arrayLike);
-```
+ // ES5的写法
+var arr1 = [] .slice.call(（arrayLike);
+```）; ```
+
+
+
+
 
 
 
 暂时先到这里吧，先去学vue开发美团了，用es6的时候继续看，或者两个一起学
 -------------------
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTk4Mjg3NzcwNl19
+-->
