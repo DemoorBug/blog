@@ -1350,34 +1350,102 @@ plugins: {
 ```
 如果npm没有安装这个模块，但是本地有，就可以这样
 ```
-resolve: {
-  alias: {
-    jquery$: path.resolve(__dirname, 'src/jquery.min.js')
-    //这个$不知道干啥的
+module: {
+  rules: [
+    resolve: {
+      alias: {
+        jquery$: path.resolve(__dirname, 'src/jquery.min.js')
+        //这个$不知道干啥的
+      }
+    }
+  ]
+}
+```
+# webpack 处理 html文件
+## 自动生成HTML , 场景优化
+`HtmlWebpackPlugin` 插件简介
+- `options`
+  - `template` 这个项目的模板文件所在位置，我们的html就在根目录
+  - `filename` 指定输出目录，目录，文件名，都可以
+  - `minify` 是否压缩生成html文件
+  - `chunks` 指定entry的chunk，不然的话多页面应用就会把所有的加进来
+  - `inject` 这个默认是true，改为false就是手动插入
+
+安装 HtmlWebpackPlugin
+```bash
+npm install html-webpack-plugin --save-dev
+```
+webpack.config.json 文件写入
+```js
+var HtmlWebpackPlugin = require('html-webpack-plugin') //头部引入
+
+plugins: [
+  new HtmlWebpackPlugin({
+    filename: 'index.html', //目录，文件名，都可以
+    template: './index.html', //这个项目的模板文件所在位置，我们的html就在根目录
+    //inject: false ,//这个默认是true，改为false就是手动插入
+    chunks: ['app'], //指定entry的chunk，不然的话多页面应用就会把所有的加进来
+    minify: { //借助了第三方实现html-minify
+    collapseWhitespace: true //去除空格
   }
+  })
+]
+
+```
+//顺便还要去除，output中的路径，因为index文件到同级目录了，所以就不用增加这段代码了
+
+```js
+output: {
+  ~~publicPath: './dist/',~~
+},
+```
+
+# HTML中引入的图片
+
+- `html-loader`
+- `options` 选项
+  - attrs: [img: src] img表示html标签，右边表示属性
+
+安装`html-loader`
+```bash
+npm install html-loader
+```
+index.html：
+```html
+<img src="" data-src="">
+```
+webpack.config.json:
+```js
+module: {
+  rules: [
+    {
+      test: /\.html$/,
+      use: [
+        {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'img:data-src']//默认是img:src,如果有其他需求可以增加
+          }
+        }
+      ]
+    } 
+  ]
 }
 ```
 
-<!-- mackdown -->
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
+更改，删除的地方
+webpack.config.js
+```js
+output: {
+  publicPath: '/' //修改为根路径
+}
+//其他的publicPath全部删除即可，这一个就ok了，以前因为没有打包index.html所以才很麻烦
 ```
 
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
+即使没有html-loader,还可以用require的方式引入图片
+```html
+  <img src='${require("./src/assets/imgs/2.jpg)"}' alt="图片2">
 ```
+
+# 配合优化
+## 提前载入webpack加载代码
