@@ -1334,3 +1334,50 @@ module.exports = {
   ]
 }
 ```
+
+# 第三方库
+
+`webpack.providePlugin`
+`imports-loader`
+`window`
+全局注入`npm`模块
+```
+plugins: {
+  new webpack.ProvidePlugin({
+    $: 'jquery' //这里的模块就可以全局注入，
+  })
+}
+```
+如果npm没有安装这个模块，但是本地有，就可以这样
+```
+resolve: {
+  alias: {
+    jquery$: path.resolve(__dirname, 'src/jquery.min.js')
+    //这个$不知道干啥的
+  }
+}
+```
+
+<!-- mackdown -->
+$$
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+$$
+```mermaid
+sequenceDiagram
+Alice ->> Bob: Hello Bob, how are you?
+Bob-->>John: How about you John?
+Bob--x Alice: I am good thanks!
+Bob-x John: I am good thanks!
+Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
+
+Bob-->Alice: Checking with John...
+Alice->John: Yes... John, how are you?
+```
+
+```mermaid
+graph LR
+A[Square Rect] -- Link text --> B((Circle))
+A --> C(Round Rect)
+B --> D{Rhombus}
+C --> D
+```
