@@ -1447,5 +1447,141 @@ output: {
   <img src='${require("./src/assets/imgs/2.jpg)"}' alt="图片2">
 ```
 
-# 配合优化
-## 提前载入webpack加载代码
+
+# 配合优化(提前载入webpack加载代码，减少http请求)
+
+`inline-manifest-webpack-plugin` 把webpack生成的代码插入页面，和html-loader配合的时候会有bug，所以就学习第二种
+
+`html-webpack-inline-chunk-plugin` 通过这个插件可以选择各种各样的chunk，然后插入到页面中
+
+```bash
+npm install html-webpack-inline-chunk-plugin --save-dev
+```
+```
+npm install babel-loader @babel/core @babel/preset-env --dev
+```
+
+webpack.config.js
+```js
+module: {
+  rules: [
+      { //位置是最顶部，不知道放到后面会有影响不
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader', 
+            options: {
+              presets: ['@babel/preset-env'],
+            }
+          }
+        ]
+      }
+  ]
+}
+```
+```js
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlInlinkChunkPlugin = require('html-webpack-inline-chunk-plugin')
+
+plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest'
+    }),
+    new HtmlInlinkChunkPlugin({
+      inlineChunks: ['manifest']
+    }),
+  ]
+```
+
+# 5-1 搭建开发环境
+
+ **webpack watch mode**
+```bash
+webpack -watch
+webpack -w
+```
+安装一个自动清除目录的工具
+```bash
+npm install clean-webpack-plugin 
+```
+webpack.config.js
+```js
+var CleanWebpackPlugin = require('clean-webpack-plugin')
+
+plugins: [
+  new CleanWebpackPlugin(['dist']) //这里是要清除的目录
+]
+```
+使用`webpack -w`
+```bash
+webpack -w --progress --display-reasons --color
+```
+- progress 运行的过程
+
+## **webpack-dev-server**
+**官方提供的开发服务器**
+- live reloading 项目变化帮你刷新浏览器
+- 打包文件？NO
+  - 是在运行的内存中，所以还是需要自己打包
+- 路径重定向
+  - 没有理解
+-  https 支持
+-  浏览器中显示编译错误，很有用
+-  接口代理
+-  模块热更新
+  - 不刷新浏览器的情况下，更新代码，这个厉害了
+
+**配置**
+- devServer 
+  - inline
+  - contentBase 
+  - port
+  - historyApiFallback
+  - https
+  -  proxy
+  -  hot 模块热更新，还要写额外代码
+  -  openpage 指定最先打开的页面
+  -  lazy 启动的时候不会打包任何东西，只有访问的时候才会打包
+  -  overlay 遮罩，错误提示
+
+**开始使用**
+
+安装`webpack-dev-server`
+```bash
+npm install webpack-dev-server@2 //3以上需要webpack@4支持，所以这里要降级
+```
+webpack.config.js
+```js
+module.exports = {
+  devServer: {
+    port : 9001 //指定端口
+  }
+}
+```
+package.json
+```json
+"scripts" : {
+  "start:dev": "webpack-dev-server --open"
+}
+```
+命令行执行
+```bash
+npm run start:dev
+```
+不配置package.json，可以这样
+```bash
+./node_modules/.bin/webpack-dev-server
+```
+**原来package.json script里面找模块是从node_modules中查找的，这是npm的查找规则决定的**
+
+```js
+module.exports = {
+  devServer: {
+    // inline: false, //目前用不到
+    // historyApiFallback: true, //嗯，目前用不到，用到再说
+    port: 9001
+  },
+}
+```
+
+## **express+webpack-dev-middleware**
