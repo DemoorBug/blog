@@ -1584,4 +1584,126 @@ module.exports = {
 }
 ```
 
+## **Proxy** 代理远程接口请求
+自己集成了http-proxy-middleware
+- options
+  - target 指定代理地址
+  - changeOrigin 改变源，到你的url
+  - headers 增加http请求头，
+  - logLevel 帮助调试，显示代理情况
+  - pathRewrite 帮助重定向
+
+**使用**
+webpack.config.js
+```js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/comments' : { //匹配地址，凡是遇到/comments的都会被转为下面的路径
+      target: 'https://m.weibo.com',
+      changeOrigin: true 
+      }
+    }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery' //这里的模块就可以全局注入
+    })
+  ]
+}
+```
+app.js
+```js
+$.get('/comments/hotflow', { //微博评论接口，这里$.get自然是jquery了
+  id : 4331316696337556,
+  mid : 4331316696337556,
+  max_id_type : 0
+}, function(data) {
+  console.log(data.data.data) //到这里就可以结束了，下面的只是插入页面
+  var msg = data.data.data
+  for (var i = 0 ; i < msg.length; i++) {
+    console.log(msg[i].text)
+    $('.pl').append("<div>" + msg[i].text + "<div/>")
+  }
+})
+```
+**其他配置项**
+headers
+
+app.js  
+```js
+$.get('/msg/index', {
+  format: 'cards'
+}, function (data) {
+  console.log(data)
+})
+```
+以上写法，微博会有验证，无法通过，可以用proxy发送头信息
+```js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/' : { //匹配地址，凡是遇到/comments的都会被转为下面的路径
+      target: 'https://m.weibo.com',
+      changeOrigin: true ,
+      headers: { //发送头信息，这里的cookie是微博的验证
+        'Cookie': 'ALF=1550807798; SCF=Ajv5Mdqcv9zNmq8TEe8b9Jd5bIERX_ZZAEkFyb_x_x5DdNtQFxGLsekcUUeJ5LOavTb_ruqz1FbarpstC8U9w8o.; SUB=_2A25xQ4KVDeRhGeVJ41IW8i7Kwj-IHXVSzy7drDV6PUJbktAKLU7lkW1NT8d4sQ6RoEu17F8RbjIXYg74GYrrPENl; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFe-YDR22UIh60JG0EfcL8h5JpX5K-hUgL.FoeN1h5Neo5c1Ke2dJLoIEYLxKnL1heLB.BLxKMLB-eL1K2LxK-LBo5LBo8bUCH81FHWSb-ReCH8SC-4eEHWx5tt; SUHB=0LcilU3V_eaMdU; SSOLoginState=1548219077; MLOGIN=1; _T_WM=60e134ae82c5c5d1a5652f6a212d78f0; WEIBOCN_FROM=1110003030; XSRF-TOKEN=4d3335; M_WEIBOCN_PARAMS=luicode%3D10000011%26lfid%3D100505102803%26uicode%3D10000011%26fid%3D102803'
+        }
+      }
+    }
+  }
+}
+```
+pathRewrite
+```js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/' : {  //直接匹配/
+        target: 'https://m.weibo.com',
+        changeOrigin: true ,
+        pathRewrite: {
+      '^/comments' : '/api/comments' //把/comments的地址都替换，不过我的这个案例没用使用，和前面app.js例子会出问题
+        }
+      }
+    }
+  },
+
+}
+```
+## **Module Hot Reloading**
+**模块热更新**
+保持应用的数据状态
+节省调试时间
+样式调试更快
+
+**devServer,已经集成，直接使用**
+```js
+devServer: {
+  hot: true
+}
+```
+除此之外还要使用
+`webpack.HotModuleReplacementPlugin`
+想清晰看到模块的相对路径可以使用
+`webpack.NamedModulesPlugin`
+
+```js
+plugins: [
+  new webpack.HotModuleReplacementPlugin()
+  new webpack.NamedModulesPlugin()
+]
+```
+如果js需要热加载，就要自己去写规则，vue，angular这种框架的loader都写好了，自己写页面感觉没必要
+* module.hot
+* module.hot.accept
+* module.hot.decline
+
+app.js 
+```js
+if (module.hot) {  //简单的用法，引入其他模块还要增加代码
+  module.hot.accept()
+}
+```
 ## **express+webpack-dev-middleware**
+
