@@ -1707,3 +1707,140 @@ if (module.hot) {  //简单的用法，引入其他模块还要增加代码
 ```
 ## **express+webpack-dev-middleware**
 
+# Source Map调试
+主要就是帮你定位代码的位置，比如打包后就变成一行，启用Devtool就可以定位到要调试代码的位置
+插件(更加灵活):
+```js
+webpack.SouceMapDevToolPlugin
+webpack.EvalSourceMapDevToolPlugin
+
+```
+**Devtool**
+Development(开发环境使用)
+- options
+  - eval
+  - eval-source-map
+  - cheap-eval-source-map
+  - cheap-module-eval-source-map
+
+Production(生产环境下)
+- options
+  - source-map
+  - hidden-source-map
+  - nosource-source-map
+  
+每个选项的生成时间都不同
+
+**css使用source-map注意**
+除了开启source-map之外，每个css-loader都要启用`options.sourceMap = true`
+
+**使用source-map**
+webpack.config.js
+```js
+module.exports = {
+  //devtool: 'eval', 这个速度最快但是看到的文件不够清晰，会带有webpack自己的代码
+  //devtool: 'source-map', //这个虽然耗时，不过还行
+  devtool: 'cheap-module-source-map' //感觉这个和source-map区别不大，估计还没遇到问题把
+} 
+```
+如果开启最小化代码`new webpack.optimize.UglifyJsPlugin()`就会出现问题，课程是暂时注释
+
+css用到的loader都要开启sourceMap
+```js
+{
+  loader: 'css-loader',
+  options: {
+    sourceMap: true
+  }
+}
+```
+有个style-loader的bug，就是开启`singleton: true` 开启sourceMap还是不行，新版style-loader已经修复，我没有这个问题
+
+# Eslint 检查代码格式
+所需要的插件
+```js
+eslint
+eslint-loader
+eslint-plugin-html  处理html里面的script
+eslint-friendly-formatter  友好的看到输出错误
+```
+配置
+webpack config
+.eslintrc.*
+package.json 中的 eslintConfig
+使用那种方式验证eslint
+[JavaScript Standard Style](https://standardjs.com/) 
+需要的插件
+```js
+eslint-config-standard
+eslint-plugin-promise
+eslint-plugin-standard
+eslint-plugin-import
+eslint-plugin-node
+```
+如果不使用这个插件可以去github搜`eslint-config-xxx`
+
+- eslint-loader使用注意
+  - options.failOnWarning 设为true，如果有错误就不会通过编译
+  - options.failOnError 定义验证错误不会通过编译
+  - options.formatter 
+  - options.outputReport
+- devServer.overlay 开启后就可以在浏览器中看到错误
+
+**开始使用**
+安装需要的模块
+```sh
+npm install eslint eslint-loader eslint-plugin-html eslint-friendly-formatter --save-dev
+```
+增加配置代码
+webpack.config.js
+```js
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          //include: [path.resolve(__dirname, 'src')],
+          //exclude: [path.resolve(__dirname, 'src/lib')]
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        },
+        { //必须添加到babel-loader之后
+          loader: 'eslint-loader',
+          options: {
+            formatter: require('eslint-friendly-formatter')
+          }
+        }
+      ],
+    }
+  ]
+}
+```
+.eslintrc.js
+```js
+module.exports = {
+  root: true, //表面自己是根目录
+  extends: 'standard', //使用standard的标准
+  plugins: [],
+  env: { //环境
+    browser: true, //浏览器环境
+    node: true //node环境
+  },
+  globals: {
+    $: true
+  },
+  rules: { //可以覆盖standard的标准，自定义自己的规则
+    //indent: ['error', 4] //将缩进自定义为4个空格 
+    //'eol-last': ['error', 'never'] //结尾需要换行取消
+  }
+}
+```
+安装`standard`所需模块
+```sh
+npm install eslint-config-standard eslint-plugin-promise eslint-plugin-node eslint-plugin-import eslint-plugin-standard --save-dev
+```
+个人觉得这个显示到html页面上的错误有点难看，不知道vue-cli使用的上面
+

@@ -8,12 +8,12 @@ categories: [ss]
 
 # bbr+kcptun+ss 搭建（ubuntu14）
 kcptun 待验证
-1. bbr 开启可以有效提高网速
+## 1. bbr 开启可以有效提高网速
 
 `sudo apt-get update`  //更新源
 `sudo apt-get upgrade`  //升级系统
 
-2. 开启bbr
+## 2. 开启bbr
 - 下载内核
   - `wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.14.12/linux-image-4.14.12-041412-generic_4.14.12-041412.201801051649_amd64.deb` 
 - 内核安装
@@ -27,7 +27,7 @@ kcptun 待验证
 - 重启服务器
   - `reboot`
 
-3. 开机后开启bbr
+## 3. 开机后开启bbr
 - 查看内核 ≥ 4.9
   - uname -r
 - 执行
@@ -45,7 +45,7 @@ kcptun 待验证
 
 还可以继续安装kcptun，不过上面的足以日常使用，不喜欢折腾的就不用搞
 
-4. 搭建ss
+## 4. 搭建ss
 - 安装
   - `apt-get install python-pip`
   - `pip install shadowsocks`
@@ -66,7 +66,9 @@ kcptun 待验证
 - 开启ss服务
   - `ssserver -c /etc/shadowsocks.json -d start`
 
-5. kcptun配置
+**到这里就可以结束了，后续的我自己没搞定，参考**
+
+## 5. kcptun配置
 - 安装kcptun
   - `mkdir kcptun`
   - `cd kcptun`
@@ -74,12 +76,12 @@ kcptun 待验证
   - `tar zxvf kcptun-linux-amd64-20170904.tar.gz`
   - `rm -f kcptun-linux-amd64-20170904.tar.gz`
 
-6. 开启 kcptun 服务
+## 6. 开启 kcptun 服务
 
 - `./server_linux_amd64 -t "服务器ip:shadowsocks设置的端口" -l ":4001" --key 密码 --log 4001.log &`
   - & 表示后台运行
 
-7. 本地配置
+## 7. 本地配置
 - 下载相对应的客户端文件。（如上面server安装的是v20170904的kcptun，client就下载对应版本的）
   - [下载地址](https://github.com/xtaci/kcptun/releases?after=v20171129)
 - 新建文件client.json
@@ -110,7 +112,6 @@ kcptun 待验证
   - `client_windows_amd64.exe -c client.json`
   - 将kcptun的文件client_windows_amd64.exe和新建的文件放到同一目录之下
 
-完成
 
 
 
