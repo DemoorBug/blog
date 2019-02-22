@@ -38,3 +38,6 @@ categories:
 [Foundation](http://foundation.zurb.com) 结构语义化，移动设备优先，完全可以定制
 [Semantic UI](http://semantic-ui.com) 命名非常的语义化
 [PureCss](http://Purecss.io) 非常轻量级
+
+**功能性网站**
+[一个不用注册就可以接收邮件的网站](temp-mail.org)
