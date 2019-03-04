@@ -9,6 +9,8 @@ categories:
 [.ico 在线转换 网址](http://www.bitbug.net)
 [mackdown在线编辑](https://dillinger.io/)  [目前用的在线编辑](https://stackedit.io) 
 [最新浏览器升级 ](http://browsehappy.com)
+[无穷无尽的设计可能](https://www.seeseed.com/)
+
 
 <!-- more -->
 **图标压缩**

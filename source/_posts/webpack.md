@@ -1842,5 +1842,31 @@ module.exports = {
 ```sh
 npm install eslint-config-standard eslint-plugin-promise eslint-plugin-node eslint-plugin-import eslint-plugin-standard --save-dev
 ```
-个人觉得这个显示到html页面上的错误有点难看，不知道vue-cli使用的上面
+个人觉得这个显示到html页面上的错误有点难看，不知道vue-cli使用的是什么
 
+
+
+# 开发环境和生产环境
+需求分析：
+**开发环境**
+模块热更新
+sourceMap
+接口代理
+代码规范检查
+**生产环境**
+提取公用代码
+压缩混淆
+文件压缩或Base64 编码
+去除无用的代码
+
+**共同点**
+同样的入口
+同样的代码处理(loader处理) 所有loader
+同样的解析配置 开发和打包的一致性
+
+**如何区分呢**
+就是webpack-merge
+
+webpack.dev.conf.js  //开发环境
+webpack.prod.conf.js  //生产环境
+webpack.common.conf.js  //共同点
