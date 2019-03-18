@@ -1,13 +1,136 @@
 ---
-title: 读jQuery源码
-date: 2019-01-02 20:38:33
+title: 重学jQuery API
+date: 2019-03-16 22:51:33
 tags: [jQuery]
 categories:
 ---
 
+本来看jQuery源码的，发现不是现阶段看的东西，最好还是把jquery api查看一下
+<!-- more -->
+# api开始看起
+
+# .add()
+将匹配元素添加到集合中
+```js
+$('.j').add('.name').css({'background': 'red'}) //会给匹配到的.j .name都添加背景色
+```
+# .addBack()
+这个就是将前面匹配的元素组合到一起
+```js
+$('.j').find('p').addBack().addClass('background');//给匹配到的P元素添加class，匹配到的.j class也添加class
+```
+# .addClass()
+顾名思义添加class
+可以接收一个字符串，或者一个回调函数，
+```js
+$('.j').addClass(function (index, currentClass) {
+	return 'item-' + index
+	//currentClass就是当前元素的Class，这里面的this代表元素本身，chrome只能看到元素，firefox可以看到元素的属性和方法，如果用ES6的箭头函数则this代表window对象
+})
+```
+# .after()
+给匹配元素集合中插入参数所指定的内容
+```js
+$('.inner').after(function () {
+  return '<div>' + this.className + '</div>'
+});
+//可以接收一个函数，或者直接传参，有函数操作起来多样性this和上面一样
+```
+# .ajaxComplete()
+请求完成时注册一个回调函数，和start很像
+```js
+$(document).ajaxComplete(function() {
+  console.log('s')
+  $( ".log" ).text( "Triggered ajaxComplete handler." );
+});
+```
+
+##  .ajaxError()
+Ajax请求失败，触发该回调函数
+
+## .ajaxSend()
+ajax发送请求前执行
+
+## .ajaxStart()
+ajax发送刚开始执行
+
+## .ajaxStop()
+ajax发送完成后执行
+
+# append()
+和after() 好像啊，一样的？
+匹配到的元素后添加
+## appendTo
+匹配到的元素前
+
+# .attr()
+获取匹配元素的属性或设置属性的值
+# 选择器
+模板
+```html
+    <div class="hom" wot="cn">
+      use name
+    </div>
+    <div class="hom" wot="cn n">
+      use name
+    </div>
+    <div class="hom" wot="cnnnbbb-n">
+      use name
+    </div>
+    <div class="hom" wot="cn-youcan">
+      use name
+    </div>
+```
+## [name|=value]
+可以匹配到上面
+```js
+$('div[wot|=cn]'
+//可以匹配到cn-开头的
+```
+
+## [name*=value]
+```js
+//只要是包含cn的，都可以匹配到
+```
+## [name$=value]
+```js
+value结尾的
+```
+
+## [name~=value]
+```js
+以空格间隔的
+cn n
+```
+
+## [name=value]
+```
+绝对匹配
+```
+
+## [name$=value]
+```js
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 学习视频：[逐行分析jQuery](https://study.163.com/course/courseMain.htm?courseId=465001)
 jQuery学习版本：2.0.3
-
 ## 第一节
 匿名函数自执行
 ```js
@@ -44,7 +167,7 @@ function Dog(name) {
 
 var s = new Dog('大毛')
 var s2 = new Dog('二毛')
-s2.sg = '猫科' 
+s2.sg = '猫科'
 console.log(s) //猫科
 //写在原型上的就会被继承
 //s2实现了继承
@@ -119,7 +242,7 @@ Arr.prototype = {
   name = 'hhh'
 }
 var a1 = new Arr()
-console.log(a1.constructor) //Object() 
+console.log(a1.constructor) //Object()
 
 ```
 因为这样写会把prototype赋值一个新的对象
@@ -130,7 +253,7 @@ function Arr () {
 }
 Arr.prototype.name = 'hhh'
 var a1 = new Arr()
-console.log(a1.constructor) //Arr() 
+console.log(a1.constructor) //Arr()
 ```
 这样写就不会改变constructor
 不过对象的方式比较方便，常用所以改下成下面的写法
@@ -144,5 +267,3 @@ var a1 = new Arr()
 console.log(a1.constructor) //Arr()
 
 ```
-
-

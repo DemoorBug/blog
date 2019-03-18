@@ -5,7 +5,10 @@ tags:
 categories:
 ---
 
+# webpack 配置
+<!-- more -->
 # webpack.common.js
+
 ```js
 
 const path = require('path');
@@ -13,6 +16,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 // const devMode = true
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   //入口文件依据目录随时添加
@@ -29,9 +33,9 @@ module.exports = {
       hash: true,
       chunks: ['vendor','common','runtime','index'],
       minify: process.env.NODE_ENV !== "production" ? false : {
-          removeComments: true, 
-          // collapseWhitespace: true, 
-          removeAttributeQuotes: true, 
+          removeComments: true,
+          // collapseWhitespace: true,
+          removeAttributeQuotes: true,
       }
     }),
     new HtmlWebpackPlugin({
@@ -41,9 +45,9 @@ module.exports = {
       hash: true,
       chunks: ['vendor','common','runtime','main'],
       minify: process.env.NODE_ENV !== "production" ? false : {
-          removeComments: true, 
-          // collapseWhitespace: true, 
-          removeAttributeQuotes: true, 
+          removeComments: true,
+          // collapseWhitespace: true,
+          removeAttributeQuotes: true,
       }
     }),
 
@@ -108,7 +112,7 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          { 
+          {
             loader: 'url-loader',
             options: {
               limit: 8192,
