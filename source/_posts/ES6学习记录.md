@@ -87,7 +87,7 @@ const foo = Object.freeze({}); 不知道什么意思
 ```
 let { foo } = { foo: 'aaa' }
 换一种写法
-let { foo: baz } = { foo: 'aaaa' } 
+let { foo: baz } = { foo: 'aaaa' }
 ```
 上面的代码中，`foo`是匹配模式，`baz`才是变量，正真被赋值的是变量`baz`,而不是模式`foo`
 如果foo也想取到值则要这样写
@@ -188,25 +188,209 @@ b === Number.prototype.toString   //true
 spread是三个点，和rest参数的逆运算一样
 没有理解的想法
 ```
-let 让arrayLike = { 
+let 让arrayLike = {
     '0': ：'a',，
     '1': ：'b',，
     '2': ：'c',，
-    length: 3长度：3 
+    length: 3长度：3
 };
 
  // ES5的写法
 var arr1 = [] .slice.call(（arrayLike);
-```）; ```
-
-
-
-`
-
-
+```
 
 暂时先到这里吧，先去学vue开发美团了，用es6的时候继续看，或者两个一起学
 -------------------
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTE3MDA2MjUzNzYsMTk4Mjg3NzcwNl19
 -->
+# 全栈记录
+纯前端已经过时，全栈才是目标
+
+## let const
+`let` 声明变量
+1. 不能重复声明
+2. 支持块级作用域
+`const` 声明产量
+1. 控制修改
+2. 支持块级作用域
+
+## 作用域
+### 1. 传统ES5
+仅支持一种方式，函数作用域
+### 2. ES6
+块级作用域
+```js
+{}
+
+if () {
+
+}
+
+for () {
+
+}
+```
+这种`{}`写法，都是块级作用域
+
+## 解构赋值
+{a:12, b: 5, c: 33}
+[12, 5, 8]
+```js
+let {a, b, c} = {a:12, b: 5, c: 33}
+let [c, a, d] = [12, 5, 8]
+```
+左边的类型和右边必须一致
+右边必须得是个东西？
+## 函数
+### 1. 箭头函数
+() => {}
+有且只有一个参数，可以`item => {}`
+有且只有一个语句，可以`item => item + 1`
+修复了this的问题，其他语音不存在此问题
+### 2. 参数展开
+...参数展开必须是最后一个数
+```js
+let name = (a, ...arr) => {
+  console.log(a, ...arr)
+}
+name(1, 2, 4, 6, 7, 8);
+```
+展开数组，就是把值全部拿出来一样
+```js
+let arr = [1, 2, 4, 6 ,9]
+console.log(...arr)
+```
+## ES6 新增系统对象
+### 1.Array
+`map` 映射
+```js
+let arr = [5, 6, 7, 8, 9];
+let item = arr.map(item => item <= 7);
+console.log(item);
+```
+`forEach` 就是把for封装起来了。
+`filter` 过滤，很简单就是把返回false的值剔除
+```js
+let arr = [5, 6, 7, 8, 9];
+let item = arr.filter(item => item <= 7);
+console.log(item);
+```
+`reduce` 返回一个值，减少？
+```js
+let arr = [5, 6, 7, 8, 9];
+let item = arr.reduce((tem,item) => tem + item);
+console.log(item);
+```
+### 2.String
+字符串模板
+```js
+let name = '模板';
+console.log(`字符串${name}`);
+```
+`startsWith`
+获取字符串开头值
+```js
+let http = 'http://';
+let https = 'https://';
+console.log(http.startsWith('http://'));
+console.log(https.startsWith('http://'));
+console.log(https.startsWith('https://'));
+```
+`endsWith`
+和上面类似，不过是从结尾开始获取
+
+## JSON ES5.5新增对象
+`stringify()`  将对象转换为标准JSON
+```js
+var obj = {
+  a: 1,
+  b: 2,
+  c: 3
+}
+console.log(JSON.stringify(obj))
+```
+`parse()` 将JSON格式的字符串转换为对象
+```js
+var obj = '{"a": "1", "b": "2", "c": "3"}';
+console.log(JSON.parse(obj));
+```
+
+## 异步处理
+### 回调地狱
+```js
+$.ajax({
+  url: 'data/1.json',
+  dataType: 'json',
+  success(data1){
+    $.ajax({
+      url: 'data/2.json',
+      dataType: 'json',
+      success(data2){
+        $.ajax({
+          url: 'data/3.json',
+          dataType: 'json',
+          success(data3){
+            console.log(data1, data2, data3);
+          }
+        });
+      }
+    });
+  }
+})
+```
+
+
+### `Promise` 创建一个promise
+```js
+let a = true
+let prm = new Promise((resolve, reject) => {
+  if (a) {
+    resolve('success')
+  } else {
+    reject('err')
+  }
+})
+prm.then(data => {
+  console.log(data);
+}, err => {
+  console.log(data);
+})
+```
+就是一个解决回调问题的处理方法，异步当然也可以，不过是一个统一的解决方案
+`Promise.all([])`
+```js
+let p1 = new Promise((resolve, reject) => {
+  resolve('success')
+}),
+p2 = new Promise((resolve, reject) => {
+  resolve('success1')
+}),
+p3 = new Promise((resolve, reject) => {
+  resolve('success2')
+});
+Promise.all([
+  p1,
+  p2,
+  p3
+]).then(([a, b, c]) => {
+  console.log(a, b, c);
+})
+```
+有一个promise抛出reject就会报错
+如果里面是异步的，则会同时请求，请求完成取决于最慢的哪一个，这样的话我们就没办法第二个异步调用第一个返回的结果，这种问题我们可以用then解决呀。。。好像可以
+
+### async/await
+这个语法糖处理异步用的，ES8推出的
+```js
+let as = async () => {
+  let s = 1;
+  let s2 = 2;
+  let data = await Promise;
+}
+```
+`await` 后面必须是一个promise，不知道会不会自己转换。
+
+## 语法糖
+就是，写是这么写，到计算机真正执行的时候，会把函数编译回以前的写法，就比如我们的`async`
+我们其实这么写，代码执行的时候还是一层套一层的回调，其实就是避免写起来很麻烦的尴尬局面
