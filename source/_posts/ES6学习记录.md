@@ -394,3 +394,87 @@ let as = async () => {
 ## 语法糖
 就是，写是这么写，到计算机真正执行的时候，会把函数编译回以前的写法，就比如我们的`async`
 我们其实这么写，代码执行的时候还是一层套一层的回调，其实就是避免写起来很麻烦的尴尬局面
+
+## 面向对象
+面向对象
+机器语言 -> 汇编 -> 低级语言(面向过程) -> 高级语言(面向对象) -> 模块 -> 框架 -> API
+
+面向对象：
+1.封装性
+2.继承性
+3.多态性
+
+主要讲面向对象的封装和继承
+## class
+### 封装
+```js
+class Box {
+  constructor (...arr) {
+    this.arr = arr
+  }
+
+  show() {
+    console.log(this.arr);
+  }
+}
+
+let box = new Box(1, 2, 3, 4)
+box.show()
+```
+### 继承
+```js
+class Box {
+  constructor (...arr) {
+    this.arr = arr
+  }
+
+  show() {
+    console.log(this.arr);
+  }
+}
+
+class Whx extends Box {
+  constructor (name, ...arr) {
+    super(...arr);
+    this.name = name
+  }
+  showWhx() {
+    console.log(this.name);
+  }
+}
+var whx = new Whx('myname', 1, 2, 3 , 4, 6)
+whx.show()
+whx.showWhx()
+```
+### ES5写法
+封装
+```js
+function Box(name) {
+  this.name = name
+}
+Box.prototype.show = function () {
+  console.log(this.name);
+}
+```
+继承
+```js
+function Box(name) {
+  this.name = name
+}
+Box.prototype.show = function () {
+  console.log(this.name);
+}
+
+function Wxn(name, j) {
+  Box.call(this, j) //call是继承他里面的属性
+  this.wxn = name
+}
+Wxn.prototype = new Box(); //继续方法
+Wxn.prototype.constructor = Wxn;
+Wxn.prototype.showWxn = function () {
+  console.log(this.wxn);
+}
+var wxn = new Wxn('youse', 'jic')
+wxn.show()
+wxn.showWxn()
+```
