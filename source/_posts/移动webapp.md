@@ -221,3 +221,184 @@ xl: > 1200px
     
   </script>
 ```
+# 响应开发，因为都懂，就记一些不懂的吧
+## img图片的处理
+```css
+img {
+  display: block; /*因为默认是inline-block;*/
+  /*但是这样解决会造，一行显示换行问题*/
+  /*最优解决*/
+  vertical-align: top; /*这个属性居然没用过，而且所有浏览器都支持*/
+  width: 100%;
+  border: none;
+}
+```
+以上选一即可
+
+# 通用适配
+设计稿750px为例
+750px 1rem = 750 / 18.75 = 40
+js动态去设置font-size
+```js
+// document.documentElement.getBoundingClientRect().width
+// window.innerWidth
+(function() {
+  'use str'
+  setRemUnit()
+  window.onresize = setRemUnit;
+  // window.addEventListener('resize', setRemUnit); 都可以
+
+  function setRemUnit() {
+    var docEl = document.documentElement;
+    var ratio = 18.75; 
+    var viewWidth = docEl.getBoundingClientRect().width || window.innerWidth; //兼容处理
+    docEl.style.fontSize = viewWidth / ratio + 'px'
+  }
+
+})();
+
+```
+
+# 通用适配解决方案，解决1px边框显示过'粗'问题
+```js
+(function() {
+  'use str';
+
+  // 获取dpr
+  var docEl = document.documentElement,
+    viewportEl = document.querySelector('meta[name="viewport"]'),
+    dpr = window.devicePixelRatio || 1,
+    maxWidth = 540,
+    minWidth = 320;
+
+  dpr = dpr >= 3 ? 3 : (dpr >= 2 ? 2 : 1);
+
+  docEl.setAttribute('data-dpr', dpr);// 自己设置dpr，后面有用处
+  docEl.setAttribute('max-width', maxWidth);
+  docEl.setAttribute('min-width', minWidth);
+
+
+  var scale = 1/dpr,
+      content = 'width=device-width, initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+
+  if (viewportEl) {
+    viewportEl.setAttribute('content', content)
+  } else {
+    viewportEl = document.createElement('meta');
+    viewportEl.setAttribute('name', 'viewport');
+    viewportEl.setAttribute('content', content);
+    document.head.appendChild(viewportEl)
+  }
+
+
+
+
+  setRemUnit()
+  window.onresize = setRemUnit;
+  // window.addEventListener('resize', setRemUnit); 都可以
+
+  function setRemUnit() {
+    // var docEl = document.documentElement;
+    var ratio = 18.75; 
+    var viewWidth = docEl.getBoundingClientRect().width || window.innerWidth; //兼容处理
+
+    // 设置最大最小值，页面过大后不设置fontSize
+    if (maxWidth && (viewWidth / dpr > maxWidth)) {
+      viewWidth = maxWidth * dpr;
+    } else if (maxWidth && (viewWidth / dpr < minWidth)){
+      viewWidth = minWidth * dpr;
+    }
+
+    docEl.style.fontSize = viewWidth / ratio + 'px';
+  }
+
+})();
+
+```
+
+# 移动端事件
+
+触摸事件，手势事件，传感器事件，主要讲的是触摸事件，其他两个兼容性堪忧，而且手势事件也可以用触摸事件代替，传感器事件就是手机倾斜什么的，但是兼容性不ok
+
+触摸事件可以非为两种：
+`touch` 事件，最早出现的，兼容性ok
+`pointer` 事件 ，这个是微软出的，比较友好，但是呢实现的厂商不多，兼容性不好，但是很有意义，把鼠标事件和触摸事件统一为指针事件，不论是pc端还是移动端，只用使用`pointer`事件就ok了
+
+## touch 事件
+`ontouchstart`  触摸开始执行
+`ontouchmove`   移动执行
+`ontouchend`    触摸结束执行
+`ontouchcancel`  不常用，发生触摸中断的时候执行，当我们点击的时候，突然来电话，界面跳转，称之为触摸中断。系统级事件
+
+`document.ontouchstart = function () {}` 这种写法不推荐，如果要兼容IE8浏览器及一下，还是用这种
+
+`document.addEventListener('touchstart', function(){}, false)` 推荐写法，IE9及以上兼容。第三个参数表示冒泡，true表示捕获
+
+## touch 事件event 对象
+```js
+document.addEventListener('touchstart', function(ev){
+  console.log(ev)
+}, false)
+```
+以上对象属性含义:
+`altKey: false` 触摸的时候是否有按住alt键，手机哪来的alt键
+以下三个和冒泡有关
+`bubbles: true`  目前是否是冒泡
+`cacelBubble: false` 目前是否取消冒泡
+`cancelable: true` 是否可以取消冒泡
+以下就讲了一下主要用到的，其他就不讲了
+`type` 知道当前什么事件，和pc端事件一样
+`target` 当前元素，什么元素响应你的
+`changeTouches` 捕获发生变化的手指，触摸列表，类数组(没有数组的方法),一般情况下都使用这个，其中一个原因是`ontouchend`事件以下两种捕获不到东西
+`targetTouches` 捕获到物体上的手指
+`touches` 捕获到屏幕上所有手指头
+
+常用`changeTouches`
+```js
+document.addEventListener('touchstart', function(ev){
+  var touch = ev.changeTouches[0] //一般都是单指
+}, false)
+```
+`changeTouches`里面的属性：
+`clientX: ` 可视区范围内的坐标
+`clientY: ` 可视区范围内的坐标
+`pageX` 有滚动条的时候，也会把滚动条的距离算上，而不仅仅是可视区域
+`pageY`
+`radiusX` 指头的触摸大小半径
+`radiusY`
+
+## 这里讲到了拖动，我没有做，明天补上，今晚记一些技巧
+chrome的a点击有个高亮，当时自己还是百度了好久，我晕
+```css
+.a:hover {
+  -webkit-tap-highlight-color: transparent;
+}
+```
+还有就是用transform的时候用translate3d，会开启设备的GPU加速
+```css
+.backtop {
+  transform: translate3d(x, y, 0); /*会开启GPU加速*/
+}
+```
+
+# 移动端调试
+
+
+## Vorlon.js
+
+## 多端同步工具Browsersync
+
+## 终端检测，navigator
+最好后端来做，但是前端也是可以做的
+
+```js
+
+var isMobile = navigator.userAgent.match(/android|iphone|ipad|ipod/i)
+
+if (isMobile) {
+  location.href = 'https://m.imooc.com'
+} else {
+  location.href = 'https://www.imooc.com'
+}
+```
+可以根据这段代码，加载各端自己的代码，比如响应式开发
