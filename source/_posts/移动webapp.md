@@ -380,6 +380,71 @@ chrome的a点击有个高亮，当时自己还是百度了好久，我晕
   transform: translate3d(x, y, 0); /*会开启GPU加速*/
 }
 ```
+补：
+```html
+
+  <style type="text/css" media="screen">
+    html {
+      height: 2000px;
+    }
+    .top {
+      height: 20px;
+      width: 20px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.3);
+      /*transition: all .3s;*/
+    }
+  </style>
+</head>
+<body>
+  <div class="top" id="top">
+  </div>
+    122
+
+  <script>
+    var docEl = document.documentElement;
+    var topN = document.getElementById('top');
+
+    var coordinate = {
+      pageX: 0,
+      pageY: 0
+    }
+    var page = {
+      pageX: 0,
+      pageY: 0
+    }
+    var isTouchMove = false;
+
+    topN.addEventListener('touchstart', function(ev) {
+      var changedTouches = ev.changedTouches[0]
+      coordinate.pageX = changedTouches.pageX;
+      coordinate.pageY = changedTouches.pageY;
+    })
+    topN.addEventListener('touchmove', function(ev) {
+      ev.preventDefault()
+
+      isTouchMove = true;
+
+      var changedTouches = ev.changedTouches[0]
+      var x = changedTouches.pageX - coordinate.pageX + page.pageX;
+      var y = changedTouches.pageY - coordinate.pageY + page.pageY;
+
+      ev.target.style.transform = 'translate3d('+ x +'px,'+ y +'px,0)'
+    })
+    topN.addEventListener('touchend', function(ev) {
+      if (!isTouchMove) {return};
+      console.log('touch')
+      var changedTouches = ev.changedTouches[0]
+      page.pageX += changedTouches.pageX - coordinate.pageX;
+      page.pageY += changedTouches.pageY - coordinate.pageY;
+
+      isTouchMove = false
+    })
+  </script>
+```
 
 # 移动端调试
 
@@ -402,3 +467,124 @@ if (isMobile) {
 }
 ```
 可以根据这段代码，加载各端自己的代码，比如响应式开发
+
+# 移动开发常见问题
+解决html5标签兼容问题引入
+`html5shiv.js`
+
+## css3 兼容问题
+用`modernizr.js` 这个库来兼容，写两套样式
+
+## click 300毫秒延迟解决
+原因是手机端的double click双击造成的，
+解决办法`fastclick`,很多浏览器已经解决就是给`viewport`添加`width=device-width`
+## 文字溢出问题
+普通解决方法不能配合`flex` 布局，必须给元素套一层
+```html
+<style type="text/css" media="screen">
+  .text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<div class="text-ellipsis flex">
+  <span>文字</span> //套一层就好了
+</div>
+```
+
+多行文字溢出问题解决
+```html
+<style type="text/css" media="screen">
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .multiline-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 这个就可以控制显示几行文字
+    -webkit-box-orient: vertical;
+    white-space: normal !important;
+    word-wrap: break-word;
+  }
+</style>
+
+<div class="multiline-ellipsis flex">
+  文字
+</div>
+```
+
+## javascript兼容
+做特性检测，不要做浏览器检测
+这个是fastclick.js的特性检测做法
+```js
+if ('addEventListener' in document) { //这个是fastclick.js的特性检测做法
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body)
+  }, false)
+};
+```
+特性检测就很简单，就是判断以下，要加`window`的原因是因为如果没有该元素就会报错，未定义，而挂载到`window`上，他就会报`undefined`
+```js
+if (requestAnimateionFrom) { //错误写法，如果不存在就会变成一个没有声明的变量
+
+}
+
+if (window.requestAnimateionFrom) { //正确做法
+
+}
+
+```
+
+
+前缀
+```js
+var requestAnimationFrame = window.requestAnimateionFrom || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function(fn) {setTimeout(fn, 16)};
+```
+## 移动端动画
+优先使用 `requestAnimateionFrom`, 请求动画帧
+css3使用`transition`, `animation`
+
+`canvas` 要配合`setTimeout`,`setInterval`做动画，不能用css3，而DOM动画，就可以用提到的所有
+## 水平居中和垂直居中
+水平居中：
+`text-align: center` 有固定宽度就可以使用
+`margin: 0 auto` 针对块级容器，有固定宽度
+`position+margin-left/translate` 以前仅用到了`margin`来解决，不过`translate`可以解决没有固定宽度，也可以实现
+`flex`终极解决方案
+垂直居中
+`line-height` 有固定高度可以使用，仅仅只能用于单行文字，其实配合
+`position+margin-top/translate` 同理
+`flex`终极解决方案
+
+## Zepto
+这里面虽然都很基础，和jQuery都差不多，不过还是能学到东西的，比如`window.onload`和`$(document).ready(function (){})`的区别，前者是页面全部加载完成，包括图片，js，css，dom,后者则是dom加载完毕，肯定是dom加载完毕更高效啊
+
+还有事件的命名空间，
+```js
+$(document).on('click.muke', function (e) {
+  console.log('click');
+  $(this).off('.muke') //大概是这么写的？
+})
+```
+这样就仅仅会取消一个，以前老师教的是创建一个变量
+```js
+var ev;
+$(document).on('click', ev = function (e) {
+  console.log('click');
+  $(this).off(ev)
+})
+```
+
+## 按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好
+
+# 实战开始

@@ -478,3 +478,288 @@ var wxn = new Wxn('youse', 'jic')
 wxn.show()
 wxn.showWxn()
 ```
+
+# ES6 梳理
+看慕课网的实战课程es6，记录一些不了解的知识点
+
+编程练习里面遇到个问题，当用事件委托的时候如何确认当前index，jquery很好实现，但是js我们就要自己写了
+```js
+let li = document.querySelectorAll('li');
+document.addEvnetListener('click', function(e) {
+  for (let i in li) {
+    if (li === e.target) {
+      console.log('当前下标', i);
+      break
+    }
+  } 
+}, false)
+
+```
+差不多就是以上代码实现，很简单，但是以前没遇到过还查了一会。。
+
+## const
+常量必须被赋值
+常量为引用类型，可以被修改
+```js
+
+const name = {
+  age: 10,
+  name: '小明'
+}
+console.log(name.age, name.name);
+name.age = 20;
+console.log(name.age); //可以修改
+```
+常量只能保证地址不变，不能做到内容不变
+
+但是`Object.freeze`可以防止引用类型的值被修改
+```js
+const name = {
+  age: 10,
+  name: '小明'
+}
+Object.freeze(name);
+console.log(name.age, name.name);
+name.age = 20;
+console.log(name.age); //不可以被修改
+```
+## ES6之前声明常量
+```js
+//----第一种--------
+var BASE_NAME = '小名'; //这种就是一个约定，假装我们是常量
+//----第二种--------
+var CST = {}
+Object.defineProperty(CST, 'BASE_NAME', {
+  value: '小明',
+  writable: false
+})
+CST.BASE_NAME = 'xiaoming'
+console.log(CST.BASE_NAME); //小明   不可以被修改
+Object.seal(CST);  //防止扩展
+CST.a = 'a';
+console.log(CST) //不会添加a
+
+```
+
+## 对象解构赋值
+1.
+```js
+
+let arr = {
+  list: [{ skname: '龙吟' }]
+};
+const { list } = arr;
+console.log(list) //[]
+```
+2
+```js
+let arr = {
+  list: [{ skname: '龙吟' }]
+};
+const { list : [{skname}] } = arr;
+console.log(skname) //龙吟
+
+```
+3
+```js
+let arr = {
+  list: [{ skname: '龙吟' }, { skname: '龙腾'}]
+};
+const { list : [{skname}, {skname : sk}] } = arr;
+console.log(skname, sk) //龙吟
+//因为一个变量或常量不能重复声明，所以要重命名为sk
+```
+## ... 扩展运算符
+```js
+let arr = {
+  list: [{
+    skname: '龙吟',
+    hn: {names: 's'},
+    nams: 'hs'
+  }]
+};
+const { list : [{skname, ...a,}]} = arr;
+console.log(skname, a)
+```
+扩展对象
+```js
+const obj1 = {
+  archer: '卫宫',
+  lancer: '瑟坦达'
+}
+const obj = {
+  seber: '阿尔托利亚',
+  ...obj1
+}
+```
+### 如何对已经声明的变量解构赋值
+```js
+let age;
+const obj = {
+  name: '小明',
+  age: 22
+};          //这里必须有;号
+({ age } = obj);
+console.log(age);
+```
+不建议这样使用
+
+### 使用对象传入乱序的函数参数
+```js
+function AJAX({
+  url,
+  data,
+  type = 'get'
+}) {
+  console.log(type)
+}
+
+AJAX({
+  url: '/getinfo',
+  data: {
+    a: 1
+  }
+})
+```
+
+## 封装了一个简单的模态框
+[源码地址](https://github.com/DemoorBug/lx/blob/master/移动开发练习/ES6/模态框/index.html)
+
+# ES6扩展
+
+## 字符串扩展
+模板字符串
+
+### 部分新方法
+`padStart` 补全字符串
+```js
+
+let str = 'i';
+let str1 = str.padStart(5, 'mooc');
+console.log(str1) // mooci
+
+```
+`padEnd` 从字符串的后面开始补充
+
+```js
+let str = 'i';
+let str1 = str.padEnd(5, 'mooc');
+console.log(str1) // imooc
+```
+`repeat` 重绘字符串
+```js
+console.log('i'.repeat(10)) // iiiiiiiiii
+//自己写一个重绘方法
+function repeat(str, num) {
+  return new Array(num + 1).join(str); //数组的长度是4但是内容为空，用str来分割数组
+}
+console.log(new Array(4).join('i'))
+console.log('i', 3); // iii
+```
+`startWith` 以什么字符串开头
+
+`endsWith` 以什么字符串结尾
+```js
+let str = 'A promise is a promise';
+console.log(str.startWith('A pr')) //true
+console.log(str.startWith('b pr')) //false
+
+console.log(str.endsWith('ise')) //true
+```
+`includes` 替代indexOf
+```js
+let str = 'A promise is a promise';
+if (~str.indexOf('proms')) { //按位取反
+
+}
+
+if (str.includes('A prom')) {
+
+}
+```
+## for of
+可以用来便利字符串，以前可以用for,或者转换成数组遍历
+```js
+let str = 'NAMES';
+str = Array.prototype.slice.call(str);
+console.log(str)
+```
+或者
+```js
+let str = 'NAMES';
+str = str.split('');
+console.log(str)
+```
+ES6
+```js
+let str = 'NAMES';
+str = [...str];
+//或
+let [...oStr] = str;
+//或
+for (let oStr of str) {
+  console.log(oStr)
+}
+//或
+let oStr = str.split('')
+oStr.forEach(function(item) {
+  console.log(item)
+})
+```
+### 对英文字符串加密
+```js
+let str = 'NAMES';
+
+const map = {N:100,A:80,M:50,E:30,S:20};
+
+let [...oStr] = str
+
+oStr.forEach(function(item, index) {
+  if (str.includes(item)) {
+    oStr[index] = map[item]
+  }
+})
+console.log(oStr.join('')) //10080503020
+```
+`for of`
+```js
+let str = 'NAMES';
+const map = {N:100,A:80,M:50,E:30,S:20};
+let newStr = '';
+for (let word of str) {
+  if (str.includes(word)) newStr += map[word];
+}
+console.log(newStr) //和上面结果一样
+
+```
+### unicode码(点)
+这个`\u1f436`来自`emoji` [有很多unicode表情](https://emojipedia.org)
+js中仅识别 0000 - ffff一个码点 `\u1f436` 这个码点是超出了的，`\u`自动被识别为unicode码点
+ES6提供了一种方式
+`\u{1f436}` 
+
+Unicode是一项标准 包括字符集、编码方案等
+他是为了解决传统的字符编码方案的局限而产生的，为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求
+`codePointAt` 获取字符串中对应字符的一个码点
+```js
+'🐕'.codePointAt(0).toString(16)
+```
+`at` 根据小标取字符 , 低版本浏览器支持，chrome不支持
+```js
+'🐕'.at(0);
+```
+
+# 按位取反
+```js
+~x = -(x + 1);
+
+if (~x.indexOf('proms')) {
+
+}
+```
+替代
+```js
+if (x.indexOf('proms') !== -1) {
+
+}
+```
