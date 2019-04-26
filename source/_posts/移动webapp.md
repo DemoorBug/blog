@@ -2,7 +2,7 @@
 title: 移动webapp
 date: 2019-04-12 18:47:45
 tags: [html5, css3]
-categories: [移动开发]
+categories: 移动开发
 ---
 # 移动webapp开发
 
@@ -162,7 +162,7 @@ screen / print(打印预览，可以做简历) /speech(阅读设备，残障人�
 `max-width, min-width, width`
 设备像素比
 dpr
-`-webkit-device-pixel-ratio: 2,-webkit-max-device-pixel-ratio: 2,-webkit-min-device-pixel-ratio: 2` 
+`-webkit-device-pixel-ratio: 2,-webkit-max-device-pixel-ratio: 2,-webkit-min-device-pixel-ratio: 2`
 
 `orientation`
 有两个值：`landscape` 横屏(宽比高大)，`portrait` 竖屏
@@ -218,7 +218,7 @@ xl: > 1200px
     window.onresize = function() {
       document.documentElement.style.fontSize = (document.documentElement.clientWidth / 375)* 20 +'px';
     }
-    
+
   </script>
 ```
 # 响应开发，因为都懂，就记一些不懂的吧
@@ -250,7 +250,7 @@ js动态去设置font-size
 
   function setRemUnit() {
     var docEl = document.documentElement;
-    var ratio = 18.75; 
+    var ratio = 18.75;
     var viewWidth = docEl.getBoundingClientRect().width || window.innerWidth; //兼容处理
     docEl.style.fontSize = viewWidth / ratio + 'px'
   }
@@ -299,7 +299,7 @@ js动态去设置font-size
 
   function setRemUnit() {
     // var docEl = document.documentElement;
-    var ratio = 18.75; 
+    var ratio = 18.75;
     var viewWidth = docEl.getBoundingClientRect().width || window.innerWidth; //兼容处理
 
     // 设置最大最小值，页面过大后不设置fontSize
@@ -587,4 +587,15 @@ $(document).on('click', ev = function (e) {
 
 ## 按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好
 
-# 实战开始
+# 实战开始,这里就直接上vue项目了
+页面最大宽度640，最小宽度320
+设计稿为 375px 的页面，扩大两倍到750px，做标注，同时等比放大1.5倍生成宽度位1125的设计稿，在这里面切图
+
+项目初始化完毕了，很简单，懒加载，重定向什么的
+
+全局的样式都写在`assets/less`目录，这样便于管理，而且可以全局引入，其他页面都不用引入
+
+## 固定定位，以前的手机兼容不好，最好使用绝对定位来模拟
+
+## 用到的插件统计
+`fastclick` 解决移动端300点击延迟

@@ -1152,6 +1152,80 @@ mode可以控制动画样式，in-out先显示再隐藏，out-in隐藏再显示
         })
     </script>
 ```
+
+填坑：
+用watch监听传入的变化，然后赋值给一个新值，修改此值就可以了，我的天啊，好简单啊，深度拷贝完全不需要，我想多了
+```js
+Vue.component('fade', {
+    props: ['show','index1','index2'],
+    data () {
+      return {
+        hide: this.show
+      }
+    },
+    template: `
+        <transition @before-enter="handleBeforeEnter" @enter="handleEnter" @leave="hanleave">
+            <slot v-if="hide"></slot>
+        </transition>
+    `,
+    computed: {
+      // shows: function () {
+      //   return this.show
+      // }
+    },
+    watch: {
+      show: function () {
+        this.hide = this.show
+      }
+    },
+    methods: {
+        handleBeforeEnter: function(el) {
+            el.style.opacity = 0;
+        },
+        handleEnter: function(el,done) {
+            var this_ = this
+            Velocity(el, {
+                opacity: 1,
+            },{
+                duration: this_.index1,
+                complete: function() {
+                    done()
+                    this_.hide = !this_.hide
+
+                }
+            })
+        },
+        hanleave: function(el,done) {
+            var this_ = this
+            Velocity(el, {
+                opacity: 0
+            },{
+                duration: this_.index2,
+                complete: function() {
+                    done()
+                    this_.hide = !this_.hide
+                }
+            })
+        }
+
+    }
+})
+var vm = new Vue({
+    el: '#root',
+    data: {
+        showa: false,
+        indexnames1: '1000',
+        indexnames2: '1000'
+    },
+    methods: {
+        handclick: function() {
+            cas: '2'
+            this.showa = !this.showa
+        }
+    }
+    
+})
+```
 ## 6-1 项目环境准备
 安装node什么的，我自然都会了，还有git，我用的是桌面端，有机会用用字符的
 

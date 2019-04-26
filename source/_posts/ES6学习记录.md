@@ -749,6 +749,124 @@ Unicode是一项标准 包括字符集、编码方案等
 '🐕'.at(0);
 ```
 
+## 正则扩展
+`u` 修饰符，识别`unicode`
+`y` 修饰符,粘连修饰符
+
+## 数值扩展
+**新的进制表示法**
+8进制 规定以`0o`或`0O`打头  octonary
+2进制 规定以`0b`或`0B`打头  binary
+以前的二进制写法`016`,现在的写法`0o16`;
+
+**新的方法与安全数？**
+`Number.parseInf`  
+`Number.parseFloat`
+以前是挂载在window上，现在挂载到Number上了
+`isNaN` 判断一个值是否为NaN；
+`console.log(Number.isNaN(NaN)) //true`
+```js
+//自己实现一个NaN
+function isNa(value) {
+  return value !== value; //NaN === NaN 返回false
+}
+```
+`isFinite` 判断一个值是否有限
+```js
+console.log(Number.isFinite(Infinity))
+console.log(Number.isFinite(2 / 0))
+console.log(Number.isFinite(1234))
+```
+`Number.MAX_SAFE_INTEGER` 最大值常量, `Math.pow(2, 53) - 1` `2**53 -1`
+`Number.MIN_SAFE_INTEGER` 最小值常量
+`Num.isSafeInteger()` 安全数 ，是否在最大最小值之间
+## 函数扩展
+函数传参和解构赋值结合
+```js
+function People({ name, age = 18 } = {}) {
+  console.log(name, age)
+}
+People()
+```
+### 箭头函数
+```js
+const pop = arr => void arr.pop();
+```
+`void` 可以让这句话不返回或undefined
+
+## 对象扩展
+属性名表达式
+```js
+let key = 'is'
+let obj = {
+  [`${key}obj`]: false
+}
+//中括号代表表达式
+```
+`Object.is()` 相应的严格`===`
+```js
+//不一样的地方
+console.log(Object(-0, +0)); //false
+console.log(-0 === +0); //true
+console.log(Object(NaN, NaN)); //true
+console.log(NaN === NaN); //false
+
+```
+
+`Object.assign()`  和扩展运算符合并的是一样的，浅拷贝
+```js
+Object.assign({a: 1}, {b: 2}); 
+```
+
+`Object.keys()`  拿到对象的key
+`Object.values()` 拿到对象的值
+`Object.entries()` 拿到对象的组，以上及当前都返回的数组
+结合以上的方法可以便利对象
+```js
+obj = {
+  a: 1,
+  b: 2,
+  c: 3
+}
+for (let [key, value] of Object.entries(obj)) {
+  console.log(key, value)
+}
+```
+`__proto__` 调试的时候可以用，编码的时候不要用
+`Object.setPrototypeOf(obj, obj2)`  运行的过程中修改原型，性能低下，建议不要使用
+`Object.create()` 创建的时候指定原型
+`Object.getPrototypeOf()` 获取原型
+```js
+//推荐使用Object.setPrototypeOf 和 Object.getPrototypeOf 操作原型
+let obj1 = {
+  a: 1
+}
+let obj = Object.create(obj1);
+console.log(Object.getPrototypeOf(obj) === obj.__proto__)
+```
+`super` 关键字，可以访问对象的原型
+## 数组的扩展
+`Set()` 新的数据类型，可以去重
+```js
+var set = new Set([1, 2, 2, 3])
+console.log([...set])
+```
+`find` 如果查到就返回便利到的值
+`findIndex` 同理，不过返回的是下标，和indexOf区别就是indexOf不能识别NaN
+
+# 取余
+`%`
+```js
+5 % 2 // => 1 具体逻辑是这样的，5 / 2 = 2 余 1 
+4 % 2 // => 0 逻辑, 4 / 2 = 0
+```
+
+
+# 幂运算
+```js
+let a = 2 ** 10; //1024
+```
+
 # 按位取反
 ```js
 ~x = -(x + 1);
@@ -763,3 +881,40 @@ if (x.indexOf('proms') !== -1) {
 
 }
 ```
+
+# Promise
+Promise对象用于表示一个异步操作的最终状态(完成或失败)以及其返回值。 ---MDN
+
+`then()` 接收两个匿名函数，一个代表成功，一个代表失败
+`catch()` 失败的处理。但是没有全局捕获错误的办法，只可以捕获上一次错误
+`finally` 不论成功失败，finally中的内容一定会执行
+
+# class
+
+
+# 测试不会的问题记录
+7测试图，正则 新增修饰符y的用法及 exec()方法使用
+16测试图，大意了，可以用`function foo({x, y=0} = {}) {}; foo();` 这样调用就可以不出错了
+22测试图
+25测试图
+28测试图
+
+# Vue 
+## Vue的 按需加载
+```js
+() => import(/* webpackChunkName: "about" */ './views/About.vue')
+```
+路由的按需加载，只有用到的时候才会加载，我的天
+
+## 页面的跳转，比原生的浏览器跳转好
+```js
+scrollBehavior (to, from, savedPosition) {
+  console.log('savedPosition', savedPosition)
+  if (savedPosition) {
+    return savedPosition
+  } else {
+    return { x: 0, y: 0 }
+  }
+}
+```
+## HTML5 History 模式
