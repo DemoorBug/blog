@@ -125,7 +125,7 @@ console.log(window.devicePixelRatio);
 # 媒体查询
 
 ```css
-@media screen and (min-width: 900px)
+@media screen and (min-width: 900px) {}
 ```
 `screen` 屏幕类型，除了屏幕打印设备和阅读设备
 
@@ -133,12 +133,12 @@ console.log(window.devicePixelRatio);
 all(default)
 screen / print(打印预览，可以做简历) /speech(阅读设备，残障人士使用)
 ```css
-@media all and (min-width=900px)
+@media all and (min-width=900px) {}
 ```
 
 `all`因为是默认值，可以不写
 ```css
-@media (min-width=900px)
+@media (min-width=900px) {}
 ```
 ## 媒体查询中的逻辑
 
@@ -148,13 +148,13 @@ screen / print(打印预览，可以做简历) /speech(阅读设备，残障人�
 
 或写法：
 ```css
-@media screen and (min-width=1024px), (max-width:900px)
+@media screen and (min-width=1024px), (max-width:900px) {}
 ```
 值得注意的是，或(,)之后的算是个体，也就是说，我们使用了默认值all的写法
 
 非写法：
 ```css
-@media not screen and (min-width=1024px), (max-width:900px)
+@media not screen and (min-width=1024px), (max-width:900px) {}
 ```
 同理，只是前半段，或之后算一个整体
 
@@ -178,15 +178,15 @@ xl: > 1200px
 
 ```css
 
-@medio screen and (max-width=576px)
+@medio screen and (max-width=576px) {}
 
-@medio screen and (min-width=577px) and (max=768px)
+@medio screen and (min-width=577px) and (max=768px) {}
 
-@medio screen and (min-width=769px) and (max=992px)
+@medio screen and (min-width=769px) and (max=992px) {}
 
-@medio screen and (min-width=993px) and (max=1200px)
+@medio screen and (min-width=993px) and (max=1200px) {}
 
-@medio screen and (min-width=1201px)
+@medio screen and (min-width=1201px) {}
 ```
 
 # 移动端单位问题
@@ -556,6 +556,7 @@ css3使用`transition`, `animation`
 
 `canvas` 要配合`setTimeout`,`setInterval`做动画，不能用css3，而DOM动画，就可以用提到的所有
 ## 水平居中和垂直居中
+```html
 水平居中：
 `text-align: center` 有固定宽度就可以使用
 `margin: 0 auto` 针对块级容器，有固定宽度
@@ -568,6 +569,7 @@ css3使用`transition`, `animation`
 
 ## Zepto
 这里面虽然都很基础，和jQuery都差不多，不过还是能学到东西的，比如`window.onload`和`$(document).ready(function (){})`的区别，前者是页面全部加载完成，包括图片，js，css，dom,后者则是dom加载完毕，肯定是dom加载完毕更高效啊
+```
 
 还有事件的命名空间，
 ```js
@@ -595,7 +597,139 @@ $(document).on('click', ev = function (e) {
 
 全局的样式都写在`assets/less`目录，这样便于管理，而且可以全局引入，其他页面都不用引入
 
-## 固定定位，以前的手机兼容不好，最好使用绝对定位来模拟
+**固定定位，以前的手机兼容不好，最好使用绝对定位来模拟**
+
+## 目录结构
+src/
+-- assets 全局文件
+-- base 基础组件
+-- components 公共组件
+-- views 所有页面放的位置，一个文件夹代表一块，index为默认出口
+-- App.vue
+-- main.js
+-- router.js
+-- store.js
+**基础组件和业务逻辑毫无瓜葛**
+也就是说base里面的组件都可以扩展，slot插槽
+
 
 ## 用到的插件统计
 `fastclick` 解决移动端300点击延迟
+`Vue-Awesome-Swiper` vue 封装的 swiper插件，轮播
+
+
+
+## 开发vue项目用到的技巧
+header 部分公共化
+使用slot插槽，$slots判断是否使用了该插槽，没使用就隐藏
+这里遇到个问题，定位问题如果前面元素不显示就会导致，最后一个元素无法右对齐，所以呢，有两种方案，第一种就是把第一个元素不用v-if判断，一直显示，另一种是用css3选择器完成，不过我觉得没必要，用到的选择器~ , 不过呢，我觉得这种方法很笨，不会用
+```html
+<!-- navbar.vue -->
+<div class="mine-navbar">
+  <div class="mine-navbar-left" v-if="$slots.left">
+    <slot name="left"></slot>
+  </div>
+  <div class="mine-navbar-center" v-if="$slots.center">
+    <slot name="center"></slot>
+  </div>
+  <div class="mine-navbar-right" v-if="$slots.right">
+    <slot name="right"></slot>
+  </div>
+  <h1 class="mine-navbar-title" v-if="title">
+    <span class="mine-navbar-text ellipsis" v-text="title"></span>
+  </h1>
+</div>
+
+<style lang="less" scoped>
+@import '~assets/less/_mixins.less';
+
+.mine-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: @navbar-height;
+  background-color: #fff;
+  &-left {
+    margin-left: 20/@r;
+    ~ .mine-navbar-right {  //新增代码
+      position: static;
+    }
+  }
+  &-center {
+    flex: 1;
+    margin: 0 20/@r;
+
+    ~ .mine-navbar-right {  //新增代码
+      position: static;
+    }
+  }
+  &-right {
+    position: absolute;   //新增代码
+    right: 0;
+    display: flex;    //用了绝对定位父元素的flex就会失效，所以要搞这个
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    margin-right: 20/@r;
+  }
+  &-title {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  &-text {
+    .ellipsis();
+    font-size: 18px;
+    width: 100%;
+    line-height: 1.5;
+
+  }
+}
+
+</style>
+```
+使用插槽
+
+```html
+<template>
+  <!-- 差点忘记了，这里不能用:title.加：后面调用的就是表达式了 -->
+  <me-navbar title="哈哈哈">
+    <i class="iconfont" slot="left"></i>
+    <div slot="center"></div>
+    <i class="iconfont" slot="right"></i>
+  </me-navbar>
+</template>
+
+<script>
+import MeNavbar from 'navbar.vue'
+
+export defult {
+  name: 'homeHeader',
+  components: {
+    MeNavbar
+  }
+}
+
+</script>
+```
+### props 接收效验
+不过我觉得把，我自己写好像没必要效验，又不是团队开发，就算是团队开发，这个东西不给别人用就没必要效验？估计是我现在还没有接触到，所以还是写一下吧，逼格？嗯，目前为止
+```js
+props: {
+  direction: {
+    type: String,
+    default: 'horizontal',
+    validator (value) { // value就可以接收到传入的参数
+      // 如果返回true代表成功效验，flase失败
+      return [
+      'horizontal',
+      'vertical'
+      ].includes(value)
+    }
+  }
+}
+```
