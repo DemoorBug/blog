@@ -15,11 +15,11 @@ kcptun 待验证
 
 ## 2. 开启bbr
 - 下载内核
-  - `wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.14.12/linux-image-4.14.12-041412-generic_4.14.12-041412.201801051649_amd64.deb` 
+  - `wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.14.12/linux-image-4.14.12-041412-generic_4.14.12-041412.201801051649_amd64.deb`
 - 内核安装
-  -`dpkg -i linux-image-4.*.deb` 
+  -`dpkg -i linux-image-4.*.deb`
 - 查看内核版本
-`dpkg -l | grep linux-image` 
+`dpkg -l | grep linux-image`
 - 删除旧内核,除4.*版本外全部删除即可
   - `apt-get purge 旧内核`
 - 更新grub系统引导文件并重启
@@ -178,3 +178,21 @@ sudo ssserver -c /etc/shadowsocks.json -d start
 
 
 ./server_linux_amd64 -t ":31241" -l ":4001" --key "@a1004041672A.@" --log 4001.log -->
+
+# 问题
+python 16出现的问题
+## Command "python setup.py egg_info" failed with error code 问题
+```bash
+pip install setuptools
+pip install distribute
+```
+我用这条命令之前还用了很多命令
+```bash
+apt-get remove python*
+
+apt-get install python python-pip
+// 如果pip用不了，则可以这样用
+python -m pip install 软件名
+// 或
+python -m pip install --upgrade --force pip // 这条命令好像式升级来着
+```

@@ -616,7 +616,8 @@ src/
 ## 用到的插件统计
 `fastclick` 解决移动端300点击延迟
 `Vue-Awesome-Swiper` vue 封装的 swiper插件，轮播
-
+`jsonp` 获取jsonp数据
+`vue-lazyload` 延迟加载
 
 
 ## 开发vue项目用到的技巧
