@@ -20,7 +20,7 @@ kcptun 待验证
   -`dpkg -i linux-image-4.*.deb`
 - 查看内核版本
 `dpkg -l | grep linux-image`
-- 删除旧内核,除4.*版本外全部删除即可
+- 删除旧内核,除4.`*`版本外全部删除即可
   - `apt-get purge 旧内核`
 - 更新grub系统引导文件并重启
   - `update-grub`
@@ -47,8 +47,10 @@ kcptun 待验证
 
 ## 4. 搭建ss
 - 安装
-  - `apt-get install python-pip`
-  - `pip install shadowsocks`
+  - `apt install python3-pip`
+  - `pip3 install setuptools`
+  - `pip3 install distribute`
+  - `pip3 install shadowsocks`
 - 添加ss配置文件
   - vi /etc/shadowsocks.json
 ```
@@ -180,7 +182,7 @@ sudo ssserver -c /etc/shadowsocks.json -d start
 ./server_linux_amd64 -t ":31241" -l ":4001" --key "@a1004041672A.@" --log 4001.log -->
 
 # 问题
-python 16出现的问题
+ubuntu 16出现的问题
 ## Command "python setup.py egg_info" failed with error code 问题
 ```bash
 pip install setuptools
@@ -196,3 +198,10 @@ python -m pip install 软件名
 // 或
 python -m pip install --upgrade --force pip // 这条命令好像式升级来着
 ```
+## pip升级后Import Error:cannot import name main解决方案
+方法1
+```bash
+vi /usr/bin/pip3
+```
+将原来的
+`from pip import main` 改为 `from pip._internal import main`
