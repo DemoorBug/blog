@@ -40,3 +40,28 @@ git branch
 git branch -d index-redux // 删除本地分支
 git push origin --delect index-redux // 删除远程分支
 ```
+
+# 撤销commit
+这样就成功的撤销了你的commit
+注意，仅仅是撤回commit操作，您写的代码仍然保留。
+```bash
+git reset --soft HEAD^
+```
+HEAD^的意思是上一个版本，也可以写成HEAD~1
+如果你进行了2次commit，想都撤回，可以使用HEAD~2
+
+options
+--mixed 
+意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
+
+--soft  
+不删除工作空间改动代码，撤销commit，不撤销git add . 
+
+--hard
+删除工作空间改动代码，撤销commit，撤销git add . 
+
+## 如果是注释写错了可以
+```bash
+git commit --amend // 就会进入编辑模式
+```
