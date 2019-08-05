@@ -516,3 +516,349 @@ function App (props) {
 export default App;
 
 ```
+## 自定义hooks，达到状态逻辑复用
+```js
+import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import './App.css';
+
+
+
+function useFoo(count) {
+  const {height, width} = useSize()
+  return (
+    <h1>{count}, {height}, {width}</h1>
+  )
+}
+
+function useCount() {
+  const [title, setNum] = useState(0)
+  const it = useRef()
+
+  const num = useMemo(() => {
+    return title * 2
+  }, [title]) // 这么写会有报错，不过可以实现
+
+  useEffect(() => {
+    it.current = setInterval(() => { // Ref的第二种使用场景
+      setNum(title => title +1)
+    }, 1000)
+  }, [])
+  useEffect(() => {
+    if (num >= 10) {
+      clearInterval(it.current)
+    }
+  })
+  return [title, setNum, num]
+}
+
+function useSize() {
+  const [size, setSize] = useState({
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight
+  });
+  // const onResize = () => {
+  //   setSize({
+  //     width: document.documentElement.clientWidth,
+  //     height: document.documentElement.clientHeight
+  //   })
+  // }
+  const onResize = useCallback(() => { // 老师也是一笔带过，没有细讲为什么要用useCallback(), 我也记不起来了。算一个坑吧
+    setSize({
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+    })
+  }, [])
+  useEffect(() => {
+    window.addEventListener('resize', onResize, false)
+    return () => {
+      window.removeEventListener('resize', onResize, false)
+    }
+  }, [onResize])
+
+  return size
+}
+
+function App (props) {
+  const [title, setNum, num] = useCount()
+  const Counter = useFoo(num)
+  const size = useSize()
+  return (
+    <div>
+      <button onClick={() => setNum(title + 1)}>
+        Add,{size.width},{size.height}
+      </button>
+      {Counter}
+    </div>
+  )
+}
+
+export default App;
+```
+## hooks 使用法则
+顶层调用hooks函数：
+不能在循环语句，条件语句或者是嵌套函数中调用hooks函数
+仅在函数组件和自定义hooks函数中，调用hooks函数
+
+## hooks使用问题
+### 生命周期的问题：
+getDerivedStateFromProps 可以用hooks代替
+```js
+class App extends React.component {
+  state = {
+    ovflive: false
+  }
+  static getDerivedStateFromProps(props) {
+    if (props.num > 10) {
+      return {
+        ovflive: true
+      }
+    }
+  }
+}
+
+// hooks写法
+function App (props) {
+  const [num, setNum] = useState(false)
+  if (props.num > 10) {
+    setNum(true) // 不用担心性能问题，这个setNum是在React操作dom之前完成的
+  }
+}
+```
+### shouldComponentUpdate
+hooks 代替 memo
+
+### componentDidMount componentDidUpdate componentWillUnmount
+hooks 写法
+```js
+function App () {
+  useEffect(() => {
+    // componentDidMount
+    return () => {
+      // componentWillUnmount
+    }
+  }, []);
+  let renderCounter = useRef(0)
+  renderCounter.current++;
+
+  useEffect(() => {
+    if (renderCounter > 1) {
+      // componentDidUpdate
+    }
+  })
+}
+```
+
+### getSnapshotBeforeUpdate componentDidCatch getDerivedStateFromError
+目前hooks无法实现，函数组件目前还无法取代类组件
+
+
+
+### 类实例成员如何映射到hooks
+```js
+class App {
+  it = 0;
+}
+
+function App() {
+  const it = useRef(0) // 初始值不能传入函数
+}
+```
+
+### hooks如何获取历史props和state
+了解了了解了，如果不用useRef每次组件重新渲染值都会初始化为0，只有用useRef值才能保持不变，还有就是useEffect的优先级比较低，怎么比喻呢。，写下来把(0表示最先，依次)
+次序有问题，下面做了修改
+```js
+function Counter() {
+  const [count, setCount] = useState(0) // 0
+  const prevCountRef = useRef() // 0
+
+  useEffect(() => { // 2
+    prevCountRef.current = count // 保存上一次的count值，因为ref不受重新渲染的影响，因此可以从下一次渲染中取出count
+  })
+  const prevCount = prevCountRef.current // 1
+
+  return <h1>Now: {count}, before: {prevCount}</h1> // 3
+}
+```
+
+上面的次序有问题，这里重新更改, useEffect 居然这么晚执行
+```js
+function Counter() {
+  const [count, setCount] = useState(0) // 0
+  const prevCountRef = useRef() // 0
+
+  useEffect(() => { // 2
+    prevCountRef.current = count
+  })
+  const prevCount = prevCountRef.current // 0
+
+  return <h1>Now: {count}, before: {prevCount}</h1> // 1
+}
+```
+### 如何强制更新一个hooks组件
+class中有一个forceUpdate, 不过hooks 我们可以用其他方法其代替
+
+```js
+function Counter() {
+  const [count, setCount] = useState(0)
+  const [updater, setUpdater] = useState(0)
+
+  function forceUpdate() {
+    setUpdater(updater => updater + 1) // 更新updater 就是间接更新了hooks组件
+  }
+
+  const prevCountRef = useRef()
+
+  useEffect(() => {
+    prevCountRef.current = count
+  })
+  const prevCount = prevCountRef.current
+
+  return <h1>Now: {count}, before: {prevCount}</h1>
+}
+```
+## Redux
+Redux 三大原则
+单一数据源
+状态不可变
+纯函数修改数据
+
+### 实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src/TodoListSoundCode目录下
+这里放上app.js代码部分，方便查阅
+```js
+import React, { useState, useCallback, useRef, useEffect, memo } from 'react';
+import './App.css';
+
+let idSeq = Date.now()
+
+const Control = memo(function Control(props) {
+  const { addTodo } = props
+  const inputRef = useRef()
+
+  const onSubmit = (e) => { // 没有像任何子组件传递，所以就没有必要包裹callback
+    e.preventDefault()
+
+    const newText = inputRef.current.value.trim()
+
+    if (newText.length === 0) {
+      return
+    }
+    addTodo({
+      id: ++idSeq,
+      text: newText,
+      complate: false
+    })
+
+    inputRef.current.value = ''
+  }
+
+  return (
+    <div className="control">
+      <h1>todos</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          ref={inputRef}
+          className="new-todo"
+          placeholder="what needs to be done?"
+        />
+      </form>
+    </div>
+  )
+})
+
+const TodoItem = memo(function TodoItem(props) {
+  const {
+    todo: {
+      id,
+      text,
+      complate
+    },
+    toggleTodo,
+    removeTodo
+  } = props
+  const onChange = () => {
+    toggleTodo(id)
+  }
+  const onRemove = () => {
+    removeTodo(id)
+  }
+  console.log('0');
+  return (
+    <li className="todo-item">
+      <input
+        type="checkbox"
+        onChange={onChange}
+        checked={complate}
+      />
+      <label className={complate ? 'complate' : ''}>{text},{String(complate)}</label>
+      <button onClick={onRemove}>&#xd7;</button>
+    </li>
+  )
+})
+
+const Todos = memo(function Todos(props) {
+  const { todos, toggleTodo, removeTodo } = props
+  return (
+    <ul>
+      {
+        todos.map(todo => {
+          return <TodoItem
+            key={todo.id}
+            todo={todo}
+            toggleTodo={toggleTodo}
+            removeTodo={removeTodo}
+          />
+        })
+      }
+    </ul>
+  )
+})
+const LS_KEY = '$-todos_';
+function TodoList() {
+  const [todos, setTodos] = useState([])
+
+  const addTodo = useCallback((todo) => {
+    setTodos(todos => [...todos, todo])
+  }, [])
+  const removeTodo = useCallback((id) => {
+    setTodos(todos => todos.filter(todo => {
+      return todo.id !== id
+    }))
+  }, [])
+  const toggleTodo = useCallback((id) => {
+    setTodos(todos => todos.map(todo => {
+      return todo.id === id
+        ? {
+          ...todo,
+          complate: !todo.complate
+        }
+        : todo;
+    }))
+  }, [])
+
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')
+    setTodos(todos)
+  }, [])
+  useEffect(() => {
+    localStorage.setItem(LS_KEY, JSON.stringify(todos))
+  }, [todos])
+  return (
+    <div className="todo-list">
+      <Control
+        addTodo={addTodo}
+      />
+      <Todos
+        removeTodo={removeTodo}
+        toggleTodo={toggleTodo}
+        todos={todos}
+      />
+    </div>
+  )
+}
+
+export default TodoList;
+
+```
