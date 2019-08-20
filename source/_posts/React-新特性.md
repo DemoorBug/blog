@@ -837,7 +837,7 @@ function TodoList() {
     }))
   }, [])
 
-
+  // 下面两个副作用都是来实现本地数据存储的
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')
     setTodos(todos)
@@ -862,3 +862,431 @@ function TodoList() {
 export default TodoList;
 
 ```
+### Dispatch 与 Action
+这不就是我苦苦寻找的vuex里面的解构为什么可以...dispatch的原因了吗，帅呆了奥，原来是这么写一个函数的
+addTodo = (payload) => dispatch(createAdd(payload))
+把传入的对象转换为下面这种格式，然后通过解构的方式传递给组件，帅
+{
+   addTodo: dispatch Function
+}
+```js
+import React, { useState, useCallback, useRef, useEffect, memo } from 'react';
+import './App.css';
+import {
+  createAdd,
+  createSet,
+  createRemove,
+  createToggle
+} from './actions'
+
+let idSeq = Date.now()
+
+// 这不就是我苦苦寻找的vuex里面的解构为什么可以...dispatch的原因了吗，帅呆了奥，原来是这么写一个函数的
+// addTodo = (payload) => dispatch(createAdd(payload))
+// 把传入的对象转换为下面这种格式，然后通过解构的方式传递给组件，帅
+// {
+//    addTodo: dispatch Function
+// }
+function bindActionCreators(actionCreators, dispatch) {
+  const ret = {}
+
+  for (let key in actionCreators) {
+    ret[key] = function (...args) {
+      const actionCreator = actionCreators[key]
+      const action = actionCreator(...args)
+      dispatch(action)
+    }
+  }
+
+  return ret
+}
+
+const Control = memo(function Control(props) {
+  const { addTodos } = props
+  const inputRef = useRef()
+
+  const onSubmit = (e) => { // 没有像任何子组件传递，所以就没有必要包裹callback
+    e.preventDefault()
+
+    const newText = inputRef.current.value.trim()
+
+    if (newText.length === 0) {
+      return
+    }
+    addTodos({
+      id: ++idSeq,
+      text: newText,
+      complate: false
+    })
+    inputRef.current.value = ''
+  }
+
+  return (
+    <div className="control">
+      <h1>todos</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          ref={inputRef}
+          className="new-todo"
+          placeholder="what needs to be done?"
+        />
+      </form>
+    </div>
+  )
+})
+
+const TodoItem = memo(function TodoItem(props) {
+  const {
+    todo: {
+      id,
+      text,
+      complate
+    },
+    remove,
+    toggle
+  } = props
+  const onChange = () => {
+    toggle(id)
+  }
+  const onRemove = () => {
+    remove(id)
+  }
+  return (
+    <li className="todo-item">
+      <input
+        type="checkbox"
+        onChange={onChange}
+        checked={complate}
+      />
+      <label className={complate ? 'complate' : ''}>{text},{String(complate)}</label>
+      <button onClick={onRemove}>&#xd7;</button>
+    </li>
+  )
+})
+
+const Todos = memo(function Todos(props) {
+  const { todos, remove, toggle } = props
+  return (
+    <ul>
+      {
+        todos.map(todo => {
+          return <TodoItem
+            key={todo.id}
+            todo={todo}
+            remove={remove}
+            toggle={toggle}
+          />
+        })
+      }
+    </ul>
+  )
+})
+const LS_KEY = '$-todos_';
+function TodoList() {
+  const [todos, setTodos] = useState([])
+
+  const dispatch = useCallback((action) => {
+    const { type, payload } = action
+    switch (type) {
+      case 'set':
+        setTodos(payload)
+        break;
+      case 'add':
+        setTodos(todos => [...todos, payload])
+        break;
+      case 'remove':
+        setTodos(todos => todos.filter(todo => {
+          return todo.id !== payload
+        }))
+        break;
+      case 'toggle':
+        setTodos(todos => todos.map(todo => {
+          return todo.id === payload
+            ? {
+              ...todo,
+              complate: !todo.complate
+            }
+            : todo;
+        }))
+        break;
+      default:
+    }
+  }, [])
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')
+    dispatch(createSet(todos))
+  }, [dispatch])
+  useEffect(() => {
+    localStorage.setItem(LS_KEY, JSON.stringify(todos))
+  }, [todos])
+  return (
+    <div className="todo-list">
+      <Control
+        {
+          ...bindActionCreators({
+            addTodos: createAdd
+          }, dispatch)
+        }
+      />
+      <Todos
+        {
+          ...bindActionCreators({
+            remove: createRemove,
+            toggle: createToggle
+          }, dispatch)
+        }
+        todos={todos}
+      />
+    </div>
+  )
+}
+
+export default TodoList;
+
+```
+### reducer 这边问题很多啊
+```js
+import React, { useState, useCallback, useRef, useEffect, memo } from 'react';
+import './App.css';
+import {
+  createAdd,
+  createSet,
+  createRemove,
+  createToggle
+} from './actions'
+
+let idSeq = Date.now()
+
+// 这不就是我苦苦寻找的vuex里面的解构为什么可以...dispatch的原因了吗，帅呆了奥，原来是这么写一个函数的
+// addTodo = (payload) => dispatch(createAdd(payload))
+// 把传入的对象转换为下面这种格式，然后通过解构的方式传递给组件，帅
+// {
+//    addTodo: dispatch Function
+// }
+function bindActionCreators(actionCreators, dispatch) {
+  const ret = {}
+
+  for (let key in actionCreators) {
+    ret[key] = function (...args) {
+      const actionCreator = actionCreators[key]
+      const action = actionCreator(...args)
+      dispatch(action)
+    }
+  }
+
+  return ret
+}
+
+const Control = memo(function Control(props) {
+  const { addTodos } = props
+  const inputRef = useRef()
+
+  const onSubmit = (e) => { // 没有像任何子组件传递，所以就没有必要包裹callback
+    e.preventDefault()
+
+    const newText = inputRef.current.value.trim()
+
+    if (newText.length === 0) {
+      return
+    }
+    addTodos({
+      id: ++idSeq,
+      text: newText,
+      complate: false
+    })
+    inputRef.current.value = ''
+  }
+
+  return (
+    <div className="control">
+      <h1>todos</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          ref={inputRef}
+          className="new-todo"
+          placeholder="what needs to be done?"
+          />
+      </form>
+    </div>
+  )
+})
+
+const TodoItem = memo(function TodoItem(props) {
+  const {
+    todo: {
+      id,
+      text,
+      complate
+    },
+    remove,
+    toggle
+  } = props
+  const onChange = () => {
+    toggle(id)
+  }
+  const onRemove = () => {
+    remove(id)
+  }
+  return (
+    <li className="todo-item">
+      <input
+        type="checkbox"
+        onChange={onChange}
+        checked={complate}
+        />
+      <label className={complate ? 'complate' : ''}>{text},{String(complate)}</label>
+      <button onClick={onRemove}>&#xd7;</button>
+    </li>
+  )
+})
+
+const Todos = memo(function Todos(props) {
+  const { todos, remove, toggle } = props
+  return (
+    <ul>
+      {
+        todos.map(todo => {
+          return <TodoItem
+            key={todo.id}
+            todo={todo}
+            remove={remove}
+            toggle={toggle}
+            />
+        })
+      }
+    </ul>
+  )
+})
+
+function reducer(state, action) {
+  const { type, payload } = action;
+  const { todos, incrementCount } = state
+  switch (type) {
+    case 'set':
+      return {
+        ...state,
+        todos: payload,
+        incrementCount: incrementCount + 1
+      }
+    case 'add':
+      return {
+        ...state,
+        todos: [...todos, payload],
+        incrementCount: incrementCount + 1
+      }
+    case 'remove':
+      return {
+        ...state,
+        todos: todos.filter(todo => {
+          return todo.id !== payload
+        })
+      }
+    case 'toggle':
+      return {
+        ...state,
+        todos: todos.map(todo => {
+          return todo.id === payload
+          ? {
+            ...todo,
+            complate: !todo.complate
+          }
+          : todo;
+        })
+      }
+    default:
+      return state
+  }
+}
+
+
+const LS_KEY = '$-todos_';
+function TodoList() {
+  const [todos, setTodos] = useState([])
+  const [incrementCount, setIncrementCount] = useState(0)
+
+  const dispatch = useCallback((action) => {
+    const state = {
+      todos,
+      incrementCount
+    }
+    const setters = {
+      todos: setTodos,
+      incrementCount: setIncrementCount
+    }
+    const newState = reducer(state, action)
+    for (var key in newState) {
+      setters[key](newState[key])
+    }
+  }, [todos, incrementCount])
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')
+    dispatch(createSet(todos))
+  }, [])
+  useEffect(() => {
+    localStorage.setItem(LS_KEY, JSON.stringify(todos))
+  }, [todos])
+  return (
+    <div className="todo-list">
+      <Control
+        {
+          ...bindActionCreators({
+            addTodos: createAdd
+          }, dispatch)
+        }
+        />
+      <Todos
+        {
+          ...bindActionCreators({
+            remove: createRemove,
+            toggle: createToggle
+          }, dispatch)
+        }
+        todos={todos}
+        />
+    </div>
+  )
+}
+
+export default TodoList;
+
+```
+
+以上代码这一块编辑器提示必须依赖dispatch，否则就删除数组，但是依赖后就会出现bug，代码会进入无限循环，莫名其妙，不过老师后面的异步actions好像是可以避免这个问题，但是我没有跟进，直接进入了PWA应用
+```js
+useEffect(() => {
+  const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')
+  dispatch(createSet(todos))
+}, [])
+```
+## PWA (Progressive Web App)
+渐进式网络应用
+### Service Worker 服务器工作线程
+常驻内存运行
+代理网络请求
+依赖HttpS
+
+### Promise
+优化回调地狱
+async/await 语法同步化
+### fetch
+比XMLHttpRequest更简洁
+Promise风格
+### cache API
+支持资源的缓存系统
+缓存(css/scritp/image)
+依赖Service Worker代理网络请求
+### Notification API
+消息推送
+依赖用户授权
+适合在Service Worker中推送
+
+
+## 删除除serviceWorker.js以外的所有文件
+```bash
+ls | grep -v serviceWorker.js | xargs rm
+```
+这句代码也太帅了？从来没用过哎
