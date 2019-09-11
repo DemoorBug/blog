@@ -1290,3 +1290,19 @@ Promise风格
 ls | grep -v serviceWorker.js | xargs rm
 ```
 这句代码也太帅了？从来没用过哎
+
+## 开发中所用到的npm安装的模块总结
+prop-types 校验传入属性值的类型
+具体在common/header.jsx 文件中使用
+classnames 动态类、没有这个的话可以这么写
+没有：
+```jsx
+<div className={['city-selector', (!show) && 'hidden'].filter(Boolean).join(' ')}></div>
+```
+用classnames
+```jsx
+import classnames from 'classnames'
+<div className={classnames('city-selector', {
+  hidden: !show
+  })}></div>
+```
