@@ -1291,6 +1291,35 @@ ls | grep -v serviceWorker.js | xargs rm
 ```
 这句代码也太帅了？从来没用过哎
 
+## js小技巧
+生成26个字母表
+```js
+const alphabet = Array.from(new Array(26), (eie, index) => {
+  return String.fromCharCode(65 + index)
+})
+```
+通过data来进行元素的锚跳转
+```html
+<div data-cate="X">X</div>
+<script>
+document.querySelector(`[data-cate='X']`)
+  .scrollIntoView()
+</script>
+```
+
+## 没有用过的css
+实现的效果就是拖动到顶部的时候会变成固定定位，下一个同样属性的元素划过会替换掉。蛮神奇的
+```css
+{
+  position: sticky;
+}
+```
+
+## 日期组件很顶，以后可以用到估计
+common/DeteSelector.jsx
+
+这个日期选择组件实在是帅的一批，react居然要拆这么细的组件，日期组件原来这么简单，感觉下一次做就不会有所畏惧了，结尾老师说的注意点，什么鬼，听不明白，hide？
+
 ## 开发中所用到的npm安装的模块总结
 prop-types 校验传入属性值的类型
 具体在common/header.jsx 文件中使用
@@ -1305,4 +1334,23 @@ import classnames from 'classnames'
 <div className={classnames('city-selector', {
   hidden: !show
   })}></div>
+```
+day.js 仅2K大小，和Moment.js一样的api，nice啊，虽然没有用过Monment
+
+## webpack 的 MPA 多页网页设置
+9-2 节必须更改config/webpack.config.js下的：
+```js
+output: {
+  /* 142 */ filename: isEnvProduction
+  /* 143 */ ? 'static/js/[name].[chunkhash:8].js'
+  /* 144 */ : isEnvDevelopment && 'static/js/build.js'
+}
+```
+更改为: 'static/js/[name].js'
+```js
+output: {
+  /* 142 */ filename: isEnvProduction
+  /* 143 */ ? 'static/js/[name].[chunkhash:8].js'
+  /* 144 */ : isEnvDevelopment && 'static/js/[name].js'
+}
 ```
