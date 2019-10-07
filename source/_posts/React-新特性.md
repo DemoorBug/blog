@@ -22,6 +22,9 @@ MPA和SPA没有本质区别，SPA需要改造才能变为MPA,大网站都是这�
 定义：Context 提供了一种方式，能够让数据在组件树中传递而不必一级一级手动传递
 API: createContext(defaultValue?)
 解决问题：编程效率
+
+他娘的，这么简单，就是透传，和上面定义的是一个意思，在src/ticket/Candidate.jsx中有用到，很简单、很方便。
+
 App.js:
 ```js
 import React, { createContext } from 'react';
@@ -1291,7 +1294,7 @@ ls | grep -v serviceWorker.js | xargs rm
 ```
 这句代码也太帅了？从来没用过哎
 
-## js小技巧
+## 小技巧
 生成26个字母表
 ```js
 const alphabet = Array.from(new Array(26), (eie, index) => {
@@ -1306,6 +1309,52 @@ document.querySelector(`[data-cate='X']`)
   .scrollIntoView()
 </script>
 ```
+传参如果是对象可以解构：
+```jsx
+const bash = {
+  name,
+  bash,
+  hello
+}
+
+return (
+  <div {...bash}></div>
+)
+```
+
+icon小图标的&#x在js中要替换为'\u'
+
+delete操作符居然可以这样用-
+in运算符：
+src/query/Bottom.jsx
+```js
+const toggle = useCallback((value) => {
+  const newCheckedMap = {...checkedMap}
+  if (value in checkedMap) {
+    delete newCheckedMap[value]
+  } else {
+    newCheckedMap[value] = true
+  }
+  update(newCheckedMap)
+}, [checkedMap, update])
+```
+
+今天用到了`Object.assign()`
+目前根据代码推断，作用应该等同于:
+```js
+const data = {name:1}
+
+data = {...data, msg: "helo"}
+
+// 等同于
+
+Object.assign(data, {
+  msg: "helo"
+})
+
+```
+
+Candidate.jsx中还写了个选项卡，很简单，很简单
 
 ## 没有用过的css
 实现的效果就是拖动到顶部的时候会变成固定定位，下一个同样属性的元素划过会替换掉。蛮神奇的
@@ -1336,6 +1385,32 @@ import classnames from 'classnames'
   })}></div>
 ```
 day.js 仅2K大小，和Moment.js一样的api，nice啊，虽然没有用过Monment
+
+ruijs
+解析用get提交的url数据，这个居然也要库，怎么什么都要库啊，自己写不行吗。
+```js
+import URI from 'urijs'
+const {dispatch} = props
+useEffect(() => {
+    const queries = URI.parseQuery(window.location.search)
+
+    const {
+      from,
+      to,
+      date,
+      highSpeed
+    } = queries
+    dispatch(setFrom(from))
+    dispatch(setTo(to))
+    dispatch(setDeparDate(h0(dayjs(date).valueOf())))
+    dispatch(setHighSpeed(highSpeed === 'true'))
+}, [])
+```
+left-pad 这个模块就11行代码，我真的服了，现在有现成的支持,String.padStart()
+这几集的视频没了，只能自己看源码，还行吧，挺简单的，里面操作滚动条技巧还挺厉害的，掌握原理了，我自己写还真写不出来，艾，基础太薄弱了。fuck
+```ts
+String(index: number).padStart(2, '0')
+```
 
 ## webpack 的 MPA 多页网页设置
 9-2 节必须更改config/webpack.config.js下的：
