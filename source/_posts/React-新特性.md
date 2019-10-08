@@ -1295,13 +1295,13 @@ ls | grep -v serviceWorker.js | xargs rm
 这句代码也太帅了？从来没用过哎
 
 ## 小技巧
-生成26个字母表
+**生成26个字母表**
 ```js
 const alphabet = Array.from(new Array(26), (eie, index) => {
   return String.fromCharCode(65 + index)
 })
 ```
-通过data来进行元素的锚跳转
+**通过data来进行元素的锚跳转**
 ```html
 <div data-cate="X">X</div>
 <script>
@@ -1309,7 +1309,7 @@ document.querySelector(`[data-cate='X']`)
   .scrollIntoView()
 </script>
 ```
-传参如果是对象可以解构：
+**传参如果是对象可以解构：**
 ```jsx
 const bash = {
   name,
@@ -1322,9 +1322,9 @@ return (
 )
 ```
 
-icon小图标的&#x在js中要替换为'\u'
+**icon小图标的&#x在js中要替换为'\u'**
 
-delete操作符居然可以这样用-
+**delete操作符居然可以这样用-**
 in运算符：
 src/query/Bottom.jsx
 ```js
@@ -1339,7 +1339,7 @@ const toggle = useCallback((value) => {
 }, [checkedMap, update])
 ```
 
-今天用到了`Object.assign()`
+**今天用到了`Object.assign()`**
 目前根据代码推断，作用应该等同于:
 ```js
 const data = {name:1}
@@ -1354,10 +1354,10 @@ Object.assign(data, {
 
 ```
 
-Candidate.jsx中还写了个选项卡，很简单，很简单
+**Candidate.jsx中还写了个选项卡，很简单，很简单**
 
 ## 没有用过的css
-实现的效果就是拖动到顶部的时候会变成固定定位，下一个同样属性的元素划过会替换掉。蛮神奇的
+**实现的效果就是拖动到顶部的时候会变成固定定位，下一个同样属性的元素划过会替换掉。蛮神奇的**
 ```css
 {
   position: sticky;
@@ -1370,23 +1370,23 @@ common/DeteSelector.jsx
 这个日期选择组件实在是帅的一批，react居然要拆这么细的组件，日期组件原来这么简单，感觉下一次做就不会有所畏惧了，结尾老师说的注意点，什么鬼，听不明白，hide？
 
 ## 开发中所用到的npm安装的模块总结
-prop-types 校验传入属性值的类型
+**prop-types 校验传入属性值的类型**
 具体在common/header.jsx 文件中使用
 classnames 动态类、没有这个的话可以这么写
 没有：
 ```jsx
 <div className={['city-selector', (!show) && 'hidden'].filter(Boolean).join(' ')}></div>
 ```
-用classnames
+**用classnames**
 ```jsx
 import classnames from 'classnames'
 <div className={classnames('city-selector', {
   hidden: !show
   })}></div>
 ```
-day.js 仅2K大小，和Moment.js一样的api，nice啊，虽然没有用过Monment
+**day.js** 仅2K大小，和Moment.js一样的api，nice啊，虽然没有用过Monment
 
-ruijs
+**urijs**
 解析用get提交的url数据，这个居然也要库，怎么什么都要库啊，自己写不行吗。
 ```js
 import URI from 'urijs'
@@ -1406,7 +1406,7 @@ useEffect(() => {
     dispatch(setHighSpeed(highSpeed === 'true'))
 }, [])
 ```
-left-pad 这个模块就11行代码，我真的服了，现在有现成的支持,String.padStart()
+**left-pad** 这个模块就11行代码，我真的服了，现在有现成的支持,String.padStart()
 这几集的视频没了，只能自己看源码，还行吧，挺简单的，里面操作滚动条技巧还挺厉害的，掌握原理了，我自己写还真写不出来，艾，基础太薄弱了。fuck
 ```ts
 String(index: number).padStart(2, '0')
@@ -1428,4 +1428,26 @@ output: {
   /* 143 */ ? 'static/js/[name].[chunkhash:8].js'
   /* 144 */ : isEnvDevelopment && 'static/js/[name].js'
 }
+```
+## 应该补充的知识
+**给组件传自定义dom**
+这块还不知道其他用法，比如传多个dom。
+````jsx
+function Detail(props) {
+  return (
+    <div>
+		{ props.children }
+    </div>
+  )
+}
+
+function App(){
+  return (
+    <Detail>
+      // 这里可以自己定义
+      <span></span>
+    </Detail>
+  )
+}
+
 ```
