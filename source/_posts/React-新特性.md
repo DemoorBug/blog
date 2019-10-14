@@ -1363,6 +1363,8 @@ Object.assign(data, {
   position: sticky;
 }
 ```
+**readonly**
+input的一个属性，加了后不能填写，初步理解
 
 ## 日期组件很顶，以后可以用到估计
 common/DeteSelector.jsx
@@ -1451,3 +1453,28 @@ function App(){
 }
 
 ```
+**for of 以及 object.keys() 的使用**
+以前还专门记过，他娘的，怎么就忘了呢
+src/order/actions.js
+```js
+const passengers = [
+  {id: 0, ticketType: 'abult'},
+  {id: 1, child: ''}
+]
+for (let passenger of passengers) {
+  const keys = Object.keys(passenger)
+  for (let key of keys) {
+    if (!passenger[key]) {
+      return
+    }
+  }
+  if (passenger.ticketType === 'adult') {
+    adultFound = passenger.id
+  }
+}
+```
+# 结束语
+总体来说还是可以的，hooks比想象的要简单要好用的多
+
+12.1 代码规范和格式化，git提交格式化，使用Prettier增强eslist的格式化能力
+12.2 代码部署以及PWA应用所需的，serviceWorker.js 的应用
