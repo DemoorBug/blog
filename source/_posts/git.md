@@ -65,3 +65,8 @@ options
 ```bash
 git commit --amend // 就会进入编辑模式
 ```
+
+# 拉取线上代码
+```bash
+git clone git@github.com:DemoorBug/pubg-api.git // 项目地址 
+```

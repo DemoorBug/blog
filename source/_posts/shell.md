@@ -100,7 +100,7 @@ categories: [github项目笔记]
 
 > 光盘设备文件名 /dev/sr0  
 
-> mount -t iso9660 /dev/sr0 /mnt/cdrom/ 挂载光盘 
+> mount -t iso9660 /dev/sr0 /mnt/cdrom/ 挂载光盘
 
 > 按i, I, o, O, a, A, r, R任一字符进入输入模式  
 
@@ -111,7 +111,7 @@ categories: [github项目笔记]
 预定义变量
 位置参数变量
 
-source 配置文件 
+source 配置文件
 或
 . 配置文件
 修改配置文件后，必须注销重新登录才能生效
@@ -184,7 +184,7 @@ finger imooc 显示用户详细资料
 
 ##swap
 ```
-fdisk /dev/sdb 
+fdisk /dev/sdb
 p
 t
 磁盘1-n
@@ -325,7 +325,7 @@ ctrl+r 在历史命令中搜索
 
 ## 环境变量
 ```
-vi ~/.bashrc 
+vi ~/.bashrc
 #写入环境变量的配置文件
 source .bashrc 直接生效，或者重新登录
 unalias cp 临时删除
@@ -340,7 +340,7 @@ vi hello.sh
 echo -e "\e[1;34m 天上掉下个林妹妹 \e[0m"
 ```
 
-## shell 
+## shell
 ```
 vi /etc/shells  可以查看当前Bash与sh兼容
 sh 进入 sh shell
@@ -350,7 +350,7 @@ csh 进入 csh shell
 ```
 
 
-##mount -o指定一些操作 
+##mount -o指定一些操作
 ```
 atime/noatime   更新访问时间/不更新访问时间。访问分区文件时,是否更新文件的访问时间,默认更新
 async/sync  异步/同步，默认为异步
@@ -369,12 +369,12 @@ grpquota 写入代表文件系统支持组磁盘配额,默认不支持
 ## find ，-exec
 ```
 
- 
+
 > find /var/log/ -mtime +10 查找10天前修改的文件
 > -10 10天内修改的文件
 > 10 10天当天修改的文件
 > +10 10天前修改的文件
-> 
+>
 >  atime 文件访问时间
 >  ctime 改变文件属性
 >  mtime 修改文件内容
@@ -384,15 +384,15 @@ grpquota 写入代表文件系统支持组磁盘配额,默认不支持
 > -25k 小于25KB的文件
 > 25K 等于25KB的文件
 > + 大于 25KB的文件
-> 
+>
 > find . -inum 262422
-> 查找I节点是262422的文件 
-> 
+> 查找I节点是262422的文件
+>
 > find /etc -size +20k -a -size -50k
 > #查找/etc目录下，大于20KB并且小于50KB的文件
-> -a and 逻辑于 
-> -o or 逻辑或 
-> 
+> -a and 逻辑于
+> -o or 逻辑或
+>
 > find /etc -size +20k -a -size -50k -exec ls -lh {} \;
 ```
 
@@ -407,7 +407,7 @@ grpquota 写入代表文件系统支持组磁盘配额,默认不支持
 /root 超级管理员目录
 /lib 函数库
 /mis /media /mnt 挂载U盘 空目录，所有存储设备都要挂着后使用，挂载就是分配盘符，用着作为外接存储的盘符 /mnt挂U盘 移动硬盘，老师在/mnt目录下创建CDrm 挂载光盘，同时创建mst挂载U盘
-*** 为什么呢 因为老式的linux 没有其他两个目录 /mis挂载磁带机 /media 挂载光盘  *** 
+*** 为什么呢 因为老式的linux 没有其他两个目录 /mis挂载磁带机 /media 挂载光盘  ***
 
 /proc /sys 不能直接操作，保存的是内存的挂载点，直接写在内存当中，无法写入数据
 /tmp 临时目录
@@ -465,8 +465,15 @@ scp -r 【服务器用户名】@【服务器地址】：【服务器上存放�
 sup -r root@192.168.1.1:/data/wwwroot/default/test /Users/mac_pc/Desktop
 
 
---------------------- 
-作者：小猪熊121 
-来源：CSDN 
-原文：https://blog.csdn.net/aa294194253/article/details/50054723 
+---------------------
+作者：小猪熊121
+来源：CSDN
+原文：https://blog.csdn.net/aa294194253/article/details/50054723
 版权声明：本文为博主原创文章，转载请附上博文链接！
+
+## 查看进程，杀死进程
+```bash
+ps -aux // 查看进程
+kill -s 9 PID // 上面的命令可以查出PID
+
+```
