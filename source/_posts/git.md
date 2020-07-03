@@ -4,7 +4,8 @@ date: 2019-03-03 12:39:56
 tags:
 categories:
 ---
-# 新电脑创建后快速使用git
+
+<!-- # 新电脑创建后快速使用git
 博客怎么没了？
 ```bash
 cd ~ //切换到根目录
@@ -14,7 +15,7 @@ cat id_rsa.pub // 将打印出来的复制到 github.com>settings>SSH and GPG Ke
 key
 git config --global user.name "DEBUG"
 git config --global user.email  "demoorbug@gmail.com"
-```
+``` -->
 
 
 # 创建项目
