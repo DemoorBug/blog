@@ -5,7 +5,7 @@ tags:
 categories:
 ---
 
-<!-- # 新电脑创建后快速使用git
+# 新电脑创建后快速使用git
 博客怎么没了？
 ```bash
 cd ~ //切换到根目录
@@ -15,8 +15,18 @@ cat id_rsa.pub // 将打印出来的复制到 github.com>settings>SSH and GPG Ke
 key
 git config --global user.name "DEBUG"
 git config --global user.email  "demoorbug@gmail.com"
-``` -->
+```
 
+# 本地项目替换线上项目
+```bash
+//下载压缩包
+解压后进入，更改后
+git add .
+git commit -m 'New'
+git remote add origin git@github.com:DemoorBug/shop.git
+git pull
+git push -u origin master -f // -f force是强制的意思
+```
 
 # 创建项目
 ```bash
