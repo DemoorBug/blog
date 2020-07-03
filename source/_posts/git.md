@@ -4,6 +4,17 @@ date: 2019-03-03 12:39:56
 tags:
 categories:
 ---
+# 新电脑创建后快速使用git
+```bash
+cd ~ //切换到根目录
+ssh-keygen -t rsa -C "demoorbug@gmail.com"
+cd .ssh
+cat id_rsa.pub // 将打印出来的复制到 github.com>settings>SSH and GPG Keys>New SSH
+key
+git config --global user.name "DEBUG"
+git config --global user.email  "demoorbug@gmail.com"
+```
+
 
 # 创建项目
 ```bash
@@ -68,5 +79,5 @@ git commit --amend // 就会进入编辑模式
 
 # 拉取线上代码
 ```bash
-git clone git@github.com:DemoorBug/pubg-api.git // 项目地址 
+git clone git@github.com:DemoorBug/pubg-api.git // 项目地址
 ```
