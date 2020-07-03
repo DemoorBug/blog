@@ -5,6 +5,7 @@ tags:
 categories:
 ---
 # 新电脑创建后快速使用git
+博客怎么没了？
 ```bash
 cd ~ //切换到根目录
 ssh-keygen -t rsa -C "demoorbug@gmail.com"
