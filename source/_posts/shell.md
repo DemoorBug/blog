@@ -477,3 +477,12 @@ ps -aux // 查看进程
 kill -s 9 PID // 上面的命令可以查出PID
 
 ```
+## sudo npm sudo node 报错找不到命令
+```bash
+//原因很简单，没有放到/usr/local/bin目录下，所以我们创建软链接即可
+while node //查看命令所在路径
+while npm
+sudo ln -s /home/demoorbug/.nvm/versions/node/v14.5.0/bin/node /usr/local/bin/
+sudo ln -s /home/demoorbug/.nvm/versions/node/v14.5.0/bin/npm /usr/local/bin/
+//done
+```
