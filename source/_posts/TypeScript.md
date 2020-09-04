@@ -470,6 +470,195 @@ export default Hello
 
 
 
+# 项目开始
+安装命令
+```bash
+npx create-react-app q --TypeScript //未来会弃用，使用下面的命令
+npx create-react-app q --template typescript
+```
+
+安装了classnames 插件，还要安装附属的typescript
+```bash
+yarn add classnames -S
+yarn add @types/classnames -S
+```
+
+代码方面倒是挺简单，样式是直接复制的
+```ts
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+// ButtonHTMLAttributes，AnchorHTMLAttributes button和a元素所有的附加属性，写起来还
+// 会有代码提示, 用起来效果很NICE
+// 此块代码的位置在项目的Button组件里面 q/src/components/Button/button.tsx:24
+// Partial<T> 把里面的属性全部变成可选属性，难道以前的属性不是可选吗？(经测试，以前的属性都是可选的，所以这个算是多余代码，没必要。当然老师的意思估计是了解把)
+// 为什么不直接一行解决？例如：
+// type AllButtonProps = Partial<BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement> & React.AnchorHTMLAttributes<HTMLElement>>
+// 可以一行解决，还要写这么多，估计是好理解，确实
+```
+
+
+**测试**
+测试框架有很多，这次用到的是一个后起之秀`JEST`
+
+create react app 用的就是这个测试工具
+已经内置了jest测试工具
+```bash
+npx jest jest.test.js //用于测试
+npx jest jest.test.js --watch //一直运行，保存一次运行一次
+```
+
+ReactTestUtils 可搭配测试框架使用，比如jest，
+官网推荐使用React Testing Library 也算是后起之秀
+也可以使用Enzyme
+
+create react app 3.0已经内置了React Testing Library了
+
+三种文件会被自动认为是测试文件
+
+- 在__tests__文件夹下面的.js，.ts文件
+- 使用.test.js结尾的文件
+- 使用.spec.js结尾的文件
+
+**jest dom**
+增加新的dom断言,这个库也已经内置了
+
+插曲：设置npm代理(不上代理，总感觉很慢)，同时yarn没有任何设置，但是执行命令也是走的代理，挺奇怪的
+```bash
+npm config set proxy http://127.0.0.1:10809
+npm config set https-proxy http://127.0.0.1:10809
+// 第二句不设置也行，暂时没出问题，但是还是设置上为好
+// 而且要配置,不然sudo执行命令的适合，不会使用代理
+sudo npm config set proxy http://127.0.0.1:10809
+sudo npm config set https-proxy http://127.0.0.1:10809
+// 删除代理
+npm config delete proxy
+npm config delete https-proxy
+// 同理sudo也要删除一遍
+```
+上次看的是jest测试，还是结合react的测试更有趣，让我知道了用处
+```ts
+import React from 'react'
+import { render, fireEvent } from '@testing-library/react'
+import Button, { ButtonProps, ButtonSize, ButtonType}  from './button'
+// jest.fn() 创建出一个被监控的模拟函数
+
+const defaultProps = {
+  onClick: jest.fn()
+}
+// 这里用 ButtonProps 是因为会有代码提示，判断什么类型很方便
+const testProps: ButtonProps = {
+  btnType: ButtonType.Primary,
+  size: ButtonSize.Large,
+  className: 'names',
+}
+
+const disabledProps: ButtonProps = {
+  disabled: true,
+  onClick: jest.fn()
+}
+// 分类测试
+describe('test Button component', () => {
+  // test 简写也可以是it
+  it('should render the correct default button', () => {
+    const wrapper = render(<Button {...defaultProps}>Nice</Button>)
+    const element = wrapper.getByText('Nice') //测试文本
+    expect(element).toBeInTheDocument() //判断组件是否在文档中
+    expect(element.tagName).toEqual('BUTTON') //判断元素是否为BUTTON
+    expect(element).toHaveClass('btn btn-default') //判断class 是否含有btn btn-default
+    fireEvent.click(element) // 模拟点击
+    expect(defaultProps.onClick).toHaveBeenCalled() // 判断是否处罚点击事件
+  })
+  it('should render the correct component based on different props', () => {
+    const wrapper = render(<Button {...testProps}>Nice</Button>)
+    const element = wrapper.getByText('Nice')
+    expect(element).toBeInTheDocument()
+    expect(element).toHaveClass('btn-primary btn-lg names')
+  })
+  it('should render a link when btnType equals link and href is provided', () => {
+    const wrapper = render(<Button btnType={ButtonType.Link} href="http//www.google.com">Link</Button>)
+    const element = wrapper.getByText('Link')
+    expect(element).toBeInTheDocument()
+    expect(element.tagName).toEqual('A')
+    expect(element).toHaveClass('btn btn-link')
+  })
+  it('should render disabled button when disabled set to true', () => {
+    const wrapper = render(<Button {...disabledProps}>Nice</Button>)
+    const element = wrapper.getByText('Nice') as HTMLButtonElement // 返回一个HTMLElement，但是我们要用到disabled，而且我们认为必返回Button，所以我们可以使用类型断言，把他变成一个button
+    expect(element).toBeInTheDocument()
+    expect(element.disabled).toBeTruthy()
+    fireEvent.click(element)
+    expect(disabledProps.onClick).not.toHaveBeenCalled() // 因为是disabled属性，所以这里用到了not，表示没有被点击
+  })
+})
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ——————————————————————————————————————
 
