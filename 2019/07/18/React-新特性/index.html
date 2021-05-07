@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="react," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目目录待填">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 新特性">
+<meta property="og:url" content="demoorbug.github.io/2019/07/18/React-新特性/index.html">
+<meta property="og:site_name" content="696px">
+<meta property="og:description" content="项目目录待填">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-07T18:17:13.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 新特性">
+<meta name="twitter:description" content="项目目录待填">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="demoorbug.github.io/2019/07/18/React-新特性/"/>
+
+
+
+
+
+  <title>React 新特性 | 696px</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="site-title">696px</span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+             -->
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+             -->
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+             -->
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+             -->
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://demoorbug.github.io" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+             -->
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="demoorbug.github.io/blog/2019/07/18/React-新特性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEBUG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="696px">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React 新特性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T16:47:46+00:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2019/07/18/React-新特性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/07/18/React-新特性/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>项目目录<br>待填</p>
+<a id="more"></a>
+<h1 id="一些知识点"><a href="#一些知识点" class="headerlink" title="一些知识点"></a>一些知识点</h1><h2 id="SPA-MPA"><a href="#SPA-MPA" class="headerlink" title="SPA/MPA"></a>SPA/MPA</h2><p>单页应用/多页应用<br>MPA和SPA没有本质区别，SPA需要改造才能变为MPA,大网站都是这么搞的</p>
+<h2 id="PWA-渐进式网络应用"><a href="#PWA-渐进式网络应用" class="headerlink" title="PWA 渐进式网络应用"></a>PWA 渐进式网络应用</h2><p>浏览器不支持pwa的时候就会退化为普通的应用，所以称之为渐进式网络应用。<br>如果浏览器支持PWA，就可以控制静态资源缓存，即便我们的设备没有联网，也可以用缓存来运行页面，提供了强大的离线访问能力，除了离线访问，还可以优化载入速度，PWA是前端近年来的革命性进化，移动端支持良好。vue官网就用了这种功能</p>
+<h1 id="React-新特性"><a href="#React-新特性" class="headerlink" title="React 新特性"></a>React 新特性</h1><h2 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h2><p>定义：Context 提供了一种方式，能够让数据在组件树中传递而不必一级一级手动传递<br>API: createContext(defaultValue?)<br>解决问题：编程效率</p>
+<p>他娘的，这么简单，就是透传，和上面定义的是一个意思，在src/ticket/Candidate.jsx中有用到，很简单、很方便。</p>
+<p>App.js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; createContext &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BatteryContext = createContext(); <span class="comment">//首先是创建，默认值是找不到Provider时候使用，一般是单元测试会用到</span></span><br><span class="line"><span class="keyword">const</span> OnlineContext = createContext();</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Leaf</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;BatteryContext.Consumer&gt; <span class="comment">//可以无限嵌套，没有先后之分，注意嵌套规则即可</span></span><br><span class="line">        &#123;</span><br><span class="line">          battery =&gt; (</span><br><span class="line">            &lt;OnlineContext.Consumer&gt;</span><br><span class="line">              &#123;</span><br><span class="line">                online =&gt; &lt;h1&gt;Battery: &#123;battery&#125;, online: &#123;online ? '联网':'未联网'&#125;&lt;/h1&gt;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 布尔值可以这样显示 String(online)</span></span><br><span class="line">            &lt;<span class="regexp">/OnlineContext.Consumer&gt;</span></span><br><span class="line"><span class="regexp">          )</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>BatteryContext.Consumer&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Middle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;Leaf/&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    battery: <span class="number">60</span>,</span><br><span class="line">    online: <span class="literal">false</span></span><br><span class="line">  &#125;;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; battery, online &#125; = <span class="keyword">this</span>.state</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;BatteryContext.Provider value=&#123;battery&#125;&gt;</span><br><span class="line">        &lt;OnlineContext.Provider value=&#123;online&#125;&gt;</span><br><span class="line">          &lt;button</span><br><span class="line">            type=<span class="string">"button"</span></span><br><span class="line">            onClick=&#123;() =&gt; <span class="keyword">this</span>.setState(&#123;<span class="attr">battery</span>: battery - <span class="number">1</span>&#125;)&#125;</span><br><span class="line">          &gt;</span><br><span class="line">            Press</span><br><span class="line">          &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">          &lt;button</span></span><br><span class="line"><span class="regexp">            type="button"</span></span><br><span class="line"><span class="regexp">            onClick=&#123;() =&gt; this.setState(&#123;online: !online&#125;)&#125;</span></span><br><span class="line"><span class="regexp">          &gt;</span></span><br><span class="line"><span class="regexp">            Online</span></span><br><span class="line"><span class="regexp">          &lt;/</span>button&gt;</span><br><span class="line">          &lt;Middle /&gt;</span><br><span class="line">        &lt;<span class="regexp">/OnlineContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>BatteryContext.Provider&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ContextType"><a href="#ContextType" class="headerlink" title="ContextType"></a>ContextType</h2><p>结合Context代码使用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Leaf</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> contextType = BatteryContext</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> battery = <span class="keyword">this</span>.context</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;h1&gt;Battery: &#123;battery&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>一个Context确实挺方便，多个是否就无法使用了呢？<br>看到4-4节的时候老师有说，确实是只能指向一个，但是可以用useContext 解决这个问题，写法还会更简单</p>
+<h2 id="lazy"><a href="#lazy" class="headerlink" title="lazy"></a>lazy</h2><p>所有的细节都在注释里面</p>
+<p>app.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; lazy, Suspense &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> About = lazy(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="comment">/* webpackChunkName: "about" */</span> <span class="string">'./About.jsx'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误捕获，如果手动将about.chunk.js 右键Block request URL，就会报错，我们必须手动处理错误。</span></span><br><span class="line"><span class="comment">// 借助 ErrorBoundary，他的实现原理就是用react的生命周期钩子，componentDidCatch</span></span><br><span class="line"><span class="comment">// 不过页面还是会报错，老师的报错位置是控制台，我直接就是页面</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    hasError: <span class="literal">false</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// componentDidCatch () &#123;</span></span><br><span class="line">  <span class="comment">//   this.setState(&#123;</span></span><br><span class="line">  <span class="comment">//     hasError: true</span></span><br><span class="line">  <span class="comment">//   &#125;)</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// ErrorBoundary的另一种写法</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> getDerivedStateFromError () &#123; <span class="comment">// 一旦遇到错误，他就会返回一个新的state数据，并合并到组件的state中</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      hasError: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.hasError) &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;加载错误，可能是网络请求问题&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Suspense fallback=&#123;&lt;div&gt;loading&lt;/</span>div&gt;&#125;&gt;</span><br><span class="line">          &lt;About /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Suspense&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></p>
+<p>About.jsx<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">About</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;About&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default About</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Suspense"><a href="#Suspense" class="headerlink" title="Suspense"></a>Suspense</h2><p>都在上面的代码里面</p>
+<h2 id="memo"><a href="#memo" class="headerlink" title="memo"></a>memo</h2><p>解决父组件更改,子组件重新渲染问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; PureComponent, memo &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// memo 解决方案</span></span><br><span class="line"><span class="keyword">const</span> Foo = memo(<span class="function"><span class="keyword">function</span> <span class="title">Foo</span> (<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(props.name)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种解决方案PureComponent</span></span><br><span class="line"><span class="comment">// 有局限性，只有传入属性的对比，如果内部发生什么变化，就么得用了</span></span><br><span class="line"><span class="comment">// 比如传入对象就算修改，也不会更新视图。还有传入内敛callback(&lt;Foo cb=&#123;() =&gt; &#123;&#125;&#125;&gt;&lt;/Foo&gt;)，这样每次都会渲染</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// callback () &#123;&#125;</span></span><br><span class="line"><span class="comment">// &lt;Foo cb=&#123;this.callback&#125;&gt;&lt;/Foo&gt;</span></span><br><span class="line"><span class="comment">// 解决callback this指向问题 callback = () =&gt; &#123;&#125; ,这就是一个比较完美的写法了，不过又听说箭头函数优化不好。</span></span><br><span class="line"><span class="comment">// class Foo extends PureComponent &#123;</span></span><br><span class="line"><span class="comment">//   render () &#123;</span></span><br><span class="line"><span class="comment">//     console.log(this.props.name)</span></span><br><span class="line"><span class="comment">//     return null;</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调解决方案</span></span><br><span class="line"><span class="comment">// class Foo extends React.Component &#123;</span></span><br><span class="line"><span class="comment">//   //　是否决定重新渲染</span></span><br><span class="line"><span class="comment">//   shouldComponentUpdate (nextProps, nextState) &#123;</span></span><br><span class="line"><span class="comment">//     if (nextProps.name === this.props.name) &#123;</span></span><br><span class="line"><span class="comment">//       return false</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     return true</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">//   render () &#123;</span></span><br><span class="line"><span class="comment">//     console.log(this.props.name)</span></span><br><span class="line"><span class="comment">//     return null;</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    num: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;button onClick=&#123;()=&gt;&#123;<span class="keyword">this</span>.setState(&#123;<span class="attr">num</span>: <span class="keyword">this</span>.state.num + <span class="number">1</span>&#125;)&#125;&#125;&gt;&#123;<span class="keyword">this</span>.state.num&#125;&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Foo name="Foo"&gt;&lt;/</span>Foo&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+<h1 id="State-Hooks"><a href="#State-Hooks" class="headerlink" title="State Hooks"></a>State Hooks</h1><h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p>所有的hooks函数都应该以use开头<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span> (<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> [num, setNum] = useState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'inall'</span>)</span><br><span class="line">    <span class="keyword">return</span> props.defaultCount || <span class="number">0</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setNum(num + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">        &#123;num&#125;</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Effect-Hooks"><a href="#Effect-Hooks" class="headerlink" title="Effect Hooks"></a>Effect Hooks</h2><p>useEffect 代替 componentDidMount, componentDidUpdate, componentWillUnmount<br>灵活运用,就可以达到上面生命周期钩子的效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span> (<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let num, setNum;</span></span><br><span class="line">  <span class="comment">// let Main, setMain;</span></span><br><span class="line">  <span class="keyword">let</span> [title, setNum] = useState(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">let</span> [size, setSize] = useState(&#123;</span><br><span class="line">    width: <span class="built_in">document</span>.documentElement.clientWidth,</span><br><span class="line">    height: <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> onResize = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setSize(&#123;</span><br><span class="line">      width: <span class="built_in">document</span>.documentElement.clientWidth,</span><br><span class="line">      height: <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.title = title</span><br><span class="line">  &#125;)</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, onResize, <span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">//回调清理函数</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'remove'</span>);</span><br><span class="line">      <span class="built_in">window</span>.removeEventListener(<span class="string">'resize'</span>, onResize, <span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, []) <span class="comment">// 数组的每一项都不变,才会阻止里面的内容更改</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setNum(title + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">        &#123;title&#125;, &#123;size.width&#125;, &#123;size.height&#125;</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+<h2 id="Hooks-下的-Context"><a href="#Hooks-下的-Context" class="headerlink" title="Hooks 下的 Context"></a>Hooks 下的 Context</h2><p>可以说是很简单了<br>不要滥用context, 破坏组件独立性</p>
+<p>App.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, createContext , useContext&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BatteryContext = createContext();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> title = useContext(BatteryContext)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;&#123;title&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function App (props) &#123;</span></span><br><span class="line"><span class="regexp">  const [title, setNum] = useState(0)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setNum(title + 1)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        Add</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;</span><br><span class="line">      &lt;BatteryContext.Provider value=&#123;title&#125;&gt;</span><br><span class="line">        &lt;Foo /&gt;</span><br><span class="line">      &lt;<span class="regexp">/BatteryContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></p>
+<h2 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h2><p>这是掘金看到的写法，老师的写法有错，现在用会警告，而且没有视频中的效果<br>纠结了半小时，原来是要配合memo，听课没认真的后果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useMemo &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'渲染'</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div title=&#123;props.title&#125;&gt;&#123;props.title&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function Coo(props) &#123;</span></span><br><span class="line"><span class="regexp">  console.log('Coo');</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;&#123;props.coo&#125;&lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span> (<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [title, setNum] = useState(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> [coo, setCoo] = useState(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> double = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> &lt;Foo title=&#123;title&#125;/&gt;, [title]);</span><br><span class="line">  <span class="keyword">const</span> douCoo = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> &lt;Coo coo=&#123;coo&#125;/&gt;, [coo])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setNum(title + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">        Add</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCoo(coo + 1)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        C</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;</span><br><span class="line">        &#123;double&#125;</span><br><span class="line">        &#123;douCoo&#125;</span><br><span class="line">        &lt;div&gt;&#123;double&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></p>
+<p>配合 memo 使用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useMemo, memo, useCallback &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Foo = memo(<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'渲染'</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;h1 onClick=&#123;props.onClick&#125;&gt;&#123;props.title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function App (props) &#123;</span></span><br><span class="line"><span class="regexp">  const [title, setNum] = useState(0)</span></span><br><span class="line"><span class="regexp">  const [lest, setLest] = useState(0)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const fun = useMemo(() =&gt; &#123; /</span><span class="regexp">/ 如果是一个普通的箭头函数，每次都会是一个新的句柄，只有这样才会传入固定的句柄</span></span><br><span class="line"><span class="regexp">    return () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">      console.log('useMemo');</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 如果useMemo返回的是函数，可以直接用useCallback，来省略顶层的函数</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 这两种写法等价</span></span><br><span class="line"><span class="regexp">  const fun = useCallback(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    console.log('useCallback')</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 更新状态, 依赖的两个变量都要写到状态里面，其实官方说，可以保证每次setState返回的同一个句柄</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ const fun = useCallback(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/   console.log('callback')</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/   setLest((le) =&gt; le + 1)</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ &#125;, [])</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 另一种更新状态写法</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ const fun = useCallback(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/   console.log('callback')</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/   setLest(lest + 1)</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ &#125;, [lest])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const num = useMemo(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    return title * 2</span></span><br><span class="line"><span class="regexp">  &#125;, [title === 3]) /</span><span class="regexp">/ 这么写会有报错，不过可以实现</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setNum(title + 1)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        Add</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;-</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setLest(lest + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">        lest</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Foo onClick=&#123;fun&#125; title=&#123;num&#125;&gt;&lt;/</span>Foo&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><p>class 的时候可以使用 String Ref, Callback Ref, CreateRef<br>hooks 使用 useRef</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, PureComponent,useMemo, useCallback, useRef, useEffect &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为函数无法创建实例，所以必须用class来实现，原来hooks不能完全代替奥</span></span><br><span class="line"><span class="comment">// const Foo = memo(function Foo(props) &#123;</span></span><br><span class="line"><span class="comment">//   console.log('渲染');</span></span><br><span class="line"><span class="comment">//   return (</span></span><br><span class="line"><span class="comment">//     &lt;h1 onClick=&#123;props.onClick&#125;&gt;&#123;props.title&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="comment">//   )</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 用PureComponent代替memo</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">  mems () &#123; <span class="comment">// 第一种使用场景</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.props.title);</span><br><span class="line">  &#125;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'渲染'</span>);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;h1 onClick=&#123;<span class="keyword">this</span>.props.onClick&#125;&gt;&#123;<span class="keyword">this</span>.props.title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function App (props) &#123;</span></span><br><span class="line"><span class="regexp">  const [title, setNum] = useState(0)</span></span><br><span class="line"><span class="regexp">  const [lest, setLest] = useState(0)</span></span><br><span class="line"><span class="regexp">  const contRef= useRef()</span></span><br><span class="line"><span class="regexp">  const it = useRef()</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const fun = useCallback(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    console.log('callback')</span></span><br><span class="line"><span class="regexp">    setLest((le) =&gt; le + 1)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    contRef.current.mems(); /</span><span class="regexp">/ 第一种使用场景</span></span><br><span class="line"><span class="regexp">  &#125;, [contRef])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const num = useMemo(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    return title * 2</span></span><br><span class="line"><span class="regexp">  &#125;, [title]) /</span><span class="regexp">/ 这么写会有报错，不过可以实现</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 如果是在App函数中声明变量，每次都会执行这个变量，就会导致无法清除it,就必须全局创建，state好像也是可以解决</span></span><br><span class="line"><span class="regexp">    it.current = setInterval(() =&gt; &#123; /</span><span class="regexp">/ Ref的第二种使用场景</span></span><br><span class="line"><span class="regexp">      setNum(title =&gt; title +1)</span></span><br><span class="line"><span class="regexp">    &#125;, 1000)</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    if (num &gt;= 10) &#123;</span></span><br><span class="line"><span class="regexp">      clearInterval(it.current)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setNum(title + 1)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        Add</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;-</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setLest(lest + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">        &#123;lest&#125;</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Foo onClick=&#123;fun&#125; ref=&#123;contRef&#125; title=&#123;num&#125;&gt;&lt;/</span>Foo&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+<h2 id="自定义hooks，达到状态逻辑复用"><a href="#自定义hooks，达到状态逻辑复用" class="headerlink" title="自定义hooks，达到状态逻辑复用"></a>自定义hooks，达到状态逻辑复用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useMemo, useRef, useEffect, useCallback &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFoo</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;height, width&#125; = useSize()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;h1&gt;&#123;count&#125;, &#123;height&#125;, &#123;width&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function useCount() &#123;</span></span><br><span class="line"><span class="regexp">  const [title, setNum] = useState(0)</span></span><br><span class="line"><span class="regexp">  const it = useRef()</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const num = useMemo(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    return title * 2</span></span><br><span class="line"><span class="regexp">  &#125;, [title]) /</span><span class="regexp">/ 这么写会有报错，不过可以实现</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    it.current = setInterval(() =&gt; &#123; /</span><span class="regexp">/ Ref的第二种使用场景</span></span><br><span class="line"><span class="regexp">      setNum(title =&gt; title +1)</span></span><br><span class="line"><span class="regexp">    &#125;, 1000)</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    if (num &gt;= 10) &#123;</span></span><br><span class="line"><span class="regexp">      clearInterval(it.current)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;)</span></span><br><span class="line"><span class="regexp">  return [title, setNum, num]</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function useSize() &#123;</span></span><br><span class="line"><span class="regexp">  const [size, setSize] = useState(&#123;</span></span><br><span class="line"><span class="regexp">    width: document.documentElement.clientWidth,</span></span><br><span class="line"><span class="regexp">    height: document.documentElement.clientHeight</span></span><br><span class="line"><span class="regexp">  &#125;);</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ const onResize = () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/   setSize(&#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/     width: document.documentElement.clientWidth,</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/     height: document.documentElement.clientHeight</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/   &#125;)</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ &#125;</span></span><br><span class="line"><span class="regexp">  const onResize = useCallback(() =&gt; &#123; /</span><span class="regexp">/ 老师也是一笔带过，没有细讲为什么要用useCallback(), 我也记不起来了。算一个坑吧</span></span><br><span class="line"><span class="regexp">    setSize(&#123;</span></span><br><span class="line"><span class="regexp">      width: document.documentElement.clientWidth,</span></span><br><span class="line"><span class="regexp">      height: document.documentElement.clientHeight</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    window.addEventListener('resize', onResize, false)</span></span><br><span class="line"><span class="regexp">    return () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">      window.removeEventListener('resize', onResize, false)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;, [onResize])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  return size</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function App (props) &#123;</span></span><br><span class="line"><span class="regexp">  const [title, setNum, num] = useCount()</span></span><br><span class="line"><span class="regexp">  const Counter = useFoo(num)</span></span><br><span class="line"><span class="regexp">  const size = useSize()</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setNum(title + 1)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        Add,&#123;size.width&#125;,&#123;size.height&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;</span><br><span class="line">      &#123;Counter&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+<h2 id="hooks-使用法则"><a href="#hooks-使用法则" class="headerlink" title="hooks 使用法则"></a>hooks 使用法则</h2><p>顶层调用hooks函数：<br>不能在循环语句，条件语句或者是嵌套函数中调用hooks函数<br>仅在函数组件和自定义hooks函数中，调用hooks函数</p>
+<h2 id="hooks使用问题"><a href="#hooks使用问题" class="headerlink" title="hooks使用问题"></a>hooks使用问题</h2><h3 id="生命周期的问题："><a href="#生命周期的问题：" class="headerlink" title="生命周期的问题："></a>生命周期的问题：</h3><p>getDerivedStateFromProps 可以用hooks代替<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    ovflive: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> getDerivedStateFromProps(props) &#123;</span><br><span class="line">    <span class="keyword">if</span> (props.num &gt; <span class="number">10</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ovflive: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hooks写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span> (<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [num, setNum] = useState(<span class="literal">false</span>)</span><br><span class="line">  <span class="keyword">if</span> (props.num &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    setNum(<span class="literal">true</span>) <span class="comment">// 不用担心性能问题，这个setNum是在React操作dom之前完成的</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><p>hooks 代替 memo</p>
+<h3 id="componentDidMount-componentDidUpdate-componentWillUnmount"><a href="#componentDidMount-componentDidUpdate-componentWillUnmount" class="headerlink" title="componentDidMount componentDidUpdate componentWillUnmount"></a>componentDidMount componentDidUpdate componentWillUnmount</h3><p>hooks 写法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// componentDidMount</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// componentWillUnmount</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, []);</span><br><span class="line">  <span class="keyword">let</span> renderCounter = useRef(<span class="number">0</span>)</span><br><span class="line">  renderCounter.current++;</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (renderCounter &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// componentDidUpdate</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="getSnapshotBeforeUpdate-componentDidCatch-getDerivedStateFromError"><a href="#getSnapshotBeforeUpdate-componentDidCatch-getDerivedStateFromError" class="headerlink" title="getSnapshotBeforeUpdate componentDidCatch getDerivedStateFromError"></a>getSnapshotBeforeUpdate componentDidCatch getDerivedStateFromError</h3><p>目前hooks无法实现，函数组件目前还无法取代类组件</p>
+<h3 id="类实例成员如何映射到hooks"><a href="#类实例成员如何映射到hooks" class="headerlink" title="类实例成员如何映射到hooks"></a>类实例成员如何映射到hooks</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">  it = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> it = useRef(<span class="number">0</span>) <span class="comment">// 初始值不能传入函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="hooks如何获取历史props和state"><a href="#hooks如何获取历史props和state" class="headerlink" title="hooks如何获取历史props和state"></a>hooks如何获取历史props和state</h3><p>了解了了解了，如果不用useRef每次组件重新渲染值都会初始化为0，只有用useRef值才能保持不变，还有就是useEffect的优先级比较低，怎么比喻呢。，写下来把(0表示最先，依次)<br>次序有问题，下面做了修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>) <span class="comment">// 0</span></span><br><span class="line">  <span class="keyword">const</span> prevCountRef = useRef() <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// 2</span></span><br><span class="line">    prevCountRef.current = count <span class="comment">// 保存上一次的count值，因为ref不受重新渲染的影响，因此可以从下一次渲染中取出count</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> prevCount = prevCountRef.current <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;Now: &#123;count&#125;, before: &#123;prevCount&#125;&lt;/h1&gt; <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的次序有问题，这里重新更改, useEffect 居然这么晚执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>) <span class="comment">// 0</span></span><br><span class="line">  <span class="keyword">const</span> prevCountRef = useRef() <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// 2</span></span><br><span class="line">    prevCountRef.current = count</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> prevCount = prevCountRef.current <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;Now: &#123;count&#125;, before: &#123;prevCount&#125;&lt;/h1&gt; <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何强制更新一个hooks组件"><a href="#如何强制更新一个hooks组件" class="headerlink" title="如何强制更新一个hooks组件"></a>如何强制更新一个hooks组件</h3><p>class中有一个forceUpdate, 不过hooks 我们可以用其他方法其代替</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> [updater, setUpdater] = useState(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">forceUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setUpdater(<span class="function"><span class="params">updater</span> =&gt;</span> updater + <span class="number">1</span>) <span class="comment">// 更新updater 就是间接更新了hooks组件</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> prevCountRef = useRef()</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    prevCountRef.current = count</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> prevCount = prevCountRef.current</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;Now: &#123;count&#125;, before: &#123;prevCount&#125;&lt;/h1&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><p>Redux 三大原则<br>单一数据源<br>状态不可变<br>纯函数修改数据</p>
+<h3 id="实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src-TodoListSoundCode目录下"><a href="#实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src-TodoListSoundCode目录下" class="headerlink" title="实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src/TodoListSoundCode目录下"></a>实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src/TodoListSoundCode目录下</h3><p>这里放上app.js代码部分，方便查阅<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useCallback, useRef, useEffect, memo &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> idSeq = <span class="built_in">Date</span>.now()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Control = memo(<span class="function"><span class="keyword">function</span> <span class="title">Control</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; addTodo &#125; = props</span><br><span class="line">  <span class="keyword">const</span> inputRef = useRef()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> onSubmit = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123; <span class="comment">// 没有像任何子组件传递，所以就没有必要包裹callback</span></span><br><span class="line">    e.preventDefault()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newText = inputRef.current.value.trim()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (newText.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    addTodo(&#123;</span><br><span class="line">      id: ++idSeq,</span><br><span class="line">      text: newText,</span><br><span class="line">      complate: <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    inputRef.current.value = <span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"control"</span>&gt;</span><br><span class="line">      &lt;h1&gt;todos&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;form onSubmit=&#123;onSubmit&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input</span></span><br><span class="line"><span class="regexp">          type="text"</span></span><br><span class="line"><span class="regexp">          ref=&#123;inputRef&#125;</span></span><br><span class="line"><span class="regexp">          className="new-todo"</span></span><br><span class="line"><span class="regexp">          placeholder="what needs to be done?"</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoItem = memo(<span class="function"><span class="keyword">function</span> <span class="title">TodoItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;</span><br><span class="line">    todo: &#123;</span><br><span class="line">      id,</span><br><span class="line">      text,</span><br><span class="line">      complate</span><br><span class="line">    &#125;,</span><br><span class="line">    toggleTodo,</span><br><span class="line">    removeTodo</span><br><span class="line">  &#125; = props</span><br><span class="line">  <span class="keyword">const</span> onChange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    toggleTodo(id)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> onRemove = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    removeTodo(id)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'0'</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;li className=<span class="string">"todo-item"</span>&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">        type=<span class="string">"checkbox"</span></span><br><span class="line">        onChange=&#123;onChange&#125;</span><br><span class="line">        checked=&#123;complate&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;label className=&#123;complate ? <span class="string">'complate'</span> : <span class="string">''</span>&#125;&gt;&#123;text&#125;,&#123;<span class="built_in">String</span>(complate)&#125;&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;onRemove&#125;&gt;&amp;#xd7;&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Todos = memo(function Todos(props) &#123;</span></span><br><span class="line"><span class="regexp">  const &#123; todos, toggleTodo, removeTodo &#125; = props</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">      &#123;</span></span><br><span class="line"><span class="regexp">        todos.map(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return &lt;TodoItem</span></span><br><span class="line"><span class="regexp">            key=&#123;todo.id&#125;</span></span><br><span class="line"><span class="regexp">            todo=&#123;todo&#125;</span></span><br><span class="line"><span class="regexp">            toggleTodo=&#123;toggleTodo&#125;</span></span><br><span class="line"><span class="regexp">            removeTodo=&#123;removeTodo&#125;</span></span><br><span class="line"><span class="regexp">          /</span>&gt;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp">const LS_KEY = '$-todos_';</span></span><br><span class="line"><span class="regexp">function TodoList() &#123;</span></span><br><span class="line"><span class="regexp">  const [todos, setTodos] = useState([])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const addTodo = useCallback((todo) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    setTodos(todos =&gt; [...todos, todo])</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  const removeTodo = useCallback((id) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    setTodos(todos =&gt; todos.filter(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">      return todo.id !== id</span></span><br><span class="line"><span class="regexp">    &#125;))</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  const toggleTodo = useCallback((id) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    setTodos(todos =&gt; todos.map(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">      return todo.id === id</span></span><br><span class="line"><span class="regexp">        ? &#123;</span></span><br><span class="line"><span class="regexp">          ...todo,</span></span><br><span class="line"><span class="regexp">          complate: !todo.complate</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        : todo;</span></span><br><span class="line"><span class="regexp">    &#125;))</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 下面两个副作用都是来实现本地数据存储的</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')</span></span><br><span class="line"><span class="regexp">    setTodos(todos)</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    localStorage.setItem(LS_KEY, JSON.stringify(todos))</span></span><br><span class="line"><span class="regexp">  &#125;, [todos])</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div className="todo-list"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Control</span></span><br><span class="line"><span class="regexp">        addTodo=&#123;addTodo&#125;</span></span><br><span class="line"><span class="regexp">      /</span>&gt;</span><br><span class="line">      &lt;Todos</span><br><span class="line">        removeTodo=&#123;removeTodo&#125;</span><br><span class="line">        toggleTodo=&#123;toggleTodo&#125;</span><br><span class="line">        todos=&#123;todos&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default TodoList;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Dispatch-与-Action"><a href="#Dispatch-与-Action" class="headerlink" title="Dispatch 与 Action"></a>Dispatch 与 Action</h3><p>这不就是我苦苦寻找的vuex里面的解构为什么可以…dispatch的原因了吗，帅呆了奥，原来是这么写一个函数的<br>addTodo = (payload) =&gt; dispatch(createAdd(payload))<br>把传入的对象转换为下面这种格式，然后通过解构的方式传递给组件，帅<br>{<br>   addTodo: dispatch Function<br>}<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useCallback, useRef, useEffect, memo &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  createAdd,</span><br><span class="line">  createSet,</span><br><span class="line">  createRemove,</span><br><span class="line">  createToggle</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> idSeq = <span class="built_in">Date</span>.now()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这不就是我苦苦寻找的vuex里面的解构为什么可以...dispatch的原因了吗，帅呆了奥，原来是这么写一个函数的</span></span><br><span class="line"><span class="comment">// addTodo = (payload) =&gt; dispatch(createAdd(payload))</span></span><br><span class="line"><span class="comment">// 把传入的对象转换为下面这种格式，然后通过解构的方式传递给组件，帅</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//    addTodo: dispatch Function</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindActionCreators</span>(<span class="params">actionCreators, dispatch</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ret = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> actionCreators) &#123;</span><br><span class="line">    ret[key] = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> actionCreator = actionCreators[key]</span><br><span class="line">      <span class="keyword">const</span> action = actionCreator(...args)</span><br><span class="line">      dispatch(action)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Control = memo(<span class="function"><span class="keyword">function</span> <span class="title">Control</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; addTodos &#125; = props</span><br><span class="line">  <span class="keyword">const</span> inputRef = useRef()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> onSubmit = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123; <span class="comment">// 没有像任何子组件传递，所以就没有必要包裹callback</span></span><br><span class="line">    e.preventDefault()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newText = inputRef.current.value.trim()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (newText.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    addTodos(&#123;</span><br><span class="line">      id: ++idSeq,</span><br><span class="line">      text: newText,</span><br><span class="line">      complate: <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">    inputRef.current.value = <span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"control"</span>&gt;</span><br><span class="line">      &lt;h1&gt;todos&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;form onSubmit=&#123;onSubmit&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input</span></span><br><span class="line"><span class="regexp">          type="text"</span></span><br><span class="line"><span class="regexp">          ref=&#123;inputRef&#125;</span></span><br><span class="line"><span class="regexp">          className="new-todo"</span></span><br><span class="line"><span class="regexp">          placeholder="what needs to be done?"</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoItem = memo(<span class="function"><span class="keyword">function</span> <span class="title">TodoItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;</span><br><span class="line">    todo: &#123;</span><br><span class="line">      id,</span><br><span class="line">      text,</span><br><span class="line">      complate</span><br><span class="line">    &#125;,</span><br><span class="line">    remove,</span><br><span class="line">    toggle</span><br><span class="line">  &#125; = props</span><br><span class="line">  <span class="keyword">const</span> onChange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    toggle(id)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> onRemove = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    remove(id)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;li className=<span class="string">"todo-item"</span>&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">        type=<span class="string">"checkbox"</span></span><br><span class="line">        onChange=&#123;onChange&#125;</span><br><span class="line">        checked=&#123;complate&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;label className=&#123;complate ? <span class="string">'complate'</span> : <span class="string">''</span>&#125;&gt;&#123;text&#125;,&#123;<span class="built_in">String</span>(complate)&#125;&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;onRemove&#125;&gt;&amp;#xd7;&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Todos = memo(function Todos(props) &#123;</span></span><br><span class="line"><span class="regexp">  const &#123; todos, remove, toggle &#125; = props</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">      &#123;</span></span><br><span class="line"><span class="regexp">        todos.map(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return &lt;TodoItem</span></span><br><span class="line"><span class="regexp">            key=&#123;todo.id&#125;</span></span><br><span class="line"><span class="regexp">            todo=&#123;todo&#125;</span></span><br><span class="line"><span class="regexp">            remove=&#123;remove&#125;</span></span><br><span class="line"><span class="regexp">            toggle=&#123;toggle&#125;</span></span><br><span class="line"><span class="regexp">          /</span>&gt;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp">const LS_KEY = '$-todos_';</span></span><br><span class="line"><span class="regexp">function TodoList() &#123;</span></span><br><span class="line"><span class="regexp">  const [todos, setTodos] = useState([])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const dispatch = useCallback((action) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const &#123; type, payload &#125; = action</span></span><br><span class="line"><span class="regexp">    switch (type) &#123;</span></span><br><span class="line"><span class="regexp">      case 'set':</span></span><br><span class="line"><span class="regexp">        setTodos(payload)</span></span><br><span class="line"><span class="regexp">        break;</span></span><br><span class="line"><span class="regexp">      case 'add':</span></span><br><span class="line"><span class="regexp">        setTodos(todos =&gt; [...todos, payload])</span></span><br><span class="line"><span class="regexp">        break;</span></span><br><span class="line"><span class="regexp">      case 'remove':</span></span><br><span class="line"><span class="regexp">        setTodos(todos =&gt; todos.filter(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return todo.id !== payload</span></span><br><span class="line"><span class="regexp">        &#125;))</span></span><br><span class="line"><span class="regexp">        break;</span></span><br><span class="line"><span class="regexp">      case 'toggle':</span></span><br><span class="line"><span class="regexp">        setTodos(todos =&gt; todos.map(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return todo.id === payload</span></span><br><span class="line"><span class="regexp">            ? &#123;</span></span><br><span class="line"><span class="regexp">              ...todo,</span></span><br><span class="line"><span class="regexp">              complate: !todo.complate</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">            : todo;</span></span><br><span class="line"><span class="regexp">        &#125;))</span></span><br><span class="line"><span class="regexp">        break;</span></span><br><span class="line"><span class="regexp">      default:</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')</span></span><br><span class="line"><span class="regexp">    dispatch(createSet(todos))</span></span><br><span class="line"><span class="regexp">  &#125;, [dispatch])</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    localStorage.setItem(LS_KEY, JSON.stringify(todos))</span></span><br><span class="line"><span class="regexp">  &#125;, [todos])</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div className="todo-list"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Control</span></span><br><span class="line"><span class="regexp">        &#123;</span></span><br><span class="line"><span class="regexp">          ...bindActionCreators(&#123;</span></span><br><span class="line"><span class="regexp">            addTodos: createAdd</span></span><br><span class="line"><span class="regexp">          &#125;, dispatch)</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">      /</span>&gt;</span><br><span class="line">      &lt;Todos</span><br><span class="line">        &#123;</span><br><span class="line">          ...bindActionCreators(&#123;</span><br><span class="line">            remove: createRemove,</span><br><span class="line">            toggle: createToggle</span><br><span class="line">          &#125;, dispatch)</span><br><span class="line">        &#125;</span><br><span class="line">        todos=&#123;todos&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default TodoList;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="reducer-这边问题很多啊"><a href="#reducer-这边问题很多啊" class="headerlink" title="reducer 这边问题很多啊"></a>reducer 这边问题很多啊</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useCallback, useRef, useEffect, memo &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  createAdd,</span><br><span class="line">  createSet,</span><br><span class="line">  createRemove,</span><br><span class="line">  createToggle</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> idSeq = <span class="built_in">Date</span>.now()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这不就是我苦苦寻找的vuex里面的解构为什么可以...dispatch的原因了吗，帅呆了奥，原来是这么写一个函数的</span></span><br><span class="line"><span class="comment">// addTodo = (payload) =&gt; dispatch(createAdd(payload))</span></span><br><span class="line"><span class="comment">// 把传入的对象转换为下面这种格式，然后通过解构的方式传递给组件，帅</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//    addTodo: dispatch Function</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindActionCreators</span>(<span class="params">actionCreators, dispatch</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ret = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> actionCreators) &#123;</span><br><span class="line">    ret[key] = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> actionCreator = actionCreators[key]</span><br><span class="line">      <span class="keyword">const</span> action = actionCreator(...args)</span><br><span class="line">      dispatch(action)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Control = memo(<span class="function"><span class="keyword">function</span> <span class="title">Control</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; addTodos &#125; = props</span><br><span class="line">  <span class="keyword">const</span> inputRef = useRef()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> onSubmit = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123; <span class="comment">// 没有像任何子组件传递，所以就没有必要包裹callback</span></span><br><span class="line">    e.preventDefault()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newText = inputRef.current.value.trim()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (newText.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    addTodos(&#123;</span><br><span class="line">      id: ++idSeq,</span><br><span class="line">      text: newText,</span><br><span class="line">      complate: <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">    inputRef.current.value = <span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"control"</span>&gt;</span><br><span class="line">      &lt;h1&gt;todos&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;form onSubmit=&#123;onSubmit&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input</span></span><br><span class="line"><span class="regexp">          type="text"</span></span><br><span class="line"><span class="regexp">          ref=&#123;inputRef&#125;</span></span><br><span class="line"><span class="regexp">          className="new-todo"</span></span><br><span class="line"><span class="regexp">          placeholder="what needs to be done?"</span></span><br><span class="line"><span class="regexp">          /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TodoItem = memo(<span class="function"><span class="keyword">function</span> <span class="title">TodoItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;</span><br><span class="line">    todo: &#123;</span><br><span class="line">      id,</span><br><span class="line">      text,</span><br><span class="line">      complate</span><br><span class="line">    &#125;,</span><br><span class="line">    remove,</span><br><span class="line">    toggle</span><br><span class="line">  &#125; = props</span><br><span class="line">  <span class="keyword">const</span> onChange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    toggle(id)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> onRemove = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    remove(id)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;li className=<span class="string">"todo-item"</span>&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">        type=<span class="string">"checkbox"</span></span><br><span class="line">        onChange=&#123;onChange&#125;</span><br><span class="line">        checked=&#123;complate&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;label className=&#123;complate ? <span class="string">'complate'</span> : <span class="string">''</span>&#125;&gt;&#123;text&#125;,&#123;<span class="built_in">String</span>(complate)&#125;&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;onRemove&#125;&gt;&amp;#xd7;&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Todos = memo(function Todos(props) &#123;</span></span><br><span class="line"><span class="regexp">  const &#123; todos, remove, toggle &#125; = props</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">      &#123;</span></span><br><span class="line"><span class="regexp">        todos.map(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return &lt;TodoItem</span></span><br><span class="line"><span class="regexp">            key=&#123;todo.id&#125;</span></span><br><span class="line"><span class="regexp">            todo=&#123;todo&#125;</span></span><br><span class="line"><span class="regexp">            remove=&#123;remove&#125;</span></span><br><span class="line"><span class="regexp">            toggle=&#123;toggle&#125;</span></span><br><span class="line"><span class="regexp">            /</span>&gt;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function reducer(state, action) &#123;</span></span><br><span class="line"><span class="regexp">  const &#123; type, payload &#125; = action;</span></span><br><span class="line"><span class="regexp">  const &#123; todos, incrementCount &#125; = state</span></span><br><span class="line"><span class="regexp">  switch (type) &#123;</span></span><br><span class="line"><span class="regexp">    case 'set':</span></span><br><span class="line"><span class="regexp">      return &#123;</span></span><br><span class="line"><span class="regexp">        ...state,</span></span><br><span class="line"><span class="regexp">        todos: payload,</span></span><br><span class="line"><span class="regexp">        incrementCount: incrementCount + 1</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">    case 'add':</span></span><br><span class="line"><span class="regexp">      return &#123;</span></span><br><span class="line"><span class="regexp">        ...state,</span></span><br><span class="line"><span class="regexp">        todos: [...todos, payload],</span></span><br><span class="line"><span class="regexp">        incrementCount: incrementCount + 1</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">    case 'remove':</span></span><br><span class="line"><span class="regexp">      return &#123;</span></span><br><span class="line"><span class="regexp">        ...state,</span></span><br><span class="line"><span class="regexp">        todos: todos.filter(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return todo.id !== payload</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">    case 'toggle':</span></span><br><span class="line"><span class="regexp">      return &#123;</span></span><br><span class="line"><span class="regexp">        ...state,</span></span><br><span class="line"><span class="regexp">        todos: todos.map(todo =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          return todo.id === payload</span></span><br><span class="line"><span class="regexp">          ? &#123;</span></span><br><span class="line"><span class="regexp">            ...todo,</span></span><br><span class="line"><span class="regexp">            complate: !todo.complate</span></span><br><span class="line"><span class="regexp">          &#125;</span></span><br><span class="line"><span class="regexp">          : todo;</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">    default:</span></span><br><span class="line"><span class="regexp">      return state</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const LS_KEY = '$-todos_';</span></span><br><span class="line"><span class="regexp">function TodoList() &#123;</span></span><br><span class="line"><span class="regexp">  const [todos, setTodos] = useState([])</span></span><br><span class="line"><span class="regexp">  const [incrementCount, setIncrementCount] = useState(0)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  const dispatch = useCallback((action) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const state = &#123;</span></span><br><span class="line"><span class="regexp">      todos,</span></span><br><span class="line"><span class="regexp">      incrementCount</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    const setters = &#123;</span></span><br><span class="line"><span class="regexp">      todos: setTodos,</span></span><br><span class="line"><span class="regexp">      incrementCount: setIncrementCount</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    const newState = reducer(state, action)</span></span><br><span class="line"><span class="regexp">    for (var key in newState) &#123;</span></span><br><span class="line"><span class="regexp">      setters[key](newState[key])</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;, [todos, incrementCount])</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const todos = JSON.parse(localStorage.getItem(LS_KEY) || '[]')</span></span><br><span class="line"><span class="regexp">    dispatch(createSet(todos))</span></span><br><span class="line"><span class="regexp">  &#125;, [])</span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    localStorage.setItem(LS_KEY, JSON.stringify(todos))</span></span><br><span class="line"><span class="regexp">  &#125;, [todos])</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div className="todo-list"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Control</span></span><br><span class="line"><span class="regexp">        &#123;</span></span><br><span class="line"><span class="regexp">          ...bindActionCreators(&#123;</span></span><br><span class="line"><span class="regexp">            addTodos: createAdd</span></span><br><span class="line"><span class="regexp">          &#125;, dispatch)</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">      &lt;Todos</span><br><span class="line">        &#123;</span><br><span class="line">          ...bindActionCreators(&#123;</span><br><span class="line">            remove: createRemove,</span><br><span class="line">            toggle: createToggle</span><br><span class="line">          &#125;, dispatch)</span><br><span class="line">        &#125;</span><br><span class="line">        todos=&#123;todos&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default TodoList;</span></span><br></pre></td></tr></table></figure>
+<p>以上代码这一块编辑器提示必须依赖dispatch，否则就删除数组，但是依赖后就会出现bug，代码会进入无限循环，莫名其妙，不过老师后面的异步actions好像是可以避免这个问题，但是我没有跟进，直接进入了PWA应用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> todos = <span class="built_in">JSON</span>.parse(localStorage.getItem(LS_KEY) || <span class="string">'[]'</span>)</span><br><span class="line">  dispatch(createSet(todos))</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure></p>
+<h2 id="PWA-Progressive-Web-App"><a href="#PWA-Progressive-Web-App" class="headerlink" title="PWA (Progressive Web App)"></a>PWA (Progressive Web App)</h2><p>渐进式网络应用</p>
+<h3 id="Service-Worker-服务器工作线程"><a href="#Service-Worker-服务器工作线程" class="headerlink" title="Service Worker 服务器工作线程"></a>Service Worker 服务器工作线程</h3><p>常驻内存运行<br>代理网络请求<br>依赖HttpS</p>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>优化回调地狱<br>async/await 语法同步化</p>
+<h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><p>比XMLHttpRequest更简洁<br>Promise风格</p>
+<h3 id="cache-API"><a href="#cache-API" class="headerlink" title="cache API"></a>cache API</h3><p>支持资源的缓存系统<br>缓存(css/scritp/image)<br>依赖Service Worker代理网络请求</p>
+<h3 id="Notification-API"><a href="#Notification-API" class="headerlink" title="Notification API"></a>Notification API</h3><p>消息推送<br>依赖用户授权<br>适合在Service Worker中推送</p>
+<h2 id="删除除serviceWorker-js以外的所有文件"><a href="#删除除serviceWorker-js以外的所有文件" class="headerlink" title="删除除serviceWorker.js以外的所有文件"></a>删除除serviceWorker.js以外的所有文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls | grep -v serviceWorker.js | xargs rm</span><br></pre></td></tr></table></figure>
+<p>这句代码也太帅了？从来没用过哎</p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p><strong>生成26个字母表</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> alphabet = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">26</span>), (eie, index) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(<span class="number">65</span> + index)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>通过data来进行元素的锚跳转</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-cate</span>=<span class="string">"X"</span>&gt;</span>X<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.querySelector(<span class="string">`[data-cate='X']`</span>)</span></span><br><span class="line"><span class="undefined">  .scrollIntoView()</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>传参如果是对象可以解构：</strong><br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bash = &#123;</span><br><span class="line">  name,</span><br><span class="line">  bash,</span><br><span class="line">  hello</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;div &#123;...bash&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p><strong>icon小图标的&amp;#x在js中要替换为’\u’</strong></p>
+<p><strong>delete操作符居然可以这样用-</strong><br>in运算符：<br>src/query/Bottom.jsx<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> toggle = useCallback(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> newCheckedMap = &#123;...checkedMap&#125;</span><br><span class="line">  <span class="keyword">if</span> (value <span class="keyword">in</span> checkedMap) &#123;</span><br><span class="line">    <span class="keyword">delete</span> newCheckedMap[value]</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    newCheckedMap[value] = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  update(newCheckedMap)</span><br><span class="line">&#125;, [checkedMap, update])</span><br></pre></td></tr></table></figure></p>
+<p><strong>今天用到了<code>Object.assign()</code></strong><br>目前根据代码推断，作用应该等同于:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123;<span class="attr">name</span>:<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">data = &#123;...data, <span class="attr">msg</span>: <span class="string">"helo"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.assign(data, &#123;</span><br><span class="line">  msg: <span class="string">"helo"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Candidate.jsx中还写了个选项卡，很简单，很简单</strong></p>
+<h2 id="没有用过的css"><a href="#没有用过的css" class="headerlink" title="没有用过的css"></a>没有用过的css</h2><p><strong>实现的效果就是拖动到顶部的时候会变成固定定位，下一个同样属性的元素划过会替换掉。蛮神奇的</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>readonly</strong><br>input的一个属性，加了后不能填写，初步理解</p>
+<h2 id="日期组件很顶，以后可以用到估计"><a href="#日期组件很顶，以后可以用到估计" class="headerlink" title="日期组件很顶，以后可以用到估计"></a>日期组件很顶，以后可以用到估计</h2><p>common/DeteSelector.jsx</p>
+<p>这个日期选择组件实在是帅的一批，react居然要拆这么细的组件，日期组件原来这么简单，感觉下一次做就不会有所畏惧了，结尾老师说的注意点，什么鬼，听不明白，hide？</p>
+<h2 id="开发中所用到的npm安装的模块总结"><a href="#开发中所用到的npm安装的模块总结" class="headerlink" title="开发中所用到的npm安装的模块总结"></a>开发中所用到的npm安装的模块总结</h2><p><strong>prop-types 校验传入属性值的类型</strong><br>具体在common/header.jsx 文件中使用<br>classnames 动态类、没有这个的话可以这么写<br>没有：<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&#123;[<span class="string">'city-selector'</span>, (!show) &amp;&amp; <span class="string">'hidden'</span>].filter(<span class="built_in">Boolean</span>).join(<span class="string">' '</span>)&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>用classnames</strong><br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">'classnames'</span></span><br><span class="line">&lt;div className=&#123;classnames(<span class="string">'city-selector'</span>, &#123;</span><br><span class="line">  hidden: !show</span><br><span class="line">  &#125;)&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>day.js</strong> 仅2K大小，和Moment.js一样的api，nice啊，虽然没有用过Monment</p>
+<p><strong>urijs</strong><br>解析用get提交的url数据，这个居然也要库，怎么什么都要库啊，自己写不行吗。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> URI <span class="keyword">from</span> <span class="string">'urijs'</span></span><br><span class="line"><span class="keyword">const</span> &#123;dispatch&#125; = props</span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> queries = URI.parseQuery(<span class="built_in">window</span>.location.search)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123;</span><br><span class="line">      <span class="keyword">from</span>,</span><br><span class="line">      to,</span><br><span class="line">      date,</span><br><span class="line">      highSpeed</span><br><span class="line">    &#125; = queries</span><br><span class="line">    dispatch(setFrom(<span class="keyword">from</span>))</span><br><span class="line">    dispatch(setTo(to))</span><br><span class="line">    dispatch(setDeparDate(h0(dayjs(date).valueOf())))</span><br><span class="line">    dispatch(setHighSpeed(highSpeed === <span class="string">'true'</span>))</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure></p>
+<p><strong>left-pad</strong> 这个模块就11行代码，我真的服了，现在有现成的支持,String.padStart()<br>这几集的视频没了，只能自己看源码，还行吧，挺简单的，里面操作滚动条技巧还挺厉害的，掌握原理了，我自己写还真写不出来，艾，基础太薄弱了。fuck<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>(index: <span class="built_in">number</span>).padStart(<span class="number">2</span>, <span class="string">'0'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="webpack-的-MPA-多页网页设置"><a href="#webpack-的-MPA-多页网页设置" class="headerlink" title="webpack 的 MPA 多页网页设置"></a>webpack 的 MPA 多页网页设置</h2><p>9-2 节必须更改config/webpack.config.js下的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  <span class="comment">/* 142 */</span> filename: isEnvProduction</span><br><span class="line">  <span class="comment">/* 143 */</span> ? <span class="string">'static/js/[name].[chunkhash:8].js'</span></span><br><span class="line">  <span class="comment">/* 144 */</span> : isEnvDevelopment &amp;&amp; <span class="string">'static/js/build.js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>更改为: ‘static/js/[name].js’<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  <span class="comment">/* 142 */</span> filename: isEnvProduction</span><br><span class="line">  <span class="comment">/* 143 */</span> ? <span class="string">'static/js/[name].[chunkhash:8].js'</span></span><br><span class="line">  <span class="comment">/* 144 */</span> : isEnvDevelopment &amp;&amp; <span class="string">'static/js/[name].js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="应该补充的知识"><a href="#应该补充的知识" class="headerlink" title="应该补充的知识"></a>应该补充的知识</h2><p><strong>给组件传自定义dom</strong><br>这块还不知道其他用法，比如传多个dom。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Detail(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">		&#123; props.children &#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App()&#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;Detail&gt;</span><br><span class="line">      // 这里可以自己定义</span><br><span class="line">      &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;/Detail&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>for of 以及 object.keys() 的使用</strong><br>以前还专门记过，他娘的，怎么就忘了呢<br>src/order/actions.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> passengers = [</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">0</span>, <span class="attr">ticketType</span>: <span class="string">'abult'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">child</span>: <span class="string">''</span>&#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> passenger <span class="keyword">of</span> passengers) &#123;</span><br><span class="line">  <span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(passenger)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> keys) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!passenger[key]) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (passenger.ticketType === <span class="string">'adult'</span>) &#123;</span><br><span class="line">    adultFound = passenger.id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>总体来说还是可以的，hooks比想象的要简单要好用的多</p>
+<p>12.1 代码规范和格式化，git提交格式化，使用Prettier增强eslist的格式化能力<br>12.2 代码部署以及PWA应用所需的，serviceWorker.js 的应用</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/react/" rel="tag"># react</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/06/11/TypeScript/" rel="next" title="TypeScript">
+                <i class="fa fa-chevron-left"></i> TypeScript
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/10/19/服务端渲染/" rel="prev" title="服务端渲染">
+                服务端渲染 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DEBUG</p>
+              <p class="site-description motion-element" itemprop="description">go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些知识点"><span class="nav-text">一些知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPA-MPA"><span class="nav-text">SPA/MPA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA-渐进式网络应用"><span class="nav-text">PWA 渐进式网络应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-新特性"><span class="nav-text">React 新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Context"><span class="nav-text">Context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContextType"><span class="nav-text">ContextType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lazy"><span class="nav-text">lazy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Suspense"><span class="nav-text">Suspense</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memo"><span class="nav-text">memo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#State-Hooks"><span class="nav-text">State Hooks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useState"><span class="nav-text">useState</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Effect-Hooks"><span class="nav-text">Effect Hooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hooks-下的-Context"><span class="nav-text">Hooks 下的 Context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useMemo"><span class="nav-text">useMemo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useRef"><span class="nav-text">useRef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义hooks，达到状态逻辑复用"><span class="nav-text">自定义hooks，达到状态逻辑复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hooks-使用法则"><span class="nav-text">hooks 使用法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hooks使用问题"><span class="nav-text">hooks使用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期的问题："><span class="nav-text">生命周期的问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shouldComponentUpdate"><span class="nav-text">shouldComponentUpdate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentDidMount-componentDidUpdate-componentWillUnmount"><span class="nav-text">componentDidMount componentDidUpdate componentWillUnmount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getSnapshotBeforeUpdate-componentDidCatch-getDerivedStateFromError"><span class="nav-text">getSnapshotBeforeUpdate componentDidCatch getDerivedStateFromError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类实例成员如何映射到hooks"><span class="nav-text">类实例成员如何映射到hooks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hooks如何获取历史props和state"><span class="nav-text">hooks如何获取历史props和state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何强制更新一个hooks组件"><span class="nav-text">如何强制更新一个hooks组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux"><span class="nav-text">Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src-TodoListSoundCode目录下"><span class="nav-text">实现的一个todolist应用。很简单，样式以及源码全部在train-ticket的src/TodoListSoundCode目录下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dispatch-与-Action"><span class="nav-text">Dispatch 与 Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reducer-这边问题很多啊"><span class="nav-text">reducer 这边问题很多啊</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA-Progressive-Web-App"><span class="nav-text">PWA (Progressive Web App)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Worker-服务器工作线程"><span class="nav-text">Service Worker 服务器工作线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch"><span class="nav-text">fetch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache-API"><span class="nav-text">cache API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notification-API"><span class="nav-text">Notification API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除除serviceWorker-js以外的所有文件"><span class="nav-text">删除除serviceWorker.js以外的所有文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小技巧"><span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有用过的css"><span class="nav-text">没有用过的css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期组件很顶，以后可以用到估计"><span class="nav-text">日期组件很顶，以后可以用到估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发中所用到的npm安装的模块总结"><span class="nav-text">开发中所用到的npm安装的模块总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-的-MPA-多页网页设置"><span class="nav-text">webpack 的 MPA 多页网页设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应该补充的知识"><span class="nav-text">应该补充的知识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结束语"><span class="nav-text">结束语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018/9/11 00:00
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEBUG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="http://www.696px.com">696px</a>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'demoorbug.github.io/2019/07/18/React-新特性/';
+          this.page.identifier = '2019/07/18/React-新特性/';
+          this.page.title = 'React 新特性';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'frRzxfBf7ILkb3j8VGQAqdIs-gzGzoHsz',
+        appKey: 'XlCDzgMdSzgzFpgyuWY66yYM',
+        placeholder: '智慧如你，不想发表一点想法咩~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".loader").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

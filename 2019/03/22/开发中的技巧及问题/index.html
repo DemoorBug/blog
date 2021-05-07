@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="开发网站记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发中的技巧及问题">
+<meta property="og:url" content="demoorbug.github.io/2019/03/22/开发中的技巧及问题/index.html">
+<meta property="og:site_name" content="696px">
+<meta property="og:description" content="开发网站记录">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-07T18:17:13.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发中的技巧及问题">
+<meta name="twitter:description" content="开发网站记录">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="demoorbug.github.io/2019/03/22/开发中的技巧及问题/"/>
+
+
+
+
+
+  <title>开发中的技巧及问题 | 696px</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="site-title">696px</span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+             -->
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+             -->
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+             -->
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+             -->
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://demoorbug.github.io" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+             -->
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="demoorbug.github.io/blog/2019/03/22/开发中的技巧及问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEBUG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="696px">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">开发中的技巧及问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T23:57:31+00:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2019/03/22/开发中的技巧及问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/03/22/开发中的技巧及问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="开发网站记录"><a href="#开发网站记录" class="headerlink" title="开发网站记录"></a>开发网站记录</h1><a id="more"></a>
+<p>若时光往复，我仍爱你如初</p>
+<p>#组件化开发<br>css不换行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="下拉菜单的方式有3种"><a href="#下拉菜单的方式有3种" class="headerlink" title="下拉菜单的方式有3种"></a>下拉菜单的方式有3种</h2><p>第一种是用js改变添加css，这样导致页面的回流，和重绘问题，性能低下</p>
+<p>第二种是用js添加class类来完成操作，相对来说不错，</p>
+<p>第三种是最优的，就是用<code>:hover</code> 伪类来解决，不过<code>IE6</code>不支持</p>
+<h1 id="分离下拉菜单，组件化开发"><a href="#分离下拉菜单，组件化开发" class="headerlink" title="分离下拉菜单，组件化开发"></a>分离下拉菜单，组件化开发</h1><p>这种组件化开发思想确实很不错，可以节省很多代码结构，把类似的结构提出来，弄一个公共的样式<br>老师将的思路很清晰<br><a href="https://github.com/DemoorBug/lx/blob/master/组件化开发/站点导航/dropdown.html" target="_blank" rel="noopener">本节代码</a></p>
+<p>可复用<code>html</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dropdown menu"</span> <span class="attr">data-dropdown</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle link"</span>&gt;</span></span><br><span class="line">    我的慕陶<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"dropdown-arrow"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-layer dropdown-left"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>复用<code>css</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dropdown</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.dropdown-toggle</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.dropdown-arrow</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.dropdown-layer</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.dropdown-left</span> &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.dropdown-right</span> &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>封装可服用<code>javascript</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dropdown</span>(<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $elem = $(elem)</span><br><span class="line">    $elem.hover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>)</span><br><span class="line">      $<span class="keyword">this</span>.addClass($<span class="keyword">this</span>.data(<span class="string">'dropdown'</span>)+<span class="string">'-active'</span>);</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>)</span><br><span class="line">      $<span class="keyword">this</span>.removeClass($<span class="keyword">this</span>.data(<span class="string">'dropdown'</span>)+<span class="string">'-active'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  $.fn.extend(&#123;</span><br><span class="line">    dropdown: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        dropdown(<span class="keyword">this</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line"></span><br><span class="line">$(<span class="string">'.dropdown'</span>).dropdown()</span><br></pre></td></tr></table></figure></p>
+<h1 id="下拉图标问题"><a href="#下拉图标问题" class="headerlink" title="下拉图标问题"></a>下拉图标问题</h1><p>用图片的方式至少会增加1次http请求</p>
+<p>第二种方式就是把图片转化为<code>base64</code>，<code>IE6-7</code>不支持,编码后比原图大，不能缓存</p>
+<p>纯<code>CSS</code>箭头，兼容<code>IE6</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">arrow-down</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">4px</span> solid <span class="number">#535b62</span>;</span><br><span class="line">  <span class="attribute">border-left-color</span>: transform;</span><br><span class="line">  <span class="attribute">border-left-color</span>: transform;</span><br><span class="line">  <span class="attribute">border-bottom</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过呢，<code>IE6</code> 不兼容<code>transform</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">arrow-down</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">4px</span> solid <span class="number">#535b62</span>;</span><br><span class="line">  <span class="attribute">border-right-color</span>: transform;</span><br><span class="line">  <span class="attribute">_border-right-color</span>: <span class="number">#fff</span>; <span class="comment">/* 兼容IE6写法。_只有IE6会识别 */</span></span><br><span class="line">  <span class="attribute">border-left-color</span>: transform;</span><br><span class="line">  <span class="attribute">_border-left-color</span>: <span class="number">#fff</span>; <span class="comment">/* 兼容IE6写法。_只有IE6会识别 */</span></span><br><span class="line">  <span class="attribute">border-bottom</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="用字体图标的技巧"><a href="#用字体图标的技巧" class="headerlink" title="用字体图标的技巧"></a>用字体图标的技巧</h2><p>因为是字体的问题，所以会继承父级的<code>line-height</code>所以我们把字体图片的，<code>line-height: 1</code>就可以解决这个问题，还用旋转图标的样式因为是<code>css3</code>的原因，所以直接用<code>css3</code>的查找方式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[class*='-active']</span> <span class="selector-class">.dropdown-arrow</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(180deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>动画呢，我基本都是单独写，因为感觉<code>all</code>老师说不高效，不过写一个利于以后的修改<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.transition</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all .<span class="number">3s</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="隐藏和显示"><a href="#隐藏和显示" class="headerlink" title="隐藏和显示"></a>隐藏和显示</h1><p><a href="">本节代码</a><br><code>trigger()</code>这个jquery方法居然还可以传递事件，我服了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).trigger(<span class="string">'hide'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>给那个元素绑定的就监听那个元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).on(<span class="string">'hide'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.type)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>is()</code> 这个返回true，或者false<br><code>:hidden</code> 匹配隐藏元素<br><code>:visible</code> 匹配显示元素<br>初始化(防止多次点击),老师不知道为什么还给hidden添加data，我觉得没必要，难道不监听事件就不会绑定吗？应该不是，毕竟是链式调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> anim = &#123;</span><br><span class="line">  init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($elem.is(<span class="string">':hidden'</span>)) &#123;</span><br><span class="line">      $elem.data(<span class="string">'start'</span>, <span class="string">'hide'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      $elem.data(<span class="string">'start'</span>, <span class="string">'show'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>($elem.data(<span class="string">'start'</span>) === hide) <span class="keyword">return</span>;</span><br><span class="line">    $elem.data(<span class="string">'start'</span>, <span class="string">'hide'</span>).trigger(<span class="string">'hide'</span>);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过事件监听的方式实现回调函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> anim = &#123;</span><br><span class="line">  hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">    $elem.trigger(<span class="string">'hide'</span>); <span class="comment">//第一个事件</span></span><br><span class="line">    $elem.hide();</span><br><span class="line">    $elem.trigger(<span class="string">'hidden'</span>); <span class="comment">//隐藏完之后传递的事件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="string">'.hide'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  anim.hide($(<span class="string">'.box'</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">'.box'</span>).on(<span class="string">'hide hidden'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(e.type ==== <span class="string">'hide'</span>) &#123;</span><br><span class="line">    <span class="comment">//执行的第一个回调函数</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(e.type === <span class="string">'hidden'</span>) &#123;</span><br><span class="line">    <span class="comment">//执行的第二个回调函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="css3-隐藏和显示"><a href="#css3-隐藏和显示" class="headerlink" title="css3 隐藏和显示"></a>css3 隐藏和显示</h1><p><code>one()</code> 给匹配元素绑定一次事件<br><code>off()</code> 删除事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//多次点击无效</span></span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'show'</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'shown'</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="comment">//触发事件show</span></span><br><span class="line">  $elem.data(<span class="string">'start'</span>, <span class="string">'show'</span>).trigger(<span class="string">'show'</span>)</span><br><span class="line">  <span class="comment">//开始隐藏</span></span><br><span class="line">  $elem.show()</span><br><span class="line">  <span class="comment">//css3的动画原理呢，就是给个延迟，不然就没有动画效果了</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $elem.removeClass(<span class="string">'fadeOut'</span>)</span><br><span class="line">  &#125;, <span class="number">20</span>)</span><br><span class="line">  <span class="comment">//监听transition 完成后触发该事件，抛出事件，外面就可以监听到，从而执行回调函数</span></span><br><span class="line">  $elem.off(<span class="string">'transitionend'</span>).one(<span class="string">'transitionend'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $elem.data(<span class="string">'start'</span>, <span class="string">'shown'</span>).trigger(<span class="string">'shown'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>隐藏略有不同<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'hide'</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'hidden'</span>) <span class="keyword">return</span>;</span><br><span class="line">  $elem.data(<span class="string">'start'</span>, <span class="string">'hide'</span>).trigger(<span class="string">'hide'</span>)</span><br><span class="line">  <span class="comment">//因为是隐藏，所以先去掉class，执行css3动画</span></span><br><span class="line">  $elem.addClass(<span class="string">'fadeOut'</span>)</span><br><span class="line">  <span class="comment">//transition完成后，执行该事件，隐藏该元素</span></span><br><span class="line">  $elem.off(<span class="string">'transitionend'</span>).one(<span class="string">'transitionend'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $elem.hide()</span><br><span class="line">    $elem.data(<span class="string">'start'</span>, <span class="string">'hidden'</span>).trigger(<span class="string">'hidden'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="老师还讲到了浏览器对transitionend各浏览器的各种写法，以及兼容"><a href="#老师还讲到了浏览器对transitionend各浏览器的各种写法，以及兼容" class="headerlink" title="老师还讲到了浏览器对transitionend各浏览器的各种写法，以及兼容"></a>老师还讲到了浏览器对<code>transitionend</code>各浏览器的各种写法，以及兼容</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//各大浏览器的兼容，firefox和chrome一样</span></span><br><span class="line">  <span class="keyword">var</span> transitionEndEventName = &#123;</span><br><span class="line">    transition: <span class="string">'transitionend'</span>,</span><br><span class="line">    MozTransition: <span class="string">'transitionend'</span>,</span><br><span class="line">    WebkitTransition: <span class="string">'webkitTransitionEnd'</span>,</span><br><span class="line">    OTransition: <span class="string">'oTransitionEnd otransitionend'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> transitionEnd = <span class="string">''</span>,</span><br><span class="line">      isSupport = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> transitionEndEventName) &#123;</span><br><span class="line">    <span class="comment">//不存在就返回undefined</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.body.style[name] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      transitionEnd = transitionEndEventName[name]</span><br><span class="line">      isSupport = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//如果全局存在window.mt就直接用，不存在则创建空对象</span></span><br><span class="line">  <span class="built_in">window</span>.mt = <span class="built_in">window</span>.mt || &#123;&#125;;</span><br><span class="line">  <span class="built_in">window</span>.mt.transiton = &#123;</span><br><span class="line">    end: transitionEnd,</span><br><span class="line">    isSupport: isSupport</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<p>调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.mt.transition.end);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.mt.transition.isSupport);</span><br></pre></td></tr></table></figure></p>
+<h1 id="酷，下拉呀，淡入淡出，左右动画，全部都是通用的，直接修改css即可"><a href="#酷，下拉呀，淡入淡出，左右动画，全部都是通用的，直接修改css即可" class="headerlink" title="酷，下拉呀，淡入淡出，左右动画，全部都是通用的，直接修改css即可"></a>酷，下拉呀，淡入淡出，左右动画，全部都是通用的，直接修改css即可</h1><h1 id="js切换，封装的时候有一个技巧"><a href="#js切换，封装的时候有一个技巧" class="headerlink" title="js切换，封装的时候有一个技巧"></a>js切换，封装的时候有一个技巧</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$elem.stop().fadeIn(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//居然可以这么写。。。。</span></span><br><span class="line">$elem.stop()[<span class="string">'fadeIn'</span>](<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>#封装，taiquanle<br><code>proxy()</code> 这东西不但可以传参，还可以修改this指向，用处多多<br><code>extend()</code> 可以合并对象，还可以绑定jQuery方法<br>这里干货满满<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认配置</span></span><br><span class="line"><span class="keyword">var</span> defaults = &#123;</span><br><span class="line">  css3: <span class="literal">true</span>,</span><br><span class="line">  js: <span class="literal">true</span>,</span><br><span class="line">  animate: <span class="string">'fade'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showhide</span>(<span class="params">$elem, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mode = <span class="literal">null</span>;</span><br><span class="line">  <span class="comment">//传进来的参数和默认的对比，合并</span></span><br><span class="line">  options = $.extend(&#123;&#125;, defaults, options)</span><br><span class="line">  <span class="comment">//这里的transition.isSupport 是检测浏览器是否兼容css3，和js，transitionend的各浏览器兼容写法</span></span><br><span class="line">  <span class="keyword">if</span> (options.css3 &amp;&amp; transition.isSupport) &#123;</span><br><span class="line">    <span class="comment">//如果css3为true，而且浏览器兼容，就直接使用css3动画</span></span><br><span class="line">    mode = css3[options.animate]</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (options.js) &#123;</span><br><span class="line">    <span class="comment">//不兼容css3，或者css3为false，js为true就用js动画</span></span><br><span class="line">    mode = js[options.animate]</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//以上两种都不行，则执行基础隐藏显示，没有动画</span></span><br><span class="line">    mode = slide</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//初始化</span></span><br><span class="line">  mode.init($elem)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">//返回两个方法，给外界调用</span></span><br><span class="line">    show: $.proxy(mode.show, <span class="keyword">this</span>, $elem),</span><br><span class="line">    hide: $.proxy(mode.hide, <span class="keyword">this</span>, $elem)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>因为是自制行环境，所以还要将该方法暴露出去<br>普通暴露<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.mt = <span class="built_in">window</span>.mt || &#123;&#125;,</span><br><span class="line"><span class="built_in">window</span>.mt.showhide = showhide</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面的是调用形式</span></span><br><span class="line"><span class="keyword">var</span> showHide = <span class="built_in">window</span>.mt.showhide($box, &#123;</span><br><span class="line">  animate: <span class="string">'slideUpDown'</span></span><br><span class="line">&#125;)</span><br><span class="line">showHide.show($box)</span><br><span class="line">showHide.hide($box)</span><br></pre></td></tr></table></figure></p>
+<p>jQuery暴露<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  showHide: <span class="function"><span class="keyword">function</span> (<span class="params">option</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">//mode 这个很巧妙，没用值就执行if里面的语句，赋值，第二次进入就没问题了，老师很爱用data，巧妙</span></span><br><span class="line">      <span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>),</span><br><span class="line">          mode = $(<span class="keyword">this</span>).data(<span class="string">'showHide'</span>);</span><br><span class="line">      <span class="keyword">if</span> (!mode) &#123;</span><br><span class="line">        <span class="comment">//判断参数是否为对象，因为接收参数不仅接受配置，还接收调用的方法</span></span><br><span class="line">        $<span class="keyword">this</span>.data(<span class="string">'showHide'</span>, mode = showhide($<span class="keyword">this</span>, <span class="keyword">typeof</span> option === <span class="string">'object'</span> &amp;&amp; option))</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//传进来的参数和showhide暴露的方法对比，如果不是暴露的方法就退出，是的话就执行</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> mode[option] === <span class="string">'function'</span>) &#123;</span><br><span class="line">        mode[option]();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h1 id="用构造函数的方式重写dropdown"><a href="#用构造函数的方式重写dropdown" class="headerlink" title="用构造函数的方式重写dropdown"></a>用构造函数的方式重写dropdown</h1><p>为什么不这样写的原因<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dropdown</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.show = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.hide =<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//每次实例化，都会在堆内存中开辟空间，来存放函数本体</span></span><br><span class="line"><span class="keyword">var</span> dropdown = <span class="keyword">new</span> Dropdown();</span><br><span class="line"><span class="keyword">var</span> dropdown2 = <span class="keyword">new</span> Dropdown();</span><br><span class="line"><span class="keyword">var</span> dropdown3 = <span class="keyword">new</span> Dropdown();</span><br></pre></td></tr></table></figure></p>
+<p>解决this指针的几种办法<br>1: <code>$.proxy()</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$elem.hover($.proxy(<span class="keyword">this</span>.show, <span class="keyword">this</span>), $.proxy(<span class="keyword">this</span>.hide, <span class="keyword">this</span>))</span><br></pre></td></tr></table></figure></p>
+<p>2: 定义_this<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line"><span class="keyword">this</span>.$elem.hover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  _this.show()</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  _this.hide()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>3: ES6 Module<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$elem.hover(<span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="keyword">this</span>.show()&#125;, () =&gt; &#123;<span class="keyword">this</span>.hide()&#125;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="冒泡"><a href="#冒泡" class="headerlink" title="冒泡"></a>冒泡</h1><p>是从匹配元素的DOM结构向上冒泡<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-cn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="单例化"><a href="#单例化" class="headerlink" title="单例化"></a>单例化</h1><p>抛出一个方法，执行的时候每次都会创建该实例，浪费内存，所以单例化<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  dropdown: <span class="function"><span class="keyword">function</span>(<span class="params">option</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">//单例化，就是给该DOM元素绑定data属性，一旦赋值，就不会继续创建</span></span><br><span class="line">      <span class="keyword">var</span> dropdown = $(<span class="keyword">this</span>).data(<span class="string">'dropdown'</span>),</span><br><span class="line">        options = $.extend(&#123;&#125;, Dropdown.DEFAULTS, <span class="keyword">typeof</span> option === <span class="string">'object'</span> &amp;&amp; option);</span><br><span class="line">      <span class="comment">//判断是否data赋值</span></span><br><span class="line">      <span class="keyword">if</span> (!dropdown) &#123;</span><br><span class="line">        <span class="comment">//这里面写法还真是省位置。</span></span><br><span class="line">        $(<span class="keyword">this</span>).data(<span class="string">'dropdown'</span>, dropdown = <span class="keyword">new</span> Dropdown(<span class="keyword">this</span>, options))</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//判断是否为方法，有可能使用组件的人，传进来一个别的值，不是我们要抛出的事件，那就会返回undefined</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> dropdown[option] === <span class="string">'function'</span>) &#123;</span><br><span class="line">        dropdown[option]()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h1 id="动画条算是完成了，很nice，很全面，很完美，总结一下"><a href="#动画条算是完成了，很nice，很全面，很完美，总结一下" class="headerlink" title="动画条算是完成了，很nice，很全面，很完美，总结一下"></a>动画条算是完成了，很nice，很全面，很完美，总结一下</h1><h2 id="transition-js-解决兼容问题"><a href="#transition-js-解决兼容问题" class="headerlink" title="transition.js 解决兼容问题"></a><code>transition.js</code> 解决兼容问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> transitionEndEventName = &#123;</span><br><span class="line">    transition: <span class="string">'transitionend'</span>,</span><br><span class="line">    MozTransition: <span class="string">'transitionend'</span>,</span><br><span class="line">    WebkitTransition: <span class="string">'webkitTransitionEnd'</span>,</span><br><span class="line">    OTransition: <span class="string">'oTransitionEnd otransitionend'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> transitionEnd = <span class="string">''</span>,</span><br><span class="line">      isSupport = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> transitionEndEventName) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.body.style[name] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      transitionEnd = transitionEndEventName[name]</span><br><span class="line">      isSupport = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">window</span>.mt = <span class="built_in">window</span>.mt || &#123;&#125;;</span><br><span class="line">  <span class="built_in">window</span>.mt.transiton = &#123;</span><br><span class="line">    end: transitionEnd,</span><br><span class="line">    isSupport: isSupport</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<p>抛出了两个方法，<code>mt.transition.end</code> 为判断各浏览器之间<code>transitionend</code>的兼容问题<br><code>mt.transition.isSupport</code> 判断浏览器是否支持CSS3属性，不支持返回false</p>
+<h2 id="index-js-动画逻辑"><a href="#index-js-动画逻辑" class="headerlink" title="index.js 动画逻辑"></a><code>index.js</code> 动画逻辑</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> transition = <span class="built_in">window</span>.mt.transiton</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">$elem, hiddenCallback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ($elem.is(<span class="string">':hidden'</span>)) &#123;</span><br><span class="line">    $elem.data(<span class="string">'start'</span>, <span class="string">'hidden'</span>)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> hiddenCallback === <span class="string">'function'</span>) &#123;</span><br><span class="line">      hiddenCallback();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $elem.data(<span class="string">'start'</span>, <span class="string">'shown'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">$elem, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'show'</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'shown'</span>) <span class="keyword">return</span>;</span><br><span class="line">  $elem.data(<span class="string">'start'</span>, <span class="string">'show'</span>).trigger(<span class="string">'show'</span>)</span><br><span class="line">  callback()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hide</span>(<span class="params">$elem, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'hide'</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> ($elem.data(<span class="string">'start'</span>) === <span class="string">'hidden'</span>) <span class="keyword">return</span>;</span><br><span class="line">  $elem.data(<span class="string">'start'</span>, <span class="string">'hide'</span>).trigger(<span class="string">'hide'</span>)</span><br><span class="line">  callback()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> slide = &#123;</span><br><span class="line">  init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($elem.is(<span class="string">':hidden'</span>)) &#123;</span><br><span class="line">      $elem.data(<span class="string">'start'</span>, <span class="string">'hide'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      $elem.data(<span class="string">'start'</span>, <span class="string">'show'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">    show($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.show()</span><br><span class="line">      $elem.trigger(<span class="string">'shown'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">    hide($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.hide()</span><br><span class="line">      $elem.trigger(<span class="string">'hidden'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> css3 = &#123;</span><br><span class="line">  _init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem, className</span>) </span>&#123;</span><br><span class="line">    $elem.addClass(<span class="string">'transition'</span>)</span><br><span class="line">    init($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.addClass(className)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  _show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem, className</span>) </span>&#123;</span><br><span class="line">    show($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.show()</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.removeClass(className)</span><br><span class="line">      &#125;, <span class="number">20</span>)</span><br><span class="line">      $elem.off(transition.end).one(transition.end, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.data(<span class="string">'start'</span>, <span class="string">'shown'</span>).trigger(<span class="string">'shown'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  _hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem, className</span>) </span>&#123;</span><br><span class="line">    hide($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.addClass(className)</span><br><span class="line">      $elem.off(transition.end).one(transition.end, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.hide()</span><br><span class="line">        $elem.data(<span class="string">'start'</span>, <span class="string">'hidden'</span>).trigger(<span class="string">'hidden'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  fade: &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      css3._init($elem, <span class="string">'fadeOut'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      css3._show($elem, <span class="string">'fadeOut'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      css3._hide($elem, <span class="string">'fadeOut'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  slideUpDown: &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      $elem.height($elem.height())</span><br><span class="line">      css3._init($elem, <span class="string">'slideUpDown'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      css3._show($elem, <span class="string">'slideUpDown'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      css3._hide($elem, <span class="string">'slideUpDown'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> js = &#123;</span><br><span class="line">  _hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem, mode</span>) </span>&#123;</span><br><span class="line">    hide($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.stop()[mode](<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.data(<span class="string">'start'</span>, <span class="string">'hidden'</span>).trigger(<span class="string">'hidden'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  _show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem, mode</span>) </span>&#123;</span><br><span class="line">    show($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.stop()[mode](<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.data(<span class="string">'start'</span>, <span class="string">'shown'</span>).trigger(<span class="string">'shown'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  _customInit: <span class="function"><span class="keyword">function</span>(<span class="params">$elem, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> style = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> ops <span class="keyword">in</span> options) &#123;</span><br><span class="line">      style[ops] = $elem.css(ops);</span><br><span class="line">    &#125;</span><br><span class="line">    $elem.data(<span class="string">'style'</span>, style)</span><br><span class="line">    init($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      $elem.css(options)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  fade: &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      init($elem)</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      js._show($elem, <span class="string">'fadeIn'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      js._hide($elem, <span class="string">'fadeOut'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  slideUpDown: &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      init($elem)</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      js._show($elem, <span class="string">'slideDown'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      js._hide($elem, <span class="string">'slideUp'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  slideRight: &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      js._customInit($elem, &#123;</span><br><span class="line">        <span class="string">'width'</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="string">'padding-left'</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="string">'padding-right'</span>: <span class="number">0</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      $elem.show()</span><br><span class="line">      show($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.stop().animate($elem.data(<span class="string">'style'</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          $elem.data(<span class="string">'start'</span>, <span class="string">'shown'</span>).trigger(<span class="string">'shown'</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    hide: <span class="function"><span class="keyword">function</span>(<span class="params">$elem</span>) </span>&#123;</span><br><span class="line">      hide($elem, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $elem.stop().animate(&#123;</span><br><span class="line">          <span class="string">'width'</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">'padding-left'</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">'padding-right'</span>: <span class="number">0</span></span><br><span class="line">        &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          $elem.hide()</span><br><span class="line">          $elem.data(<span class="string">'start'</span>, <span class="string">'hidden'</span>).trigger(<span class="string">'hidden'</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> defaults = &#123;</span><br><span class="line">  css3: <span class="literal">true</span>,</span><br><span class="line">  js: <span class="literal">true</span>,</span><br><span class="line">  animate: <span class="string">'slideUpDown'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我日了狗了，_这东西还得转译，不然后面语法全错<br>这里没什么好讲的，都很简单，通俗易懂。_约定俗成内部使用</p>
+<p>上面是js和css3动画，这里就是判断浏览器使用哪种动画<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showhide</span>(<span class="params">$elem, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mode = <span class="literal">null</span>;</span><br><span class="line">  <span class="comment">//合并传进来的配置，和我们默认配置</span></span><br><span class="line">  options = $.extend(&#123;&#125;, defaults, options)</span><br><span class="line">  <span class="comment">//判断配置中是否开启css3, 如果开启判断浏览器是否兼容css3</span></span><br><span class="line">  <span class="keyword">if</span> (options.css3 &amp;&amp; transition.isSupport) &#123;</span><br><span class="line">    mode = css3[options.animate]</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (options.js) &#123; <span class="comment">//如果不兼容则查看配置是否开启js，如果开启则使用</span></span><br><span class="line">    mode = js[options.animate]</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">//最后的情况就是使用最简单的方式，没有动画</span></span><br><span class="line">    mode = slide</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//每个定义的属性都有一个自己的init初始化方法</span></span><br><span class="line">  mode.init($elem)</span><br><span class="line">  <span class="comment">//返回两个show，和hide方法，便于调用</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    show: $.proxy(mode.show, <span class="keyword">this</span>, $elem),</span><br><span class="line">    hide: $.proxy(mode.hide, <span class="keyword">this</span>, $elem)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>接下来就是把该方法暴露出去，供外部使用，因为上面的所有方法都是定义在自制行函数里面<br>jQuery方式暴露<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$.fn.extend(&#123;</span><br><span class="line">  showHide: <span class="function"><span class="keyword">function</span>(<span class="params">option</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//因为有可能返回的是一个集合，所以这里使用each便利，很nice</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>),</span><br><span class="line">        mode = $(<span class="keyword">this</span>).data(<span class="string">'showHide'</span>);</span><br><span class="line">      <span class="comment">//单例化，上面有讲</span></span><br><span class="line">      <span class="keyword">if</span> (!mode) &#123;</span><br><span class="line">        $<span class="keyword">this</span>.data(<span class="string">'showHide'</span>, mode = showhide($<span class="keyword">this</span>, <span class="keyword">typeof</span> option === <span class="string">'object'</span> &amp;&amp; option))</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//抛出方法调用方式$('.dropdown').showHide(&#123;options&#125;)</span></span><br><span class="line">      <span class="comment">//抛出方法调用方式$('.dropdown').showHide('show')</span></span><br><span class="line">      <span class="comment">//抛出方法调用方式$('.dropdown').showHide('hide')</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> mode[option] === <span class="string">'function'</span>) &#123;</span><br><span class="line">        mode[option]();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>其他抛出方式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.mt = <span class="built_in">window</span>.mt || &#123;&#125;,</span><br><span class="line"><span class="built_in">window</span>.mt.showhide = showhide</span><br><span class="line"><span class="comment">// 调用方式 有几个就要调用几次，还是jQuery的方式方便</span></span><br><span class="line"><span class="keyword">var</span> showHide = <span class="built_in">window</span>.mt.showhide($box, &#123;</span><br><span class="line">animate: <span class="string">'slideUpDown'</span></span><br><span class="line">&#125;)</span><br><span class="line">showHide.show($box)</span><br><span class="line">showHide.hide($box)</span><br></pre></td></tr></table></figure></p>
+<h1 id="anim-js-重写dropdown动画"><a href="#anim-js-重写dropdown动画" class="headerlink" title="anim.js 重写dropdown动画"></a><code>anim.js</code> 重写dropdown动画</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Dropdown</span>(<span class="params">elem, option</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.$elem = $(elem)</span><br><span class="line">    <span class="comment">//这里我本来写的$('.dropdown-layer') 直接获取所有了，自己还没找到。。</span></span><br><span class="line">    <span class="keyword">this</span>.$layer = <span class="keyword">this</span>.$elem.find(<span class="string">'.dropdown-layer'</span>)</span><br><span class="line">    <span class="comment">//这里的class我们自己写了，这里样式变通用了，而且也可以控制动画</span></span><br><span class="line">    <span class="keyword">this</span>.activeClass = option.active + <span class="string">'-active'</span></span><br><span class="line">    <span class="comment">//全局绑定option</span></span><br><span class="line">    <span class="keyword">this</span>.option = option</span><br><span class="line">    <span class="comment">//把很多代码放到初始化代码里面，我们称之为初始化，其实就是进来加载的代码，这下终于懂了</span></span><br><span class="line">    <span class="keyword">this</span>.init()</span><br><span class="line">  &#125;</span><br><span class="line">  Dropdown.prototype = &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">//因为是ES5的方式写代码，外面最好获取一下this，很方便</span></span><br><span class="line">      <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">      <span class="comment">//这里就调用了`index.js` 初始化操作，顺带传参</span></span><br><span class="line">      <span class="keyword">this</span>.$layer.showHide(<span class="keyword">this</span>.option)</span><br><span class="line">      <span class="comment">//老师还配置了多个事件触发的方式</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.option.event === <span class="string">'click'</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.$elem.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">          <span class="comment">//这里是我自己拓展的，就是展开一个标签后，关闭另一个标签</span></span><br><span class="line">          <span class="comment">//以前是查错了，就说怎么老是不对，查父元素肯定是显示的呀。。</span></span><br><span class="line">          <span class="comment">//_this.$elem.siblings().is(':visible') 。。错误的写法</span></span><br><span class="line">          _this.$allelem = _this.$elem.siblings().find(<span class="string">'.dropdown-layer:visible'</span>)</span><br><span class="line">          <span class="keyword">if</span> (_this.$allelem) &#123;</span><br><span class="line">            <span class="comment">//哈哈哈，很不错，这个呢就是根据打开元素关闭标签</span></span><br><span class="line">            _this.Allhide()</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//这里click，的点击判断，如果显示了再点击就是隐藏，老师没写，我加的，还行把</span></span><br><span class="line">          <span class="keyword">if</span> (_this.$layer.is(<span class="string">':hidden'</span>)) &#123;</span><br><span class="line">            <span class="comment">//吓我一跳，这里是调用的自己的show，我就说吗</span></span><br><span class="line">            _this.show();</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            _this.hide();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//阻止冒泡，不然会触发document的click事件</span></span><br><span class="line">          e.stopPropagation();</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//别的地方点击隐藏元素</span></span><br><span class="line">        $(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          _this.hide()</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//hover 方式的动画</span></span><br><span class="line">        <span class="comment">//这里的$.proxy() 这给东西不但可以改变this指向，还可以传参(第三个参数)</span></span><br><span class="line">        <span class="keyword">this</span>.$elem.hover($.proxy(<span class="keyword">this</span>.show, <span class="keyword">this</span>), $.proxy(<span class="keyword">this</span>.hide, <span class="keyword">this</span>))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">      <span class="comment">//老师加了给延迟，duowan用的就是这个方法，还要17173， 不知道谁炒谁的</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.option.delay) &#123;</span><br><span class="line">        <span class="keyword">this</span>.time = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          _this.$elem.addClass(_this.activeClass);</span><br><span class="line">          _this.$layer.showHide(<span class="string">'show'</span>)</span><br><span class="line">        &#125;, <span class="keyword">this</span>.option.delay)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//添加class</span></span><br><span class="line">        <span class="keyword">this</span>.$elem.addClass(<span class="keyword">this</span>.activeClass);</span><br><span class="line">        <span class="comment">//这里也是调用的`index.js`抛出的方法</span></span><br><span class="line">        <span class="keyword">this</span>.$layer.showHide(<span class="string">'show'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    hide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.option.delay) &#123;</span><br><span class="line">        clearTimeout(<span class="keyword">this</span>.time)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//和show一个原理</span></span><br><span class="line">      <span class="keyword">this</span>.$elem.removeClass(<span class="keyword">this</span>.activeClass);</span><br><span class="line">      <span class="keyword">this</span>.$layer.showHide(<span class="string">'hide'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    Allhide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">//写click事件多出来的方法</span></span><br><span class="line">      <span class="keyword">this</span>.$elem.siblings().removeClass(<span class="keyword">this</span>.activeClass);</span><br><span class="line">      <span class="keyword">this</span>.$allelem.showHide(<span class="string">'hide'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//function 就是对象，所以可以这么写</span></span><br><span class="line">  Dropdown.DEFAULTS = &#123;</span><br><span class="line">    event: <span class="string">'hover'</span>,</span><br><span class="line">    css3: <span class="literal">true</span>,</span><br><span class="line">    js: <span class="literal">true</span>,</span><br><span class="line">    animate: <span class="string">'slideUpDown'</span>,</span><br><span class="line">    active: <span class="string">'menu'</span>,</span><br><span class="line">    delay: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// window.mt.Dropdown = Dropdown</span></span><br><span class="line">  $.fn.extend(&#123;</span><br><span class="line">    dropdown: <span class="function"><span class="keyword">function</span>(<span class="params">option</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> dropdown = $(<span class="keyword">this</span>).data(<span class="string">'dropdown'</span>),</span><br><span class="line">          options = $.extend(&#123;&#125;, Dropdown.DEFAULTS, <span class="keyword">typeof</span> option === <span class="string">'object'</span> &amp;&amp; option);</span><br><span class="line">        <span class="comment">//单例化</span></span><br><span class="line">        <span class="keyword">if</span> (!dropdown) &#123;</span><br><span class="line">          <span class="comment">//这里不但给dropdown重置值，还给data-dropdown设置值，巧妙。</span></span><br><span class="line">          $(<span class="keyword">this</span>).data(<span class="string">'dropdown'</span>, dropdown = <span class="keyword">new</span> Dropdown(<span class="keyword">this</span>, options))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//传入字符串这里处理，如果是暴露的方法就执行相应逻辑</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> dropdown[option] === <span class="string">'function'</span>) &#123;</span><br><span class="line">          dropdown[option]()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)(jQuery)</span><br></pre></td></tr></table></figure>
+<h2 id="接下来就是调用了"><a href="#接下来就是调用了" class="headerlink" title="接下来就是调用了"></a>接下来就是调用了</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.dropdown'</span>).dropdown(&#123;  <span class="comment">//anim.js暴露出来的方法没有使用，这里就仅仅只是传参</span></span><br><span class="line">  animate: <span class="string">'fade'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="按需加载"><a href="#按需加载" class="headerlink" title="按需加载"></a>按需加载</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里通过我们index.js中抛出的事件，达到我们执行回调的方法，老师还在`anim.js`中接收，</span></span><br><span class="line"><span class="comment">//然后抛给`.dropdown`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//简单写一下，如果遇到问题，可以加到`anim.js`的init初始化方法中</span></span><br><span class="line"><span class="comment">//this.$layer.on('show shown hide hidden', function(e) &#123;</span></span><br><span class="line"><span class="comment">//  _this.$elem.trigger(e.type)</span></span><br><span class="line"><span class="comment">//&#125;)</span></span><br><span class="line"><span class="comment">//我觉得吧，可以写，但没必要，让代码更复杂了</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//按需加载</span></span><br><span class="line">$(<span class="string">'.dropdown-layer'</span>).on(<span class="string">'show'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> html =<span class="string">''</span>,</span><br><span class="line">      $<span class="keyword">this</span> = $(<span class="keyword">this</span>),</span><br><span class="line">      load = $(<span class="keyword">this</span>).data(<span class="string">'load'</span>)</span><br><span class="line">  <span class="comment">//判断`data-load`是否有值，没有则直接返回，不是我们按需加载的对象</span></span><br><span class="line">  <span class="keyword">if</span> (!load) <span class="keyword">return</span></span><br><span class="line">  <span class="comment">//判断是否有`data-loader` 有就表示获取过值了，不执行该方法</span></span><br><span class="line">  <span class="keyword">if</span> (!$(<span class="keyword">this</span>).data(<span class="string">'loader'</span>)) &#123;</span><br><span class="line">    <span class="comment">//异步操作，但是天猫不是用的异步。直接加载了给js文件，不清楚</span></span><br><span class="line">    $.getJSON(<span class="string">'test/'</span>+load, <span class="function"><span class="keyword">function</span>(<span class="params">json, textStatus</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//通过json结构便利赋值</span></span><br><span class="line">      $.each(json, <span class="function"><span class="keyword">function</span> (<span class="params">index</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//html模板</span></span><br><span class="line">        html += <span class="string">`&lt;li&gt;&lt;a href="###" target="_blank" class="menu-item"&gt;<span class="subst">$&#123;json[index].title&#125;</span>&lt;/a&gt;&lt;/li&gt;`</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="comment">//赋值</span></span><br><span class="line">      $<span class="keyword">this</span>.html(html)</span><br><span class="line">      <span class="comment">// 添加`data-loader`状态，防止多次获取</span></span><br><span class="line">      $<span class="keyword">this</span>.data(<span class="string">'loader'</span>, <span class="literal">true</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>html 结构<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"menu nav-site-service dropdown fl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"###"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle link transition"</span>&gt;</span>联系客服<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"dropdown-arrow iconfont transition"</span>&gt;</span>&amp;#xe798;<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-layer dropdown-right"</span> <span class="attr">data-load</span>=<span class="string">"dropdown.json"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;li&gt;&lt;a href="###" target="_blank" class="menu-item"&gt;买家客服&lt;/a&gt;&lt;/li&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;li&gt;&lt;a href="###" target="_blank" class="menu-item"&gt;卖家客服&lt;/a&gt;&lt;/li&gt; --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="搜索功能组件化"><a href="#搜索功能组件化" class="headerlink" title="搜索功能组件化"></a>搜索功能组件化</h1><p><code>trim()</code> 这是js原生的，去除字符串两边的空白</p>
+<h1 id="搜索框自动完成"><a href="#搜索框自动完成" class="headerlink" title="搜索框自动完成"></a>搜索框自动完成</h1><p><code>onkeyup</code>事件 keyup 兼容好，但是必须做一些约束，比如鼠标粘贴复制不会触发，键盘的一些上下键还可以触发</p>
+<p><code>oninput</code>事件 不兼容IE6,7,8,但是好用。。。</p>
+<p>异步的方式就是为了避免回调<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//回调</span></span><br><span class="line">$inputbox.on(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    <span class="comment">//这里的接口是请求，淘宝的数据，因为我们没数据</span></span><br><span class="line">    url: <span class="string">"https://suggest.taobao.com/sug?code=utf-8&amp;q="</span>+$inputbox.val()+<span class="string">"&amp;_ksTS=1553601277970_353&amp;callback=jsonp354&amp;k=1&amp;area=c2c&amp;bucketid=12"</span>,</span><br><span class="line">    dataType: <span class="string">"jsonp"</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//异步</span></span><br><span class="line">$inputbox.on(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">"https://suggest.taobao.com/sug?code=utf-8&amp;q="</span>+$inputbox.val()+<span class="string">"&amp;_ksTS=1553601277970_353&amp;callback=jsonp354&amp;k=1&amp;area=c2c&amp;bucketid=12"</span>;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    <span class="comment">//这里的接口是请求，淘宝的数据，因为我们没数据</span></span><br><span class="line">    url: url,</span><br><span class="line">    timeout: <span class="number">1</span>, <span class="comment">//超时</span></span><br><span class="line">    dataType: <span class="string">"jsonp"</span>, <span class="comment">//跨域</span></span><br><span class="line">  &#125;).done(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;).fail(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;).always(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Why'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>如果页面不是UTF8,是别的，输入内容提交就会出错乱码<br><code>encodeURIComponent()</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://suggest.taobao.com/sug?code=utf-8&amp;_ksTS=1553601277970_353&amp;callback=jsonp354&amp;k=1&amp;area=c2c&amp;bucketid=12&amp;q="</span> + <span class="built_in">encodeURIComponent</span>($inputbox.val());</span><br></pre></td></tr></table></figure></p>
+<p>正则去除文本中的<code>&lt;b&gt;</code>标签:<code>过&lt;b&gt;生日&lt;/b&gt;的&lt;b&gt;礼物&lt;/b&gt;</code>变成纯文本<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeHtmlTags</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/&lt;(?:[^&gt;'"]|"[^"]*"|'[^']*')*&gt;/g</span>, <span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="search-js-代码都写了注释，逻辑通了都很简单，EZ，接下来是改写下面的操作，应该是封装把"><a href="#search-js-代码都写了注释，逻辑通了都很简单，EZ，接下来是改写下面的操作，应该是封装把" class="headerlink" title="search.js 代码都写了注释，逻辑通了都很简单，EZ，接下来是改写下面的操作，应该是封装把"></a><code>search.js</code> 代码都写了注释，逻辑通了都很简单，EZ，接下来是改写下面的操作，应该是封装把</h2><p>搜索框完成，没有键盘上下键盘的绑定，其他功能齐全<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> $search = $(<span class="string">'.search'</span>),</span><br><span class="line">      $form = $search.find(<span class="string">'.search-form'</span>),</span><br><span class="line">      $inputbox = $search.find(<span class="string">'.search-inputbox'</span>),</span><br><span class="line">      $btn = $search.find(<span class="string">'.search-btn'</span>),</span><br><span class="line">      $layer = $search.find(<span class="string">'.search-layer'</span>);</span><br><span class="line">  <span class="comment">//验证操作</span></span><br><span class="line">  <span class="comment">// $btn.on('click', function () &#123;</span></span><br><span class="line">  <span class="comment">//   //判断是否输入为空，空则不提交</span></span><br><span class="line">  <span class="comment">//   if ($inputbox.val().trim() === '') &#123;</span></span><br><span class="line">  <span class="comment">//     return false</span></span><br><span class="line">  <span class="comment">//   &#125;</span></span><br><span class="line">  <span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//新的验证操作</span></span><br><span class="line">  <span class="comment">//比click好的地方就是可以监听layer下拉框，如果点击提交是空也不行</span></span><br><span class="line">  $form.on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($inputbox.val().trim() === <span class="string">''</span>) &#123;</span><br><span class="line">      <span class="comment">//这是我自己拓展的，仿天猫的，酷</span></span><br><span class="line">      $inputbox.addClass(<span class="string">'background-glint'</span>)</span><br><span class="line">      $inputbox.off(<span class="string">'animationend'</span>).one(<span class="string">'animationend'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $inputbox.removeClass(<span class="string">'background-glint'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">//获取焦点，显示下拉</span></span><br><span class="line">  $inputbox.on(<span class="string">'focus'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $layer.show()</span><br><span class="line">  &#125;).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//阻止冒泡，还可以这样？</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">//document绑定click事件，点击全局就隐藏菜单，用blur 加延迟也可以实现</span></span><br><span class="line">  $(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $layer.hide()</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">//绑定input事件，内容改变就获取值，不兼容IE9 以下</span></span><br><span class="line">  $inputbox.on(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">"https://suggest.taobao.com/sug?code=utf-8&amp;_ksTS=1553601277970_353&amp;callback=jsonp354&amp;k=1&amp;area=c2c&amp;bucketid=12&amp;q="</span>+ <span class="built_in">encodeURIComponent</span>($inputbox.val());</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">      <span class="comment">//这里的接口是请求，淘宝的数据，因为我们没数据</span></span><br><span class="line">      url: url,</span><br><span class="line">      <span class="comment">// timeout: 1, //超时</span></span><br><span class="line">      dataType: <span class="string">"jsonp"</span>, <span class="comment">//跨域</span></span><br><span class="line">    &#125;).done(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//成功回调</span></span><br><span class="line">      <span class="keyword">var</span> html = <span class="string">''</span>,</span><br><span class="line">          dataNum = data.result.length,</span><br><span class="line">          numMax = <span class="number">9</span>; <span class="comment">//自定义显示条目</span></span><br><span class="line">      <span class="keyword">if</span> (dataNum === <span class="number">0</span>) &#123; <span class="comment">//没有数据就直接退出</span></span><br><span class="line">        $layer.hide().html(<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dataNum; i++) &#123; <span class="comment">//循环遍历数据</span></span><br><span class="line">        <span class="keyword">if</span> (numMax &lt;= i) &#123; <span class="comment">//自定义显示条目</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        html += <span class="string">'&lt;li class="search-layer-item text-ellipsis"&gt;'</span>+data.result[i][<span class="number">0</span>]+<span class="string">'&lt;/li&gt;'</span></span><br><span class="line">      &#125;</span><br><span class="line">      $layer.html(html).show() <span class="comment">//拼接的字符串显示到DOM元素上</span></span><br><span class="line">    &#125;).fail(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">      $layer.hide().html(<span class="string">''</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;).always(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'Why'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//因为用的是事件委托，可以不用写到会到里面</span></span><br><span class="line">  $layer.on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $inputbox.val(removeHtmlTags($(<span class="keyword">this</span>).html()));</span><br><span class="line">    $inputbox.parent().submit()</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 这个呢就是清除字符串中的`&lt;b&gt;`标签</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">removeHtmlTags</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/&lt;(?:[^&gt;'"]|"[^"]*"|'[^']*')*&gt;/g</span>, <span class="string">''</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(jQuery)</span><br></pre></td></tr></table></figure></p>
+<h2 id="search-fun-js-不封装还顺的很，封装了感觉好麻烦"><a href="#search-fun-js-不封装还顺的很，封装了感觉好麻烦" class="headerlink" title="search-fun.js 不封装还顺的很，封装了感觉好麻烦"></a><code>search-fun.js</code> 不封装还顺的很，封装了感觉好麻烦</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//数据缓存</span></span><br><span class="line">  <span class="keyword">var</span> cache = &#123;</span><br><span class="line">    data: &#123;&#125;,</span><br><span class="line">    count: <span class="number">0</span>,</span><br><span class="line">    addData: <span class="function"><span class="keyword">function</span> (<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.data[key]) &#123;</span><br><span class="line">        <span class="keyword">this</span>.data[key] = data;</span><br><span class="line">        <span class="keyword">this</span>.count++</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    readData: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.data[key]</span><br><span class="line">    &#125;,</span><br><span class="line">    deleteDataByKye: <span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123; <span class="comment">//通过键删</span></span><br><span class="line">      <span class="keyword">delete</span> <span class="keyword">this</span>.data[key];</span><br><span class="line">      <span class="keyword">this</span>.count--;</span><br><span class="line">    &#125;,</span><br><span class="line">    deleteDataByOrder: <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123; <span class="comment">//通过顺序删除</span></span><br><span class="line">      <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> data) &#123;</span><br><span class="line">        <span class="keyword">if</span> (count &gt;= num) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">this</span>.deleteDataByKye(p)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Search</span>(<span class="params">$elem, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.options = options;</span><br><span class="line">    <span class="keyword">this</span>.$elem = $elem;</span><br><span class="line">    <span class="keyword">this</span>.$form = <span class="keyword">this</span>.$elem.find(<span class="string">'.search-form'</span>);</span><br><span class="line">    <span class="keyword">this</span>.$input = <span class="keyword">this</span>.$elem.find(<span class="string">'.search-inputbox'</span>);</span><br><span class="line">    <span class="comment">// this.btn = $elem.find('.search-btn')</span></span><br><span class="line">    <span class="keyword">this</span>.$layer = <span class="keyword">this</span>.$elem.find(<span class="string">'.search-layer'</span>);</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">//submit 也可以，click也可以</span></span><br><span class="line">    <span class="comment">// this.$form.on('submit', $.proxy(this.submit, this))</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//提交验证</span></span><br><span class="line">    <span class="keyword">this</span>.$elem.on(<span class="string">'click'</span>, <span class="string">'.search-btn'</span>,$.proxy(<span class="keyword">this</span>.submit, <span class="keyword">this</span>))</span><br><span class="line">    <span class="comment">//用户配置是否开启自动完成，我的天啊，这下面都是这个自动完成的代码，不要这功能为什么不单独写一个提交验证。。。</span></span><br><span class="line">    <span class="keyword">if</span>(options.autocomplete) &#123;</span><br><span class="line">      <span class="keyword">this</span>.autocomplete()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  Search.DEFAULTS = &#123;</span><br><span class="line">    autocomplete: <span class="literal">false</span>,</span><br><span class="line">    url: <span class="string">'https://suggest.taobao.com/sug?code=utf-8&amp;_ksTS=1553601277970_353&amp;callback=jsonp354&amp;k=1&amp;area=c2c&amp;bucketid=12&amp;q='</span>,</span><br><span class="line">    css3: <span class="literal">true</span>,</span><br><span class="line">    js: <span class="literal">true</span>,</span><br><span class="line">    animate: <span class="string">'fade'</span></span><br><span class="line">  &#125;</span><br><span class="line">  Search.prototype = &#123;</span><br><span class="line">    autocomplete: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> time = <span class="literal">null</span>,</span><br><span class="line">          _this = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">this</span>.$input</span><br><span class="line">        .on(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">//减少服务器压力，vue那个老师很常用这个，不过自动完成就会有延迟，个人感觉</span></span><br><span class="line">          clearTimeout(time);</span><br><span class="line">          <span class="comment">//获取延迟</span></span><br><span class="line">          time = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            _this.getData();</span><br><span class="line">          &#125;, <span class="number">200</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">        .on(<span class="string">'focus'</span>, $.proxy(<span class="keyword">this</span>.showLayer, <span class="keyword">this</span>)) <span class="comment">//获取焦点显示</span></span><br><span class="line">        .on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">//阻止事件冒泡</span></span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//点击全局隐藏自动完成下拉菜单</span></span><br><span class="line">      $(<span class="built_in">document</span>).on(<span class="string">'click'</span>, $.proxy(<span class="keyword">this</span>.hideLayer, <span class="keyword">this</span>))</span><br><span class="line">      <span class="comment">//初始化动画方法`index.js` case/js目录下的文件</span></span><br><span class="line">      <span class="keyword">this</span>.$layer.showHide(<span class="keyword">this</span>.options)</span><br><span class="line">    &#125;,</span><br><span class="line">    submit: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">      <span class="comment">//getInputVal() 这个方法是处理字符串的，去除前后空白，因为两处用到，所以封装</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.gitInputVal() === <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="comment">//这是我自己拓展的，仿天猫的，酷</span></span><br><span class="line">        <span class="keyword">this</span>.$input.addClass(<span class="string">'background-glint'</span>)</span><br><span class="line">        <span class="keyword">this</span>.$input.off(<span class="string">'animationend'</span>).one(<span class="string">'animationend'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          _this.$input.removeClass(<span class="string">'background-glint'</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//click事件才要手动提交，submit事件如果还是手动提交，会重复执行很多次</span></span><br><span class="line">      <span class="keyword">this</span>.$form.submit()</span><br><span class="line">    &#125;,</span><br><span class="line">    getData: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">      <span class="comment">//转码，页面不是utf8，输入东西提交会乱码</span></span><br><span class="line">      <span class="keyword">var</span> url = <span class="built_in">encodeURIComponent</span>(<span class="keyword">this</span>.gitInputVal());</span><br><span class="line">      <span class="comment">//如果没有输入内容，则直接，不能这么写，不然我的默认样式就没了,解决了。</span></span><br><span class="line">      <span class="comment">// if (url === '') &#123;</span></span><br><span class="line">      <span class="comment">//   return _this.$elem.trigger('errEvent');</span></span><br><span class="line">      <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//解决上面的问题</span></span><br><span class="line">      <span class="keyword">if</span> (url === <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> _this.$elem.trigger(<span class="string">'errEvent'</span>, [_this.$layer]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//如果读到缓存数据，直接返回不执行后面的了</span></span><br><span class="line">      <span class="keyword">if</span> (cache.readData(url)) &#123;</span><br><span class="line">        <span class="comment">//读取缓存，并返回</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$elem.trigger(<span class="string">'successEvent'</span>, [cache.readData(url), _this.$layer]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//如果有新的请求，就会停止以前的请求，来直接完成新的。这个ajax的abort()以前好像都没听过。我服了</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.jqXHR) <span class="keyword">this</span>.jqXHR.abort()</span><br><span class="line">      <span class="keyword">this</span>.jqXHR = $.ajax(&#123;</span><br><span class="line">        <span class="comment">//这里的接口是请求，淘宝的数据，因为我们没数据</span></span><br><span class="line">        url: <span class="keyword">this</span>.options.url + url,</span><br><span class="line">        <span class="comment">// timeout: 1, //超时</span></span><br><span class="line">        dataType: <span class="string">"jsonp"</span>, <span class="comment">//跨域</span></span><br><span class="line">      &#125;).done(<span class="function"><span class="keyword">function</span> (<span class="params">data, $layer</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//数据缓存，添加缓存</span></span><br><span class="line">        cache.addData(url, data)</span><br><span class="line">        <span class="comment">//抛出成功事件，向外传输数据要用数组的形式</span></span><br><span class="line">        _this.$elem.trigger(<span class="string">'successEvent'</span>, [data, _this.$layer]);</span><br><span class="line">      &#125;).fail(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">        _this.$elem.trigger(<span class="string">'errEvent'</span>, [_this.$layer]);</span><br><span class="line">      &#125;).always(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//这个回调时不管是成功还是失败都会执行，所以这时候清空这个方法，这里清空了，上面的判断呢？这个还有待研究</span></span><br><span class="line">        _this.jqXHR = <span class="literal">null</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    showLayer: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// if(this.$layer.children().length === 0) &#123; return</span></span><br><span class="line">      <span class="comment">//   console.log('s');</span></span><br><span class="line">      <span class="comment">// &#125;;</span></span><br><span class="line">      <span class="comment">// `index.js` 的显示动画</span></span><br><span class="line">      <span class="keyword">this</span>.$layer.showHide(<span class="string">'show'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    hideLayer: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `index.js` 的隐藏动画</span></span><br><span class="line">      <span class="keyword">this</span>.$layer.showHide(<span class="string">'hide'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    gitInputVal: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 处理input输入的字符串的方法</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.$input.val().trim()</span><br><span class="line">    &#125;,</span><br><span class="line">    setInput: <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//处理下拉框点击后字符串转换的问题，有些字符串自带html标签，这里要通过正则删除</span></span><br><span class="line">      <span class="keyword">this</span>.$input.val(removeHtmlTags(val))</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">removeHtmlTags</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> str.replace(<span class="regexp">/&lt;(?:[^&gt;'"]|"[^"]*"|'[^']*')*&gt;/g</span>, <span class="string">''</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  $.fn.extend(&#123;</span><br><span class="line">    <span class="comment">//这里就多了个接收参数</span></span><br><span class="line">    search: <span class="function"><span class="keyword">function</span>(<span class="params">option, $layer</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> search = $(<span class="keyword">this</span>).data(<span class="string">'search'</span>),</span><br><span class="line">          $<span class="keyword">this</span> = $(<span class="keyword">this</span>),</span><br><span class="line">          options = $.extend(&#123;&#125;, Search.DEFAULTS, <span class="keyword">typeof</span> option === <span class="string">'object'</span> &amp;&amp; option);</span><br><span class="line">        <span class="keyword">if</span> (!search) &#123;</span><br><span class="line">          $($<span class="keyword">this</span>).data(<span class="string">'search'</span>, search = <span class="keyword">new</span> Search($<span class="keyword">this</span>, options))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// var mode = new Dropdown(this, option)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> search[option] === <span class="string">'function'</span>) &#123;</span><br><span class="line">          search[option]($layer)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)(jQuery)</span><br></pre></td></tr></table></figure>
+<p>调用代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> html = <span class="string">''</span>,</span><br><span class="line">    htmlload = $(<span class="string">'.search-layer'</span>).html();</span><br><span class="line">$(<span class="string">'.search'</span>).search(&#123; <span class="comment">//初始化</span></span><br><span class="line">  autocomplete: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br><span class="line">  .on(<span class="string">'successEvent'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, data, $layer</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//这个方法是处理获取的数据，便利后返回html元素标签结构</span></span><br><span class="line">    html = createHeaderLyaer(data, $layer)</span><br><span class="line">    <span class="comment">//如果有值则显示html，</span></span><br><span class="line">    <span class="keyword">if</span> (html) &#123;</span><br><span class="line">      $layer.html(html)</span><br><span class="line">      $(<span class="keyword">this</span>).search(<span class="string">'showLayer'</span>, $layer)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      $layer.html(<span class="string">''</span>)</span><br><span class="line">      $(<span class="keyword">this</span>).search(<span class="string">'hideLayer'</span>, $layer)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  .on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//每个li绑定点击事件，点击的时候就会提交数据，不用a标签，我一直以为用的是a标签。。</span></span><br><span class="line">    <span class="comment">//这个方法主要做的是把点击后的元素内容放到input的val值上面，还用这用正则处理了内容</span></span><br><span class="line">    $(<span class="string">'.search'</span>).search(<span class="string">'setInput'</span>, $(<span class="keyword">this</span>).html())</span><br><span class="line">    <span class="comment">// $('.search-form').submit()</span></span><br><span class="line">    <span class="comment">//提交验证，这里是可以通过验证的，所以是一个提交操作</span></span><br><span class="line">    $(<span class="string">'.search'</span>).search(<span class="string">'submit'</span>)</span><br><span class="line">  &#125;).on(<span class="string">'errEvent'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e, $layer</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//这个是手动抛出一个事件，主要是错误的时候抛出，确实，如果是错误抛出，我这里逻辑还有问题，我没有把他用作错误处理，应该再写一个事件来处理这个事情，以为他再ajax出错的时候也调用了，和我的逻辑想错，这个问题这里暂不做处理</span></span><br><span class="line">    $layer.html(htmlload)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createHeaderLyaer</span>(<span class="params">data, $layer</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//成功回调</span></span><br><span class="line">    <span class="keyword">var</span> html = <span class="string">''</span>,</span><br><span class="line">        dataNum = data.result.length,</span><br><span class="line">        numMax = <span class="number">9</span>; <span class="comment">//自定义显示条目</span></span><br><span class="line">    <span class="keyword">if</span> (dataNum === <span class="number">0</span>) &#123; <span class="comment">//没有数据就直接退出</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; dataNum; i++) &#123; <span class="comment">//循环遍历数据</span></span><br><span class="line">      <span class="keyword">if</span> (numMax &lt;= i) &#123; <span class="comment">//自定义显示条目</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">      html += <span class="string">'&lt;li class="search-layer-item text-ellipsis"&gt;'</span>+data.result[i][<span class="number">0</span>]+<span class="string">'&lt;/li&gt;'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="手动完成购物车，我服了。。"><a href="#手动完成购物车，我服了。。" class="headerlink" title="手动完成购物车，我服了。。"></a>手动完成购物车，我服了。。</h1><p>完成了，用的是前面下拉的动画组件</p>
+<h1 id="focus区域结构"><a href="#focus区域结构" class="headerlink" title="focus区域结构"></a>focus区域结构</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">category   左侧</span><br><span class="line">  a.category-title</span><br><span class="line">    i</span><br><span class="line">  ul.category-list</span><br><span class="line">    li.doropdown</span><br><span class="line">      div.dropdown-toggle</span><br><span class="line">        a.dropdown-link</span><br><span class="line">          i</span><br><span class="line">    div.dropdown-layer</span><br><span class="line">      dl.category-details.clearfix</span><br><span class="line">        dt.category-details-title</span><br><span class="line">          a.category-details-title-link</span><br><span class="line">        dd.category-details-item</span><br><span class="line">          a.link</span><br><span class="line">carousel   幻灯片</span><br><span class="line">focus-sidebar</span><br></pre></td></tr></table></figure>
+<h2 id="focus-html结构"><a href="#focus-html结构" class="headerlink" title="focus html结构"></a>focus html结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div.focus-sidebar.fr</span><br><span class="line">  div.focus-news</span><br><span class="line">    div.focus-news-head</span><br><span class="line">      h2.focus-news-title.fl</span><br><span class="line">      a.link.fr</span><br><span class="line">    div.focus-news-body</span><br><span class="line">      p.text-ellipsis</span><br><span class="line">        a.link</span><br><span class="line">          strong</span><br><span class="line">  div.focus-service</span><br><span class="line">  div.focus-ad</span><br></pre></td></tr></table></figure>
+<h2 id="便捷服务"><a href="#便捷服务" class="headerlink" title="便捷服务"></a>便捷服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div.focus-service</span><br><span class="line">  a.fl.focus-service-item</span><br><span class="line">    i.iconfont.focus-service-icon</span><br><span class="line">    span.focus-service-text</span><br></pre></td></tr></table></figure>
+<h2 id="幻灯片页面结构"><a href="#幻灯片页面结构" class="headerlink" title="幻灯片页面结构"></a>幻灯片页面结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div.slider</span><br><span class="line">  div.slider-container</span><br><span class="line">    div.slide-item</span><br><span class="line">      a</span><br><span class="line">        img</span><br><span class="line">  ol.slider-indicator-wrap</span><br><span class="line">    li.fl.slider-indicator</span><br><span class="line">  a.slider-control-left</span><br><span class="line">  a.slider-control-right</span><br></pre></td></tr></table></figure>
+<h1 id="幻灯片这里用了给技巧，左右滑动"><a href="#幻灯片这里用了给技巧，左右滑动" class="headerlink" title="幻灯片这里用了给技巧，左右滑动"></a>幻灯片这里用了给技巧，左右滑动</h1><p>第一种滑动是很简单的：<br>比如向左滑动，切换的时候把下一张图片放置到-100%的位置，因为是瞬间的，人眼是看不到的，然后开始上一个元素向右运动，当前元素进入，造成一个从左边出来的假象，右滑动一个道理，没写的时候脑子还真像不过来。。。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始位置，去除transition是因为这里的动画必须是瞬间的，所以必须清楚</span></span><br><span class="line"><span class="keyword">this</span>.$items.eq(index).removeClass(<span class="keyword">this</span>.transitionClass).css(<span class="string">'left'</span>, <span class="number">-1</span> * direction * <span class="keyword">this</span>.itemWidth)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动画开始，</span></span><br><span class="line"><span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  self.$items.eq(self.curIndex).move(<span class="string">'to'</span>, direction * self.itemWidth)</span><br><span class="line">  <span class="comment">//这里添加是因为我们仅清除了 index的动画，curIndex没有清楚动画</span></span><br><span class="line">  self.$items.eq(index).addClass(self.transitionClass).move(<span class="string">'to'</span>, <span class="number">0</span>)</span><br><span class="line">  <span class="comment">//如果写到外面会有bug</span></span><br><span class="line">  self.curIndex = index</span><br><span class="line">&#125;, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h2><p>命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show dbs // 所有数据库</span><br><span class="line">use imooc // 连接该库，没有则创建</span><br><span class="line">show tables // 查询该库的 表/集合 </span><br><span class="line"></span><br><span class="line">db // 当前所在数据库</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/03/16/重学jQuery/" rel="next" title="重学jQuery API">
+                <i class="fa fa-chevron-left"></i> 重学jQuery API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/04/12/移动webapp/" rel="prev" title="移动webapp">
+                移动webapp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DEBUG</p>
+              <p class="site-description motion-element" itemprop="description">go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开发网站记录"><span class="nav-text">开发网站记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下拉菜单的方式有3种"><span class="nav-text">下拉菜单的方式有3种</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分离下拉菜单，组件化开发"><span class="nav-text">分离下拉菜单，组件化开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下拉图标问题"><span class="nav-text">下拉图标问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用字体图标的技巧"><span class="nav-text">用字体图标的技巧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐藏和显示"><span class="nav-text">隐藏和显示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css3-隐藏和显示"><span class="nav-text">css3 隐藏和显示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#老师还讲到了浏览器对transitionend各浏览器的各种写法，以及兼容"><span class="nav-text">老师还讲到了浏览器对transitionend各浏览器的各种写法，以及兼容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#酷，下拉呀，淡入淡出，左右动画，全部都是通用的，直接修改css即可"><span class="nav-text">酷，下拉呀，淡入淡出，左右动画，全部都是通用的，直接修改css即可</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js切换，封装的时候有一个技巧"><span class="nav-text">js切换，封装的时候有一个技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用构造函数的方式重写dropdown"><span class="nav-text">用构造函数的方式重写dropdown</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡"><span class="nav-text">冒泡</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例化"><span class="nav-text">单例化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画条算是完成了，很nice，很全面，很完美，总结一下"><span class="nav-text">动画条算是完成了，很nice，很全面，很完美，总结一下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#transition-js-解决兼容问题"><span class="nav-text">transition.js 解决兼容问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-js-动画逻辑"><span class="nav-text">index.js 动画逻辑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#anim-js-重写dropdown动画"><span class="nav-text">anim.js 重写dropdown动画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来就是调用了"><span class="nav-text">接下来就是调用了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按需加载"><span class="nav-text">按需加载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索功能组件化"><span class="nav-text">搜索功能组件化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索框自动完成"><span class="nav-text">搜索框自动完成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#search-js-代码都写了注释，逻辑通了都很简单，EZ，接下来是改写下面的操作，应该是封装把"><span class="nav-text">search.js 代码都写了注释，逻辑通了都很简单，EZ，接下来是改写下面的操作，应该是封装把</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#search-fun-js-不封装还顺的很，封装了感觉好麻烦"><span class="nav-text">search-fun.js 不封装还顺的很，封装了感觉好麻烦</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动完成购物车，我服了。。"><span class="nav-text">手动完成购物车，我服了。。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#focus区域结构"><span class="nav-text">focus区域结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#focus-html结构"><span class="nav-text">focus html结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#便捷服务"><span class="nav-text">便捷服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#幻灯片页面结构"><span class="nav-text">幻灯片页面结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#幻灯片这里用了给技巧，左右滑动"><span class="nav-text">幻灯片这里用了给技巧，左右滑动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoose"><span class="nav-text">mongoose</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018/9/11 00:00
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEBUG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="http://www.696px.com">696px</a>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'demoorbug.github.io/2019/03/22/开发中的技巧及问题/';
+          this.page.identifier = '2019/03/22/开发中的技巧及问题/';
+          this.page.title = '开发中的技巧及问题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'frRzxfBf7ILkb3j8VGQAqdIs-gzGzoHsz',
+        appKey: 'XlCDzgMdSzgzFpgyuWY66yYM',
+        placeholder: '智慧如你，不想发表一点想法咩~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".loader").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,bash," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="linux命令linux命令">
+<meta name="keywords" content="linux,bash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell">
+<meta property="og:url" content="demoorbug.github.io/2018/09/14/shell/index.html">
+<meta property="og:site_name" content="696px">
+<meta property="og:description" content="linux命令linux命令">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-07T18:17:13.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell">
+<meta name="twitter:description" content="linux命令linux命令">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="demoorbug.github.io/2018/09/14/shell/"/>
+
+
+
+
+
+  <title>shell | 696px</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="site-title">696px</span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+             -->
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+             -->
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+             -->
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+             -->
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://demoorbug.github.io" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+             -->
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="demoorbug.github.io/blog/2018/09/14/shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEBUG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="696px">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T23:55:43+00:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/github项目笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">github项目笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/09/14/shell/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/14/shell/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><p><a href="https://github.com/DemoorBug/Shell" target="_blank" rel="noopener">linux命令</a></p>
+<a id="more"></a>
+<h1 id="所学命令的一些大致顺序-以及简介"><a href="#所学命令的一些大致顺序-以及简介" class="headerlink" title="所学命令的一些大致顺序 以及简介"></a>所学命令的一些大致顺序 以及简介</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">常用参数</th>
+<th style="text-align:center">命令英文原意</th>
+<th style="text-align:left">简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2016-9-22</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">pwd</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">print working directory</td>
+<td style="text-align:left">查询所在目录位置</td>
+</tr>
+<tr>
+<td style="text-align:center">ls</td>
+<td style="text-align:center">-aldhi</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查询目录内容</td>
+</tr>
+<tr>
+<td style="text-align:center">-rw-r–r–</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">no</td>
+<td style="text-align:left">r读w写x执行</td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir</td>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">make directories</td>
+<td style="text-align:left">建立目录</td>
+</tr>
+<tr>
+<td style="text-align:center">cd</td>
+<td style="text-align:center">~ - .. .</td>
+<td style="text-align:center">change directory</td>
+<td style="text-align:left">切换所在目录</td>
+</tr>
+<tr>
+<td style="text-align:center">tab</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">目录补全,命令补全,按两下就会显示当前目录的东西</td>
+</tr>
+<tr>
+<td style="text-align:center">rmdir</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">remove empty directories</td>
+<td style="text-align:left">删除，但是不常用，有文件内容就无法删除</td>
+</tr>
+<tr>
+<td style="text-align:center">rm</td>
+<td style="text-align:center">-rf</td>
+<td style="text-align:center">remove</td>
+<td style="text-align:left">删除文件或目录</td>
+</tr>
+<tr>
+<td style="text-align:center">cp</td>
+<td style="text-align:center">-rpd -a</td>
+<td style="text-align:center">copy</td>
+<td style="text-align:left">复制命令-a相当于-rpd</td>
+</tr>
+<tr>
+<td style="text-align:center">mv</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">move</td>
+<td style="text-align:left">剪切或改名命令</td>
+</tr>
+<tr>
+<td style="text-align:center">2016-9-23</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">ln</td>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">link</td>
+<td style="text-align:left">链接命令 <strong>最好使用-s(软链接)方式创建</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">locate</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">文件搜索命令，搜索速度快,在/var/lib/mlocate 下搜索后台数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">updatedb</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">每天更新一次，所以可以手动更新</td>
+</tr>
+<tr>
+<td style="text-align:center">whereis</td>
+<td style="text-align:center">-bm</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">搜索命令的命令,ls.1.gz 1 命令 man -f ls ，man 1 ls 一致</td>
+</tr>
+<tr>
+<td style="text-align:center">which</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">搜索命令的命令。搜索命令所在路径及别名</td>
+</tr>
+<tr>
+<td style="text-align:center">find</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">-iname -user -nouser <strong>find / -name install.log</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">* ? []</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">通配符*任意内容?一个内容[]任意一个中括号中的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">-exec {} \</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">可以在其他命令之后再继续执行命令</td>
+</tr>
+<tr>
+<td style="text-align:center">grep</td>
+<td style="text-align:center">-iv</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">搜索字符串命令 grep [选项] 字符串 文件名</td>
+</tr>
+<tr>
+<td style="text-align:center">man</td>
+<td style="text-align:center">-f</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">帮助命令 man ls <strong>man 需要下载包</strong> 编辑模式-d 然后按n就可以向下跳 shift上</td>
+</tr>
+<tr>
+<td style="text-align:center">passwd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">找到所有关于</td>
+</tr>
+<tr>
+<td style="text-align:center">ls –help</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">在xShell中显示中文</td>
+</tr>
+<tr>
+<td style="text-align:center">help</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">获取内部命令 介绍</td>
+</tr>
+<tr>
+<td style="text-align:center">info</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">帮助查询，回车进入(带有*号) u 进入上层页面 n进入下一节 p进入上一节 q退出</td>
+</tr>
+<tr>
+<td style="text-align:center">zip</td>
+<td style="text-align:center">-r</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">zip 压缩文件名 源文件  zip -r 压缩文件名 源目录</td>
+</tr>
+<tr>
+<td style="text-align:center">unzip</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">解压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">touch</td>
+<td style="text-align:center">-acfm</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">用来更新文件的或目录的时间，文件不存在则创建文件</td>
+</tr>
+<tr>
+<td style="text-align:center">gzip</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">.gz 格式压缩 gzip 源文件 #这样源文件会消失，gzip -c 源文件 &gt; 压缩文件源文件保留,gzip -r 目录 压缩目录下的所有子文件，不能压缩目录</td>
+</tr>
+<tr>
+<td style="text-align:center">ls &gt; abc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">将ls 当前数据写到 abc文件下</td>
+</tr>
+<tr>
+<td style="text-align:center">cat</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">输出文件</td>
+</tr>
+<tr>
+<td style="text-align:center">gunzip gzip -d</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">两种都可以解压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">bzip2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">bzip2 -k 源文件 这样可以保留源文件，bzip2 源文件 <code>不能压缩目录</code></td>
+</tr>
+<tr>
+<td style="text-align:center">bzip2 -d bunzip2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">解压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">tar</td>
+<td style="text-align:center">-cvf</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">打包命令，例如 tar -cvf longzls.tar longzls <code>打包后压缩</code></td>
+</tr>
+<tr>
+<td style="text-align:center">tar</td>
+<td style="text-align:center">-xvf</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">解打包命令 -x解打包</td>
+</tr>
+<tr>
+<td style="text-align:center">tar</td>
+<td style="text-align:center">-zcvf</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">直接将其打包解压gzip</td>
+</tr>
+<tr>
+<td style="text-align:center">tar</td>
+<td style="text-align:center">-jcvf</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">直接将其打包为bzip2</td>
+</tr>
+<tr>
+<td style="text-align:center">tar</td>
+<td style="text-align:center">-ztvf</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">t代表测试的意思，只查看里面内容但是不解压</td>
+</tr>
+<tr>
+<td style="text-align:center">shutdown</td>
+<td style="text-align:center">-chr</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">shutdown [选项] 时间</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">时间</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">shutdown -r 05:30 &amp; 代表后台执行 ，吧这条命令了放到后台组不占用当前操作字段</td>
+</tr>
+<tr>
+<td style="text-align:center">runlevel</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查看运行级别</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>logout</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">退出登录命令</td>
+</tr>
+<tr>
+<td style="text-align:center">mount</td>
+<td style="text-align:center">-a</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">挂载命令</td>
+</tr>
+<tr>
+<td style="text-align:center">mount</td>
+<td style="text-align:center">-to</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">mount [-t文件系统] [-o特殊选项] 设备文件名 挂载点</td>
+</tr>
+<tr>
+<td style="text-align:center">umount</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">卸载命令</td>
+</tr>
+<tr>
+<td style="text-align:center">fdisk</td>
+<td style="text-align:center">-l</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查看已经读取的设备</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查看登录用户信息</td>
+</tr>
+<tr>
+<td style="text-align:center">who</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查看登录用户信息</td>
+</tr>
+<tr>
+<td style="text-align:center">last</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查询当前登录和过去登录的用户信息，/var/log/wtmp/这个文件是被编译的，一旦修改直接崩溃</td>
+</tr>
+<tr>
+<td style="text-align:center">lastlog</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">查看所有用户的最后一次登录时间，/var/log/lastlog/</td>
+</tr>
+<tr>
+<td style="text-align:center">echo $SHELL</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">打印当前环境的shell用的是什么sh、ksh、Bash、psh、zsh</td>
+</tr>
+<tr>
+<td style="text-align:center">echo</td>
+<td style="text-align:center">-e</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">输出命令,echo [选项] [输出内容]</td>
+</tr>
+<tr>
+<td style="text-align:center">vim</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">貌似是创建一个文本</td>
+</tr>
+<tr>
+<td style="text-align:center">chmod 755 hello.sh</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">赋予执行权限</td>
+</tr>
+<tr>
+<td style="text-align:center">bash hello.sh</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">通过Bash调用执行脚本</td>
+</tr>
+<tr>
+<td style="text-align:center">alias</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">显示已有的别名,alias ls=”ls –color=never” 定义别名</td>
+</tr>
+<tr>
+<td style="text-align:center">history</td>
+<td style="text-align:center">-cw</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">历史命令 history [选项] [历史命令保存文件]</td>
+</tr>
+<tr>
+<td style="text-align:center">wc</td>
+<td style="text-align:center">-cwl</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">输入重定向，wc [选项][文件名]</td>
+</tr>
+<tr>
+<td style="text-align:center">more</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">分屏显示</td>
+</tr>
+<tr>
+<td style="text-align:center">netstat</td>
+<td style="text-align:center">-an</td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">df</td>
+<td style="text-align:center">-lahHTtx</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">磁盘管理</td>
+</tr>
+<tr>
+<td style="text-align:center">du</td>
+<td style="text-align:center">-bkmhHs</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">统计磁盘文件大小</td>
+</tr>
+<tr>
+<td style="text-align:center">fdisk</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">分区</td>
+</tr>
+<tr>
+<td style="text-align:center">passwd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">修改密码</td>
+</tr>
+<tr>
+<td style="text-align:center">source</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left">配置文件 或 . 配置文件</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>locate 遵循/etc/updatedb.conf 配置文件</p>
+</blockquote>
+<blockquote>
+<p>常见压缩格式 ： .zip .gz .bz2 .tar.gz .tar.bz2</p>
+</blockquote>
+<blockquote>
+<p>tar -jxvf jp.tar.bz2 -C /tmp/ 指定目录解压缩</p>
+</blockquote>
+<blockquote>
+<p>tar -jxvf /tmp/jp.tar.bz2 jp anaconda  压缩多个文件，并且指定目录</p>
+</blockquote>
+<blockquote>
+<p>shutdown -r now 立即重启   -h关机 -c取消前一个关机命令</p>
+</blockquote>
+<blockquote>
+<p>cat /etc/inittab  决定你启动是在字符界面还是图像界面 <strong>默认运行级别</strong></p>
+</blockquote>
+<blockquote>
+<p>linux 中大写X代表图形界面</p>
+</blockquote>
+<blockquote>
+<p>mount -t vfat /dev/sdb1 /mnt/usb/  挂载U盘 vfat = fat32</p>
+</blockquote>
+<blockquote>
+<p>光盘设备文件名 /dev/sr0  </p>
+</blockquote>
+<blockquote>
+<p>mount -t iso9660 /dev/sr0 /mnt/cdrom/ 挂载光盘</p>
+</blockquote>
+<blockquote>
+<p>按i, I, o, O, a, A, r, R任一字符进入输入模式  </p>
+</blockquote>
+<p>##环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">用户自定义变量(本地变量)</span><br><span class="line">环境变量    环境变量作用:定义每个用户的操作环境。已学的环境变量：path</span><br><span class="line">预定义变量</span><br><span class="line">位置参数变量</span><br><span class="line"></span><br><span class="line">source 配置文件</span><br><span class="line">或</span><br><span class="line">. 配置文件</span><br><span class="line">修改配置文件后，必须注销重新登录才能生效</span><br><span class="line">使用source命令可以不用重新登录</span><br><span class="line">/etc/profile</span><br><span class="line">/etc/profile.d/*.sh</span><br><span class="line">~/.bash_profile</span><br><span class="line">~/.bashrc</span><br><span class="line">/etc/bashrc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">本地终端欢迎信息：/etc/issue</span><br><span class="line">\l  显示登陆终端号，共6个</span><br><span class="line">远程登陆欢迎信息：/etc/issue.net</span><br><span class="line">显示欢迎信息，由ssh的配置文件/etc/ssh/sshd_config决定，加入</span><br><span class="line">&quot;Banner /etc/issue.net&quot; 行才能显示(重启ssh服务)</span><br></pre></td></tr></table></figure></p>
+<p>##用户和用户组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">/etc/group 存储当前系统中所有用户组信息</span><br><span class="line">组名称:组密码占位符:组编号:组中用户名列表</span><br><span class="line">/etc/gshadow 存储当前系统中用户组的密码信息</span><br><span class="line">组名称：组密码：租管理者：组中用户列表 * ！可以认为密码为空</span><br><span class="line">/etc/passwd 存储当前系统中所有用户的信息</span><br><span class="line">用户名:密码占位符:用户编号：用户编号组：用户注释信息：用户主目录：shell类型</span><br><span class="line">/etc/shadow 存储当前系统中所有用户的密码信息</span><br><span class="line"></span><br><span class="line">groupadd sexy</span><br><span class="line">groupmod -n market sexy 修改组名</span><br><span class="line">groupmod -g 668 market 修改组编号</span><br><span class="line">groupadd -g 888 boss 创建box 直接改变组编号</span><br><span class="line">groupadel market 删除 用户组 必须先删除用户</span><br><span class="line"></span><br><span class="line">用户</span><br><span class="line">groupadd sexy</span><br><span class="line">useradd -g sexy sdf   -g指定用户组</span><br><span class="line">useradd -g sexy jzmb</span><br><span class="line">useradd -d /home/xxx imooc -d指定用户文件夹  没有写就会直接创建同名文件夹</span><br><span class="line">usermod -c dgdzmx sdf  修改sdf用户备注</span><br><span class="line">usermod -l cls sdf  新用户写到前面，旧用户写到后面 修改</span><br><span class="line">usermod -d /home/cls cls 修改cls用户文件夹</span><br><span class="line">usermod -g sexy imooc 将用户imooc切换到 sexy</span><br><span class="line">userdel jzmb 删除用户jzmb 不会删除文件</span><br><span class="line">userdel -r jzmb 删除他的个人文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">touch /etc/nologin  出了root 用户 其他人都无法登陆   在~目录创建就好</span><br><span class="line"></span><br><span class="line">passwd -l cls 锁定账户</span><br><span class="line">pwsswd -u cls 解锁</span><br><span class="line">passwd -d cls 清除密码</span><br><span class="line">gpasswd -a cls boss 附属组</span><br><span class="line">gpasswd -a cls boss,sexy 多个附属组</span><br><span class="line">newgrp boss 切换附属组 要输入组密码</span><br><span class="line">gpasswd =d cls boss 清除附属组</span><br><span class="line"></span><br><span class="line">useradd -g group1 -G group2,group3,········ 及指定主要组和附属组</span><br><span class="line">gpasswrd imooc  设置组密码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">su username   切换用户</span><br><span class="line">Whoami 我谁谁？显示当前登录用户名</span><br><span class="line">id cls  显示指定用户信息，包括用户编号，用户名</span><br><span class="line">groups cls 显示cls用户所在组</span><br><span class="line">chfn cls 设置用户资料，一次输入用户资料</span><br><span class="line">finger imooc 显示用户详细资料</span><br></pre></td></tr></table></figure></p>
+<p>##swap<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdb</span><br><span class="line">p</span><br><span class="line">t</span><br><span class="line">磁盘1-n</span><br><span class="line">L 编号</span><br><span class="line"></span><br><span class="line">mkswap /dev/sdb5  格式化</span><br><span class="line">swapon /dev/sbb5 启用</span><br><span class="line">free 加载状况</span><br><span class="line">swapoff /dev/sdb5 停止</span><br></pre></td></tr></table></figure></p>
+<p>##自动挂载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim + /etc/fstab</span><br><span class="line">/dev/sdb1 /mnt/imooc ext4 defaults 0 0</span><br></pre></td></tr></table></figure></p>
+<p>##格式化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sdb1</span><br><span class="line">mkfs -t ext4 /dev/sdb2</span><br></pre></td></tr></table></figure></p>
+<p>##分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">fdisk 查看帮助</span><br><span class="line">fdisk -l  最后一块就是我们新添加的盘</span><br><span class="line">fdisk /dev/sdb</span><br><span class="line">m  查看帮助信息</span><br><span class="line">n 添加分区   p表示主分区  e表示扩展分区</span><br><span class="line">p 查看当前分区表</span><br><span class="line"></span><br><span class="line">d 删除分区</span><br><span class="line">w 写入方案 保存</span><br><span class="line"></span><br><span class="line">parted 分区 MBR GPT 两个都可以使用此工具</span><br><span class="line">help 帮助信息</span><br><span class="line">select /dev/sdc</span><br><span class="line">mklabel gpt</span><br><span class="line">print 查看当前分区详情</span><br><span class="line">print all 查看所有</span><br><span class="line">mkpart 添加分区 提问模式 交互模式</span><br><span class="line">mkpart test 2000 3000 命令模式</span><br><span class="line">rm 3 删除第三块分区</span><br><span class="line">unit GB 位单位</span><br></pre></td></tr></table></figure></p>
+<h2 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">vim + abc 直接进入最后一行</span><br><span class="line">vim +2 abc 进入第二行</span><br><span class="line">vim +/a abc 查看所有带A的高亮  命令模式按n切换</span><br><span class="line">vim aa bb cc 打开多个文件，n下一页 N 上一页</span><br><span class="line">底行模式常用指令</span><br><span class="line">:w  保存修改</span><br><span class="line">:q  退出</span><br><span class="line">:!  强制执行</span><br><span class="line">:ls 列出当前打开的所有文件</span><br><span class="line">:n N</span><br><span class="line">:15  快速定位</span><br><span class="line">/xxx 从光标位置向后搜索</span><br><span class="line">?xxx 从光标位置向前搜索</span><br><span class="line">命令模式</span><br><span class="line">h 光标左移</span><br><span class="line">j 光标下移</span><br><span class="line">k 光标上移</span><br><span class="line">l 光标右移</span><br><span class="line">ctrl+f 向下翻页</span><br><span class="line">ctrl+b 向上翻页</span><br><span class="line">ctrl+d 向下翻半页</span><br><span class="line">ctrl+u 向上翻半页</span><br><span class="line">dd 删除光标所在行</span><br><span class="line">o 在光标所在行的下方插入一行并切换到输入模式</span><br><span class="line">yy 复制光标所在的行</span><br><span class="line">p 在光标所在行的下方粘贴</span><br><span class="line">P 在光标的所在行的上放粘贴</span><br></pre></td></tr></table></figure>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">？ 一个字符</span><br><span class="line">*   所有</span><br><span class="line">[]  [abc]</span><br><span class="line">[-] [0-9][0-9]</span><br><span class="line">[^] [^0-9]逻辑非</span><br><span class="line">----------</span><br><span class="line">`` 是用来包含系统命令的 $(ls) 替代方案</span><br><span class="line">&apos;&apos; 变量 \ $ 不会被执行</span><br><span class="line">&quot;&quot; 和单元号相反</span><br><span class="line"># 代表注释</span><br><span class="line">$ 用于调用变量，调用name的时候，需要$name方式</span><br><span class="line">\ 转以符合</span><br></pre></td></tr></table></figure>
+<p>##管道符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 多命令顺序执行</span><br><span class="line">;   命令1;命令2</span><br><span class="line">&amp;&amp;  命令1&amp;&amp;命令2</span><br><span class="line">||  命令1||命令2</span><br><span class="line">2.管道符</span><br><span class="line">这个才是管道符</span><br><span class="line">命令1 | 命令2  用命令2去操作命令1打印出来的东西</span><br><span class="line"></span><br><span class="line">netstat -an | grep ESTABLISHED | wc -l 通过他我们可以知道服务器连接多少人</span><br></pre></td></tr></table></figure></p>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls &gt; test.log   文件不存在创建并修改</span><br><span class="line">ls &gt;&gt; test.log  追加</span><br><span class="line">detecang 2&gt;&gt;test.log 错误信息追加，没有空格</span><br><span class="line"></span><br><span class="line">ls &gt;&gt; test.log 2&gt;&amp;1</span><br><span class="line">ls &amp;&gt;&gt; test.log 不管错误还是标准 都追加</span><br><span class="line">ls $&gt; /dev/null 丢进黑洞</span><br><span class="line"></span><br><span class="line">ls&gt;&gt;文件1 2&gt;&gt;文件2 正确的保存到文件1 错误的保存到文件2</span><br></pre></td></tr></table></figure>
+<p>##历史命令的调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!n 重复执行第N条历史命令</span><br><span class="line">!! 重复执行上一条命令</span><br><span class="line">!字符 重复执行最后一条以该字符开头的命令</span><br></pre></td></tr></table></figure></p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctrl+c 强制终止当前命令</span><br><span class="line">ctrl+l 清屏   clear</span><br><span class="line">ctrl+a 光标移动到命令行首</span><br><span class="line">ctrl+e 光标移动到命令行尾</span><br><span class="line">ctrl+u 从光标所在位置删除到行首</span><br><span class="line">ctrl+z 把命令放入后台 &amp;</span><br><span class="line">ctrl+r 在历史命令中搜索</span><br></pre></td></tr></table></figure>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bashrc</span><br><span class="line">#写入环境变量的配置文件</span><br><span class="line">source .bashrc 直接生效，或者重新登录</span><br><span class="line">unalias cp 临时删除</span><br></pre></td></tr></table></figure>
+<h2 id="第一个脚本"><a href="#第一个脚本" class="headerlink" title="第一个脚本"></a>第一个脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi hello.sh</span><br><span class="line">#!/bin/bash  必须有</span><br><span class="line">#The first program 注释</span><br><span class="line"></span><br><span class="line">echo -e &quot;\e[1;34m 天上掉下个林妹妹 \e[0m&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/shells  可以查看当前Bash与sh兼容</span><br><span class="line">sh 进入 sh shell</span><br><span class="line">exit 退出</span><br><span class="line">csh 进入 csh shell</span><br></pre></td></tr></table></figure>
+<p>##mount -o指定一些操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">atime/noatime   更新访问时间/不更新访问时间。访问分区文件时,是否更新文件的访问时间,默认更新</span><br><span class="line">async/sync  异步/同步，默认为异步</span><br><span class="line">auto/noauto 自动/手动,mount -a 命令执行时,是否会自动安装/etc/fstab文件内容挂载，默认为自动</span><br><span class="line">defaults    自动默认值,相当于re,suid,dev,exec,auto,nouser,async这七个选项</span><br><span class="line">exec/noexec  执行/不执行,设定是否允许在文件系统中执行科执行文件,默认是exec允许</span><br><span class="line">remount 重新挂载已经挂载的文件系统,一般用于指定修改特殊权限</span><br><span class="line">rw/ro   读写/只读,文件系统挂载时,是否具有读写权限,默认是rw</span><br><span class="line">suid/nosuid 具有/不具有SUID权限,设定文件系统是否具有SUID和SGID的权限，默认是具有</span><br><span class="line">user/nouser 允许/不允许普通用户挂载,设定文件系统是否允许普通用户挂载,默认是不允许,只有root可以挂载分区</span><br><span class="line">usrquota 写入代表文件系统支持用户磁盘配额,默认不支持</span><br><span class="line">grpquota 写入代表文件系统支持组磁盘配额,默认不支持</span><br></pre></td></tr></table></figure></p>
+<h2 id="find-，-exec"><a href="#find-，-exec" class="headerlink" title="find ，-exec"></a>find ，-exec</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; find /var/log/ -mtime +10 查找10天前修改的文件</span><br><span class="line">&gt; -10 10天内修改的文件</span><br><span class="line">&gt; 10 10天当天修改的文件</span><br><span class="line">&gt; +10 10天前修改的文件</span><br><span class="line">&gt;</span><br><span class="line">&gt;  atime 文件访问时间</span><br><span class="line">&gt;  ctime 改变文件属性</span><br><span class="line">&gt;  mtime 修改文件内容</span><br><span class="line">&gt;  </span><br><span class="line">&gt; find . -size 25k 查找文件大小是25K的文件</span><br><span class="line">&gt; **25M M要大写**</span><br><span class="line">&gt; -25k 小于25KB的文件</span><br><span class="line">&gt; 25K 等于25KB的文件</span><br><span class="line">&gt; + 大于 25KB的文件</span><br><span class="line">&gt;</span><br><span class="line">&gt; find . -inum 262422</span><br><span class="line">&gt; 查找I节点是262422的文件</span><br><span class="line">&gt;</span><br><span class="line">&gt; find /etc -size +20k -a -size -50k</span><br><span class="line">&gt; #查找/etc目录下，大于20KB并且小于50KB的文件</span><br><span class="line">&gt; -a and 逻辑于</span><br><span class="line">&gt; -o or 逻辑或</span><br><span class="line">&gt;</span><br><span class="line">&gt; find /etc -size +20k -a -size -50k -exec ls -lh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<h2 id="常用目录的作用"><a href="#常用目录的作用" class="headerlink" title="常用目录的作用"></a>常用目录的作用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/根目录</span><br><span class="line">/bin命令保存目录 (普通用户就可使用) /sbin (root才可修改) /usr还有bin目录意思同前面</span><br><span class="line">/boot 启动目录 保存的是启动数据</span><br><span class="line">/dev 特殊文件目录</span><br><span class="line">/etc 保存的是默认配置文件</span><br><span class="line">/home 是普通用户目录</span><br><span class="line">/root 超级管理员目录</span><br><span class="line">/lib 函数库</span><br><span class="line">/mis /media /mnt 挂载U盘 空目录，所有存储设备都要挂着后使用，挂载就是分配盘符，用着作为外接存储的盘符 /mnt挂U盘 移动硬盘，老师在/mnt目录下创建CDrm 挂载光盘，同时创建mst挂载U盘</span><br><span class="line">*** 为什么呢 因为老式的linux 没有其他两个目录 /mis挂载磁带机 /media 挂载光盘  ***</span><br><span class="line"></span><br><span class="line">/proc /sys 不能直接操作，保存的是内存的挂载点，直接写在内存当中，无法写入数据</span><br><span class="line">/tmp 临时目录</span><br><span class="line">/usr 系统资源保存目录</span><br><span class="line">/var 系统相关文档</span><br><span class="line">*** 练习的话就在tmp和root，home下 ***</span><br></pre></td></tr></table></figure>
+<p>ps aux 查看运行程序</p>
+<h2 id="scp-的使用"><a href="#scp-的使用" class="headerlink" title="scp 的使用"></a>scp 的使用</h2><p>-v 和大多数 linux命令中的-v意思一样，用来显示进度。可以用来查看连接、认证、或是配置错误</p>
+<p>-C 使能压缩选项</p>
+<p>-P 选择端口</p>
+<p>-r 复制目录</p>
+<p>1、从本地将文件传输到服务器<br>scp【本地文件的路径】【服务器用户名】@【服务器地址】：【服务器上存放文件的路径】</p>
+<p>scp /Users/mac_pc/Desktop/test.png <a href="mailto:root@192.168.1.1" target="_blank" rel="noopener">root@192.168.1.1</a>:/root</p>
+<p>2、从本地将文件夹传输到服务器<br>scp -r【本地文件的路径】【服务器用户名】@【服务器地址】：【服务器上存放文件的路径】</p>
+<p>sup -r /Users/mac_pc/Desktop/test <a href="mailto:root@192.168.1.1" target="_blank" rel="noopener">root@192.168.1.1</a>:/root</p>
+<p>3、将服务器上的文件传输到本地<br>scp 【服务器用户名】@【服务器地址】：【服务器上存放文件的路径】【本地文件的路径】</p>
+<p>scp <a href="mailto:root@192.168.1.1" target="_blank" rel="noopener">root@192.168.1.1</a>:/data/wwwroot/default/111.png /Users/mac_pc/Desktop</p>
+<p>4、将服务器上的文件夹传输到本地<br>scp -r 【服务器用户名】@【服务器地址】：【服务器上存放文件的路径】【本地文件的路径】</p>
+<p>sup -r <a href="mailto:root@192.168.1.1" target="_blank" rel="noopener">root@192.168.1.1</a>:/data/wwwroot/default/test /Users/mac_pc/Desktop</p>
+<hr>
+<p>作者：小猪熊121<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/aa294194253/article/details/50054723" target="_blank" rel="noopener">https://blog.csdn.net/aa294194253/article/details/50054723</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+<h2 id="查看进程，杀死进程"><a href="#查看进程，杀死进程" class="headerlink" title="查看进程，杀死进程"></a>查看进程，杀死进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -aux // 查看进程</span><br><span class="line"><span class="built_in">kill</span> -s 9 PID // 上面的命令可以查出PID</span><br></pre></td></tr></table></figure>
+<h2 id="sudo-npm-sudo-node-报错找不到命令"><a href="#sudo-npm-sudo-node-报错找不到命令" class="headerlink" title="sudo npm sudo node 报错找不到命令"></a>sudo npm sudo node 报错找不到命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//原因很简单，没有放到/usr/<span class="built_in">local</span>/bin目录下，所以我们创建软链接即可</span><br><span class="line"><span class="keyword">while</span> node //查看命令所在路径</span><br><span class="line"><span class="keyword">while</span> npm</span><br><span class="line">sudo ln -s /home/demoorbug/.nvm/versions/node/v14.5.0/bin/node /usr/<span class="built_in">local</span>/bin/</span><br><span class="line">sudo ln -s /home/demoorbug/.nvm/versions/node/v14.5.0/bin/npm /usr/<span class="built_in">local</span>/bin/</span><br><span class="line">//<span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/blog/tags/bash/" rel="tag"># bash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/09/14/angular/" rel="next" title="angular">
+                <i class="fa fa-chevron-left"></i> angular
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/11/30/ES6学习记录/" rel="prev" title="ES6学习记录">
+                ES6学习记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DEBUG</p>
+              <p class="site-description motion-element" itemprop="description">go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux命令"><span class="nav-text">linux命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#所学命令的一些大致顺序-以及简介"><span class="nav-text">所学命令的一些大致顺序 以及简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VIM"><span class="nav-text">VIM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向"><span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个脚本"><span class="nav-text">第一个脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-，-exec"><span class="nav-text">find ，-exec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用目录的作用"><span class="nav-text">常用目录的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp-的使用"><span class="nav-text">scp 的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程，杀死进程"><span class="nav-text">查看进程，杀死进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo-npm-sudo-node-报错找不到命令"><span class="nav-text">sudo npm sudo node 报错找不到命令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018/9/11 00:00
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEBUG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="http://www.696px.com">696px</a>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'demoorbug.github.io/2018/09/14/shell/';
+          this.page.identifier = '2018/09/14/shell/';
+          this.page.title = 'shell';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'frRzxfBf7ILkb3j8VGQAqdIs-gzGzoHsz',
+        appKey: 'XlCDzgMdSzgzFpgyuWY66yYM',
+        placeholder: '智慧如你，不想发表一点想法咩~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".loader").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

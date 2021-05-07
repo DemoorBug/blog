@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue,SSR,Koa2," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="vue全家桶+SSR+Koa2全栈开发美团网项目地址：vue全家桶+SSR+Koa2全栈开发美团网 安装vue-clivue脚手架创建项目环境123npm install -g @vue/clivue -Vvue create 项目名称 查看项目remote12git remote -vgit remote remove &amp;lt;name&amp;gt; git 本地创建目录命令12345678910线上">
+<meta name="keywords" content="vue,SSR,Koa2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuesenior">
+<meta property="og:url" content="demoorbug.github.io/2018/12/13/vuesenior/index.html">
+<meta property="og:site_name" content="696px">
+<meta property="og:description" content="vue全家桶+SSR+Koa2全栈开发美团网项目地址：vue全家桶+SSR+Koa2全栈开发美团网 安装vue-clivue脚手架创建项目环境123npm install -g @vue/clivue -Vvue create 项目名称 查看项目remote12git remote -vgit remote remove &amp;lt;name&amp;gt; git 本地创建目录命令12345678910线上">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-07T18:17:13.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuesenior">
+<meta name="twitter:description" content="vue全家桶+SSR+Koa2全栈开发美团网项目地址：vue全家桶+SSR+Koa2全栈开发美团网 安装vue-clivue脚手架创建项目环境123npm install -g @vue/clivue -Vvue create 项目名称 查看项目remote12git remote -vgit remote remove &amp;lt;name&amp;gt; git 本地创建目录命令12345678910线上">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="demoorbug.github.io/2018/12/13/vuesenior/"/>
+
+
+
+
+
+  <title>vuesenior | 696px</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="site-title">696px</span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+             -->
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+             -->
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+             -->
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+             -->
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://demoorbug.github.io" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+             -->
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="demoorbug.github.io/blog/2018/12/13/vuesenior/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEBUG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="696px">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vuesenior</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T22:57:37+00:00">
+                2018-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/12/13/vuesenior/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/12/13/vuesenior/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vue全家桶-SSR-Koa2全栈开发美团网"><a href="#vue全家桶-SSR-Koa2全栈开发美团网" class="headerlink" title="vue全家桶+SSR+Koa2全栈开发美团网"></a>vue全家桶+SSR+Koa2全栈开发美团网</h2><p>项目地址：<a href="https://github.com/DemoorBug/vuesenion" target="_blank" rel="noopener">vue全家桶+SSR+Koa2全栈开发美团网</a></p>
+<h2 id="安装vue-cli"><a href="#安装vue-cli" class="headerlink" title="安装vue-cli"></a>安装vue-cli</h2><p>vue脚手架创建项目环境<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line">vue -V</span><br><span class="line">vue create 项目名称</span><br></pre></td></tr></table></figure></p>
+<p>查看项目remote<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">git remote remove &lt;name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>git 本地创建目录命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">线上创建项目</span><br><span class="line">mkdir 项目名称</span><br><span class="line"><span class="built_in">cd</span> 项目名称</span><br><span class="line">git init </span><br><span class="line">vi README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">"上传简介"</span></span><br><span class="line">git remote add origin git@github.com:DemoorBug/vuesenior.git</span><br><span class="line"></span><br><span class="line">git push -u origin master      -u代表了关联本地分支和线上分支的master分支，以后就可以直接git push了</span><br></pre></td></tr></table></figure></p>
+<h2 id="Koa2学习"><a href="#Koa2学习" class="headerlink" title="Koa2学习"></a>Koa2学习</h2><p>首先要装一个脚手架，我以前学node的时候老师用的express，今年这个koa2最火<br>koa-generator<br>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g koa-generator</span><br></pre></td></tr></table></figure></p>
+<p>创建项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">koa2 project 默认是用这个引擎安装的</span><br><span class="line">想用e js引擎</span><br><span class="line">koa2 -e project</span><br></pre></td></tr></table></figure></p>
+<p>运行项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd project</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure></p>
+<h2 id="async和await语法"><a href="#async和await语法" class="headerlink" title="async和await语法"></a>async和await语法</h2><p>这就是prmis，的一个写法，很简单</p>
+<h2 id="koa2中间件"><a href="#koa2中间件" class="headerlink" title="koa2中间件"></a>koa2中间件</h2><p>中间件一直是我没搞懂的</p>
+<p><a href="https://koa.bootcss.com" target="_blank" rel="noopener">koa2_api</a></p>
+<p>大致理解就是一个环，先进来，在出去都可以执行到我，<br>比如执行顺序是这样的:<br>m1<br>m2<br>m3<br>出去的执行顺序是这样的:<br>m3<br>m2<br>m1</p>
+<p>所以谁前谁后执行无所谓，出去的时候还会自我检查，我的优先级会被提高</p>
+<p>中间件代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pv</span> (<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  global.console.log(<span class="string">'pv'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">    pv(ctx)</span><br><span class="line">    <span class="keyword">await</span> next()</span><br><span class="line">    global.console.log(<span class="string">'pv end'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="koa路由"><a href="#koa路由" class="headerlink" title="koa路由"></a>koa路由</h2><h4 id="cookies"><a href="#cookies" class="headerlink" title="cookies"></a>cookies</h4><p>ctx.cookies.set(‘pvd’, Math.random())<br>ctx.cookies.get(‘pvd’)</p>
+<h2 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span>   搜索命令的命令。搜索命令所在路径及别名</span><br><span class="line"></span><br><span class="line"><span class="built_in">which</span> mongod</span><br></pre></td></tr></table></figure>
+<p><a href="https://mongoose.shujuwajue.com/" target="_blank" rel="noopener">mongoose中文文档</a></p>
+<h4 id="研究了一下windows下的mongodb启动，这里总结一下"><a href="#研究了一下windows下的mongodb启动，这里总结一下" class="headerlink" title="研究了一下windows下的mongodb启动，这里总结一下"></a>研究了一下windows下的mongodb启动，这里总结一下</h4><p>键入的命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath <span class="string">"f:\mo\data"</span> --logpath <span class="string">"f:\mo\log\db.log"</span> --install --serviceName <span class="string">"mongodb"</span> --logappend --directoryperdb</span><br></pre></td></tr></table></figure></p>
+<p>这里面的启动名字是mongodb<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mongodb</span><br></pre></td></tr></table></figure></p>
+<p>我看有些人的教程直接是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.\mongod --dbpath=<span class="string">"E:\MongoDB\data"</span></span><br><span class="line">net start MongoDB</span><br></pre></td></tr></table></figure></p>
+<p>但是我不可以这样写,会报错，这里的MongoDB，是默认名字吗？有待证实</p>
+<p>搞明白了，MongoDB是默认名字，net start 也是windows独有的</p>
+<p>关闭服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line">use admin</span><br><span class="line">db.shutdownServer()</span><br></pre></td></tr></table></figure></p>
+<p>发送post请求<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">"name=haimeimei&amp;age=27"</span> http://localhost:3000/users/addPerson</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>-d post请求</li>
+</ul>
+<p>读数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> Person.findOne(&#123;</span><br><span class="line">    name: ctx.request.body.name</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>写数据要创建实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Person(&#123;</span><br><span class="line">  name: ctx.request.body.name,</span><br><span class="line">  age: ctx.request.body.age</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>更新数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> Person.where(&#123;</span><br><span class="line">  name: ctx.request.body.name</span><br><span class="line">  &#125;).update(&#123;</span><br><span class="line">    age: ctx.request.bdoy.age</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>删除数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> Person.where(&#123;</span><br><span class="line">  name: ctx.request.body.name</span><br><span class="line">  &#125;).remove()</span><br></pre></td></tr></table></figure></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p><a href="http://www.runoob.com/redis/redis-install.html" target="_blank" rel="noopener">安装教程</a><br>服务端用session来保持用户状态，浏览器用cookie保存session，服务器把session种植到cookie中然后下次访问的时候cookie就会带着session过来，进而达到身份认证的过程</p>
+<p>安装中间件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i koa-generic-session koa-redis</span><br></pre></td></tr></table></figure></p>
+<p>操作Redis方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line"></span><br><span class="line">keys *</span><br><span class="line">get key</span><br></pre></td></tr></table></figure></p>
+<p>Redis可以直接存储数据，不用配合session也行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Redis = <span class="built_in">require</span>(<span class="string">'koa-redis'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Store = <span class="keyword">new</span> Redis().client</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/fix'</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> st = <span class="keyword">await</span> Store.hset(<span class="string">'fix'</span>, <span class="string">'name'</span>, <span class="built_in">Math</span>.random())</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    code: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>Redis 查看<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keys *</span><br><span class="line">hget fix name</span><br></pre></td></tr></table></figure></p>
+<h2 id="Nuxt-js-是做vue-ssr的一个框架"><a href="#Nuxt-js-是做vue-ssr的一个框架" class="headerlink" title="Nuxt.js 是做vue ssr的一个框架"></a>Nuxt.js 是做vue ssr的一个框架</h2><ol>
+<li>是基于vue2这个框架做的</li>
+<li>包含了vue Router<ul>
+<li>vue本身不带路由，是通过插件的方式支持，Nuxt.js整合了这些</li>
+<li>Nuxt.js将Router的配置设置的很简单，甚至你可以不配置就可以用</li>
+</ul>
+</li>
+<li>可以支持vuex<ul>
+<li>vuex是一个跨组件的管理工具</li>
+</ul>
+</li>
+<li>支持Vue Server Renderer<ul>
+<li>ssr,整合</li>
+</ul>
+</li>
+<li>支持vue-meta<ul>
+<li>html meta管理</li>
+</ul>
+</li>
+</ol>
+<p>Nuxt生命周期</p>
+<ol>
+<li>Incoming Request l浏览器发出请求</li>
+<li>检查有没有 nuxtServerInit 如果有的话就执行这个函数store action</li>
+<li>middleware 中间件是跟路由相关，可以实现你想要的功能，都可以在这里完成</li>
+<li>validate() 配合高级动态路由去做一些验证，比如说是不是允许跳到这个页面来，如果没有得到我的校验，就跳走之类的，</li>
+<li>asyncData() &amp; fetch() 获取数据<ul>
+<li>asyncData() 是用来获取渲染vue组件的</li>
+<li>fetch() 通常是用来修改vuex的</li>
+</ul>
+</li>
+<li>Render 最后一步就是渲染</li>
+</ol>
+<p>Navigate <nuxt-link> 如果要是有这个的话，会发起一个非(色沃)的路由他会重新循环3-6的内容，<br>如果<nuxt-link>发起的是一个新的路由，这个时候就从第一部开始循环1-6</nuxt-link></nuxt-link></p>
+<p>Nuxt.js安装<br><a href="https://zh.nuxtjs.org/guide/installation" target="_blank" rel="noopener">Nuxt.js安装</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init nuxt-community/koa-template .</span><br></pre></td></tr></table></figure></p>
+<p>今天研究了半天的bug，这玩意安装不成功呀<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery@latest 更新到最新版本</span><br></pre></td></tr></table></figure></p>
+<p>Nuxt.js官方安装，以前不支持koa，现在官方就可以自己支持<br><a href="https://zh.nuxtjs.org" target="_blank" rel="noopener">Nuxt官网</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-nuxt-app</span><br></pre></td></tr></table></figure>
+<p>安装的时候会有选项，可以选koa，不过这个koa是不支持import写法</p>
+<h4 id="创建即配置，异步获取"><a href="#创建即配置，异步获取" class="headerlink" title="创建即配置，异步获取"></a>创建即配置，异步获取</h4><p>创建及配置<br>vue里面是用mounted()方法发出ajax请求，但是这个不会在服务器端执行，只在浏览器端执行，<br>而asyncData()可以在服务端渲染，这样得到的数据更利于seo</p>
+<p>Nuxtjs里面使用模板是要用到layout<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  layout: &apos;search&apos;,</span><br><span class="line">  data () &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>SSR的作用，就是页面闪动的时候，ssr就可以做到</strong></p>
+<h2 id="环境准备与项目安装-6-2-6-1略过"><a href="#环境准备与项目安装-6-2-6-1略过" class="headerlink" title="环境准备与项目安装 6-2   6-1略过"></a>环境准备与项目安装 6-2   6-1略过</h2><p>用babel编译文件，这样就可以用import写法了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package.json 的dev后面增加babel编译</span><br><span class="line">--<span class="built_in">exec</span> babel-node</span><br><span class="line"></span><br><span class="line">.babelrc 增加babel配置文件</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [<span class="string">"es2015"</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">npm install babel-preset-es2015</span><br></pre></td></tr></table></figure></p>
+<p>支持sass编译<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i sass-loader node-sass --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>我也是醉了，安装sass后，<code>lang=&quot;scss&quot;</code> 写成这样的，差点被坑了</p>
+<p>nuxt.config.js<br>build,添加这个，增加缓存，不知道什么鬼<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cache: ture</span><br></pre></td></tr></table></figure></p>
+<p>这个东西在我的代码里，会导致element-ui 字体文件请求不到，会报错<br>暂时只能将这个代码去除了</p>
+<h2 id="首页开发"><a href="#首页开发" class="headerlink" title="首页开发"></a>首页开发</h2><p>真正做业务的时候要先想再做需求分析：</p>
+<p>模板设计   复用</p>
+<p>组件设计   如何拆分组件</p>
+<p>数据结构设计  </p>
+<p>接口设计</p>
+<p>今天遇到了一个bug，就是@import引入css文件报错，最后就是我也不知道为什么引入header.scss这个文件就会报错，测试了一下午，原因就是写新代码没有创建新分支，所以导致了这种问题，不然直接切换分支，好像也不行，好像又可以，以后先要创建分支再写代码了，bug所在位置，components/public/header/topBar.vue: @import “@/assets/css/public/header.sass”;<br>我再去测试一下是文件内容错误还是命名错误还是误认为是文件夹了，因为里面有个header文件夹</p>
+<p>mdzz，后缀也是scss，而且header.scss内容也有问题，我TM也是醉了，搞我呢，一下午白忙</p>
+<h2 id="开发搜索模块"><a href="#开发搜索模块" class="headerlink" title="开发搜索模块"></a>开发搜索模块</h2><p>搜索这个模块，原理特简单<br>判断是否获取焦点，是否有内容即可完成搜索框<br>return 是否焦点 &amp;&amp; 是否有内容 //常规搜索<br>return 是否焦点 &amp;&amp; !是否有内容  //热门搜索<br>还有要注意的是，没有焦点后搜索框就会瞬间消失，a链接就点不上了，所以要给个延迟<br>数据：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    isFocus: <span class="literal">false</span>,</span><br><span class="line">    search: <span class="string">''</span>,</span><br><span class="line">    hotPlace: [<span class="string">'热门搜索'</span>, <span class="string">'nice'</span>],</span><br><span class="line">    searchDate: [<span class="string">'哈哈2哈哈1'</span>, <span class="string">'也没2有那么1'</span>, <span class="string">'搜索2吗1'</span>, <span class="string">'北京1烤鸭'</span>, <span class="string">'偶是1'</span>],</span><br><span class="line">    searchList: [],</span><br><span class="line">    show: <span class="literal">true</span>,</span><br><span class="line">    number: <span class="number">0</span>,</span><br><span class="line">    what: <span class="literal">false</span>,</span><br><span class="line">    hidone: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>搜索框热门搜索出现逻辑代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  isHotPlace () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.isFocus &amp;&amp; !<span class="keyword">this</span>.search</span><br><span class="line">  &#125;,</span><br><span class="line">  isSearchList () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.isFocus &amp;&amp; <span class="keyword">this</span>.search</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  focus () &#123;</span><br><span class="line">    <span class="keyword">this</span>.isFocus = <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  blur () &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.isFocus = <span class="literal">false</span></span><br><span class="line">    &#125;,<span class="number">200</span>)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>搜索框代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">  search () &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.search) &#123;</span><br><span class="line">      <span class="keyword">this</span>.searchList = []</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.what) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> result = []</span><br><span class="line">    <span class="keyword">this</span>.searchDate.forEach(<span class="function">(<span class="params">value, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (value.indexOf(<span class="keyword">this</span>.search) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        result.push(value)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">/*和这层代码没关系*/</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.searchList.length; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$refs[i][<span class="number">0</span>].className = <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.number = <span class="number">0</span></span><br><span class="line">    <span class="comment">/*-------------*/</span></span><br><span class="line">    <span class="keyword">this</span>.searchList = result</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>搜索框的down 和 up事件操控逻辑<br>写了很多冗余代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">numberSerace () &#123;</span><br><span class="line">    <span class="comment">// 点击键盘down执行事件，写的很乱，不过功能还可以</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.search) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">this</span>.what = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">this</span>.hidone = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.number &gt;= <span class="keyword">this</span>.searchList.length) &#123;</span><br><span class="line">      <span class="keyword">this</span>.number = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.searchList.length; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$refs[i][<span class="number">0</span>].className = <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.$refs[<span class="keyword">this</span>.number][<span class="number">0</span>].className = <span class="string">"msg"</span></span><br><span class="line">    <span class="keyword">this</span>.search = <span class="keyword">this</span>.searchList[<span class="keyword">this</span>.number]</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.what = <span class="literal">false</span></span><br><span class="line">    &#125;, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.number++</span><br><span class="line">  &#125;,</span><br><span class="line">  upSerace () &#123;</span><br><span class="line">    <span class="comment">//点击键盘up执行事件</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.search) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.what = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.hidone) &#123;</span><br><span class="line">      <span class="keyword">this</span>.number--</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.hidone = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">this</span>.number--</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.number &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.number = <span class="keyword">this</span>.searchList.length<span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.searchList.length; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$refs[i][<span class="number">0</span>].className = <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.$refs[<span class="keyword">this</span>.number][<span class="number">0</span>].className = <span class="string">"msg"</span></span><br><span class="line">    <span class="keyword">this</span>.search = <span class="keyword">this</span>.searchList[<span class="keyword">this</span>.number]</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.what = <span class="literal">false</span></span><br><span class="line">    &#125;, <span class="number">200</span>)</span><br></pre></td></tr></table></figure></p>
+<p>搜索框全代码地址：<br><a href="https://github.com/DemoorBug/vuesenior/blob/master/components/public/header/searchBar.vue" target="_blank" rel="noopener">github地址</a></p>
+<h2 id="7-8左侧边栏实现原理"><a href="#7-8左侧边栏实现原理" class="headerlink" title="7-8左侧边栏实现原理"></a>7-8左侧边栏实现原理</h2><p>首先是结构布局<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>全部分类<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">i</span>&gt;</span>图标标签i<span class="tag">&lt;/<span class="name">i</span>&gt;</span>美食<span class="tag">&lt;<span class="name">span</span>&gt;</span>&gt;箭头标签<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span> 这个div就是用来存放弹出内容的，是实时渲染，就是获得数据然后渲染，方便到爆</span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span>&gt;</span> 这个标签控制循环，不然外面就要套一层，冗余</span><br><span class="line">      <span class="tag">&lt;<span class="name">h4</span>&gt;</span><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>方法部分的实现原理分析：</p>
+<ul>
+<li>this.menu.filter((item) =&gt; item.type==this.kind)[0].child<ul>
+<li>比对this.kind来获取想应数据，filter是什么？</li>
+</ul>
+</li>
+<li>this.kind = e.target.querySelector(‘i’).className<ul>
+<li>获取当前鼠标对应的元素，赋值给this.kind<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  this._timer = setTimeout(() =&gt; &#123;</span><br><span class="line">    this.kind= ''</span><br><span class="line">  &#125;, 150)</span><br><span class="line">这块代码延迟，可以在鼠标进入右侧边栏的时候有个反应时间，来让右侧响应标签取消这个定时器，从而达到可以防止鼠标到弹出框，弹出框就消失的问题</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>本节源码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-menu"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dl</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"nav"</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">mouseleave</span>=<span class="string">"mouseleave"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dt</span>&gt;</span>全部分类<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">"(item, index) of menu"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:key</span>=<span class="string">"index"</span></span></span><br><span class="line"><span class="tag">        @<span class="attr">mouseenter</span>=<span class="string">"enter"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">:class</span>=<span class="string">"item.type"</span>/&gt;</span>&#123;&#123; item.name &#125;&#125;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"arrow"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">      <span class="attr">v-if</span>=<span class="string">"kind"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"detail"</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">mouseleave</span>=<span class="string">"Eenter"</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">mouseenter</span>=<span class="string">"Emousele"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) of curdetail"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h4</span> <span class="attr">:key</span>=<span class="string">"index"</span>&gt;</span>&#123;&#123; item.title &#125;&#125;<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">          <span class="attr">v-for</span>=<span class="string">"v of item.child"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:key</span>=<span class="string">"v"</span>&gt;</span>&#123;&#123; v &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data () &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      kind: <span class="string">''</span>,</span></span><br><span class="line"><span class="undefined">      menu: [&#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'food'</span>,</span></span><br><span class="line"><span class="javascript">        name: <span class="string">'美食'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'美食'</span>,</span></span><br><span class="line"><span class="javascript">          child: [<span class="string">'代金券'</span>,<span class="string">'饮品'</span>,<span class="string">'火锅'</span>,<span class="string">'自助餐'</span>]</span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;, &#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'takeout'</span>,</span></span><br><span class="line"><span class="javascript">        name: <span class="string">'外卖'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'外卖'</span>,</span></span><br><span class="line"><span class="javascript">          child: [<span class="string">'美团'</span>,<span class="string">'饿了么'</span>,<span class="string">'百度外卖'</span>,<span class="string">'自助餐'</span>]</span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;]</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  computed: &#123;</span></span><br><span class="line"><span class="undefined">    curdetail () &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="keyword">this</span>.menu.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> item.type==<span class="keyword">this</span>.kind)[<span class="number">0</span>].child</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    mouseleave () &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>._timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.kind= <span class="string">''</span></span></span><br><span class="line"><span class="undefined">      &#125;, 150)</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    enter (e) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(e.target)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.kind = e.target.querySelector(<span class="string">'i'</span>).className</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    Emousele () &#123;</span></span><br><span class="line"><span class="javascript">      clearTimeout(<span class="keyword">this</span>._timer)</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    Eenter () &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.kind = <span class="string">''</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>自己写的另一个列表源码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"m-istyle"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dl</span> @<span class="attr">mouseover</span>=<span class="string">"moue"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dt</span>&gt;</span>有格调<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active:kind==='all'&#125;"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">kind</span>=<span class="string">"all"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">keyword</span>=<span class="string">"景点"</span>&gt;</span>全部<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active:kind==='part'&#125;"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">kind</span>=<span class="string">"part"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">keyword</span>=<span class="string">"美食"</span>&gt;</span>约会聚餐<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active:kind==='spa'&#125;"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">kind</span>=<span class="string">"spa"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">keyword</span>=<span class="string">"丽人"</span>&gt;</span>丽人SPA<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active:kind==='movie'&#125;"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">kind</span>=<span class="string">"movie"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">keyword</span>=<span class="string">"电影"</span>&gt;</span>电影演出<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active:kind==='travel'&#125;"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">kind</span>=<span class="string">"travel"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">keyword</span>=<span class="string">"旅游"</span>&gt;</span>品质出游<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ibody"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">"(item, index) of curdetail"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:key</span>=<span class="string">"index"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">style</span>=<span class="string">"height: auto"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-card</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"item.img"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"cbody"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>&#123;&#123; item.title &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"pos"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">                <span class="attr">v-for</span>=<span class="string">"(item, index) of item.pos"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">:key</span>=<span class="string">"index"</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"price"</span>&gt;</span>￥<span class="tag">&lt;<span class="name">em</span>&gt;</span>&#123;&#123; item.price &#125;&#125;<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>/起<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-card</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data () &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      kind: <span class="string">'all'</span>,</span></span><br><span class="line"><span class="undefined">      artistic: [&#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'all'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'木北造型（崇文门新世界店）'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p1.meituan.net/wedding/8d26f93de654d433b17774e60a1fc5bd1028431.jpg@240w_180h_1e_1c_1l|watermark=1&amp;&amp;r=2&amp;p=9&amp;x=2&amp;y=2&amp;relative=1&amp;o=20|368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'亲子场景酒店'</span>,<span class="string">'发票推荐'</span>,<span class="string">'亲子酒店点评'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'685'</span></span></span><br><span class="line"><span class="undefined">        &#125;, &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'北京新侨诺富特饭店'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p1.meituan.net/dnaimgdark/42487acaeaa40e3a97b41443f75566142443096.jpg@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'亲子场景酒店'</span>,<span class="string">'亲子酒店'</span>,<span class="string">'房量充足'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'536'</span></span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;, &#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'part'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'分米鸡 DM Chicken（合景·摩方店）'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p1.meituan.net/msmerchant/a361a5683dcfc8db85d61f15639f9bfd61437.jpg@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'分米鸡10DM套餐1份，有赠品'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'308'</span></span></span><br><span class="line"><span class="undefined">        &#125;, &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'COSTA COFFEE（东方新天地店）'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p0.meituan.net/merchantpic/b5bc200ff96056aa58e2441c37b0097d58192.jpg@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'巧克力酥卷小美式，建议单人使用'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'18'</span></span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;, &#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'spa'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'魅贝克美发沙龙（崇文门新世界店）'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p0.meituan.net/wedding/15570fc8c02870c37c21d4d250489cf9212844.jpg@240w_180h_1e_1c_1l|watermark=1&amp;&amp;r=2&amp;p=9&amp;x=2&amp;y=2&amp;relative=1&amp;o=20|368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'魅贝克美发沙龙（崇文门新世界店）'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'282'</span></span></span><br><span class="line"><span class="undefined">        &#125;, &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'TONI&amp;GUY（东方广场店）'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p0.meituan.net/wedding/bdfdfa650660bc9c4b06c6a95f50492132697.jpg@240w_180h_1e_1c_1l|watermark=1&amp;&amp;r=2&amp;p=9&amp;x=2&amp;y=2&amp;relative=1&amp;o=20|368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'TONI&amp;GUY（东方广场店）'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'896'</span></span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;, &#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'movie'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'金泉港IMAX国际影城'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p0.meituan.net/poi/c2b482474377fc31a8311f46055f40b0442616.png@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'免押金,可停车,有情侣座,儿童票,有WIFI,IMAX厅,杜比全景声厅,4DX厅'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'43'</span></span></span><br><span class="line"><span class="undefined">        &#125;, &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'中影国际影城(丰台千禧街店)'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p1.meituan.net/deal/__29661209__6853522.jpg@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'免押金,可停车,有情侣座,儿童票,可刷卡,休息区,中国巨幕厅,60帧厅'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'19.9'</span></span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;, &#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'travel'</span>,</span></span><br><span class="line"><span class="undefined">        child: [&#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'新鲜酒店'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p1.meituan.net/tdchotel/3a2020cce42f452cb089eb274b67d6d18153330.jpg@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'新客超值优惠'</span>,<span class="string">'酒店套餐'</span>,<span class="string">'亲子酒店'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'358'</span></span></span><br><span class="line"><span class="undefined">        &#125;, &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'北京商旅智选北京INN公寓'</span>,</span></span><br><span class="line"><span class="javascript">          img: <span class="string">'//p1.meituan.net/tdchotel/7d2e528c129d1376224df99dac1d3b382809929.jpg@368w_208h_1e_1c'</span>,</span></span><br><span class="line"><span class="javascript">          pos: [<span class="string">'新客超值优惠'</span>,<span class="string">'酒店套餐'</span>,<span class="string">'亲子酒店'</span>],</span></span><br><span class="line"><span class="javascript">          price: <span class="string">'404'</span></span></span><br><span class="line"><span class="undefined">        &#125;]</span></span><br><span class="line"><span class="undefined">      &#125;]</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  computed: &#123;</span></span><br><span class="line"><span class="undefined">    curdetail () &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="keyword">this</span>.artistic.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> item.type==<span class="keyword">this</span>.kind)[<span class="number">0</span>].child</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    moue (e) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> dom = e.target</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> tag = dom.tagName.toLowerCase()</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (tag == <span class="string">'dd'</span>) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.kind = dom.getAttribute(<span class="string">'kind'</span>)</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    @<span class="keyword">import</span> <span class="string">"@/assets/css/index/artistic.scss"</span>;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="8-1注册"><a href="#8-1注册" class="headerlink" title="8-1注册"></a>8-1注册</h2><p>这章就是介绍接口的设计，很重要把，对于后台来说</p>
+<table>
+<thead>
+<tr>
+<th>user表</th>
+<th>areas表</th>
+<th>menu表</th>
+<th>city表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pasword</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>接口<br>/users/signup<br>/users/signin<br>/users/verify<br>/users/exit<br>/users/getUser</p>
+<p>这一章涵盖太多不知道的东西了，必须要搞明白，为什么这么写，实现的是什么功能，再开始继续，把每一个代码都记录下来，不管是百度还是什么</p>
+<p>nodemailer  控制邮箱的一个应用<br>npm install nodemailer</p>
+<p><a href="https://blog.csdn.net/qq_36801710/article/details/79528013" target="_blank" rel="noopener">axios教程</a><br>创建一个axios实例<br>axios.create({<br>  baseURL:<br>})</p>
+<p>passport 权限认证中间件，本地用户登陆，第三方登陆<br><a href="https://segmentfault.com/a/1190000011557953" target="_blank" rel="noopener">passport教程</a></p>
+<p>这个老师写了一大堆错误，简直逻辑不同，根本无法用，然后老师一笔带过，简直就是误人子弟<br>我自己解决了所有遇到的问题<br>这节可以去看代码的编写，很简单<br>接口代码实现笔记：<br><a href="https://github.com/DemoorBug/vuesenior/tree/master/server/interface/users.js" target="_blank" rel="noopener">users.js本节项目地址</a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line">import Router from 'koa-router'                 //路由</span><br><span class="line">import Redis from 'koa-redis'                   //redis数据库，主要是提交验证码的时候写入验证码数据</span><br><span class="line">import nodeMailer from 'nodemailer'             //发邮件的app</span><br><span class="line">import User from '../dbs/models/users.js'       //mongoose</span><br><span class="line">import Passport from './utils/passport.js'      //自动登陆？</span><br><span class="line">import Email from '../dbs/config.js'            //配置文件</span><br><span class="line">import axios from './utils/axios.js'            //跨平台请求</span><br><span class="line"></span><br><span class="line">let router = new Router(&#123;                       //这个页面放到/users下</span><br><span class="line">  prefix: '/users'</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">let Store = new Redis().client</span><br><span class="line"></span><br><span class="line">router.post('/signup', async (ctx) =&gt; &#123;  //注册</span><br><span class="line">  const &#123;</span><br><span class="line">    username,</span><br><span class="line">    password,</span><br><span class="line">    email,</span><br><span class="line">    code</span><br><span class="line">  &#125; = ctx.request.body    //解构赋值</span><br><span class="line"></span><br><span class="line">  if (code) &#123;    //判断是否输入code</span><br><span class="line">    const saveCode = await Store.hget(`nodeMailer:$&#123;username&#125;`,'code')</span><br><span class="line">    const saveExpire = await Store.hget(`nodeMailer:$&#123;username&#125;`,'expire')</span><br><span class="line">    if (code === saveCode) &#123; //判断是否和redis数据库的code生成的验证码一致</span><br><span class="line">      if (new Date().getTime-saveExpire&gt;0) &#123; //判断是否和redis数据库时间过期</span><br><span class="line">        ctx.body = &#123;</span><br><span class="line">          code: -1,</span><br><span class="line">          msg: '验证码过期，请重新尝试'</span><br><span class="line">        &#125;</span><br><span class="line">        return false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;   //saveCode 错误执行</span><br><span class="line">      ctx.body = &#123;</span><br><span class="line">        code: -1,</span><br><span class="line">        msg: '请填写正确的验证码 '</span><br><span class="line">      &#125;</span><br><span class="line">      return false</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;  //不存在code</span><br><span class="line">    ctx.body= &#123;</span><br><span class="line">      code: -1,</span><br><span class="line">      msg: '请填写验证码'</span><br><span class="line">    &#125;</span><br><span class="line">    return false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let user = await User.find(&#123;  //查询mongodb数据库</span><br><span class="line">    username</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  if (user.length) &#123;  //如果有用户，提示报错</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      code: -1,</span><br><span class="line">      msg: '已被注册'</span><br><span class="line">    &#125;</span><br><span class="line">    return</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let nuser = await User.create(&#123;   //写入mongodb数据库，这里是创建一个实例</span><br><span class="line">    username,</span><br><span class="line">    password,</span><br><span class="line">    email</span><br><span class="line">  &#125;)</span><br><span class="line">  if (nuser) &#123;  //写入成功执行</span><br><span class="line">    let res = await axios.post('/users/signin', &#123;username, password&#125;)</span><br><span class="line">    //自动登陆？大概吧</span><br><span class="line">    if (res.data &amp;&amp; res.data.code === 0) &#123; </span><br><span class="line">      ctx.body = &#123;</span><br><span class="line">        code: 0,</span><br><span class="line">        msg: '注册成功',</span><br><span class="line">        user: res.data.user</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      ctx.body = &#123;</span><br><span class="line">        code: -1,</span><br><span class="line">        msg: 'error'</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      code: -1,</span><br><span class="line">      msg: '注册失败'</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.post('/signin', async (ctx, next) =&gt; &#123;  //自动登陆？</span><br><span class="line">  return Passport.authenticate('local', function(err, user, info, status) &#123;</span><br><span class="line">    if (err) &#123;</span><br><span class="line">      ctx.body = &#123;</span><br><span class="line">        code: -1,</span><br><span class="line">        msg: err</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      if (user) &#123;</span><br><span class="line">        ctx.body = &#123;</span><br><span class="line">          code: 0,</span><br><span class="line">          msg: '登录成功',</span><br><span class="line">          user</span><br><span class="line">        &#125;</span><br><span class="line">        return ctx.login(user)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        ctx.body = &#123;</span><br><span class="line">          code: 1,</span><br><span class="line">          msg: info</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(ctx, next)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.post('/verify', async (ctx, next) =&gt; &#123; //验证码接口</span><br><span class="line">  let username = ctx.request.body.username   //用户名</span><br><span class="line">  const saveExpire = await Store.hget(`nodeMailer:$&#123;username&#125;`,'expire')</span><br><span class="line">  if (saveExpire &amp;&amp; new Date().getTime-saveExpire<span class="tag">&lt;<span class="name">0)</span> &#123;</span></span><br><span class="line"><span class="tag">    <span class="attr">ctx.body</span> = <span class="string">&#123;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">code:</span> <span class="attr">-1</span>,</span></span><br><span class="line"><span class="tag">      <span class="attr">msg:</span> '验证请求过于频繁，<span class="attr">1</span>分钟一次'</span></span><br><span class="line"><span class="tag">    &#125;</span></span><br><span class="line"><span class="tag">    <span class="attr">return</span> <span class="attr">false</span></span></span><br><span class="line"><span class="tag">  &#125;</span></span><br><span class="line"><span class="tag">  <span class="attr">let</span> <span class="attr">transporter</span> = <span class="string">nodeMailer.createTransport(&#123;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">host:</span> <span class="attr">Email.smtp.host</span>,</span></span><br><span class="line"><span class="tag">    <span class="attr">port:</span> <span class="attr">587</span>,</span></span><br><span class="line"><span class="tag">    <span class="attr">secure:</span> <span class="attr">false</span>,</span></span><br><span class="line"><span class="tag">    <span class="attr">auth:</span> &#123;</span></span><br><span class="line"><span class="tag">      <span class="attr">user:</span> <span class="attr">Email.smtp.user</span>,</span></span><br><span class="line"><span class="tag">      <span class="attr">pass:</span> <span class="attr">Email.smtp.pass</span></span></span><br><span class="line"><span class="tag">    &#125;</span></span><br><span class="line"><span class="tag">  &#125;)</span></span><br><span class="line"><span class="tag">  <span class="attr">let</span> <span class="attr">ko</span> = <span class="string">&#123;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">code:</span> <span class="attr">Email.smtp.code</span>(),</span></span><br><span class="line"><span class="tag">    <span class="attr">expire:</span> <span class="attr">Email.smtp.expire</span>(),</span></span><br><span class="line"><span class="tag">    <span class="attr">email:</span> <span class="attr">ctx.request.body.email</span>,</span></span><br><span class="line"><span class="tag">    <span class="attr">user:</span> <span class="attr">ctx.request.body.username</span></span></span><br><span class="line"><span class="tag">  &#125;</span></span><br><span class="line"><span class="tag">  <span class="attr">let</span> <span class="attr">mailOptions</span> = <span class="string">&#123;</span></span></span><br><span class="line">    from: `"您的邮件"&lt;$&#123;Email.smtp.user&#125;&gt;`,</span><br><span class="line">    to: ko.email,</span><br><span class="line">    subject: '《demoorbug》注册码',</span><br><span class="line">    html: `您的验证码是$&#123;ko.code&#125;`</span><br><span class="line">  &#125;</span><br><span class="line">  await transporter.sendMail(mailOptions, (error, info) =&gt; &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">      return console.log('error')</span><br><span class="line">    &#125; else &#123; //写入redis数据库</span><br><span class="line">      Store.hmset(`nodeMailer:$&#123;ko.user&#125;`, 'code', ko.code, 'expire', ko.expire, 'email', ko.email)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    code: 0,</span><br><span class="line">    msg: '验证码已发送，可能会有延迟，有效期1分钟'</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get('/exit', async (ctx, next) =&gt; &#123;</span><br><span class="line">  await ctx.logout()</span><br><span class="line">  if (!ctx.isAuthenticated()) &#123;</span><br><span class="line">    code: 0</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    ctx: -1</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get('/getUser', async (ctx) =&gt; &#123;</span><br><span class="line">  if(ctx.isAuthenticated()) &#123;</span><br><span class="line">    const &#123;username, email&#125; = ctx.session.passport.user</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      user: username,</span><br><span class="line">      email</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      user: '',</span><br><span class="line">      email: ''</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export default router</span><br></pre></td></tr></table></figure></p>
+<p>目前就学习到/verify接口，前面的接口bug都已经解决，这段还没有解决，因为我感觉是有问题的代码，后面可以深入一下这个地方，多注意下，有问题就回来解决:</p>
+<p>register.vue 的验证码函数和提交函数的编写<br><a href="https://github.com/DemoorBug/vuesenior/tree/master/pages/register.vue" target="_blank" rel="noopener">register.vue文件地址</a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;  //验证码函数</span><br><span class="line">  sendMsg () &#123;  </span><br><span class="line">    let namePass  </span><br><span class="line">    let emailPass</span><br><span class="line">    if(this.timerid) &#123;</span><br><span class="line">      return false</span><br><span class="line">    &#125;</span><br><span class="line">    this.$refs['ruleForm'].validateField('name', (valid) =&gt; &#123; //validateField这是饿了么组件自带的方法，应该是。查询name是否有值，没有值，则valid返回提示的值，比如name不输入提示"请输入昵称"</span><br><span class="line">      namePass = valid</span><br><span class="line">    &#125;)</span><br><span class="line">    this.statusMsg = '' //验证码的双向绑定数据</span><br><span class="line">    if(namePass) &#123;  //</span><br><span class="line">      return false</span><br><span class="line">    &#125;</span><br><span class="line">    this.$refs['ruleForm'].validateField('email', (valid) =&gt; &#123; //和上面同理</span><br><span class="line">      emailPass = valid</span><br><span class="line">    &#125;)  </span><br><span class="line">    if (!namePass &amp;&amp; !emailPass) &#123; //如果都填写了，则不会赋值就为空所以是false,要取反</span><br><span class="line">      this.$axios.post('/users/verify', &#123; //可以直接用$axios是因为nuxtjs内置了</span><br><span class="line">        username: encodeURIComponent(this.ruleForm.name),  用户名转换为字符串</span><br><span class="line">        email: this.ruleForm.email </span><br><span class="line">      &#125;).then((&#123;status, data&#125;) =&gt; &#123;  //回调函数，解构赋值</span><br><span class="line">        if (status === 200 &amp;&amp; data &amp;&amp; data.code === 0) &#123;</span><br><span class="line">          let count = 60;   </span><br><span class="line">          console.log('1')</span><br><span class="line">          this.statusMsg = `验证码已发送,剩余$&#123;count--&#125;秒`</span><br><span class="line">          this.timerid = setInterval(() =&gt; &#123;  //定时器刷新</span><br><span class="line">            this.statusMsg = `验证码已发送,剩余$&#123;count--&#125;秒`</span><br><span class="line">            if (count === 0) &#123;</span><br><span class="line">              this.statusMsg = ''</span><br><span class="line">              clearInterval(this.timerid)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;, 1000)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          this.statusMsg = data.msg</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  register () &#123;</span><br><span class="line">    this.$refs['ruleForm'].validate((valid) =&gt; &#123;  //饿了么组件自带的方法,全部验证通过valid = true</span><br><span class="line">      if (valid) &#123;</span><br><span class="line">        this.$axios.post('/users/signup', &#123;</span><br><span class="line">          username: window.encodeURIComponent(this.ruleForm.name),</span><br><span class="line">          password: CryptoJs.MD5(this.ruleForm.pwd).toString(),</span><br><span class="line">          email: this.ruleForm.email,</span><br><span class="line">          code: this.ruleForm.code</span><br><span class="line">        &#125;).then((&#123;status, data&#125;) =&gt; &#123;</span><br><span class="line">          if (status ===200) &#123;</span><br><span class="line">            if (data &amp;&amp; data.code ===0) &#123;</span><br><span class="line">              // this.error = data.msg</span><br><span class="line">              location.href = '/login'</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">            this.error = data.msg</span><br><span class="line">            &#125;</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            this.error = `服务器出错，错误码: $&#123;status&#125;`</span><br><span class="line">          &#125;</span><br><span class="line">          setTimeout(() =&gt; &#123;</span><br><span class="line">            this.error = ''</span><br><span class="line">          &#125;, 1500)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>index 的一些修改备注<br><a href="https://github.com/DemoorBug/vuesenior/blob/master/server/index.js" target="_blank" rel="noopener">index.js地址</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import mongoose from 'mongoose'              //mongoose</span><br><span class="line">import bodyParser from 'koa-bodyparser'      //unkown</span><br><span class="line">import session from 'koa-generic-session'    //session</span><br><span class="line">import Redis from 'koa-redis'                //redis</span><br><span class="line">import json from 'koa-json'                  //格式化json</span><br><span class="line">import dbConfig from './dbs/config'</span><br><span class="line">import passport from './interface/utils/passport.js'  </span><br><span class="line">import users from './interface/users'</span><br><span class="line"></span><br><span class="line">app.keys= ['debug', 'keyskeys']    //unkown</span><br><span class="line">app.proxy = true                   //unkown</span><br><span class="line">app.use(session(&#123;                  //session</span><br><span class="line">  key: 'debug',</span><br><span class="line">  prefix: 'debug:uid',</span><br><span class="line">  store: new Redis()</span><br><span class="line">&#125;))</span><br><span class="line">app.use(bodyParser(&#123;                </span><br><span class="line">  extendTypes: ['json', 'form', 'text']</span><br><span class="line">&#125;))</span><br><span class="line">app.use(json())             //格式化diamagnetic</span><br><span class="line"></span><br><span class="line">mongoose.connect(dbConfig.dbs, &#123;    //mongodb地址？应该是</span><br><span class="line">  useNewUrlParser: true</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(passport.initialize())       //unkown</span><br><span class="line">app.use(passport.session())          //unkown</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(users.routes()).use(users.allowedMethods())  //将我们写好的路由引入</span><br></pre></td></tr></table></figure>
+<h2 id="接口设计-需求分析"><a href="#接口设计-需求分析" class="headerlink" title="接口设计(需求分析)"></a>接口设计(需求分析)</h2><p>/geo/getPosition<br>/geo/province<br>/geo/province/:id<br>/geo/city<br>/geo/hotCity     /geo/menu</p>
+<p>查询接口<br>/search/top<br>/search/resultsByKeywords<br>/search/hotPlace<br>/search/products<br>/search/product/:id</p>
+<p><code>mongoimport -d dbs -c test pois.dat</code><br>dbs对应database<br>test对应Collections<br>pois.dat 对应数据源</p>
+<p>签名：没有签名获取不到数据<br><a href="http://cp-tools.cn/sign" target="_blank" rel="noopener">http://cp-tools.cn/sign</a><br>c6a3d36c8d43371e21550e1420f0d19e<br><a href="https://www.imooc.com/u/3164558/bbs" target="_blank" rel="noopener">https://www.imooc.com/u/3164558/bbs</a><br>从这个人获取到了UID。。</p>
+<p>怎么说呢，还行吧，不过是用wsl(windows的子系统ubuntu)提交会出问题，有些东西提交了两遍</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> geo <span class="keyword">from</span> <span class="string">'./modules/geo'</span></span><br><span class="line"><span class="keyword">import</span> home <span class="keyword">from</span> <span class="string">'./modules/home'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    geo,</span><br><span class="line">    home</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    <span class="keyword">async</span> nuxtServerInit(&#123;commit&#125;, &#123;req, app&#125;) &#123;</span><br><span class="line">      <span class="comment">//nuxtServerInit这个是nuxtjs提供的生命周期钩子</span></span><br><span class="line">      <span class="keyword">const</span> &#123;status, <span class="attr">data</span>: &#123;province, city&#125;&#125; = <span class="keyword">await</span> app.$axios.get(<span class="string">'/geo/getPosition'</span>)</span><br><span class="line">      commit(<span class="string">'geo/setPosition'</span>, status ===<span class="number">200</span> ? &#123;city, province&#125;: &#123;<span class="attr">city</span>: <span class="string">''</span>, <span class="attr">province</span>: <span class="string">''</span>&#125;)</span><br><span class="line">      <span class="keyword">const</span> &#123;<span class="attr">status</span>: status2, <span class="attr">data</span>: &#123;menu&#125;&#125; = <span class="keyword">await</span> app.$axios.get(<span class="string">'/geo/menu'</span>)</span><br><span class="line">      commit(<span class="string">'home/setMenu'</span>, status2 === <span class="number">200</span> ? menu : [])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<p>放弃，只是带我抄了一遍代码，基本没什么学的，垃圾</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/blog/tags/SSR/" rel="tag"># SSR</a>
+          
+            <a href="/blog/tags/Koa2/" rel="tag"># Koa2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/11/30/ES6学习记录/" rel="next" title="ES6学习记录">
+                <i class="fa fa-chevron-left"></i> ES6学习记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/12/22/ss/" rel="prev" title="ss">
+                ss <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DEBUG</p>
+              <p class="site-description motion-element" itemprop="description">go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue全家桶-SSR-Koa2全栈开发美团网"><span class="nav-text">vue全家桶+SSR+Koa2全栈开发美团网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装vue-cli"><span class="nav-text">安装vue-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Koa2学习"><span class="nav-text">Koa2学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async和await语法"><span class="nav-text">async和await语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#koa2中间件"><span class="nav-text">koa2中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#koa路由"><span class="nav-text">koa路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookies"><span class="nav-text">cookies</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoose"><span class="nav-text">mongoose</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#研究了一下windows下的mongodb启动，这里总结一下"><span class="nav-text">研究了一下windows下的mongodb启动，这里总结一下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nuxt-js-是做vue-ssr的一个框架"><span class="nav-text">Nuxt.js 是做vue ssr的一个框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建即配置，异步获取"><span class="nav-text">创建即配置，异步获取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备与项目安装-6-2-6-1略过"><span class="nav-text">环境准备与项目安装 6-2   6-1略过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页开发"><span class="nav-text">首页开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发搜索模块"><span class="nav-text">开发搜索模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-8左侧边栏实现原理"><span class="nav-text">7-8左侧边栏实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1注册"><span class="nav-text">8-1注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口设计-需求分析"><span class="nav-text">接口设计(需求分析)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018/9/11 00:00
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEBUG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="http://www.696px.com">696px</a>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'demoorbug.github.io/2018/12/13/vuesenior/';
+          this.page.identifier = '2018/12/13/vuesenior/';
+          this.page.title = 'vuesenior';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'frRzxfBf7ILkb3j8VGQAqdIs-gzGzoHsz',
+        appKey: 'XlCDzgMdSzgzFpgyuWY66yYM',
+        placeholder: '智慧如你，不想发表一点想法咩~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".loader").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="html5,css3," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="移动webapp开发">
+<meta name="keywords" content="html5,css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动webapp">
+<meta property="og:url" content="demoorbug.github.io/2019/04/12/移动webapp/index.html">
+<meta property="og:site_name" content="696px">
+<meta property="og:description" content="移动webapp开发">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-07T18:17:13.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动webapp">
+<meta name="twitter:description" content="移动webapp开发">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="demoorbug.github.io/2019/04/12/移动webapp/"/>
+
+
+
+
+
+  <title>移动webapp | 696px</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="site-title">696px</span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+             -->
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+             -->
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+             -->
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+             -->
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://demoorbug.github.io" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+             -->
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="demoorbug.github.io/blog/2019/04/12/移动webapp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEBUG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="696px">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动webapp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T18:47:45+00:00">
+                2019-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2019/04/12/移动webapp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/04/12/移动webapp/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="移动webapp开发"><a href="#移动webapp开发" class="headerlink" title="移动webapp开发"></a>移动webapp开发</h1><a id="more"></a>
+<h1 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h1><h2 id="viewport-标签的介绍"><a href="#viewport-标签的介绍" class="headerlink" title="viewport 标签的介绍"></a>viewport 标签的介绍</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mate</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>width=device-width 视口宽，自适应<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mate</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"height"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>很少用height，基本不用<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mate</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>initial-scale=1 缩放比<br>相当于设置width=device-width，但是用的时候都得写，因为个浏览器有bug<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mate</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>不允许用户缩放<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mate</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"maximum-scale=1, minimum-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最大缩放比，和最小缩放比</p>
+<p>标准写法<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1"</span>&gt;</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<h2 id="获取视口宽度"><a href="#获取视口宽度" class="headerlink" title="获取视口宽度"></a>获取视口宽度</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.innerWidth);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.documentElement.clientWidth);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.documentElement.getBoundingClientRect().width);</span><br><span class="line"><span class="comment">// 兼容个浏览器写法</span></span><br><span class="line"><span class="keyword">var</span> width = <span class="built_in">document</span>.documentElement.clientWidth || <span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">// dpr</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.devicePixelRatio);</span><br></pre></td></tr></table></figure>
+<h1 id="Flex-布局，弹性布局"><a href="#Flex-布局，弹性布局" class="headerlink" title="Flex 布局，弹性布局"></a>Flex 布局，弹性布局</h1><p>这个box就为flex的container容器<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex | inline-flex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="flex布局属性"><a href="#flex布局属性" class="headerlink" title="flex布局属性"></a>flex布局属性</h2><h3 id="flex-direction-决定主轴方向"><a href="#flex-direction-决定主轴方向" class="headerlink" title="flex-direction 决定主轴方向"></a><code>flex-direction</code> 决定主轴方向</h3><p><code>row</code>: 默认值<br><code>row-reverse</code>: 主轴为水平方向，起点在右端<br><code>column</code>: 主轴水平方向变为垂直方向，起点在上<br><code>column-reverse</code>: 主轴为垂直方向，起点在下</p>
+<h3 id="flex-wrap-换行"><a href="#flex-wrap-换行" class="headerlink" title="flex-wrap 换行"></a><code>flex-wrap</code> 换行</h3><p>一条轴线排不下，是否换行<br><code>nowrap</code>: 不换行，默认值<br><code>wrap</code>: 换行<br><code>wrap-reverse</code>: 相反换行</p>
+<h3 id="flex-flow-简写，上面两种属性的简写"><a href="#flex-flow-简写，上面两种属性的简写" class="headerlink" title="flex-flow 简写，上面两种属性的简写"></a><code>flex-flow</code> 简写，上面两种属性的简写</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  flex-flow: row nowrap; //默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="justify-content-属性定义了项目在主轴上的对齐方式-常用"><a href="#justify-content-属性定义了项目在主轴上的对齐方式-常用" class="headerlink" title="justify-content 属性定义了项目在主轴上的对齐方式   常用"></a><code>justify-content</code> 属性定义了项目在主轴上的对齐方式   常用</h3><p><code>flex-start</code>: 默认值<br><code>flex-end</code>: 右对齐<br><code>center</code>: 居中<br><code>space-between</code>: 两端对齐<br><code>space-around</code>: 每个项目两侧间隔相等</p>
+<h3 id="align-items-交叉轴对齐方式"><a href="#align-items-交叉轴对齐方式" class="headerlink" title="align-items 交叉轴对齐方式"></a><code>align-items</code> 交叉轴对齐方式</h3><p><code>flex-start</code>: 不是默认值<br><code>flex-end</code>: 交叉轴终点对其<br><code>center</code>: 中点对齐<br><code>baseline</code>: 项目的第一行文字的基线对其<br><code>stretch</code>: 默认值，项目未设置高度或设为auto，将沾满整个容器的高度</p>
+<h3 id="align-content-多根轴线对齐方式-多行-，如果项目只有一根轴线，则不起作用"><a href="#align-content-多根轴线对齐方式-多行-，如果项目只有一根轴线，则不起作用" class="headerlink" title="align-content 多根轴线对齐方式(多行)，如果项目只有一根轴线，则不起作用"></a><code>align-content</code> 多根轴线对齐方式(多行)，如果项目只有一根轴线，则不起作用</h3><p>属性值和<code>justify-content</code>一致, 默认值为<code>stretch</code></p>
+<h2 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h2><p>###　<code>order</code> 属性定义项目的排列顺序，数值越小，排列越靠前，默认为0<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">order</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-grow-默认值为0，类似于，栅格系统，不过更灵活"><a href="#flex-grow-默认值为0，类似于，栅格系统，不过更灵活" class="headerlink" title="flex-grow 默认值为0，类似于，栅格系统，不过更灵活"></a><code>flex-grow</code> 默认值为0，类似于，栅格系统，不过更灵活</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-2</span> &#123;</span><br><span class="line">  flex-grow: 2;  //2的值就占用项目.item-1的二倍</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果有固定宽度，则减去这个固定宽度，等分其他空间<br>如果两个值都为1，则总共有两份，大家都占用了2/1空间，</p>
+<h3 id="flex-shrink-默认值为1，属性定位缩小比例，和flex-grow是相反的"><a href="#flex-shrink-默认值为1，属性定位缩小比例，和flex-grow是相反的" class="headerlink" title="flex-shrink 默认值为1，属性定位缩小比例，和flex-grow是相反的"></a><code>flex-shrink</code> 默认值为1，属性定位缩小比例，和<code>flex-grow</code>是相反的</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  flex-shrink: 0; //不缩放该项目</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="flex-basis-默认值为auto-项目占据的主轴空间，如果有width属性，就会覆盖width属性-浏览器根据这个属性，计算主轴是否有多余空间"><a href="#flex-basis-默认值为auto-项目占据的主轴空间，如果有width属性，就会覆盖width属性-浏览器根据这个属性，计算主轴是否有多余空间" class="headerlink" title="flex-basis 默认值为auto,项目占据的主轴空间，如果有width属性，就会覆盖width属性, 浏览器根据这个属性，计算主轴是否有多余空间"></a><code>flex-basis</code> 默认值为auto,项目占据的主轴空间，如果有width属性，就会覆盖width属性, 浏览器根据这个属性，计算主轴是否有多余空间</h3><h3 id="flex-是前面3给的简写，不算order"><a href="#flex-是前面3给的简写，不算order" class="headerlink" title="flex 是前面3给的简写，不算order"></a><code>flex</code> 是前面3给的简写，不算<code>order</code></h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  flex: 1; //相当于flex: 1 1 auto; 相当于 flex: auto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="align-self-默认auto-表示继承align-items-可覆盖align-items-如果没有父元素，则等同于stretch"><a href="#align-self-默认auto-表示继承align-items-可覆盖align-items-如果没有父元素，则等同于stretch" class="headerlink" title="align-self 默认auto, 表示继承align-items, 可覆盖align-items, 如果没有父元素，则等同于stretch"></a><code>align-self</code> 默认auto, 表示继承align-items, 可覆盖align-items, 如果没有父元素，则等同于stretch</h3><p>属性都可以借鉴<code>align-items</code></p>
+<h1 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">900px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>screen</code> 屏幕类型，除了屏幕打印设备和阅读设备</p>
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><p>all(default)<br>screen / print(打印预览，可以做简历) /speech(阅读设备，残障人士使用)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> all and (min-width=<span class="number">900px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>all</code>因为是默认值，可以不写<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> (min-width=<span class="number">900px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="媒体查询中的逻辑"><a href="#媒体查询中的逻辑" class="headerlink" title="媒体查询中的逻辑"></a>媒体查询中的逻辑</h2><p>与(and)<br>或(,)<br>非(not)</p>
+<p>或写法：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (min-width=<span class="number">1024px</span>), (max-width:<span class="number">900px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>值得注意的是，或(,)之后的算是个体，也就是说，我们使用了默认值all的写法</p>
+<p>非写法：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> not screen and (min-width=<span class="number">1024px</span>), (max-width:<span class="number">900px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同理，只是前半段，或之后算一个整体</p>
+<h2 id="媒体特征表达"><a href="#媒体特征表达" class="headerlink" title="媒体特征表达"></a>媒体特征表达</h2><p><code>max-width, min-width, width</code><br>设备像素比<br>dpr<br><code>-webkit-device-pixel-ratio: 2,-webkit-max-device-pixel-ratio: 2,-webkit-min-device-pixel-ratio: 2</code></p>
+<p><code>orientation</code><br>有两个值：<code>landscape</code> 横屏(宽比高大)，<code>portrait</code> 竖屏<br>后面还有值，几乎不用，了解即可，这里就没有记录，要看的就是3-19 媒体查询-基础(2).vep</p>
+<h2 id="媒体查询策略"><a href="#媒体查询策略" class="headerlink" title="媒体查询策略"></a>媒体查询策略</h2><p>设置断点<br>xs: &lt; 576px<br>sm: 576px ~ 768px<br>md: 768px ~ 992px<br>lg: 992px ~ 1200px<br>xl: &gt; 1200px</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@<span class="keyword">medio</span> screen and (max-width=<span class="number">576px</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">medio</span> screen and (min-width=<span class="number">577px</span>) and (max=<span class="number">768px</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">medio</span> screen and (min-width=<span class="number">769px</span>) and (max=<span class="number">992px</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">medio</span> screen and (min-width=<span class="number">993px</span>) and (max=<span class="number">1200px</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">medio</span> screen and (min-width=<span class="number">1201px</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="移动端单位问题"><a href="#移动端单位问题" class="headerlink" title="移动端单位问题"></a>移动端单位问题</h1><h2 id="em的技巧"><a href="#em的技巧" class="headerlink" title="em的技巧"></a>em的技巧</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.font</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">  text-indent: 2em; //这个em就会继承当前元素字体的大小，也就是2个字节，很方便啊</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="rem主流"><a href="#rem主流" class="headerlink" title="rem主流"></a>rem主流</h2><p>这么写，内容就可以根据宽度自适应变化，666，公式就是：<br>(当前页面宽度/375) * 20 这个比例，为什么是这个比例呢<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    html &#123;</span></span><br><span class="line"><span class="undefined">      font-size: 20px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">width</span>: 2<span class="selector-class">.5rem</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">height</span>: 2<span class="selector-class">.5rem</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background</span>: <span class="selector-id">#222</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.documentElement.style.fontSize = (<span class="built_in">document</span>.documentElement.clientWidth / <span class="number">375</span>)* <span class="number">20</span> +<span class="string">'px'</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="响应开发，因为都懂，就记一些不懂的吧"><a href="#响应开发，因为都懂，就记一些不懂的吧" class="headerlink" title="响应开发，因为都懂，就记一些不懂的吧"></a>响应开发，因为都懂，就记一些不懂的吧</h1><h2 id="img图片的处理"><a href="#img图片的处理" class="headerlink" title="img图片的处理"></a>img图片的处理</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block; <span class="comment">/*因为默认是inline-block;*/</span></span><br><span class="line">  <span class="comment">/*但是这样解决会造，一行显示换行问题*/</span></span><br><span class="line">  <span class="comment">/*最优解决*/</span></span><br><span class="line">  <span class="attribute">vertical-align</span>: top; <span class="comment">/*这个属性居然没用过，而且所有浏览器都支持*/</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上选一即可</p>
+<h1 id="通用适配"><a href="#通用适配" class="headerlink" title="通用适配"></a>通用适配</h1><p>设计稿750px为例<br>750px 1rem = 750 / 18.75 = 40<br>js动态去设置font-size<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// document.documentElement.getBoundingClientRect().width</span></span><br><span class="line"><span class="comment">// window.innerWidth</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="string">'use str'</span></span><br><span class="line">  setRemUnit()</span><br><span class="line">  <span class="built_in">window</span>.onresize = setRemUnit;</span><br><span class="line">  <span class="comment">// window.addEventListener('resize', setRemUnit); 都可以</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setRemUnit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> docEl = <span class="built_in">document</span>.documentElement;</span><br><span class="line">    <span class="keyword">var</span> ratio = <span class="number">18.75</span>;</span><br><span class="line">    <span class="keyword">var</span> viewWidth = docEl.getBoundingClientRect().width || <span class="built_in">window</span>.innerWidth; <span class="comment">//兼容处理</span></span><br><span class="line">    docEl.style.fontSize = viewWidth / ratio + <span class="string">'px'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<h1 id="通用适配解决方案，解决1px边框显示过’粗’问题"><a href="#通用适配解决方案，解决1px边框显示过’粗’问题" class="headerlink" title="通用适配解决方案，解决1px边框显示过’粗’问题"></a>通用适配解决方案，解决1px边框显示过’粗’问题</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="string">'use str'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取dpr</span></span><br><span class="line">  <span class="keyword">var</span> docEl = <span class="built_in">document</span>.documentElement,</span><br><span class="line">    viewportEl = <span class="built_in">document</span>.querySelector(<span class="string">'meta[name="viewport"]'</span>),</span><br><span class="line">    dpr = <span class="built_in">window</span>.devicePixelRatio || <span class="number">1</span>,</span><br><span class="line">    maxWidth = <span class="number">540</span>,</span><br><span class="line">    minWidth = <span class="number">320</span>;</span><br><span class="line"></span><br><span class="line">  dpr = dpr &gt;= <span class="number">3</span> ? <span class="number">3</span> : (dpr &gt;= <span class="number">2</span> ? <span class="number">2</span> : <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  docEl.setAttribute(<span class="string">'data-dpr'</span>, dpr);<span class="comment">// 自己设置dpr，后面有用处</span></span><br><span class="line">  docEl.setAttribute(<span class="string">'max-width'</span>, maxWidth);</span><br><span class="line">  docEl.setAttribute(<span class="string">'min-width'</span>, minWidth);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> scale = <span class="number">1</span>/dpr,</span><br><span class="line">      content = <span class="string">'width=device-width, initial-scale='</span>+ scale +<span class="string">', maximum-scale='</span>+ scale +<span class="string">', minimum-scale='</span>+ scale +<span class="string">', user-scalable=no'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (viewportEl) &#123;</span><br><span class="line">    viewportEl.setAttribute(<span class="string">'content'</span>, content)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    viewportEl = <span class="built_in">document</span>.createElement(<span class="string">'meta'</span>);</span><br><span class="line">    viewportEl.setAttribute(<span class="string">'name'</span>, <span class="string">'viewport'</span>);</span><br><span class="line">    viewportEl.setAttribute(<span class="string">'content'</span>, content);</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(viewportEl)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  setRemUnit()</span><br><span class="line">  <span class="built_in">window</span>.onresize = setRemUnit;</span><br><span class="line">  <span class="comment">// window.addEventListener('resize', setRemUnit); 都可以</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setRemUnit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var docEl = document.documentElement;</span></span><br><span class="line">    <span class="keyword">var</span> ratio = <span class="number">18.75</span>;</span><br><span class="line">    <span class="keyword">var</span> viewWidth = docEl.getBoundingClientRect().width || <span class="built_in">window</span>.innerWidth; <span class="comment">//兼容处理</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置最大最小值，页面过大后不设置fontSize</span></span><br><span class="line">    <span class="keyword">if</span> (maxWidth &amp;&amp; (viewWidth / dpr &gt; maxWidth)) &#123;</span><br><span class="line">      viewWidth = maxWidth * dpr;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxWidth &amp;&amp; (viewWidth / dpr &lt; minWidth))&#123;</span><br><span class="line">      viewWidth = minWidth * dpr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    docEl.style.fontSize = viewWidth / ratio + <span class="string">'px'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="移动端事件"><a href="#移动端事件" class="headerlink" title="移动端事件"></a>移动端事件</h1><p>触摸事件，手势事件，传感器事件，主要讲的是触摸事件，其他两个兼容性堪忧，而且手势事件也可以用触摸事件代替，传感器事件就是手机倾斜什么的，但是兼容性不ok</p>
+<p>触摸事件可以非为两种：<br><code>touch</code> 事件，最早出现的，兼容性ok<br><code>pointer</code> 事件 ，这个是微软出的，比较友好，但是呢实现的厂商不多，兼容性不好，但是很有意义，把鼠标事件和触摸事件统一为指针事件，不论是pc端还是移动端，只用使用<code>pointer</code>事件就ok了</p>
+<h2 id="touch-事件"><a href="#touch-事件" class="headerlink" title="touch 事件"></a>touch 事件</h2><p><code>ontouchstart</code>  触摸开始执行<br><code>ontouchmove</code>   移动执行<br><code>ontouchend</code>    触摸结束执行<br><code>ontouchcancel</code>  不常用，发生触摸中断的时候执行，当我们点击的时候，突然来电话，界面跳转，称之为触摸中断。系统级事件</p>
+<p><code>document.ontouchstart = function () {}</code> 这种写法不推荐，如果要兼容IE8浏览器及一下，还是用这种</p>
+<p><code>document.addEventListener(&#39;touchstart&#39;, function(){}, false)</code> 推荐写法，IE9及以上兼容。第三个参数表示冒泡，true表示捕获</p>
+<h2 id="touch-事件event-对象"><a href="#touch-事件event-对象" class="headerlink" title="touch 事件event 对象"></a>touch 事件event 对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(ev)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>以上对象属性含义:<br><code>altKey: false</code> 触摸的时候是否有按住alt键，手机哪来的alt键<br>以下三个和冒泡有关<br><code>bubbles: true</code>  目前是否是冒泡<br><code>cacelBubble: false</code> 目前是否取消冒泡<br><code>cancelable: true</code> 是否可以取消冒泡<br>以下就讲了一下主要用到的，其他就不讲了<br><code>type</code> 知道当前什么事件，和pc端事件一样<br><code>target</code> 当前元素，什么元素响应你的<br><code>changeTouches</code> 捕获发生变化的手指，触摸列表，类数组(没有数组的方法),一般情况下都使用这个，其中一个原因是<code>ontouchend</code>事件以下两种捕获不到东西<br><code>targetTouches</code> 捕获到物体上的手指<br><code>touches</code> 捕获到屏幕上所有手指头</p>
+<p>常用<code>changeTouches</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> touch = ev.changeTouches[<span class="number">0</span>] <span class="comment">//一般都是单指</span></span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure></p>
+<p><code>changeTouches</code>里面的属性：<br><code>clientX:</code> 可视区范围内的坐标<br><code>clientY:</code> 可视区范围内的坐标<br><code>pageX</code> 有滚动条的时候，也会把滚动条的距离算上，而不仅仅是可视区域<br><code>pageY</code><br><code>radiusX</code> 指头的触摸大小半径<br><code>radiusY</code></p>
+<h2 id="这里讲到了拖动，我没有做，明天补上，今晚记一些技巧"><a href="#这里讲到了拖动，我没有做，明天补上，今晚记一些技巧" class="headerlink" title="这里讲到了拖动，我没有做，明天补上，今晚记一些技巧"></a>这里讲到了拖动，我没有做，明天补上，今晚记一些技巧</h2><p>chrome的a点击有个高亮，当时自己还是百度了好久，我晕<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-tap-highlight-color</span>: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还有就是用transform的时候用translate3d，会开启设备的GPU加速<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.backtop</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(x, y, 0); <span class="comment">/*会开启GPU加速*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>补：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    html &#123;</span></span><br><span class="line"><span class="undefined">      height: 2000px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.top</span> &#123;</span></span><br><span class="line"><span class="undefined">      height: 20px;</span></span><br><span class="line"><span class="undefined">      width: 20px;</span></span><br><span class="line"><span class="undefined">      position: fixed;</span></span><br><span class="line"><span class="undefined">      bottom: 20px;</span></span><br><span class="line"><span class="undefined">      right: 20px;</span></span><br><span class="line"><span class="undefined">      border-radius: 50%;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background</span>: <span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.3</span>);</span></span><br><span class="line"><span class="css">      <span class="comment">/*transition: all .3s;*/</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top"</span> <span class="attr">id</span>=<span class="string">"top"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    122</span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> docEl = <span class="built_in">document</span>.documentElement;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> topN = <span class="built_in">document</span>.getElementById(<span class="string">'top'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> coordinate = &#123;</span></span><br><span class="line"><span class="undefined">      pageX: 0,</span></span><br><span class="line"><span class="undefined">      pageY: 0</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> page = &#123;</span></span><br><span class="line"><span class="undefined">      pageX: 0,</span></span><br><span class="line"><span class="undefined">      pageY: 0</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> isTouchMove = <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    topN.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> changedTouches = ev.changedTouches[<span class="number">0</span>]</span></span><br><span class="line"><span class="undefined">      coordinate.pageX = changedTouches.pageX;</span></span><br><span class="line"><span class="undefined">      coordinate.pageY = changedTouches.pageY;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    topN.addEventListener(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      ev.preventDefault()</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      isTouchMove = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> changedTouches = ev.changedTouches[<span class="number">0</span>]</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> x = changedTouches.pageX - coordinate.pageX + page.pageX;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> y = changedTouches.pageY - coordinate.pageY + page.pageY;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      ev.target.style.transform = <span class="string">'translate3d('</span>+ x +<span class="string">'px,'</span>+ y +<span class="string">'px,0)'</span></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    topN.addEventListener(<span class="string">'touchend'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (!isTouchMove) &#123;<span class="keyword">return</span>&#125;;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'touch'</span>)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> changedTouches = ev.changedTouches[<span class="number">0</span>]</span></span><br><span class="line"><span class="undefined">      page.pageX += changedTouches.pageX - coordinate.pageX;</span></span><br><span class="line"><span class="undefined">      page.pageY += changedTouches.pageY - coordinate.pageY;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      isTouchMove = <span class="literal">false</span></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="移动端调试"><a href="#移动端调试" class="headerlink" title="移动端调试"></a>移动端调试</h1><h2 id="Vorlon-js"><a href="#Vorlon-js" class="headerlink" title="Vorlon.js"></a>Vorlon.js</h2><h2 id="多端同步工具Browsersync"><a href="#多端同步工具Browsersync" class="headerlink" title="多端同步工具Browsersync"></a>多端同步工具Browsersync</h2><h2 id="终端检测，navigator"><a href="#终端检测，navigator" class="headerlink" title="终端检测，navigator"></a>终端检测，navigator</h2><p>最好后端来做，但是前端也是可以做的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> isMobile = navigator.userAgent.match(<span class="regexp">/android|iphone|ipad|ipod/i</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isMobile) &#123;</span><br><span class="line">  location.href = <span class="string">'https://m.imooc.com'</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  location.href = <span class="string">'https://www.imooc.com'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以根据这段代码，加载各端自己的代码，比如响应式开发</p>
+<h1 id="移动开发常见问题"><a href="#移动开发常见问题" class="headerlink" title="移动开发常见问题"></a>移动开发常见问题</h1><p>解决html5标签兼容问题引入<br><code>html5shiv.js</code></p>
+<h2 id="css3-兼容问题"><a href="#css3-兼容问题" class="headerlink" title="css3 兼容问题"></a>css3 兼容问题</h2><p>用<code>modernizr.js</code> 这个库来兼容，写两套样式</p>
+<h2 id="click-300毫秒延迟解决"><a href="#click-300毫秒延迟解决" class="headerlink" title="click 300毫秒延迟解决"></a>click 300毫秒延迟解决</h2><p>原因是手机端的double click双击造成的，<br>解决办法<code>fastclick</code>,很多浏览器已经解决就是给<code>viewport</code>添加<code>width=device-width</code></p>
+<h2 id="文字溢出问题"><a href="#文字溢出问题" class="headerlink" title="文字溢出问题"></a>文字溢出问题</h2><p>普通解决方法不能配合<code>flex</code> 布局，必须给元素套一层<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.text-ellipsis</span> &#123;</span></span><br><span class="line"><span class="undefined">    overflow: hidden;</span></span><br><span class="line"><span class="undefined">    text-overflow: ellipsis;</span></span><br><span class="line"><span class="undefined">    white-space: normal;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.flex</span> &#123;</span></span><br><span class="line"><span class="undefined">    display: flex;</span></span><br><span class="line"><span class="undefined">    justify-content: center;</span></span><br><span class="line"><span class="undefined">    align-items: center;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"text-ellipsis flex"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span> //套一层就好了</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>多行文字溢出问题解决<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.flex</span> &#123;</span></span><br><span class="line"><span class="undefined">    display: flex;</span></span><br><span class="line"><span class="undefined">    justify-content: center;</span></span><br><span class="line"><span class="undefined">    align-items: center;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.multiline-ellipsis</span> &#123;</span></span><br><span class="line"><span class="undefined">    overflow: hidden;</span></span><br><span class="line"><span class="undefined">    text-overflow: ellipsis;</span></span><br><span class="line"><span class="undefined">    display: -webkit-box;</span></span><br><span class="line"><span class="undefined">    -webkit-line-clamp: 3; 这个就可以控制显示几行文字</span></span><br><span class="line"><span class="undefined">    -webkit-box-orient: vertical;</span></span><br><span class="line"><span class="undefined">    white-space: normal !important;</span></span><br><span class="line"><span class="undefined">    word-wrap: break-word;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"multiline-ellipsis flex"</span>&gt;</span></span><br><span class="line">  文字</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="javascript兼容"><a href="#javascript兼容" class="headerlink" title="javascript兼容"></a>javascript兼容</h2><p>做特性检测，不要做浏览器检测<br>这个是fastclick.js的特性检测做法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">'addEventListener'</span> <span class="keyword">in</span> <span class="built_in">document</span>) &#123; <span class="comment">//这个是fastclick.js的特性检测做法</span></span><br><span class="line">  <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    FastClick.attach(<span class="built_in">document</span>.body)</span><br><span class="line">  &#125;, <span class="literal">false</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>特性检测就很简单，就是判断以下，要加<code>window</code>的原因是因为如果没有该元素就会报错，未定义，而挂载到<code>window</code>上，他就会报<code>undefined</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (requestAnimateionFrom) &#123; <span class="comment">//错误写法，如果不存在就会变成一个没有声明的变量</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.requestAnimateionFrom) &#123; <span class="comment">//正确做法</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>前缀<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> requestAnimationFrame = <span class="built_in">window</span>.requestAnimateionFrom || <span class="built_in">window</span>.webkitRequestAnimationFrame || <span class="built_in">window</span>.mozRequestAnimationFrame || <span class="built_in">window</span>.msRequestAnimationFrame || <span class="built_in">window</span>.oRequestAnimationFrame || <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;setTimeout(fn, <span class="number">16</span>)&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="移动端动画"><a href="#移动端动画" class="headerlink" title="移动端动画"></a>移动端动画</h2><p>优先使用 <code>requestAnimateionFrom</code>, 请求动画帧<br>css3使用<code>transition</code>, <code>animation</code></p>
+<p><code>canvas</code> 要配合<code>setTimeout</code>,<code>setInterval</code>做动画，不能用css3，而DOM动画，就可以用提到的所有</p>
+<h2 id="水平居中和垂直居中"><a href="#水平居中和垂直居中" class="headerlink" title="水平居中和垂直居中"></a>水平居中和垂直居中</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">水平居中：</span><br><span class="line">`text-align: center` 有固定宽度就可以使用</span><br><span class="line">`margin: 0 auto` 针对块级容器，有固定宽度</span><br><span class="line">`position+margin-left/translate` 以前仅用到了`margin`来解决，不过`translate`可以解决没有固定宽度，也可以实现</span><br><span class="line">`flex`终极解决方案</span><br><span class="line">垂直居中</span><br><span class="line">`line-height` 有固定高度可以使用，仅仅只能用于单行文字，其实配合</span><br><span class="line">`position+margin-top/translate` 同理</span><br><span class="line">`flex`终极解决方案</span><br><span class="line"></span><br><span class="line">## Zepto</span><br><span class="line">这里面虽然都很基础，和jQuery都差不多，不过还是能学到东西的，比如`window.onload`和`$(document).ready(function ()&#123;&#125;)`的区别，前者是页面全部加载完成，包括图片，js，css，dom,后者则是dom加载完毕，肯定是dom加载完毕更高效啊</span><br></pre></td></tr></table></figure>
+<p>还有事件的命名空间，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click.muke'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'click'</span>);</span><br><span class="line">  $(<span class="keyword">this</span>).off(<span class="string">'.muke'</span>) <span class="comment">//大概是这么写的？</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样就仅仅会取消一个，以前老师教的是创建一个变量<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ev;</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, ev = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'click'</span>);</span><br><span class="line">  $(<span class="keyword">this</span>).off(ev)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好"><a href="#按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好" class="headerlink" title="按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好"></a>按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好</h2><h1 id="实战开始-这里就直接上vue项目了"><a href="#实战开始-这里就直接上vue项目了" class="headerlink" title="实战开始,这里就直接上vue项目了"></a>实战开始,这里就直接上vue项目了</h1><p>页面最大宽度640，最小宽度320<br>设计稿为 375px 的页面，扩大两倍到750px，做标注，同时等比放大1.5倍生成宽度位1125的设计稿，在这里面切图</p>
+<p>项目初始化完毕了，很简单，懒加载，重定向什么的</p>
+<p>全局的样式都写在<code>assets/less</code>目录，这样便于管理，而且可以全局引入，其他页面都不用引入</p>
+<p><strong>固定定位，以前的手机兼容不好，最好使用绝对定位来模拟</strong></p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>src/<br>– assets 全局文件<br>– base 基础组件<br>– components 公共组件<br>– views 所有页面放的位置，一个文件夹代表一块，index为默认出口<br>– App.vue<br>– main.js<br>– router.js<br>– store.js<br><strong>基础组件和业务逻辑毫无瓜葛</strong><br>也就是说base里面的组件都可以扩展，slot插槽</p>
+<h2 id="用到的插件统计"><a href="#用到的插件统计" class="headerlink" title="用到的插件统计"></a>用到的插件统计</h2><p><code>fastclick</code> 解决移动端300点击延迟<br><code>Vue-Awesome-Swiper</code> vue 封装的 swiper插件，轮播<br><code>jsonp</code> 获取jsonp数据<br><code>vue-lazyload</code> 延迟加载</p>
+<h2 id="开发vue项目用到的技巧"><a href="#开发vue项目用到的技巧" class="headerlink" title="开发vue项目用到的技巧"></a>开发vue项目用到的技巧</h2><p>header 部分公共化<br>使用slot插槽，$slots判断是否使用了该插槽，没使用就隐藏<br>这里遇到个问题，定位问题如果前面元素不显示就会导致，最后一个元素无法右对齐，所以呢，有两种方案，第一种就是把第一个元素不用v-if判断，一直显示，另一种是用css3选择器完成，不过我觉得没必要，用到的选择器~ , 不过呢，我觉得这种方法很笨，不会用<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- navbar.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mine-navbar"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mine-navbar-left"</span> <span class="attr">v-if</span>=<span class="string">"$slots.left"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mine-navbar-center"</span> <span class="attr">v-if</span>=<span class="string">"$slots.center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"center"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mine-navbar-right"</span> <span class="attr">v-if</span>=<span class="string">"$slots.right"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"mine-navbar-title"</span> <span class="attr">v-if</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"mine-navbar-text ellipsis"</span> <span class="attr">v-text</span>=<span class="string">"title"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">@<span class="keyword">import</span> <span class="string">'~assets/less/_mixins.less'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.mine-navbar</span> &#123;</span></span><br><span class="line"><span class="undefined">  display: flex;</span></span><br><span class="line"><span class="undefined">  justify-content: space-between;</span></span><br><span class="line"><span class="undefined">  align-items: center;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">height</span>: @<span class="keyword">navbar</span>-<span class="keyword">height</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background-color</span>: <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">  &amp;-left &#123;</span></span><br><span class="line"><span class="undefined">    margin-left: 20/@r;</span></span><br><span class="line"><span class="undefined">    ~ .mine-navbar-right &#123;  //新增代码</span></span><br><span class="line"><span class="undefined">      position: static;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  &amp;-center &#123;</span></span><br><span class="line"><span class="undefined">    flex: 1;</span></span><br><span class="line"><span class="undefined">    margin: 0 20/@r;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    ~ .mine-navbar-right &#123;  //新增代码</span></span><br><span class="line"><span class="undefined">      position: static;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  &amp;-right &#123;</span></span><br><span class="line"><span class="undefined">    position: absolute;   //新增代码</span></span><br><span class="line"><span class="undefined">    right: 0;</span></span><br><span class="line"><span class="undefined">    display: flex;    //用了绝对定位父元素的flex就会失效，所以要搞这个</span></span><br><span class="line"><span class="undefined">    justify-content: center;</span></span><br><span class="line"><span class="undefined">    align-items: center;</span></span><br><span class="line"><span class="undefined">    height: 100%;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    margin-right: 20/@r;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  &amp;-title &#123;</span></span><br><span class="line"><span class="undefined">    position: absolute;</span></span><br><span class="line"><span class="undefined">    left: 20%;</span></span><br><span class="line"><span class="undefined">    right: 20%;</span></span><br><span class="line"><span class="undefined">    text-align: center;</span></span><br><span class="line"><span class="undefined">    display: flex;</span></span><br><span class="line"><span class="undefined">    align-items: center;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  &amp;-text &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.ellipsis</span>();</span></span><br><span class="line"><span class="undefined">    font-size: 18px;</span></span><br><span class="line"><span class="undefined">    width: 100%;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">line-height</span>: 1<span class="selector-class">.5</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用插槽</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 差点忘记了，这里不能用:title.加：后面调用的就是表达式了 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">me-navbar</span> <span class="attr">title</span>=<span class="string">"哈哈哈"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont"</span> <span class="attr">slot</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"center"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont"</span> <span class="attr">slot</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">me-navbar</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> MeNavbar <span class="keyword">from</span> <span class="string">'navbar.vue'</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> defult &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">'homeHeader'</span>,</span></span><br><span class="line"><span class="undefined">  components: &#123;</span></span><br><span class="line"><span class="undefined">    MeNavbar</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="props-接收效验"><a href="#props-接收效验" class="headerlink" title="props 接收效验"></a>props 接收效验</h3><p>不过我觉得把，我自己写好像没必要效验，又不是团队开发，就算是团队开发，这个东西不给别人用就没必要效验？估计是我现在还没有接触到，所以还是写一下吧，逼格？嗯，目前为止<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  direction: &#123;</span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    <span class="keyword">default</span>: <span class="string">'horizontal'</span>,</span><br><span class="line">    validator (value) &#123; <span class="comment">// value就可以接收到传入的参数</span></span><br><span class="line">      <span class="comment">// 如果返回true代表成功效验，flase失败</span></span><br><span class="line">      <span class="keyword">return</span> [</span><br><span class="line">      <span class="string">'horizontal'</span>,</span><br><span class="line">      <span class="string">'vertical'</span></span><br><span class="line">      ].includes(value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/html5/" rel="tag"># html5</a>
+          
+            <a href="/blog/tags/css3/" rel="tag"># css3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/03/22/开发中的技巧及问题/" rel="next" title="开发中的技巧及问题">
+                <i class="fa fa-chevron-left"></i> 开发中的技巧及问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/04/19/面试问题/" rel="prev" title="面试问题">
+                面试问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DEBUG</p>
+              <p class="site-description motion-element" itemprop="description">go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#移动webapp开发"><span class="nav-text">移动webapp开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视口"><span class="nav-text">视口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport-标签的介绍"><span class="nav-text">viewport 标签的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取视口宽度"><span class="nav-text">获取视口宽度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flex-布局，弹性布局"><span class="nav-text">Flex 布局，弹性布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flex布局属性"><span class="nav-text">flex布局属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-direction-决定主轴方向"><span class="nav-text">flex-direction 决定主轴方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-wrap-换行"><span class="nav-text">flex-wrap 换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-flow-简写，上面两种属性的简写"><span class="nav-text">flex-flow 简写，上面两种属性的简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#justify-content-属性定义了项目在主轴上的对齐方式-常用"><span class="nav-text">justify-content 属性定义了项目在主轴上的对齐方式   常用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-items-交叉轴对齐方式"><span class="nav-text">align-items 交叉轴对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-content-多根轴线对齐方式-多行-，如果项目只有一根轴线，则不起作用"><span class="nav-text">align-content 多根轴线对齐方式(多行)，如果项目只有一根轴线，则不起作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目属性"><span class="nav-text">项目属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-grow-默认值为0，类似于，栅格系统，不过更灵活"><span class="nav-text">flex-grow 默认值为0，类似于，栅格系统，不过更灵活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-shrink-默认值为1，属性定位缩小比例，和flex-grow是相反的"><span class="nav-text">flex-shrink 默认值为1，属性定位缩小比例，和flex-grow是相反的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-basis-默认值为auto-项目占据的主轴空间，如果有width属性，就会覆盖width属性-浏览器根据这个属性，计算主轴是否有多余空间"><span class="nav-text">flex-basis 默认值为auto,项目占据的主轴空间，如果有width属性，就会覆盖width属性, 浏览器根据这个属性，计算主轴是否有多余空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-是前面3给的简写，不算order"><span class="nav-text">flex 是前面3给的简写，不算order</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#align-self-默认auto-表示继承align-items-可覆盖align-items-如果没有父元素，则等同于stretch"><span class="nav-text">align-self 默认auto, 表示继承align-items, 可覆盖align-items, 如果没有父元素，则等同于stretch</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#媒体查询"><span class="nav-text">媒体查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认值"><span class="nav-text">默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询中的逻辑"><span class="nav-text">媒体查询中的逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体特征表达"><span class="nav-text">媒体特征表达</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询策略"><span class="nav-text">媒体查询策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端单位问题"><span class="nav-text">移动端单位问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#em的技巧"><span class="nav-text">em的技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem主流"><span class="nav-text">rem主流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应开发，因为都懂，就记一些不懂的吧"><span class="nav-text">响应开发，因为都懂，就记一些不懂的吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#img图片的处理"><span class="nav-text">img图片的处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用适配"><span class="nav-text">通用适配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用适配解决方案，解决1px边框显示过’粗’问题"><span class="nav-text">通用适配解决方案，解决1px边框显示过’粗’问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端事件"><span class="nav-text">移动端事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#touch-事件"><span class="nav-text">touch 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch-事件event-对象"><span class="nav-text">touch 事件event 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这里讲到了拖动，我没有做，明天补上，今晚记一些技巧"><span class="nav-text">这里讲到了拖动，我没有做，明天补上，今晚记一些技巧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端调试"><span class="nav-text">移动端调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vorlon-js"><span class="nav-text">Vorlon.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多端同步工具Browsersync"><span class="nav-text">多端同步工具Browsersync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端检测，navigator"><span class="nav-text">终端检测，navigator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动开发常见问题"><span class="nav-text">移动开发常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css3-兼容问题"><span class="nav-text">css3 兼容问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#click-300毫秒延迟解决"><span class="nav-text">click 300毫秒延迟解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字溢出问题"><span class="nav-text">文字溢出问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript兼容"><span class="nav-text">javascript兼容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动端动画"><span class="nav-text">移动端动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平居中和垂直居中"><span class="nav-text">水平居中和垂直居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好"><span class="nav-text">按需加载，我觉得还是另一个老师讲的细，这里就不深究了，看那个老师的就ok，这个参考一下就好</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战开始-这里就直接上vue项目了"><span class="nav-text">实战开始,这里就直接上vue项目了</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的插件统计"><span class="nav-text">用到的插件统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发vue项目用到的技巧"><span class="nav-text">开发vue项目用到的技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#props-接收效验"><span class="nav-text">props 接收效验</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018/9/11 00:00
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEBUG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="http://www.696px.com">696px</a>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'demoorbug.github.io/2019/04/12/移动webapp/';
+          this.page.identifier = '2019/04/12/移动webapp/';
+          this.page.title = '移动webapp';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'frRzxfBf7ILkb3j8VGQAqdIs-gzGzoHsz',
+        appKey: 'XlCDzgMdSzgzFpgyuWY66yYM',
+        placeholder: '智慧如你，不想发表一点想法咩~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".loader").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

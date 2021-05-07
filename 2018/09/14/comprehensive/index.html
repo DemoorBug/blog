@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="html5,css3,jquery,node,mongodb,php,canvas,mysql," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="以前做过的东西，总结一下几乎涵盖了16年学的所有东西 CSS3+JS 实现超炫的散列画廊特效项目地址：CSS3+JS 实现超炫的散列画廊特效">
+<meta name="keywords" content="html5,css3,jquery,node,mongodb,php,canvas,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="comprehensive">
+<meta property="og:url" content="demoorbug.github.io/2018/09/14/comprehensive/index.html">
+<meta property="og:site_name" content="696px">
+<meta property="og:description" content="以前做过的东西，总结一下几乎涵盖了16年学的所有东西 CSS3+JS 实现超炫的散列画廊特效项目地址：CSS3+JS 实现超炫的散列画廊特效">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-07T18:17:13.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="comprehensive">
+<meta name="twitter:description" content="以前做过的东西，总结一下几乎涵盖了16年学的所有东西 CSS3+JS 实现超炫的散列画廊特效项目地址：CSS3+JS 实现超炫的散列画廊特效">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="demoorbug.github.io/2018/09/14/comprehensive/"/>
+
+
+
+
+
+  <title>comprehensive | 696px</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="site-title">696px</span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+             -->
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+             -->
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+             -->
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+             -->
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://demoorbug.github.io" rel="section">
+            <!-- 
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+             -->
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="demoorbug.github.io/blog/2018/09/14/comprehensive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DEBUG">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="696px">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">comprehensive</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T20:06:16+00:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/github项目笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">github项目笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/github项目笔记/笔记MAX/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记MAX</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/2018/09/14/comprehensive/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/14/comprehensive/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="以前做过的东西，总结一下"><a href="#以前做过的东西，总结一下" class="headerlink" title="以前做过的东西，总结一下"></a>以前做过的东西，总结一下</h2><p>几乎涵盖了16年学的所有东西</p>
+<h2 id="CSS3-JS-实现超炫的散列画廊特效"><a href="#CSS3-JS-实现超炫的散列画廊特效" class="headerlink" title="CSS3+JS 实现超炫的散列画廊特效"></a>CSS3+JS 实现超炫的散列画廊特效</h2><p>项目地址：<a href="https://github.com/DemoorBug/comprehensive/tree/master/CSS3%2BJS%20%E5%AE%9E%E7%8E%B0%E8%B6%85%E7%82%AB%E7%9A%84%E6%95%A3%E5%88%97%E7%94%BB%E5%BB%8A%E7%89%B9%E6%95%88" target="_blank" rel="noopener">CSS3+JS 实现超炫的散列画廊特效</a><br><a id="more"></a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**3<span class="selector-tag">D</span>效果编写**</span><br><span class="line">2016<span class="selector-class">.4</span><span class="selector-class">.25</span></span><br><span class="line"><span class="selector-tag">transition</span>：<span class="selector-tag">property</span> <span class="selector-tag">duration</span> <span class="selector-tag">timing-function</span> <span class="selector-tag">delay</span></span><br><span class="line"><span class="selector-tag">property</span> 规定设置过渡效果的<span class="selector-tag">css</span>属性的名称</span><br><span class="line"><span class="selector-tag">duration</span> 规定完成过渡效果多少秒或毫秒</span><br><span class="line"><span class="selector-tag">timing-function</span>  规定速度效果的速度曲线，默认<span class="selector-tag">ease</span></span><br><span class="line"><span class="selector-tag">dalay</span> 定义过渡效果延迟多久开始，默认0</span><br><span class="line">**知识**</span><br><span class="line"><span class="selector-tag">-webkit-font-smoothing</span><span class="selector-pseudo">:antialiased</span>;用于字体平滑</span><br><span class="line">&lt; body onselectstart="return false"&gt;</span><br><span class="line"># onselectstart="return false"  防止文字被选中 </span><br><span class="line"><span class="selector-tag">-webkit-perspective</span><span class="selector-pseudo">:800px</span>; # 支持3<span class="selector-tag">D</span></span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span>;    # 内容和<span class="selector-tag">padd</span>都会在<span class="selector-tag">border</span>边框之内去呈现</span><br><span class="line"><span class="selector-tag">-webkit-transform-style</span><span class="selector-pseudo">:preserve-3d</span>;    #支持子元素的3<span class="selector-tag">D</span>效果</span><br><span class="line"><span class="selector-tag">-webkit-transform</span><span class="selector-pseudo">:translate(0px</span>,0<span class="selector-tag">px</span>) <span class="selector-tag">rotateY</span>(0<span class="selector-tag">deg</span>);		 			#定义位移以及沿着<span class="selector-tag">Y</span>轴旋转</span><br><span class="line"><span class="selector-tag">-webkit-backface-visibility</span><span class="selector-pseudo">:hidden</span>;    当元素不面向屏幕时隐藏</span><br></pre></td></tr></table></figure></p>
+<h2 id="WEB-APP"><a href="#WEB-APP" class="headerlink" title="WEB APP"></a>WEB APP</h2><p>项目地址: <a href="https://github.com/DemoorBug/comprehensive/blob/master/WEB%20APP/web%20App.html" target="_blank" rel="noopener">WEB APP</a></p>
+<p><strong>Touch基础事件</strong>5.30<br>touchstart:手指触摸屏幕触发(已经有手指放屏幕上不会触发)<br>touchmove:手指在屏幕滑动,连续触发<br>touchend:手指离开屏幕时触发<br>touchcancel:系统取消touch时候触发(不常用 )<br><em>android的4.4,4.0的bug：支触发touchstart，和一次的touchmove不触发</em><br><em>加入event.preventDefault</em><br><em>除常见的事件属性外，触摸事件包含专有的触摸属性</em><br>touches:跟踪触摸操作的touch对象数组<br>targetTouches:特定事件目标的touch对象数组<br>changaoTouches:上次触摸改变的touch对象数组<br><em>每个touch对象包含属性:</em><br>clientX:触摸目标在视口中的x坐标<br>clientY:触摸目标在视口的y坐标<br>identifier:标识触摸的唯一ID。<br>pageX:触摸目标在页面中的x坐标(包含滚动)<br>pageY:触摸目标在页面中的y坐标(包含滚动)<br>screenX:触摸目标在屏幕中的x坐标<br>screenY:触摸目标在屏幕中的y坐标<br>target:触摸的DOM节点目标。<br><strong>移动框架库</strong>5.25<br><em>Tab自定义事件</em><br><em>Fastclick库</em><br>zepto.js<br><em>tab点透bug</em><br><strong>viewport 视图</strong>5.20<br><em>980px(ios)</em><br><em>&lt; meta name=”viewport” content=”name=value,name=value&gt;</em><br>width: 设置布局viewport的特定值(‘device-width’)<br>initial-scale: 设置页面的初始缩放 1<br>minimum-sacle: 最小缩放<br>maximum-scale: 最大缩放<br>user-scalable: 用户能否缩放<br><em>垂直居中  CSS3</em><br>.myoff-wrapper {<br>    position:absolute;<br>    top:50%;<br>    left:50%;<br>    z-index:3;<br>    -webkit-transform:translate(-50%,-50%);<br>    border-radius:6px;<br>    background:#FFF<br>}<br><strong>基本知识-像素</strong>5.19<br><em>移动开发像素知识</em><br><em>px: css pixels 逻辑像素，浏览器使用的抽象单位</em>     1px  == 1像素<br><em>dp,pt: device independent pixels 设备无关像素</em>     1dp  == 4/1像素  一个像素就会有4个物理像素(dp)渲染<br><em>dpr: devicePixelRatio 设备像素缩放比</em><br>_计算公式：1px = (dpr)_2_ <em> dp_
+</em>iphone5是320px<em>568px? -&gt; 因为 dpr = 2</em><br>平面上：1px = (2)_2_ <em> dp<br>纬度上：1px = 2 </em> dp<br>因此换算公式<br>640dp<em>1136dp == 320px</em>568px<br><em>DPI:打印机每英寸可以喷的墨汁点(印刷行业)</em><br><em>PPI:屏幕每英寸的像素数量，既单位英寸内的像素密度</em><br>目前。在计算机显示设备参数描述上，二者意思表达的是一样的。</p>
+<p>计算公式： 以iPhone5为例子<br>ppi= √ (1136_2_ <em> 640_2_) /4 = 326ppi (视网膜Retina屏)
+</em>PPI越高，像素数越高，图像越清晰<em><br>当可视度越低(小)，系统默认设置缩放越大<br>                ldpi            mdpi            hdpi            xhdpi<br>ppi             120             160             240                320<br>默认缩放比        0.75               1.0                1.5             2.0<br>_1px = dpr_2_ </em> dp_</p>
+<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p>项目链接：<a href="https://github.com/DemoorBug/comprehensive/tree/master/canvas" target="_blank" rel="noopener">canvas</a></p>
+<p><strong>这几天看css3去了</strong>4.27</p>
+<p><strong>第一天</strong>4.19<br>canvas 指定大小最好在  width=”” height=”” 最好在标签能直接加上css指定的实际是canvas显示的大小<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">_var canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</span><br><span class="line">var context = canvas.getContext('2d');   #</span><br><span class="line">使用context进行绘制_</span><br><span class="line">可以判断 canvas.getContext('2d');   #是否为空  </span><br><span class="line">*</span><br><span class="line">	context.moveTo(<span class="number">100</span>,<span class="number">100</span>); 画一条直线开始</span><br><span class="line">	context.lineTo(<span class="number">700</span>,<span class="number">700</span>);   结束</span><br><span class="line">	context.lineWidth = <span class="number">5</span>; 线条宽</span><br><span class="line">	context.strokeStyle = <span class="string">"#005588"</span></span><br><span class="line">	context.stroke();</span><br><span class="line">*</span><br><span class="line">_ 绘制一个三角并填充</span><br><span class="line">	context.moveTo(<span class="number">100</span>,<span class="number">100</span>); </span><br><span class="line">	context.lineTo(<span class="number">700</span>,<span class="number">700</span>);</span><br><span class="line">	context.lineTo(<span class="number">100</span>,<span class="number">700</span>);</span><br><span class="line">	context.lineTo(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">	<span class="comment">// context.strokeStyle = "#005588";</span></span><br><span class="line">	context.fillStyle = <span class="string">"rgb(2,100,3)"</span></span><br><span class="line">	context.fill();</span><br><span class="line">_</span><br></pre></td></tr></table></figure></p>
+<h2 id="css3-重要的"><a href="#css3-重要的" class="headerlink" title="css3 重要的"></a>css3 重要的</h2><p>项目地址：<a href="https://github.com/DemoorBug/comprehensive/tree/master/css3" target="_blank" rel="noopener">css3</a></p>
+<p><strong>置顶</strong>  19.48  感冒头疼  特此请假  2016-5-18  —— 2016-5-19<br><strong>tap事件基础</strong>5.24<br>自定义事件<br><em>自定义Tap事件原理：</em><br>在touchstart、touchend时记录时间、手指位置，在touchend时进行比较，如果手指位置为同一位置(或允许移动一个非常小的位移值)且时间间隔较短(一般认为200ms)，且过程中未曾触发过touchmove，即可认为触发了手持设备上的“click”，一般称他为“tap”<br><strong>样式处理</strong>5.24<br>在移动web页面上渲染图片，为了避免图片产生模糊，图片的宽度用物理像素单位渲染，即100<em>100的图片，应该使用100dp</em>100dp<br>width: (w_value/dpr)px;<br>height: (h_value/dpr)px;<br><em>边框1px使用2dp渲染</em><br>.sidebar .folder li {<br>    <!-- border-bottom: 0.5px solid #DDD --><br>    padding:8px 0 8px 15px;<br>    color:#7c7c7c;<br>    cursor:pointer;<br>    position:relative;<br>}<br>.folder li + li:before {<br>    position:absolute;<br>    top: -1px;<br>    left: 0 ;<br>    content: ‘’;<br>    width:100%;<br>    height:1px;<br>    border-top:1px solid #DDD;<br>    <em>-webkit-transform: scaleY(0.5)</em><br>}<br>上面这个方案比较成熟的<br><em>相对单位</em><br>em : 是根据父节点font-size为相对单位<br>rem : 是根据html的font-size为相对单位</p>
+<p>em在多层嵌套下，变得非常难以维护<br>rem更加能成为全局统一设置的度量<br><em>实例rem</em><br>rem基值设置多少好？<br>回归我们的目的：为了适应手机的屏幕<br>rem = screen.width / 20;<br><em>——————————————</em><br>默认<br>html {font-size:32px}<br>iphone 6<br>设备的宽度最少为375的时候<br>@media (min-device-width: 375px) {<br>    html { font-size:37.5px}<br>}<br>iphone 6 plus<br>@media (min-device-width: 414px) {<br>    html { font-size:41.4px;}<br>}<br><em>换算公式</em><br>如iphone5上的rem基值为32px，渲染一张64<em>64px的div，则用2rem</em>2rem去渲染。换算公式非常简单：<br>width：px/rem基值<br>height：px/rem基值<br><em>多行文本溢出</em><br>//单行文本溢出…<br>.inaline {<br>    overflow: hidden;<br>    white-space: nowrap;<br>    text-overflow: ellipsis;<br>}<br>//多行文本溢出…<br>.intwoline {<br>    display: -webkit-box ! important;<br>    overflow: hidden;</p>
+<pre><code>text-overflow: ellipsis;
+word-break: break-all;
+
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+</code></pre><p>}<br><strong>媒体查询</strong>5.23<br><em>@media screen and (max-width:1024px)</em><br><em>常用媒体查询参数：</em><br>width    —— 视口宽高<br>height ——<br>device-width    设备的宽度<br>device-height    设备的高度<br>orientation： 检测设备处于横向<br>(landscape)还是竖屏 (portrait)<br><em>媒体类型</em><br>screen(屏幕)<br>print(打印机)<br>handheld(手持设备)<br>all(通用)<br><strong>flex 属性 代替 弹性盒模型章节</strong>5.20<br>justify-content: center; /<em>子元素水平居中</em>/<br>align-items: center; /<em>子元素垂直居中</em>/<br>display: -webkit-flex;<br><em>flex-direction:row; /<em>default</em>/</em>  方向  默认<br>:row-reverse; /<em>default</em>/    反方向<br>:column;  纵向<br>:column-reverse;<br><em>flex-wrap:nowrap;</em> 默认<br>flex-wrap:nowrap;              }<br>display:-webkit-flex;          &lt;  这个例子父容器虽然是400  里面内容撑出也不换行<br>width:400px;                    }</p>
+<p>:wrap 正常<br>:wrap-reverse 反方向<br><em>flex-flow:flex-direction flex-wrap;</em>    z自己体会  上面的结合<br><em>justify-content:flex-start;</em>  效果通 float：left<br>:flex-end     效果同 float: right<br>:center   水平居中<br>:space-between    两边对其<br>:space-around   按间距去划分<br><em>align-self</em>         <em>父元素用</em><br>:flex-start;   头部<br>:flex-end;    底部<br>:center;     居中<br>:auto;     默认<br>:baseline  字体什么位置<br>:stretch;   填充满？<br><em>align-items:</em>      <em>子元素用</em><br>:flex-start     全部上<br>:flex-end        下<br>:center            居中<br>:baseline<br>:stretch<br><em>align-content</em><br>:flex-start   不会像 align-items 切分高度<br>:flex-end<br>:center<br>:space-between  上下两边<br>:space-around   等比划分<br>:stretch        默认  填充好整个容器<br><strong>addEventListener 事件</strong>5.19<br>function addEnd (obj,fn) {<br>    obj.addEventListener(‘webkitAnimationEnd’,fn,false);<br>}<br>document.getElementById(‘box’).onclick = function()<br>{<br>    this.className = ‘box move’;<br>    addEnd(this,fn)<br>}<br>function fn () {<br>    alert( ‘e’ )<br>}<br><strong>@-webkit-keyframes move 动画</strong>5.18<br>_animation:move 5s 1s ease-in 5 _<br><em>animation:2s move</em><br><em>必要属性</em><br>    -animation-name                 动画名称(关键帧名称)<br>    -animation-duration             动画持续时间<br>例子<br>    animation-play-state 播放状态 (running 播放 和 paused 暂停)<br><em>可选属性</em><br>animation-timing-function<br>    -linear         均速<br>    -ease            缓冲<br>    -ease-in        由慢到快<br>    -ease-out        由快到慢<br>    -ease-in-out    由慢到快再到慢<br>    -cubic-bezier (1,1,1,1)  [0-1]<br><em>可选属性2</em><br>animation-delay            动画延迟<br>    -只是第一次<br>animation-iteration-count    重复次数<br>    -infinite 为无限次<br>animation-direction         播放前重置<br>    -动画是否重置后再开始播放<br>    -alternate    动画直接从上一次停止的位置开始执行<br>    -normal        动画第二次直接跳到0%的状态开始执行<br><strong>css3.0-3d变换-1</strong>5.17<br><em>transform-style(preserve-3d)</em>建立3D空间<br><em>perspective:100px</em>景深<br><em>perspective-origin</em>景深基点<br><em>backface-visibility</em>隐藏背面<br><em>Transform</em> 新增函数<br>    ·rotateX()<br>    ·rotateY()<br>    ·rotateZ()<br>    ·translateZ()<br>    ·scaleZ()<br><strong>matrix(a,b,c,d,e,f)矩阵</strong>5.17<br>filter:progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1,SizingMethod=’auto expand’);<br>m11 == a , m12 == c, m21 == b , m22 == d<br><strong>transform</strong>5.17<br><em>后写的先执行</em><br>transform:rotate(20deg) skewX(20deg) scaleX(20px);<br>    ·rotate() 旋转函数 取值度数<br>        -deg 度数<br>        -Transform-origin 旋转的基点   <em>放到未变化元素上  最多估计是两个参数</em><br>        <em>rotateX rotateY rotateZ</em> 还有z轴<br>    ·skew()倾斜度数 取值度数<br>        -skewX()<br>        -skewY()<br>        transform:skewX(<strong>deg)<br>        transform:skew(</strong>deg,<strong>deg)<br>    ·scale()缩放函数 取值 正数、小数<br>        -scaleX()<br>        -scaleY()<br>    ·translate()位移函数<br>        -translateX()<br>        -translateY()<br>        transform:translateX(</strong>px)<br>        transform:translate(<strong>px,</strong>px)<br><em>这里有个钟表 以后可以复习下 <em>妙味云课堂-钟表效果-4</em></em><br><em>扇形导航 <em>妙味云课堂-扇形导航</em> 赶紧学点不知道的 这些案例可以闲下来弄</em><br><strong>transitionend事件</strong>5.16<br>_<br>function addEnd(obj,fn) {<br>    obj.addEventListener(‘WebkitTransitionEnd’,fn,false);<br>    obj.addEventListener(‘transitionend’,fn,false);<br>}<br>function removeEnd(obj,fn) {<br>    obj.removeEventListener(‘WebkitTransitionEnd’,fn,false);<br>    obj.removeEventListener(‘transitionend’,fn,false);<br>}<br>addEnd(oBox,function(){      美执行完一个transition就会触发  这个函数   oBox代表当前有tran元素<br>    this.style.width = this.offsetWidth+100+”px”<br>    removeEnd(this,addEnd)<br>})<br>oBox.onclick = function (){</p>
+<p>}<br>_<br><strong>transition过渡</strong>5.16<br>属性<br>ease： (逐渐变慢)默认值<br>linear： 匀速<br>ease-in：加速<br>ease-out：减速<br>ease-in-out：先加速后减速<br>cubic-bezier 贝塞尔曲线(x1,y1,x2,y2)<br><strong>新增ui样式3</strong>5.15<br><em>径向渐变</em><br><em>radial-gradient:[起点|| left(数值) || 大小 || 形状]&lt;点&gt;,&lt;点&gt;</em><br>background:-webkit-radial-gradient(farthest-corner,red,blue)<br>形状：ellipse椭圆、circle圆<br>大小：具体数值或百分比，也可以是关键字<br>(最近端closest-side，<br>最近角closest-corner，<br>最远端farthest-side，<br>最远角farthest-corner，<br>包含contain或覆盖cover)<br>(closest-side,closest-corner,farthest-side,farthest-corner,contain or cover);<br>    -注意firefox目前只支持关键字<br><em>背景尺寸</em><br>_background-size:x y _<br>    -background-size:100% 100%;<br>    -Cover 放大<br>    -Contain 缩小<br><em>background-origin: border|padding|content</em><br>    ·border-box: 从border区域开始显示背景。<br>    ·padding-box: 从padding区域开始显示背景。<br>    ·content-box: 从content区域开始显示背景<br><em>background-clip</em> 背景裁切   <em>这里用到一个ip开机解锁哪里的一个动画，很简单不会的话可以到本节28分钟</em><br>    ·border: 从border区域向外裁剪背景<br>    ·padding: 从padding区域向外裁剪背景<br>    ·content: 从content(内容)区域向外裁剪背景<br>    ·no-clip: 从border区域向外裁剪背景<br>    ·text : 从text区域向外裁剪背景<br>_遮罩_  就是添加一个png图片作为遮罩<br>Mask-image<br>Mask-position<br>Mask-repeat</p>
+<p><strong>新增ui样式2</strong>5.15<br><em>边框颜色</em><br><em>border-colors:red bule syellow</em> 多种边框颜色 兼容不是很好<br><em>线性渐变</em><br>属于background-image:的<br><em>linear-gradient([&lt;起点&gt;||&lt;角度&gt;,]?&lt;点&gt;,&lt;点&gt;…);</em><br>linear-gradient(30deg,blue 20px,red 50%);<br>只能用在背景上<br>    -IE<br>    filer:progid:DXImageTransform.Microsoft.gradient(startColorstr=’#FFFFFF’,endColorstr=’#ff0000’,GradientType=’1’);<br>参数<br>    -起点：从什么方向开始渐变  默认top<br>    top right bottom left<br>    -角度：从什么角度开始渐变<br>            xxx deg的形式<br>    -点：渐变点的颜色和位置<br>            black 50%，位置可选  <em>50%代表范围吧</em><br><em>repeating-linear-gradient(60deg,red 0,blue 30px)  平铺</em><br><strong>新增ui样式1  box-radius 还不是很熟悉 今天就到这里5.13 </strong><br><em>box-radius</em><br>100px/200px  前边x轴半径  后边y轴半径<br><strong>响应式布局</strong><br><em>&lt; link rel=”stylesheet” type=”text/css” href=”css.css” media=”srceen and (min-width:800px)”&gt;</em><br><em>&lt; link rel=”stylesheet” type=”text/css” href=”css.css” media=”all and (orientation:portrait)”&gt;</em> 竖屏<br><em>&lt; link rel=”stylesheet” type=”text/css” href=”css.css” media=”all and (orientation:landscape)”&gt;</em> 横屏</p>
+<p><em>border-img:url 0 10</em>   0代表上下  10代表左右<br> ·border-image-sourceg  引用图片<br> ·border-image-slice 切割图片  单位没有<em>px</em><br> ·border-image-width 边框宽度<br> ·border-image-repeat 图片的排序方式</p>
+<pre><code>- round平铺，repeat重复，stretch 拉伸
+</code></pre><p>border-left-width:10px;</p>
+<p>_style 里面写  _<br>@media screen and (min-width:400px) and (max-width:500px) {}</p>
+<p>@import url(‘indexc.css’) srceen and (min-width:400px) and (max-width:800px);<br><strong>分栏布局</strong><br>column-width 栏目宽度<br>column-count 栏目列数<br>column-gap 栏目距离<br>column-rule 栏目间隔线<br><strong>盒阴影</strong><br><em>box-shadow: [inset] x y blur [spread] color</em><br>inset 内阴影<br>blue 模糊半径<br>spread 扩展阴影半径  先扩展原有形状，再开始画阴影<br><em>box-reflect:方向 距离 渐变(可选)</em>倒影<br>direction 方向   above|below|left|right<br>距离<br>渐变(可选)  <em>-linear-gradient(left,red 0,blue 100%)  线性渐变</em><br><em>resize</em>  自由缩放   <em>添加后盒子就可以自由伸缩</em><br>    ·Both 水平垂直都可以缩放<br>    ·Horizontal 只有水平方向可以缩放<br>    ·Vertical 只有垂直方向可以缩放<br>    注意：一定要配合overflow：auto一块使用 只有水平方向可以伸缩<br><em>box-sizing:[box]</em><br>content-box    标准盒模型<br>width/height = border+padding+content<br>border-box    怪异<br>width/height = content<br><strong>弹性盒模型</strong> 放到父级使用<br>display:box || inline-box; <em>display:-webkit-box 老的写法，而且兼容性不够好，需要用前缀。</em>    <em>慕课网看到的：-webkit-flex 父级设置  子元素fiex：1</em><br><em>Box-orient</em>定义盒模型的布局方向<br>    ·Horizontal 水平显示<br>    ·vertical 垂直显示<br><em>Box-direction</em> 元素排列顺序<br>    ·Normal 正序<br>    ·Reverse 反序<br><em>Box-ordinal-group</em> 设置元素的位置<br><em>box-flex</em>  定义弹性空间<br>    公式 子元素尺寸=盒尺寸<em>子元素的box-flex属性值/所有子元素的box-flex属性值的和<br><em>box-pack</em> 对盒子富裕的空间进行管理<br>    ·Star 所有子元素在盒子左侧显示，富裕空间在右侧<br>    ·End 所有子元素在盒子右侧显示，富裕空间在左侧<br>    ·Center 所有子元素居中<br>    ·Justify 富裕空间在子元素之间平均分布<br><em>box-align</em> 在垂直方向上对元素的位置进行管理<br>    ·Star 所有元素在顶<br>    ·End 所有子元素在底<br>    ·Center 所有子元素居中<br><strong>文本属性</strong><br>text-shadow x y mohu color   文字阴影<br><em>text-stroke</em> x color    描边<br><em>Direction</em>  定义文字排序方式(全兼容)  </em>兼容IE6<em><br>Rtl  从右向左排序<br>Ltr  从左向右排序<br>注意要配合unicode-bidi 一起使用<br><em>Text-overflow</em>     两个值 clip  无省略号   Ellipsis 省略号<br>white-space:nowrap;  不要超出换行<br>overflow:hidden;<br>Text-overflow:Ellipsis
+</em>自定义字体<em>转换文字格式生成兼容代码 <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank" rel="noopener">http://www.fontsquirrel.com/fontface/generator</a><br>@font-face {<br>    font-family: ‘FontName’;<br>    src: url(‘FileName.eot’);<br>    src: url(‘FileName.eot?#iefix’) format(‘embedded-opentype’),<br>         url(‘FileName.woff’) format(‘woff’),<br>         url(‘FileName.ttf’) format(‘truetype’),<br>         url(‘FileName.svg#FontName’) format(‘svg’);<br>    font-style: normal;<br>    font-weight: normal;<br>}<br>b<br><strong>伪类选择</strong><br>div:target {display: block;background: red;}<br><em>target</em> 控制哈希值  锚机那个东西
+</em>控制表单很有用<em><br><em>enabled</em>  可以点击状态表单控件<br><em>disabled</em>  不可编辑状态<br><em>checked</em>  控制 type=checkbox || radio 的选中样式<br><em>给radio用相同name 就可以成为单选框</em>
+</em>文本新增伪类<em><br><em>E:first-line</em>  文本第一行<br><em>E:first-letter</em>  第一个文字
+</em>伪元素<em><br><em>E::selection</em> 表示E元素在用户选中文字时       选中文字的时候样式 这个牛<br><em>E::before</em>  生成元素之前<br><em>E::after</em>  生成元素之后<br>::after {content:”苗圩”; display:block;border:1px solid red;}<br><em>E:not(.h2)</em>  排除某一项<br><strong>选择器</strong>
+</em>属性选择器<em><br>p[属性名=’属性值’]<br>p[miaov~=’ds’]{background: red;}<br>p[attr~=’value’]  词组中有value<br>p[attr^=’value’]  value开头<br>p[attr$=’value’]  value结尾<br>p[attr</em>=’value’]  只要包含了value<br>p[attr|=’value’]  横岗开始  或者单纯value    b-leo<br><em>结构选择器</em><br>p:nth-child(1){bakcground: red;}  表示P父元素中的第几个节点<br>p:nth-child(odd) {}  奇数行<br>p:nth-child(even) {}  偶数行<br>p:nth-child(n) {}  n代表从1到正无穷大一个整数  2n  2<em>0开始到2</em>正无穷大</p>
+<p><em>nth-last-child()</em>从后往前数<br>p:nth-of-type(1){background: red;}        这个的话 值查找P父级元素下的 P  也就是整合到一个集合 其他东西不管<br><em>p:first-child</em> 也就是直接第一个<br><em>p:last-child</em> 最后一个<br><em>p:first-of-type</em> 第一个   元素的第一个节点必须是P<br><em>p:last-of-type</em> 最后一个</p>
+<p>*<em><br>p:empty{background:red;}  是否为空标签<br>p:only-of-type 表示p元素中只有一个子节点，且这个唯一的子节点类型必须是p。注意：子节点不包含文本节点<br>_这样听就很难理解   我的理解就是 一个父元素下不能有一样的节点 p </em>:only-of-type_<br>p:only-child  表示p元素只有一个子节点。注意子节点不包含文本节点</p>
+<h2 id="html5-重要的"><a href="#html5-重要的" class="headerlink" title="html5 重要的"></a>html5 重要的</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/html5" target="_blank" rel="noopener">html5</a></p>
+<p>clearInterval() setInterval()<br><strong>canvas2</strong>5.03<br><strong>canvas2</strong>5.03<br><em>绘制圆</em><br>arc(x,y,半径,起始弧度,结束弧度,旋转弧度)<br>    -x,y:起始位置<br>    -弧度与角度的关系：弧度=角度<em>Math.PI/180<br>    -旋转方向：顺时针(false) 逆时针(true)<br>    -例子：canvas时钟.html
+</em>绘制其他曲线*<br>arcTo(x1,y1,x2,y2)<br>    -第一组坐标、第二组坐标、半径<br>_例<br>context.beginPath();<br>context.moveTo(100,200);<br>context.arcTo(100,50,200,150,50);<br>context.stroke();<br>_<br>quadraticCurveTo(dx,dy,x1,y1)<br>    -贝塞尔曲线：第一组控制点、第二组结束点<br>_例   虽然例子要不了这么多 但是自己玩玩<br>context.beginPath();<br>context.moveTo(100,200);<br>context.quadraticCurveTo(100,100,200,100);<br>context.stroke();</p>
+<p>context.beginPath();<br>context.moveTo(100,200);<br>context.quadraticCurveTo(200,200,200,100);<br>context.stroke();</p>
+<p>context.beginPath();<br>context.moveTo(100,200);<br>context.lineTo(200,100);<br>context.stroke();<br>_<br>bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1)<br>    -贝塞尔曲线：第一控制点、第二控制点、第三组结束坐标<br>_例<br>context.beginPath();<br>context.moveTo(100,200);<br>context.bezierCurveTo(100,100,200,200,200,100);<br>context.stroke();<br>_<br><strong>canvas 分开写 不然看着木乱</strong>5.03<br><em>边界绘制</em><br>lineJoin:边界点连接点样式<br>        -miter(默认)、round(圆角)、bevel(斜角)<br>_例：<br>context.lineJoin = ‘round’;<br>_<br>lineCap :端点样式  一条直线的两个端点<br>        -butt(默认)、round(圆角)、square(高度多出为宽一半的值)<br>_例：绘制直线后才可<br>context.lineCap = ‘round’<br>context.lineCap = ‘square’ 当前宽度一半<br>_<br><em>绘制路径</em> 类似ps钢笔<br>beginPath：开始绘制路径<br>_例：<br>context.beginPath()<br>_<br>closePath：结束绘制路径 这个是闭合啊<br>_例：<br>context.closePath();  这个是闭合啊<br>_<br>moveTo:移动到绘制的新目标点<br>_例：<br>context.moveTo(100,100);<br>_<br>lineTo：新的目标点<br>_例：<br>context.lineTo(100,100);<br>_<br><em>绘制路径—2</em><br>stroke()：画线，默认黑色<br>fill()：填充，默认黑色<br>rect():矩形区域<br>clearRect()：删除一个画布的矩形区域<br>_例<br>context.clearRect(0,0,oc.width,oc.height);<br>_<br>save()：保存路径<br>restore()：恢复路径<br>_例<br>context.save();</p>
+<pre><code>context.fillStyle = &apos;red&apos;;
+context.beginPath();/*开始*/
+
+context.rect(20.5,20.5,100,100);
+context.lineWidth = 1;
+
+context.fill()
+</code></pre><p>context.restore()</p>
+<p>context.beginPath();/<em>不会受到影响</em>/</p>
+<p>context.rect(20.5,140.5,100,100);<br>context.lineWidth = 1;</p>
+<p>context.fill()<br>_</p>
+<ul>
+<li>直接可以用鼠标进行绘画案例  挺简单<br>var oc = document.getElementById(‘cOne’);<br>  context = oc.getContext(‘2d’);  /<em>目前支持2d  还有个webgl：制作３ｄ绘图　兼容很大问题</em>/<br>  oc.onmousedown = function(ev){<pre><code>var ev = ev || window.event
+context.beginPath();
+context.moveTo(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop);
+document.onmousemove = function(ev){
+    console.log(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop)
+    var ev = ev || window.event;
+    context.lineTo(ev.clientX-oc.offsetLeft,ev.clientY-oc.offsetTop);
+    context.stroke();
+}
+</code></pre>  }<pre><code>document.onmouseup = function(){
+    document.onmousemove = null;
+    document.onmouseUp = null;
+}    
+</code></pre><em><br>_方块运动<br>var oc = document.getElementById(‘cOne’);<br>context = oc.getContext(‘2d’);  /</em>目前支持2d  还有个webgl：制作３ｄ绘图　兼容很大问题<em>/<br>var num = 0;<br>context.fillRect(0,0,100,100);<br>setInterval(function(){<br>  num++;<br>  context.clearRect(0,0,oc.width,oc.height);<br>  context.fillRect(num,num,100,100);<br>},30)<br>_<br><strong>canvas</strong>5.03<br>默认大小  300</em>150px　<br>创建好getContext(‘2d’)对象后就可以来绘图了<br><em>绘制方块 分为了两个方法</em>  和边框 写的先后顺序不同  则先覆盖后<br>fillRect(L,T,W,H) 默认的颜色是黑色<br>_例：<br>context.fillRect(50,50,100,100)<br>_<br>strokeRect(L,T,W,H) 带边框的方块<pre><code>-默认一像素黑色边框，显示出来的不一样原因
+</code></pre>_例：<br>context.strokeRect(50,50,100,100)  这样的话实际为2像素<br>context.strokeRect(50.5,50.5,100,100)  这样的话实际为2像素<br>_<br><em>设置绘图</em><br>fillStyle： 填充颜色(绘制canvas是有顺序的)<br>_例：可以影响两个 要是只想用到一个什么必须用到save 保存路径 restrore 恢复路径<br>context.fillStyle = ‘red’;<br>_<br>lineWidth： 线绘制，是一个数值<br>_例：<br>context.lineWidth = 10;<br>_<br>strokeStyle： 边线绘制  颜色<br>_例：<br>context.strokeStyle = ‘blue’;<br>_</li>
+</ul>
+<p><strong>火狐下无法拖拽</strong><br>             必须设置dataTransfer对象的setData方法才可以拖拽除图片外的其他标签<br> <em>dataTranSfer</em>出现在event对象下的<br> setData();设置数据key和value(必须是字符串)<br> getData();获取数据，根据key值，获取对应的value<br> <em>ev.dataTransfer.setData(‘name’,’hello’)设置键值对</em><br> <em>ev.dataTransfer.getData(‘name’)获取设置好的name值</em><br> <em>配合拖拽可以完成一个删除功能</em><br> <em>dataTransfer对象属性</em><br> effectAllowed<br>         -effectAllowed：设置光标样式(none,copy,copyLink,copyMove,link,linkMove,move,all和uninitialized)<br>         <em>光标样式属性  里面值 各代表不同样式</em><br> setDragImage() </p>
+<pre><code>- 三个参数：指定元素，X ，Y
+*改变当前拖拽元素*
+</code></pre><p> files  </p>
+<pre><code>- 获取外部拖拽的文件，返回一个filesList列表
+- filesList下有个type属性，返回文件的类型
+</code></pre><p><strong>讲到了拖拽事件 很实用啊  用到了可以复习</strong>5.02<br><em>拖放操作1</em><br><strong>历史管理</strong>4.22<br>onhashchange : 改变hash值来管理<br>history ：<br>    -服务器下运行<br>    -pushState ：三个参数：数据 标题(都没实现) 地址(可选)<br>    -popstate事件 ： 读取数据 event.state<br>    -注意： 网址是虚假的，需要服务器指定对应页面，不然刷新找不到页面<br><strong>延迟加载JS</strong>4.22<br>JS的加载会影响后面的内容加载<br>        –defer   延迟到onload前执行  内联无意义<br>        –async  异步加载 加载完就触发 有顺序问题<br>Labjs  异步加载js库<br><strong>data 自定义数据</strong>4.22<br>dataset</p>
+<pre><code>- data-name: dataset.name
+- data-name-first: dataset.nameFirst
+</code></pre><p>data数据在jquery mobile 在有重要作用<br><em><br>    如果以前想获取一组自定义属性  小心的使用getAttribute
+</em><br><strong>JSON的新方法</strong>4.22<br>parse() : 吧字符串串成json          <em>只能解释json形式的字符串变为js</em></p>
+<pre><code>- 字符串中的属性要严格的加上引号
+</code></pre><p>_<br>var str = ‘{ “name” : “hello” }’<br>var json = JSON.parse(str);<br>alert( json.name )<br>_     有兼容问题  要去 json官网 下载 json2.js</p>
+<p>stringify() : 吧json转化成字符串</p>
+<pre><code>- 会自动的把双引号加上
+</code></pre><p><em><br>var str = ‘{ name : “hello” }’<br>var json = JSON.stringify(str);<br>alert( json )
+</em><br>新方法与eval的区别<br><em>妙味搜索  对象引用</em><br><em>eval</em>原来是将字符串转换为 js语句的<br><strong>html5新的选择器</strong>4.22<br><em>新的选择器</em><br>querySelector            //类似于jq的  $<br>querySelectorAll<br>getElementsByClassName<br><em>获取class列表属性</em><br>classList         获得class 集合</p>
+<pre><code>- length : class的长度    *这都是上面的方法* 
+- add() : 添加class方法
+- remove() : 删除class方法
+- toggle() : 切换class方法
+</code></pre><p><strong>html5表单验证反馈</strong>4.21<br>validity 对象  ，通过下面的valid可以查看验证是否通过，如果八种验证都通过返回true，一种验证失败返回false</p>
+<ul>
+<li>oText.addEventListener(“invalid”,fn1,false);</li>
+<li>ev.preventDefault()       阻止默认事件</li>
+<li>valueMissing : 输入值为空时       输入值为空返回true</li>
+<li>typeMismatch: 控件值与预期类型不匹配       输入类型和要求类型不一致返回true</li>
+<li>patternMismatch : 输入值不满pattern正则      输入值是否满足正则要求不一致 返回true</li>
+<li>tooLong : 超过maxLnegth最大限制                  </li>
+<li>rangeUnderflow : 验证的range最小值</li>
+<li>stepMismatch: 验证range的当前值是否符合min、max及step的规则</li>
+<li>customError 不符合自定义验证<pre><code>》setCustomValidity() ; 自定义验证
+</code></pre><em>formnovalidate  直接取消表单验证</em><br>_<br>  var oText = document.getElementById(‘name’);<br>  Otext.addEventListener(‘invalid’,fn1,false);<br>  function fn1(){<pre><code>alert(this.validity.valid)  当前事件是否通过
+ ev.preventDefault()       阻止默认事件
+</code></pre>  }<br>_<br>*<br>  var oText = document.getElementById(‘name’);<br>  Otext.addEventListener(‘invalid’,fn1,false);<br>  oText.oninput = function (){<pre><code>if(this.value == &apos;1&apos;) {
+    this.setCustomValidity(&apos;请不要输入敏感词&apos;)
+ }
+</code></pre>  }<br>  function fn1(){<pre><code>alert(this.validity.valid)  当前事件是否通过
+ ev.preventDefault()       阻止默认事件
+</code></pre>  }<br><em><br><strong>html5语义化兼容</strong>4.21<br>document.createElement(‘leo’);  
+</em>input 新增表单控件和属性<em><br>type :<br>email  :  邮箱<br>tel :  移动端会变为一个数字输入键盘<br>url :　网址　<br>search :  搜索 后面有个×<br>range : 数值选择器   ：<br>_<br>属性 step=”2” 一次跳两步 min=”0” max=”10” value当前值<br>_
+</em>新的输入形控件_2*<br>number : 只能包含数字的输入框<br>color : 颜色选择器<br>datetime : 显示完整日期<br>datetime-local : 显示完整日期，不含时区<br>time : 显示时间，不含时区<br>date : 显示日期<br>week : 显示周<br>month : 显示月<br><em>新的表单特性和函数</em><br>placeholder : 输入框提示信息<br>autocomplete : 是否保存用户输入值<pre><code>默认为no,关闭提示选择off
+</code></pre>autofocus : 指定表单获取输入焦点      <em>自动聚焦</em><br>list 和 datalist : 为输入框造一个选择列表<ul>
+<li>list值为datalist 标签的id<br>required : 此项必填 ， 不能为空<br>pattern : 正则验证 pattern = “\d{1,5}”<br>Formaction 在submit 里定义提交地址    又增加一个提交地址 可以的。。<br>maxlength  限制表单输入最大值</li>
+</ul>
+</li>
+</ul>
+<h2 id="imooc-why-重要的"><a href="#imooc-why-重要的" class="headerlink" title="imooc-why 重要的"></a>imooc-why 重要的</h2><p>项目地址：<a href="https://github.com/DemoorBug/comprehensive/tree/master/imooc-why" target="_blank" rel="noopener">响应式布局,慕课网教程</a></p>
+<blockquote>
+<p>这个估计是我所有东西的启蒙网站了，很值得留念</p>
+</blockquote>
+<p><em>为方便后续使用网址，在这里收集下</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.ico 在线转换 网址 http://www.bitbug.net</span><br><span class="line">humans官方网址 http://www.humanstxt.org.cn</span><br><span class="line">.editorconfig  http://editorconfig.org</span><br><span class="line">markdown http://dillinger.io  很好的一个参考网站 http://www.jianshu.com/p/375bd2057d18</span><br><span class="line">最新浏览器升级  http://browsehappy.com</span><br><span class="line">HTML5 大纲生成页面   https://gsnedders.html5.org/outliner/</span><br><span class="line">Normalize (NO 么赖似) https://necolas.github.io/normalize.css</span><br><span class="line">css3自动增加前缀   http://autoprefixer.github.io</span><br><span class="line">OwlCarousel2 轮播插件（O 凯弱塞奥2）官方http://owlcarousel2.github.io/OwlCarousel2/</span><br></pre></td></tr></table></figure></p>
+<p><em>开始</em><br><em>robots.txt 机器人</em> 搜索引擎查看网站,第一个访问的文件。告诉我们的爬虫服务器上什么文件，被查看，什么文件不能被查看<br><figure class="highlight plain"><figcaption><span>*</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Disallow: /admin/</span><br><span class="line">此例子告诉搜索引擎都可以去访问,除了admin文件下的内容，每种不同的 搜索引擎都会有自己不一样的设置</span><br></pre></td></tr></table></figure></p>
+<p>一些流氓的搜索引擎会无视次文件，毕竟这只是相关行业的约定，你不遵守，也没办法<br><em>favicon.ico</em>  可以通过一些在线的网站进行转换，比如<a href="http://www.bitbug.net" target="_blank" rel="noopener">http://www.bitbug.net</a><br><em>humans.txt 人类</em> 就是一个单纯的文本文件，用来保存网站的建设者，和一些其他有用的信息，可以快速的了解网站背后的团队信息，开发人员信息，和他们的一些故事等等，也就是“<em>机器人</em>”是给搜索引擎、机器看的，<em>humans</em>是给我们人看的  官方网站<a href="http://www.humanstxt.org.cn" target="_blank" rel="noopener">http://www.humanstxt.org.cn</a>  可以了解到，写法，想怎么写就怎么写，官网有参考范例<br><em>.editorconfig</em> 是用于统一代码解决方案的文件。很多项目都有用到  官网<a href="http://editorconfig.org" target="_blank" rel="noopener">http://editorconfig.org</a>  官网有相关规则，还有支持的IDE<br><figure class="highlight plain"><figcaption><span>editorconfig.org</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># ; 注释 单独占用一行 一般使用#</span><br><span class="line"># root = true 表示这是最顶层的配置文件，发现root=true的话 就不会再继续查找editorconfig文件了</span><br><span class="line">root = true</span><br><span class="line"></span><br><span class="line"># 一般看到*都知道是通配符  *代表所有文件，*.js 代表js文件</span><br><span class="line">[*]</span><br><span class="line">charset = utf-8</span><br><span class="line">indent_size = 4</span><br><span class="line"># indent_size = 4  4代表空格数  每次缩进的数 当然也可以设置为tab</span><br><span class="line"># indent_size = tab 那么我们接下来会设置一个 tab的宽   tab-width = 多少  一般来说呢，我们都通过空格来进行缩进</span><br><span class="line">indent_style = space</span><br><span class="line"># indent_style = space  空格缩进  tab在各种编辑器宽度解释各有不同，为了保证代码排版看起来一致。建议都使用空格</span><br><span class="line">insert_final_newline = true</span><br><span class="line"># insert_final_newline = true   每一个文件 用空格行结尾</span><br><span class="line">trim_trailing_whitespace = true</span><br><span class="line"># trim_trailing_whitespace = true 去除换行行首的任意字符</span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace = false</span><br></pre></td></tr></table></figure></p>
+<p><em>.gitignore</em><br><em>安装呢 使用什么编辑器就在哪里安装，我安装到NPM里面了。。</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line"></span><br><span class="line">.idea</span><br><span class="line"></span><br><span class="line">node_modules</span><br><span class="line">dist</span><br><span class="line">这个是github 管理忽略的上传文件</span><br></pre></td></tr></table></figure></p>
+<p><em>LICENSE.txt</em> 如果项目基于一些许可协议 可以建立这样一个文件，注意这个文件名全部使用了大写<br><em>README.md</em> 顾名思义呢，就是项目的简介、使用方式、相关链接<br><em>CHANGELOG.md</em> 看名字也都知道、项目每个版本的更新、说明的版本号、更新内容、修复了哪些问题等<br><em>以上两个文件都是使用 .md作为后缀， md == markdown  是一种普通的文本编辑器，来编写的一个标记语言，通过一些简单的标记语法呢，就可以让普通的一些文本具有一定的格式，</em><br>编辑markdown 在线 编辑网站 <a href="http://dillinger.io" target="_blank" rel="noopener">http://dillinger.io</a>   很好的一个参考网站<a href="http://www.jianshu.com/p/375bd2057d18" target="_blank" rel="noopener">http://www.jianshu.com/p/375bd2057d18</a><br><em>编写代码</em><br><em>lang=”zh-CN”</em>  中文简体<br><em>lang=”zh”</em> 支持更广泛的中文字符，简体，繁体，方言啊等等的(方言是什么鬼)<br><em>lang=”en”</em> 这样的话 问题也不是很大，但是你安装了google翻译啊什么的  他会自动翻译 <em>还有些针对盲人的朗读软件 如果设置为en 可能就不会正常的工作 可能出现中文字符就跳过了，不读</em><br><em>&lt; meta http-equiv=”x-ua-compatible” content=”ie=edge”&gt;</em> x-ua-compatible == IE的兼容性  通过此代码表示在IE下的呈现方式 IE8开始多了个兼容模式 为了在IE8显示不正常，但在老的浏览器下显示正常的一些模式 IE9再往后也会支持这样一个模式 比如我们把  content=”ie=EmulateIE7” 设置成这样代表模仿IE7。<br>x-ua-compatible如果此标签设置不正确的话。就会有几率出现用IE5.5 来渲染，</p>
+<p>ie=edge 表示强制以最新的IE模式渲染页面<br><em>注意 : IE11这个文档模式已经弃用了</em><br><em>&lt; meta name=”viewport” content=”width=device-width,initial-scale=1”&gt;</em> 设备宽度统一，初始缩放比1</p>
+<p>_ &lt; !–[if gt/lt/gte/lte IE 8]&gt;&lt; ![endif]– &gt; _  IE的条件注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">lt == 比当前版本低</span><br><span class="line">gte ==  可以理解为&gt;=</span><br><span class="line">lte == 可以理解为&lt;=</span><br><span class="line">*IE 8 这里要加空格 老师说后面有讲到*```http://browsehappy.com</span><br><span class="line">_IE8不兼容HTML5 媒体查询 如何兼容呢  后面会有提到_</span><br><span class="line">*编写基本内容，及HTML5标签语义化详解*</span><br><span class="line">```bashnav 导航</span><br><span class="line">article (啊提Q) 代表文档啊 页面或者应用程序中独立的完整的一些可以被外部引用的一些内容，怎样理解呢，一般可以是博客里面的一篇文章，一个帖子</span><br><span class="line">section (塞克什) 实际使用中呢其实经常会和 article 这样一个元素搞混，区别：section使用范围更广泛，每一个区块都可以去使用，比如页面里面的广告，联系方式，文章里面的章节，只要觉得是个区块就可以使用，一般来说呢元素内容明确出现在文档大纲里section就比较适用，比如说装饰就不用了，但是你是需要出现在文档大纲中，需要让用户看到的，有意义的内容。</span><br><span class="line">article 可以看做一个特殊的section，它是section的一个子集对section一个特殊的描述，他比section具有明确的语义，如果你是一个独立的完整的有内容的一个相关的区块，比如说包含一个图文内容的文章，这块确实是言之有物，就可以使用article</span><br><span class="line">*怎么理解呢article相比section 他的语义更加的强烈它可以脱离整体，作为一个完整部分的存在，举个例子来说一个广告，你嵌在首页里面有意义，你把它拿出来放到别处没有什么太大的意义，但是一篇文章呢，独立出来和嵌到页面都可以，都有单独的意义，甚至于这篇文章呢你把它放在rss里面去订阅 也可以独立的存在 当然广告不会放在rss里面去作为一个订阅存在*</span><br><span class="line">nav 元素呢也是一种特殊的 section 应用在导航里面呢你就一般不会吧导航写成section 而是把导航写成nav 其实article也是一样的 具有更强的语义</span><br><span class="line">*如果不太确定就用div (D物)*</span><br><span class="line">其他标签的一些语义规定</span><br><span class="line">b 吸引人注意，不传达任何比如重要啊，强调啊</span><br><span class="line">em 重点强调</span><br><span class="line">i 和其他文字 文法和其他文法不同可以使用</span><br></pre></td></tr></table></figure></p>
+<p><em>编写代码</em><br>注意：<br>    一般都使用class定义样式，id一般用于js快速的区别和获取元素class，一般都用中横线分割，id一般使用驼峰名称法<br>    <em>class=’main-top’ id=’mainTop’</em><br><em>必不可少的图片使用&lt; img&gt; 引入，可有可无的装饰性图片可以使用标签的style引入</em><br>这是一个 HTML5 大纲生成页面  <a href="https://gsnedders.html5.org/outliner/" target="_blank" rel="noopener">https://gsnedders.html5.org/outliner/</a><br><em>WebStorm</em> 自带了一个生成大纲插件  HTML5 Outline<br><em>section 最高有标题 生成大纲后 吧没有标题的 section 换成 div</em><br><em>css resets VS Normalize.css</em><br>resets  (锐塞似)<br>Normalize (NO 么赖似)   <a href="https://necolas.github.io/normalize.css" target="_blank" rel="noopener">https://necolas.github.io/normalize.css</a><br><em>px,em,rem</em><br>_px_ 1个px相当于1个像素</p>
+<p>_em_ 相对的长度对象，参考物 父元素的font-size 父元素没有的话就找到最接近的font-size为主，页面没有设置font-size的话 1em == 16px</p>
+<p><em>rem</em> rem相对参照物为根元素html，相对参照固定不变所以好计算  IE9 里面只要不在font里面简写就没有问题，但是IE8不兼容<br><em>清除浮动</em><br><em>flex</em> 是一种可以替代float布局的方式  IE支持差<br><em>CSS中有个概念 BFC 块级格式化上下文，简单理解就是 触发了BFC就会闭合浮动 预防高度塌陷 能触发BFC的属性：</em><br><em>解决inline-block 间距问题</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt; ul&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;登录&lt; /a&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;快速注册&lt; /a&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;关于&lt; /a&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;帮助&lt; /a&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;App下载&lt; /a&gt;</span><br><span class="line">&lt; /ul&gt;</span><br><span class="line">        _不加结尾  浏览器会自己加 亲测IE5.5 以上_</span><br><span class="line">&lt; ul&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;登录&lt; /a&gt;</span><br><span class="line">&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;快速注册&lt; /a&gt;</span><br><span class="line">&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;关于&lt; /a&gt;</span><br><span class="line">&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;帮助&lt; /a&gt;</span><br><span class="line">&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;App下载&lt; /a&gt;</span><br><span class="line">&lt; /li&gt;</span><br><span class="line">&lt; /ul&gt;</span><br><span class="line">        _这种是将 闭合标签添加到下一行 也可以解决_</span><br><span class="line"></span><br><span class="line">&lt; ul&gt;</span><br><span class="line">    &lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;登录&lt; /a&gt;&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;快速注册&lt; /a&gt;&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;关于&lt; /a&gt;&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;帮助&lt; /a&gt;&lt; /li&gt;&lt; li&gt;&lt; a href=<span class="string">"#"</span>&gt;App下载&lt; /a&gt;&lt; /li&gt;</span><br><span class="line">&lt; /ul&gt;</span><br><span class="line">        _写在一行，有些丑之外，都还不错_</span><br><span class="line">父元素设置 font-size:0 ; 子元素设置font-size: * ; 某些情况下也有很多问题，例如老师这个例子就出现了下边距</span><br><span class="line"></span><br><span class="line">header .top ul li + li &#123;</span><br><span class="line">  border-left: 1px solid <span class="comment">#999;</span></span><br><span class="line">  margin-left: -3px;</span><br><span class="line">&#125;</span><br><span class="line">_通过-3px设置的，也有问题，每个浏览器间距不一样 导致出现差异_</span><br><span class="line">*CSS4草案中有这样一个属性：*</span><br><span class="line">white-space-collapsing 这个属性可以解决这个设置，但是CSS4啊，。。只能展望未来了</span><br></pre></td></tr></table></figure></p>
+<p><em>CSS3 calc()</em><br>calc是CSS3的一个计算方法。动态计算</p>
+<p><em>\00a0\00a0</em> 代表不换行的空格字符<br><figure class="highlight plain"><figcaption><span>a:first-child:before &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  content: &apos;最新公告: \00a0\00a0&apos;;</span><br><span class="line">  color: #aaa;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>文字不换行- 显示省略号</em><br><figure class="highlight plain"><figcaption><span>a:first-child &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  white-space: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://autoprefixer.github.io" target="_blank" rel="noopener">http://autoprefixer.github.io</a>  自动增加前缀<br><em>用户代理字符串</em><br><em>navigator.userAgent</em> 可以通过此代码  显示当前用户代理字符串，当然安全性不好，用处：判断用户当前是安卓，还是IOS 从而给出相应的下载链接<br><em>媒体查询常用节点</em><br><figure class="highlight plain"><figcaption><span>800px或者以下 包含800 */</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@media only screen and (max-width: 800px) &#123;</span><br><span class="line">    header .top &#123;</span><br><span class="line">        background-color: green;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">/* 481和800之间 */</span><br><span class="line">@media only screen and (min-width: 481px) and (max-width: 800px) &#123;</span><br><span class="line">    header .top ul li a &#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">/* 小于等于480像素 */</span><br><span class="line">@media only screen and (max-width: 480px) &#123;</span><br><span class="line">    header .top ul li a &#123;</span><br><span class="line">        color: blue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>媒体查询的单位选择</em><br><em>媒体查询 不会根据html font-size大小改变rem大小，也就是说他会按照浏览器的默认1rem == 16px</em><br><em>rem</em>  兼容性不好，而且是根据浏览器大小限制，这里没有优势<br>_em_ 兼容好，根据浏览器字体大小改变，完美<br>_px_ 这种用户改变浏览器默认字体大小，就会出现bug<br><em>CSS3选择器</em><br><em>CSS选择器介绍</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">①：</span><br><span class="line">_基本选择器_</span><br><span class="line">*   通配符 选择所有元素 或者某个元素下的所有元素</span><br><span class="line">E   元素选择器</span><br><span class="line">.class  类选择器</span><br><span class="line">#id  ID选择器</span><br><span class="line">E F  后代选择器 也被称作包含选择器</span><br><span class="line">E &gt; F   子元素选择器 只能选择某个元素的子元素 不包含孙子元素 或再往后的元素</span><br><span class="line">E + F   相邻兄弟选择器 可以选择紧接在另一个元素后的元素 而且他们具有一个相同的父元素 也就是说呢E和F具有一个相同的父元素  而且呢 F在E的后面而且相邻</span><br><span class="line">E ~ F   通用元素选择器，也是选择某个元素后的元素，和相邻兄弟选择器非常的像，举个例子</span><br><span class="line">&lt; ul&gt;</span><br><span class="line">    &lt; li&gt;&lt; /li&gt;</span><br><span class="line">    &lt; li&gt;&lt; /li&gt;</span><br><span class="line">    &lt; a&gt;&lt; /a&gt;</span><br><span class="line">    &lt; li&gt;&lt; /li&gt;</span><br><span class="line">&lt; /ul&gt;</span><br><span class="line">ul li + li 选中了 后面的一个li</span><br><span class="line">ul li ~ li 选中了 后面所以的li</span><br><span class="line">②：</span><br><span class="line">_属性选择器_</span><br><span class="line">E[attr]               a[href] 只要 a 有 href 就都被选择</span><br><span class="line">E[attr=&quot;value&quot;]       指定属性名 和属性值  可以不加引号 那就得按规范来 不能以数字啊，两个短横线开头等等</span><br><span class="line">E[attr^=&quot;value&quot;]      以value 开头的  a[href ^= &quot;http://&quot;] 都被选中</span><br><span class="line">E[attr$=&quot;value&quot;]      value 结尾的   img[src$=&apos;.png&apos;]</span><br><span class="line">E[attr*=&quot;value&quot;]      只要包含就OK img[src*=&apos;.png&apos;]  a[href *= &quot;http://&quot;]  不管在什么位置出现都行</span><br><span class="line">E[attr~=&quot;value&quot;]      title= &quot;hello world&quot;  a[title ~= &quot;world&quot;] 以空格隔开的都可以模糊查询到</span><br><span class="line">E[attr|=&quot;value&quot;]      和 ^差不多 但是| 还包含以-开头的  lang=&quot;zh-cn&quot;  a[lang|=&quot;zh&quot;]</span><br><span class="line">*其中 *=  = 最为常用*</span><br><span class="line">③：</span><br><span class="line">_伪类和伪元素的选择器_</span><br><span class="line">:link 链接 :visited 被访问的链接 :hover 鼠标悬浮 :active 被集活 :focus 表单元素变为焦点</span><br><span class="line">:enabled 启用禁用被选中的文本框 :disabled  checked 被选中的</span><br><span class="line">:first-child   某个元素的第一个子元素</span><br><span class="line">:last-child    某些元素的最后一个子元素</span><br><span class="line">:nth-child()   选中一个或多个特定的子元素  ()内呢 可以写整数值，也可以写表达式：2n  n是从0开始 2,4,6 简写的方式even 偶数单词  奇数单词odd 2n+1 或 2n-1</span><br><span class="line">:nth-last-child()</span><br><span class="line">:nth-of-type()</span><br><span class="line">*和  :nth-child() 区别对比 ：*</span><br><span class="line">    &lt; div class=&quot;nth&quot;&gt;</span><br><span class="line">        &lt; div&gt;1&lt; /div&gt;</span><br><span class="line">        &lt; p&gt;2&lt; /p&gt;</span><br><span class="line">        &lt; p&gt;3&lt; /p&gt;</span><br><span class="line">        &lt; p&gt;4&lt; /p&gt;</span><br><span class="line">        &lt; p&gt;5&lt; /p&gt;</span><br><span class="line">        &lt; p&gt;6&lt; /p&gt;</span><br><span class="line">    &lt; /div&gt;</span><br><span class="line">.nth p:nth-child(2) &#123;</span><br><span class="line">    color: red;              2内容变红 从nth向下找到第二个元素 并且是P</span><br><span class="line">&#125;</span><br><span class="line">.nth p:nth-of-child(2) &#123;</span><br><span class="line">    color: blue;             3变蓝 从nth下的子元素 P开始 计算，第二个P</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">:nth-last-of-type()</span><br><span class="line">:first-of-type</span><br><span class="line">:last-of-type</span><br><span class="line">:only-child</span><br><span class="line"></span><br><span class="line">.nth p:only-child  &#123;          当只有一个P的时候 变红</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">:only-of-type              也是一样 不过是找类型</span><br><span class="line">:empty                     空元素 什么也没有 哪怕一个空格</span><br><span class="line">:not()</span><br><span class="line">.nth :not(p)  &#123;            所有不是P的元素</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_伪元素选择器：比较老的伪元素选择器，css2的时候就已经有了_</span><br><span class="line"></span><br><span class="line">:first-line  第一行</span><br><span class="line">:first-letter 第一个文字</span><br><span class="line">:before 前 :after 后</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_第三个隐藏_</span><br><span class="line">ul li:nth-child(3) &#123;</span><br><span class="line">    display:none</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>小屏样式及技巧</em><br><em>手机屏幕再小也不会小于 320 PX</em></p>
+<p><em>轮播图，我们不需要重复的造轮子</em><br>所以呢 选择一款适合的插件<br>这里用到的：<br><em>OwlCarousel2 （O 凯弱塞奥2）</em> 升级版本<br>官方网址 <a href="http://owlcarousel2.github.io/OwlCarousel2/" target="_blank" rel="noopener">http://owlcarousel2.github.io/OwlCarousel2/</a><br>GitHub <a href="https://github.com/OwlCarousel2/OwlCarousel2" target="_blank" rel="noopener">https://github.com/OwlCarousel2/OwlCarousel2</a><br><em>响应式图片</em><br>&lt; picture&gt;<br>    &lt; source srcset=”images/ad002-l.png” media=”(min-width:50em)”&gt;<br>    &lt; source srcset=”images/ad002-m.png” media=”(min-width:30em)”&gt;<br>    <em>&lt; source srcset=”images/ad002-m.png” media=”(orientation: landscape)” &gt;</em> 这个表示横屏<br>    &lt; img src=”images/ad002.png”&gt;  <!-- 视口宽度 viewport width缩写 --><br>&lt; /picture&gt;</p>
+<p>在线编辑SVG文件    <a href="http://editor.method.ac" target="_blank" rel="noopener">http://editor.method.ac</a>  <a href="https://icomoon.io" target="_blank" rel="noopener">https://icomoon.io</a></p>
+<p><em>polyfill (泡里废奥)</em>  可以吧裂缝填平，兼容性坑填</p>
+<p><em>picturefill (陪个扯儿废由)</em>  这就是picturefill库 <a href="http://scottjehl.github.io//picturefill" target="_blank" rel="noopener">http://scottjehl.github.io//picturefill</a></p>
+<p><em>SVG图片压缩</em> <a href="http://iconizr.com" target="_blank" rel="noopener">http://iconizr.com</a></p>
+<p><em>PNG JPG..压缩</em> <a href="https://tinypng.com" target="_blank" rel="noopener">https://tinypng.com</a></p>
+<p><em>NPM 技巧</em><br>Node.js使用了一个事件驱动、非阻塞式I/O的模型(非阻塞的读取文件  I/O 读写)<br>Node.js 中文网  <a href="http://Nodejs.cn" target="_blank" rel="noopener">http://Nodejs.cn</a><br>Node.js 官网  <a href="http://Nodejs.org" target="_blank" rel="noopener">http://Nodejs.org</a><br><em>NPM 命令</em>         NPM 网站  <a href="https://npmjs.com" target="_blank" rel="noopener">https://npmjs.com</a><br><figure class="highlight plain"><figcaption><span>install jquery</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package.json  (配K只)</span><br><span class="line">_建立 package.json_</span><br><span class="line">npm init</span><br><span class="line">name: (src) 不能大写 包名</span><br><span class="line">version: (1.0.0) 主版本号 副版本号 补丁版本号</span><br><span class="line">description: 描述</span><br><span class="line">entry point: () 入口文件</span><br><span class="line">test command: 测试命令</span><br><span class="line">git repository: git上的路径</span><br><span class="line">keywords: 关键字</span><br><span class="line">author: 作者</span><br><span class="line">license: (ISC)  这个包基于什么样的一个协议</span><br><span class="line">_packages.json 文件解读_</span><br><span class="line">dependencies  这里面所写是   生产环境下的包</span><br><span class="line"></span><br><span class="line">devDependencies 开发过程所依赖的包</span><br><span class="line">_使用packages.json_</span><br><span class="line">npm i  简写         npm i --production 下载产品方面依赖的包  npm i --dev 下载开发过程所依赖的包</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">_查看版本_</span><br><span class="line">* -v</span><br><span class="line">* --version</span><br><span class="line"></span><br><span class="line">_管理员权限运行_</span><br><span class="line">windows 直接右击 管理员权限就行</span><br><span class="line">mac os 中sudo npm install gulp</span><br><span class="line">_如何更新到packages.json_</span><br><span class="line">npm install jquery --save-dev --save   前者是写到devDependencies  后者dependencies</span><br><span class="line"></span><br><span class="line">npm uninstall jquery --save --save-dev 一个道理</span><br><span class="line"></span><br><span class="line">npm update jquery 更新</span><br><span class="line">npm update 更新所有</span><br></pre></td></tr></table></figure></p>
+<p><em>http-server</em><br>github <a href="https://github.com/indexzero/http-server" target="_blank" rel="noopener">https://github.com/indexzero/http-server</a></p>
+<p>启动 http-server 根目录 参数</p>
+<p><em>虚拟机  选择</em><br>github   <a href="https://github.com/xdissent/ievms" target="_blank" rel="noopener">https://github.com/xdissent/ievms</a></p>
+<p>或者微软官方  <a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/" target="_blank" rel="noopener">https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/</a></p>
+<p><em>移动端测试</em><br>手机使用趋势 <a href="http://www.umindex.com/" target="_blank" rel="noopener">http://www.umindex.com/</a><br>安卓设备虚拟机 <a href="http://genymotion.net" target="_blank" rel="noopener">http://genymotion.net</a></p>
+<p><em>兼容调试 hack </em><br>可以查看到各种浏览器之间的 hack写法 <a href="http://browserhacks.com" target="_blank" rel="noopener">http://browserhacks.com</a></p>
+<p>html5Shiv <a href="https://github.com/aFarkas/html5Shiv" target="_blank" rel="noopener">https://github.com/aFarkas/html5Shiv</a></p>
+<p>Respond IE6到8不支持CSS3查询  <a href="https://github.com/scottjehl/Respond" target="_blank" rel="noopener">https://github.com/scottjehl/Respond</a></p>
+<p>modernizr.js  <a href="https://modernizr.com" target="_blank" rel="noopener">https://modernizr.com</a>   主动性检测兼容问题  <em>防御性编程</em></p>
+<p>兼容问题千千万 使用任何特性之前 到 <a href="http://caniuse.com网站查询兼容性" target="_blank" rel="noopener">http://caniuse.com网站查询兼容性</a></p>
+<p><em>提高效率</em></p>
+<p>当有多个设备时 ， 改完一个样式每个页面都要刷新， 效率低，刚好有这么一个 ，省时的浏览器同步测试工具<br><a href="http://www.browsersync.cn" target="_blank" rel="noopener">http://www.browsersync.cn</a><br>NPM 安装到 全局就可以了<br>sudo npm install -g browser-sync<br>_命令_<br><figure class="highlight plain"><figcaption><span>start  启动服务  后面可以跟两个参数， --server "src" 服务器根目录设置到什么下 --files "src" 监听这个文件夹的所有改动 可以写一些通配符 "**/*.css"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser-sync start  --server &quot;src&quot; --files &quot;src&quot;</span><br></pre></td></tr></table></figure></p>
+<p><em>打包发布</em><br>在线网站  <a href="https://javascript-minifier.com" target="_blank" rel="noopener">https://javascript-minifier.com</a>  在线压缩代码</p>
+<p>主流的3个工具</p>
+<p>1.Grunt<br>                  自动化构建工具<br>2.Gulp</p>
+<p>3.Webpack         静态资源打包工具</p>
+<p><em>gulp (告 铺)</em><br>官网 <a href="http://gulpjs.com" target="_blank" rel="noopener">http://gulpjs.com</a>  中文网 <a href="http://gulpjs.com.cn" target="_blank" rel="noopener">http://gulpjs.com.cn</a></p>
+<p>用到的插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">gulp-rev              给每个文件计算 哈希码 然后把文件更改掉</span><br><span class="line">gulp-rev-replace      文件名改变 index引用则改变</span><br><span class="line">gulp-useref           注释 怎样的合并方式</span><br><span class="line">gulp-filter           可以把JS文件筛选出来做一些压缩，然后再放回去</span><br><span class="line">gulp-uglify           比较出名的 压缩 js代码插件</span><br><span class="line">gulp-csso             就是压缩CSS的一个插件</span><br><span class="line">--save-dev  肯定是开发过程中使用的</span><br><span class="line"></span><br><span class="line">_var jsFilter = filter(<span class="string">'**/*.js'</span>, &#123;restore: <span class="literal">true</span>&#125;);_</span><br><span class="line">_var cssFilter = filter(<span class="string">'**/*.css'</span>, &#123;restore: <span class="literal">true</span>&#125;);_</span><br><span class="line">_var indexHtmlFilter = filter([<span class="string">'**/*'</span>,<span class="string">'!**/index.html'</span>], &#123;restore: <span class="literal">true</span>&#125;);_</span><br><span class="line">这个任务里面声明三个 filter (非由特)</span><br><span class="line">然后 <span class="built_in">return</span> 一个这样的东西</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">'src/index.html'</span>)</span><br><span class="line">        .pipe(useref())</span><br><span class="line">        _分析带有标注的地方 例如 &lt; !-- build:js scripts/combined.js --&gt;_</span><br><span class="line">        这样他就把 这些文件扔到流里面了，这样我们的流就包含这些文件了</span><br><span class="line">        .pipe(jsFilter)</span><br><span class="line">        _接下来该做我们的 filter 处理了，第一个filter就是把我们的JS文件筛选出来_</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        _做一个 uglify的操作，也就是做一个压缩的操作_</span><br><span class="line">        .pipe(jsFilter.restore)</span><br><span class="line">        _通过这样在扔回到流里面 jsFilter.restore。接着源代码的流接着往下流_</span><br><span class="line">        .pipe(cssFilter)</span><br><span class="line">        .pipe(csso())</span><br><span class="line">        .pipe(cssFilter.restore)</span><br><span class="line">        .pipe(indexHtmlFilter)</span><br><span class="line">        _这里[<span class="string">'**/*'</span>,<span class="string">'!**/index.html'</span>]可以是一个数组，第一个意思是所有文件，第二个！是排除的意思，为什么排除我们的index呢，因为处理之后首页最好还是叫index。不然你加个版本号，主页就没了。。_</span><br><span class="line">        .pipe(rev())</span><br><span class="line">        _生成哈希版本号文件名_</span><br><span class="line">        .pipe(indexHtmlFilter.restore)</span><br><span class="line">        _之后呢再恢复_</span><br><span class="line">        .pipe(revReplace())</span><br><span class="line">        _恢复后呢。我们对index中的引用进行更新_</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">        _最后呢可以看到这样一个方法dest()这里呢就是结束了，把我们管道里的水(也就是文件流)给扔到这个目录下_</span><br><span class="line">*这就是一个典型的gulp任务*</span><br><span class="line">可以看到是一系列的 pipe (牌普) 处理</span><br></pre></td></tr></table></figure></p>
+<p><em>gulp default 这个是默认任务执行 ，当然默认也可以不写</em></p>
+<p><em>*! 这样的注释在 gulp压缩中 不会被压缩掉</em></p>
+<p><em>gulp 实现眼花缭乱的功能</em><br><em>gulp-watch</em>  监听文件的改版，自动改变，<br>_gulp-postcss _ 可以把 (奥吐普锐菲克斯) 结合，自动给浏览器属性添加一些前缀，也可以对我们的CSS文件进行一些处理<br><em>gulp-concat</em> 可以把我们的多个文件合并成一个文件<br><em>gulp-responsibe</em> 这是一个可以实现响应式图片的文件 可以把我们的一个大图片，按照我们的规则 生成一系列的响应式图片，这些过程都是自动化的</p>
+<p><em>这些插件还有很多，我们可以在NPM里面输入gulp- 。 一般来说在一个项目的生命周期中，很少回去改变，属于一个一劳永逸的事情，所以很有必要花些时间写一个完美的gulpfile文件</em><br><em>趁手的IDE</em></p>
+<p><em>IDE</em> 简单的来说就是集成开发环境</p>
+<p><em>响应式框架</em><br><em>Bootstrap</em>    <a href="http://getbootstrap.com" target="_blank" rel="noopener">http://getbootstrap.com</a>         <a href="http://v3.bootcss.com" target="_blank" rel="noopener">http://v3.bootcss.com</a><br><em>Foundation</em>   <a href="http://foundation.zurb.com" target="_blank" rel="noopener">http://foundation.zurb.com</a>         <a href="http://www.foundcss.com" target="_blank" rel="noopener">http://www.foundcss.com</a><br>结构语义化，移动设备优先，完全可以定制<br><em>Semantic UI</em>  <a href="http://semantic-ui.com" target="_blank" rel="noopener">http://semantic-ui.com</a>         <a href="http://semantic-ui-cn.com" target="_blank" rel="noopener">http://semantic-ui-cn.com</a><br>命名非常的语义化，<br><em>PureCss</em>      <a href="http://Purecss.io" target="_blank" rel="noopener">http://Purecss.io</a>         <a href="http://purecss.org" target="_blank" rel="noopener">http://purecss.org</a><br>非常轻量级</p>
+<p><em>WebStorm</em></p>
+<h2 id="svg-没有内容，忘记干什么的了"><a href="#svg-没有内容，忘记干什么的了" class="headerlink" title="svg 没有内容，忘记干什么的了"></a>svg 没有内容，忘记干什么的了</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/svg" target="_blank" rel="noopener">svg</a></p>
+<h2 id="CSS-既-html-标签收集"><a href="#CSS-既-html-标签收集" class="headerlink" title="CSS 既 html 标签收集"></a>CSS 既 html 标签收集</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">CSS 既 html 标签收集</a></p>
+<p>W3C标准(1.1)  <a href="http://www.w3.org/TR/SVG11" target="_blank" rel="noopener">http://www.w3.org/TR/SVG11</a><br>浏览器支持情况 <a href="http://caniuse.com/#cats=svg" target="_blank" rel="noopener">http://caniuse.com/#cats=svg</a><br><em>ie margin-right 有双margin  bug  display: inline;解决 </em><br><strong>Node.js收集</strong><br><a href="http://www.nodebeginner.org/index-zh-cn.html#javascript-and-nodejs" target="_blank" rel="noopener">http://www.nodebeginner.org/index-zh-cn.html#javascript-and-nodejs</a><br><em>事件驱动的回调</em></p>
+<p><strong>电商网站收集</strong><br>_<br>    <em>font:italic small-caps bold 12px/1.5em arial,verdana; </em><br>等效于：<br>font-style:italic;<br>font-variant:small-caps;<br>font-weight:bold;<br>font-size:12px;<br>line-height:1.5em;<br>font-family:arial,verdana;<br>顺序：font-style | font-variant | font-weight | font-size | line-height | font-family<br>（注：简写时，font-size和line-height只能通过斜杠/组成一个值，不能分开写。）<br>不过使用这种简写需要注意几点：要使简写定义有效必须至少提供 font-size 和 font-family 这两个属性 ；同时font-weight, font-style 以及 font-varient 这几个属性如果不做设定的话将默认为normal。<br>_<br>_<br>    &amp; copy; == ©<br>    gt; == &gt;<br>    lt; == &lt;<br>_<br>_input的背景需要清楚none _<br><em>line-height: 35px\9;</em>  所有IE浏览器<br><em>css hack</em>  好多地方都有提到<br><em>IE 最小高度20 overflow: hidden解决</em><br><em>IE 百分比宽度不精确  可以用 *width:49.9% 类似方案解决</em><br><em>都给border-bottom  的话  IE会撑出  margin-bottom : -1px; position:relative;提升层级</em><br><em>元素撑到下一个位置的时候  可以考虑设置高度来解决</em><br><strong>走进svg</strong><br><em>基本API</em><br>创建图像<br>documen.createElementNS(ns,tagName);<br>添加图像<br>element.appendChild(childElement)<br>设置/获取属性<br>element.setAttribute(name,value)<br>element.getAttribute(name)<br><em>rx圆角半径 cx横坐标 </em><br>&lt; rect &gt;、  x  y   width height rx ry   这个属性画矩形<br>&lt; circle &gt;、 cx cy r      r<br>&lt; ellipse &gt;、 cx cy rx ry    椭圆<br>&lt; line &gt;、    x1 y1 x2 y2 直线<br>&lt; polyline &gt;、 x1,y1 x2,y2 … 折现      points=”x1 y1 x2 y2 x3 y3”<br>&lt; polygon &gt;    多边形  就是讲最后第一个点和 起始点连接<br>基本属性<br>fill、stroke、stroke-width、transform<br><strong>2016.4.19</strong><br>transform: scale(0.3);   这个是放大效果<br>transform-origin: center;<br>transition-delay: 0;  延迟 很有用<br><strong>2016.4.18</strong><br>autoprefixer  一个库<br>lessc –source-map <strong><em>.less </em></strong>.css  绑定文件 更好找到less编译后的css<br>wr –exec “lessc –cource-map <strong><em>.less </em></strong>.css” <strong>*.less  当less 更改后执行该命令  –exec有待研究<br><a href="https://www.npmjs.com/package/wr" target="_blank" rel="noopener">https://www.npmjs.com/package/wr</a> 参考网站
+</strong>svg 气泡学习*<em>2016.4.15<br>outline css样式（轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。<br>article   html5标签 
+</em>&lt; article&gt; 标签规定独立的自包含内容。<br>一篇文章应有其自身的意义，应该有可能独立于站点的其余部分对其进行分发。<br>&lt; article&gt; 元素的潜在来源：<br>论坛帖子<br>报纸文章<br>博客条目<br>用户评论*<br>section  &lt; section &gt; 标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">css</a><br><strong>置顶不知道的属性</strong><br>letter-spacing<br>word-spacing<br>vertical-align<br><strong>vertical-align家族基本认识</strong>5.31<br>inherit        继承<br>1。线类<br>    baseline,top,middle,bottom<br>2.文本类<br>    text-top,text-bottom<br>3。上标下标类<br>    sub,super<br>4.数值百分比类     //IE6/7 不支持小数行高<br>    20px,2em,20%</p>
+<h2 id="Mysql笔记"><a href="#Mysql笔记" class="headerlink" title="Mysql笔记"></a>Mysql笔记</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">mysql笔记</a></p>
+<p>ob_clean 清除输出图片前的空格<br>[client] [mysqld]下添加default-character-set=utf8<br><strong>51</strong>.<br>//     print_r(mysql_fetch_row($result));  //速度最快<br>//     print_r(mysql_fetch_assoc($result));<br>//     echo mysql_field_name($result, 3);<br>//     mysql_field_name — 取得结果中指定字段的字段名<br>//     echo mysql_num_fields($result);<br>//     mysql_num_fields — 取得结果集中字段的数目<br>/*</p>
+<pre><code>* mysql_get_client_info — 取得 MySQL 客户端信息
+* mysql_get_host_info — 取得 MySQL 主机信息
+* mysql_get_proto_info — 取得 MySQL 协议信息
+* mysql_get_server_info — 取得 MySQL 服务器信息
+*/
+mysql_num_fields($result);//字段数目
+mysql_num_rows($result);//行数目
+*很多优化语句*
+</code></pre><p><strong>50</strong>.<br>require ‘50Demo.php’;   //大概就是将其他PHP建立连接吧(可以调用函数之类的)<br>/<em>     </em>//新增数据<em><br>    $query = ‘INSERT INTO user(name,email,point,regdate) VALUE (“王大大”,”<a href="mailto:2358@163.com" target="_blank" rel="noopener">2358@163.com</a>“,”150”,NOW())’;<br>    mysql_query($query); </em>/</p>
+<p>/<em>     </em>//删除修改<em><br>    $query = ‘UPDATE user SET name=”王” WHERE id=”4” ‘;<br>    mysql_query($query); </em>/</p>
+<p>/<em>     </em>//显示数据<em><br>    $query = ‘SELECT id,name,email,point,regdate FROM user’;<br>    $result = mysql_query($query);<br>    while ($row = mysql_fetch_array($result)) {<br>        echo $row[0],$row[1],$row[2],$row[3].’<br>‘;<br>    }
+     </em>/</p>
+<p><strong>47，48，49</strong>.</p>
+<ul>
+<li><p>这章包含了很多知识点<em><br>mysql_connect — 打开一个到 MySQL 服务器的连接<br>mysql_query(‘SET NAMES UTF8’);  //设置字符集<br>mysql_select_db — 选择 MySQL 数据库<br>mysql_query — 发送一条 MySQL 查询 //就是执行mysql语句<br>mysql_fetch_array — 从结果集中取得一行作为关联数组，或数字数组，或二者兼有<br>mysql_free_result — 释放结果内存<br>mysql_close — 关闭 MySQL 连接<br><strong>46</strong>.<br> /</em></p>
+<ul>
+<li>WHERE   表达式的常用运算符</li>
+<li>MYSQL运算符                                     含义</li>
+<li>=                                                       等于</li>
+<li>&lt;                                                       小于</li>
+<li><blockquote>
+<pre><code>大于
+</code></pre></blockquote>
+</li>
+<li>&lt;=                                                   小于或等于</li>
+<li><blockquote>
+<p>=                                                   大于或等于</p>
+</blockquote>
+</li>
+<li>!=                                                     不等于</li>
+<li>IS NOT NULL                                     具有一个值</li>
+<li>IS NULL                                         没有值</li>
+<li>BETWEEN                                     在范围内</li>
+<li>NOT BETWEEN                             不再范围内</li>
+<li>IN()                                                   指定的范围</li>
+<li>OR                                               两个条件语句之一为真</li>
+<li>AND                                              两个条件语句都为真</li>
+<li>NOT                                              条件语句不为真</li>
+<li><p>LIKE                                                    筛选<br>*/</p>
+<p>/*</p>
+</li>
+<li>SELECT <em> FROM user WHERE email LIKE ‘%163.COM’;</em>  %代表任意 筛选出163.com结尾的</li>
+<li>SELECT * FROM user WHERE email LIKE 3;  //一个参数代表显示前3条</li>
+<li><em>SELECT </em> FROM user WHERE email LIKE 2,3;*  //代表从3开始显示3个</li>
+<li>SELECT * FROM user OREDR BY regdte DESC;  regdte按照这个进行倒叙</li>
+<li><em>SELECT AVG(point) AS ‘平均值’ FROM user;</em>  算出平均值</li>
+<li><em>/<br>/</em> <em>SELECT AVG(point) AS ‘平均值’ FROM user;</em> 算出平均值<ul>
+<li>MYSQL分组函数</li>
+<li>函数                    用法                  描述</li>
+<li>AVG()             AVG(column)        返回列的平均值</li>
+<li>COUNT()       COUNT(column)       统计行数  (NULL统计不到)</li>
+<li>MAX()                                              求列的最大值</li>
+<li>MIN()                                               求列的最小值</li>
+<li>SUM()                                               求列中的和<br><em>/<br>/**检查这个表的信息</em></li>
+<li>SHOW TABLE STATUS\G</li>
+<li><em>优化一张表</em></li>
+<li>OPTIMIZE TABLE grade;<br><em>/
+</em>为什么表格式为iatin1_swedish_ci<em><br><strong>45</strong>.<br>/</em></li>
+</ul>
+</li>
+<li>创建一个数据库，表grade内容ID,姓名NAME,邮件email,评分</li>
+<li>point,注册日期regdate</li>
+<li>*UNSIGNED 表示无符号，TINYINT(2) 无符号整数0-99,NOT NULL</li>
+<li>表示不能为空,AUTO_INCREMENT表示从1开始每增加一个字段，累加一位*</li>
+<li><em>/<br>/</em></li>
+<li><em>CREATE TABLE USER</em>(  设置主键 自动递增</li>
+<li>ID TINYINT(2) UNSIGNED NOT NULL AUTO_INCREMENT,</li>
+<li>NAME VARCHAR(3) NOT NULL,</li>
+<li>EMAIL VARCHAR(40),</li>
+<li>POINT TINYINT(3) UNSIGNED NOT NULL</li>
+<li>PRIMARY KEY(ID) 设置主键 让ID唯一不得重复<br><em>/
+</em>遗留问题 如何删除字段 添加指定字段<em><br><strong>44</strong>.<br>/</em></li>
+<li>Mysql 常用函数</li>
+<li>文本函数</li>
+<li>函数                    用法                       描述                                                            大致写法</li>
+<li>CONCAT()       CONCAT(X,Y,…)         创建形如xy的新字符串                                 CONCAT(‘lee’,’ee’)   leeee </li>
+<li>LENGTH()       LENGTH(column)        返回列中储存的值长度</li>
+<li>LEFT()             LEFT(column,x)         从列的值中返回最左边的X个字符</li>
+<li>RIGHT()            RIGHT(column,x)        从列的值中返回最右边的X个字符</li>
+<li>TRIM()             TRIM(column)            从存储的值删除开头和结尾的空格</li>
+<li>UPPER()          UPPER(column)        吧存储的字符串全部大写</li>
+<li>LOWER()         LOWER(column)        吧存储的字符串全部小写      </li>
+<li>SUBSTRING() SUBSTRING(column,start,length)  从column中返回开始start的length个字符(索引从0开始)</li>
+<li>MD5()              MD5(column)              吧存储的字符串用MD5加密</li>
+<li>SHA()              SHA(column)              吧存储的字符串用SHA加密</li>
+<li>数字函数</li>
+<li><em>有很多数字函数  这里只列举几个  可以到这章看</em></li>
+<li>四舍五入  最大整数      最小整数  绝对值</li>
+<li><em>日期和时间函数</em></li>
+<li>HOUR() 返回存储日期的小时值  SELECT HOUR(NOW());</li>
+<li></li>
+<li><em>格式化日期和时间DATE_FORMAT() 和 TIME_FORMT()</em></li>
+<li>名词                         用法                      示例</li>
+<li>%e                     一月中某一天              1~31</li>
+<li>%d                     一月中的某天，两位    01~31</li>
+<li>%D                     带后缀的天                   1st~31st</li>
+<li>%W                     周日名称                  Sunday~Saturday</li>
+<li><em>还有很多 就不一一列举了 格式化的比上面更细腻</em></li>
+<li><em>SELECT DATE_FORMAT(NOW(),’%e’)</em><br><em>/<br><strong>43</strong>.对应章节43Demo2.PHP<br>//   Mysql 数据库操作<br>/</em><ul>
+<li>显示当前存在的数据库</li>
+<li><blockquote>
+<p><em>SHOW DATABASES;</em></p>
+</blockquote>
+</li>
+<li>2选择你所需要的数据库</li>
+<li><blockquote>
+<p><em>USE guet</em>;</p>
+</blockquote>
+</li>
+<li>3查看当前所选择的数据库</li>
+<li><blockquote>
+<p><em>SELECT DATABASE()</em>;</p>
+</blockquote>
+</li>
+<li>4查看一张表的所有内容</li>
+<li><blockquote>
+<p><em>SELECT </em> FROM guest<em>   //可以先通过</em>SHOW TABLES*来查看有多少张表</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><em>SHOW TABLES;</em></p>
+</blockquote>
+</li>
+<li>5根据数据库设置中文编码</li>
+<li><blockquote>
+<p><em>SET  NAMES gbk</em>       //set names utf8</p>
+</blockquote>
+</li>
+<li>6创建一个数据库</li>
+<li>首先打开 <em>SHOW DATABASES</em>打开所有数据库看</li>
+<li><em>CREATE DATABASE book</em>;</li>
+<li></li>
+<li>7在数据库里创建一张表</li>
+<li>*CREATE TABLE uses(</li>
+<li>username VARCHAR(20) ,//NOT NULL,这样的话 就不能为空 没有数据就出错</li>
+<li>sex CHAR(1) ,  //性别</li>
+<li>birth DATETIME);*  //注册日期</li>
+<li><em>8 显示数据表结构<br>**DESCRIBE uses;</em> 简写形式 DESC USES;  <em>那不早说</em></li>
+<li>Field       Type              NULL              KEY              Default    Extra</li>
+<li>user        varchar(20)   YES                                     NULL</li>
+<li>字段名      类型           可以为空      主键未设置   默认值没有   额外的没有  no-replat<br><em>9 显示表的结构
+</em>&gt;  <em>INSERT INTO uses (username,sex,birth) VALUES (‘Lee’,’x’,’NOW()’);</em><br><strong>NOW()<em> 是Mysql 自带的时间
+</em>仅显示 字段名呢  <em>没看懂</em>
+</strong>SELECT username FROM uses;<em>
+</em>10 筛选指定的数据<br>*<em>SELECT </em> FROM uses WHERE sex=’0’;<em>
+</em>11 删除数据</li>
+<li><em>DELETE FROM user WHERE sex=’0’;</em></li>
+<li>12修改指定数据</li>
+<li><em>UPDATE uses SET sex=’男’ WHERE USERNAME=’LEE’;</em></li>
+<li>13按指定的数据库排序</li>
+<li><em>SELECT </em> FROM uses ORDER BY birth DESC;* //正序</li>
+<li><em>ASC</em>// 正序</li>
+<li>14删除指定的表</li>
+<li><em>DROP TABLE uses;</em></li>
+<li>15删除指定的数据库</li>
+<li><em>DROP DATABASE book;</em><br><em>/<br>/</em></li>
+</ul>
+</li>
+<li>SELECT 应该是查看         <em>挑选</em></li>
+<li>SHOW 叫显示    <em>显示</em> </li>
+<li>USE  选择你想要的数据库  <em>使用</em> </li>
+<li>DATABASE()函数   DATABASES命令  <em>数据库</em></li>
+<li><em>代表所有字段 SELECT </em> FROM guest</li>
+<li>Empty set (0.00sec) 这是一张空表</li>
+<li></li>
+<li><em>/<br><strong>43</strong>.<br>/</em></li>
+<li>日期型</li>
+<li>列类型                 ‘零’值</li>
+<li>DATETIME        ‘0000-00-00 00:00:00’</li>
+<li>DATE                ‘0000-00-00’</li>
+<li>TIMESTAMP      000000000000000</li>
+<li>TIME                   ‘00:00:00’</li>
+<li>YEAR                0000</li>
+<li></li>
+<li>字符串型</li>
+<li>值           CHAR(4)           存储需求          VARCHAR(4)      存储要求</li>
+<li>‘’                  ‘     ‘                4个字节              ‘’                          1个字节</li>
+<li>‘ab’            ‘ab   ‘                4个字节             ‘ab’                       3个字节</li>
+<li>‘abcd’        ‘abcd’               4个字节            ‘abcd’                   5个字节</li>
+<li>‘abcdefgh’  ‘abcd’              4个字节             ‘abcd’                   5个字节 </li>
+<li><em>如果采用CHAR类型：</em> 那么就存放4个字节  空格也算字符</li>
+<li>CHAR 定长类型</li>
+<li><em>VARCHAR 类型 </em> 会将后面的空格删掉；</li>
+<li>VARCHAR 可变长度类型 自己本身长度+1</li>
+<li></li>
+<li><em>备注型</em>：自己本身+1</li>
+<li>类型                      描述</li>
+<li>TINYTEXT            字符串，最大长度255个字符</li>
+<li>TEXT                    字符串，最大长度65535个字符</li>
+<li>MEDIUMTEXT      字符串，最大长度16777215个字符</li>
+<li>LONGTEXT          字符串，最大长度4294967295个字符</li>
+<li><p><em>text 比较常用 用于备注，大文章，帖子，新闻</em></p>
+</li>
+<li><p><em>CHAR 一般用于密码  性别 加密之后永远是32 || 40</em></p>
+</li>
+<li><p><em>VARCHAR 用于标题</em></p>
+</li>
+<li></li>
+<li><em>整数型</em></li>
+<li>类型                  字节    最小值                     最大值</li>
+<li>(带符号的/无符号的)   (带符号的/无符号的)  </li>
+<li>TINYINT             1           -128                        127</li>
+<li>0                        255</li>
+<li>SMALLINT         2           -32768                    32767</li>
+<li>0                        65535</li>
+<li>MEDIUMINT       3          -8388608                 8388607</li>
+<li>0                       16777215</li>
+<li>INI                    4          -2147483648           2147483647</li>
+<li>0                       4294967295</li>
+<li>BIGINT              8  -9223372036854775808   9223372036854775807</li>
+<li>0                       18446744073709551615</li>
+<li><em>整数型</em>      </li>
+<li>类型               字节         最小值                     最大值</li>
+<li>FLOAT              4       +-1.175494351E-38      +-3.402823466E+38</li>
+<li>DOUBLE           8     +-2.2250738585072014E-308   +-1.7976931348623157E+308</li>
+<li>DECIMAL         可变         它的取值范围可变<br><em>/<br><strong>42</strong>.<br>/</em></li>
+<li>Mysql 常用命令</li>
+<li>1显示当前数据库的版本号和日期</li>
+<li>SELECT VERSION();</li>
+<li>CURRENT_DATE();</li>
+<li>2通过AS关键字设置字段名</li>
+<li>SELECT VERSION() AS version;  // 可设置中文，通过单引号</li>
+<li>3通过SELECT执行返回计算结果</li>
+<li>SELECT (20+5)*4 AS ‘结果’;</li>
+<li>4 通过多行实现数据库的使用者和日期</li>
+<li>SELECT USER(),NOW();   //一行显示</li>
+<li>SELECT USER(); 使用者</li>
+<li>SELECT NOW(); </li>
+<li>5 通过一行显示数据库使用者和日期</li>
+<li>SELECT USER() , SELECT NOW();</li>
+<li>6 命令取消</li>
+<li><blockquote>
+<p>\c</p>
+</blockquote>
+</li>
+<li>7 MySql 窗口退出</li>
+<li><blockquote>
+<p>exit;</p>
+</blockquote>
+</li>
+<li>ctrl+C </li>
+<li>quit</li>
+<li></li>
+<li>MySql 常用数据类型</li>
+<li>整数型：TINYINT, SMALLINT , INT, BIGINT</li>
+<li>浮点型：FLOAT , DOUBLE, DECIMAL(M,D)</li>
+<li>日期型：CHAR, VARCHAR</li>
+<li>备注型：TINYTEXT, TEXT , LONGTEXT</li>
+<li></li>
+<li>*/<br>原文：<a href="http://www.2cto.com/database/201108/101151.html" target="_blank" rel="noopener">http://www.2cto.com/database/201108/101151.html</a></li>
+</ul>
+</li>
+</ul>
+<p>MySQL会出现中文乱码的原因不外乎下列几点：<br>1.server本身设定问题，例如还停留在latin1<br>2.table的语系设定问题(包含character与collation)<br>3.客户端程式(例如php)的连线语系设定问题<br>强烈建议使用utf8!!!!<br>utf8可以兼容世界上所有字符!!!!<br>一、避免创建数据库及表出现中文乱码和查看编码方法<br>1、创建数据库的时候：</p>
+<p>[sql] view plain copy<br>CREATE DATABASE <code>test</code><br>DEFAULT CHARACTER SET ‘utf8’<br>COLLATE ‘utf8_general_ci’;<br>2、建表的时候<br>[sql] view plain copy<br>CREATE TABLE <code>database_user</code> (<br><code>ID</code> varchar(40) NOT NULL default ‘’,<br><code>UserID</code> varchar(40) NOT NULL default ‘’,<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8;  </p>
+<p>这3个设置好了，基本就不会出问题了,即建库和建表时都使用相同的编码格式。<br>但是如果你已经建了库和表可以通过以下方式进行查询。<br>1.查看默认的编码格式:</p>
+<p>[sql] view plain copy<br>mysql&gt; show variables like “%char%”;<br>+————————–+—————+<br>| Variable_name | Value |<br>+————————–+—————+<br>| character_set_client | gbk |<br>| character_set_connection | gbk |<br>| character_set_database | utf8 |<br>| character_set_filesystem | binary |<br>| character_set_results | gbk |<br>| character_set_server | utf8 |<br>| character_set_system | utf8 |<br>+————————–+————-+  </p>
+<p>注：以前2个来确定,可以使用set names utf8,set names gbk设置默认的编码格式;<br>执行SET NAMES utf8的效果等同于同时设定如下：</p>
+<p>[sql] view plain copy<br>SET character_set_client=’utf8’;<br>SET character_set_connection=’utf8’;<br>SET character_set_results=’utf8’;  </p>
+<p>2.查看test数据库的编码格式:</p>
+<p>[sql] view plain copy<br>mysql&gt; show create database test;<br>+————+————————————————————————————————+<br>| Database | Create Database |<br>+————+————————————————————————————————+<br>| test | CREATE DATABASE <code>test</code> /<em>!40100 DEFAULT CHARACTER SET gbk </em>/ |<br>+————+————————————————————————————————+  </p>
+<p>3.查看yjdb数据表的编码格式:<br>[sql] view plain copy<br>mysql&gt; show create table yjdb;<br>| yjdb | CREATE TABLE <code>yjdb</code> (<br><code>sn</code> int(5) NOT NULL AUTO_INCREMENT,<br><code>type</code> varchar(10) NOT NULL,<br><code>brc</code> varchar(6) NOT NULL,<br><code>teller</code> int(6) NOT NULL,<br><code>telname</code> varchar(10) NOT NULL,<br><code>date</code> int(10) NOT NULL,<br><code>count</code> int(6) NOT NULL,<br><code>back</code> int(10) NOT NULL,<br>PRIMARY KEY (<code>sn</code>),<br>UNIQUE KEY <code>sn</code> (<code>sn</code>),<br>UNIQUE KEY <code>sn_2</code> (<code>sn</code>)<br>) ENGINE=MyISAM AUTO_INCREMENT=1826 DEFAULT CHARSET=gbk ROW_FORMAT=DYNAMIC |  </p>
+<p>二、避免导入数据有中文乱码的问题<br>1:将数据编码格式保存为utf-8<br>设置默认编码为utf8：<br>set names utf8;<br>设置数据库db_name默认为utf8:</p>
+<p>[sql] view plain copy<br>ALTER DATABASE <code>db_name</code> DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;<br>设置表tb_name默认编码为utf8:<br>[sql] view plain copy<br>ALTER TABLE <code>tb_name</code> DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;<br>导入：<br>[sql] view plain copy<br>LOAD DATA LOCAL INFILE ‘C:\utf8.txt’ INTO TABLE yjdb;<br>2:将数据编码格式保存为ansi(即GBK或GB2312)<br>设置默认编码为gbk：<br>set names gbk;<br>设置数据库db_name默认编码为gbk:<br>[sql] view plain copy<br>ALTER DATABASE <code>db_name</code> DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;<br>设置表tb_name默认编码为gbk:<br>[sql] view plain copy<br>ALTER TABLE <code>tb_name</code> DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;<br>导入：<br>[sql] view plain copy<br>LOAD DATA LOCAL INFILE ‘C:\gbk.txt’ INTO TABLE yjdb;<br>注：1.UTF8不要导入gbk，gbk不要导入UTF8;<br>2.dos下不支持UTF8的显示;<br>三、解决网页中乱码的问题</p>
+<p>将网站编码设为 utf-8,这样可以兼容世界上所有字符。<br>　　如果网站已经运作了好久,已有很多旧数据,不能再更改简体中文的设定,那么建议将页面的编码设为 GBK, GBK与GB2312的区别就在于:GBK能比GB2312显示更多的字符,要显示简体码的繁体字,就只能用GBK。<br>1.编辑/etc/my.cnf　,在[mysql]段加入default_character_set=utf8;<br>2.在编写Connection URL时，加上?useUnicode=true&amp;characterEncoding=utf-8参;<br>3.在网页代码中加上一个”set names utf8”或者”set names gbk”的指令，告诉MySQL连线内容都要使用<br>utf8或者gbk;</p>
+<h2 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">Nodejs</a></p>
+<p>call  作用域指向 两个参数<br>apply<br><em>根_本_听不</em>懂<em>,_从_基础</em>来<em>_吧_ 加油</em><br><strong>重写爬虫，更优雅的异步编程</strong><br><em>https</em><br>    http    https<br>    tcp      ssl/tls<br>    ip        tcp<br>               ip<br><em>https</em>node中专门处理加密传输</p>
+<p><strong>Promise学习使用</strong><br><em>对象有3种状态</em><br>未完成(pending)<br>已完成(fulfilled)<br>失败(rejected)<br><em>A与A+不同点</em><br>A+规范通过术语thenable来区别promise对象<br>A+定义onFulfilled/onRejected必须是作为函数来调用，而且调用过程必须是异步的<br>A+严格定义了then方法链式调用时onFulfilled/onRejected的调用顺序<br><em>promise then方法</em><br>promiseObj.then(onFulfilled,onRejected)   <em>第一个是操作时调用的回调函数，第二个是失败时调用回调函数</em><br>onFulfilled = function(value){<br>    return promiseObj2<br>}<br>onRejected = function (err){</p>
+<p>}<br><strong>Promise</strong>promise/promise.html<br>安装npm install bluebird库<br>_&lt; script    scr=”../node_modules/bluebird/js/browser/bluebird.js”&gt;&lt;/ script &gt;_<br><strong>request方法</strong><br>get就是对request的一个封装  <em>也就是说get能干的事 request都能做</em><br><em>http.request(options[,callback])</em><br>第一个参数是对象的话就可以配置 来定制我们发出的请求的格式<br><em>host</em> 将要请求的服务器域名，或是ip地址<br><em>hostname</em> 就是host的别名<br><em>port</em> 远端服务器端口 末日80<br><em>localAddress</em> 绑定local链接的本地接口<br><em>socketPath</em><br><em>method</em> 指定http请求方法的字符串  默认get<br><em>path</em> 请求的路径 默认就是根路径 如果是有查询的字符串就要在后面追究一些参数<br><em>headers</em> 包含请求头的一个对象<br><em>auth</em> 用于计算头的基本认证  u’ze pa si wo de<br><em>agent</em> 控制agent行为也就是一个代理<br><em>keepAlive</em> 保持资源池周围的套接字在未来能被用于其他请求 末日的值是false<br><em>keepAliveMsecs</em><br><strong>小爬虫</strong>    /school/comment.js<br><em>爬虫</em><br>var http = require(‘http’)<br>var url = ‘<a href="http://www.imooc.com/learn/348&#39;" target="_blank" rel="noopener">http://www.imooc.com/learn/348&#39;</a><br>http.get(url,function(res){<br>    var html = ‘’<br>    res.on(‘data’,function(data){<br>        html += data<br>    })<br>    res.on(‘end’,function(){<br>        console.log(html)<br>    })<br>}).on(‘error’,function(){<br>    console.log(‘获取失败’)<br>})<br><strong>HTTP源码解读</strong><br>nodejs  高并发<br>iojs 密集操作<br>作用域      局部作用域 全局作用域<br>上下文    this  一个函数被作用于对象调用时 this 指向调用这个方法的对象<br>var pet = {<br>    words: ‘…’,<br>    speck : function (){<br>        console.log(this.words)<br>    }<br>}<br>pet.speck()<br><em>this通常指向当前函数拥有者   拥有者叫做执行上下文</em><br>pet.call(this,words);<br>pet.apply(this,arguments);<br><em>this 代表js一个关键字 函数运行时自动生成的一个内部对象</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodejs  顶层的global"阁楼薄"对象 == window</span><br></pre></td></tr></table></figure></p>
+<p><strong>HTTP概念进阶</strong><br><em>什么是回调</em></p>
+<p><em>什么是同步/异步</em><br>var c=0;<br>function printIt() {<br>    console.log(c)<br>}<br>function plus(callback) {<br>    setTimeout(function(){<br>        c+=1;<br>        callback();</p>
+<pre><code>},1000)
+</code></pre><p>}<br>plus(printIt)<br><em>什么是I/O</em>    磁盘  数据的进和出<br><em>什么是单线程/多线程</em><br><em>什么是阻塞/非阻塞</em><br><em>什么是事件</em><br><em>什么是事件驱动</em><br><em>什么是基于事件驱动的回调</em><br><em>什么是事件循环</em><br><em>可以通过回调的方式来达到异步编程，非堵塞的效果</em><br><em>nodejs  非堵塞  单线程  和事件驱动  更好的理解下一节内容</em><br><strong>状态码</strong><br>                                                     200   OK成功<br>1xx       请求接受，继续处理                             400   语法错误 服务器无法理解<br>2xx        成功                                         401      没有授权<br>3xx        重定向，要想完成就要更进一步操作(跳转或..)    403      拒绝提供服务  可能还是没有权限<br>4xx        客户端错误，语法错误 ，无法实现                404      没找到<br>5xx        服务器端错误                                     500   服务器端发生了不可预期错误<br>                                                     503   服务器端当前还不能处理这个请求<br><strong>http知识填坑-分解</strong></p>
+<p><strong>http知识填坑</strong><br><em>http头和正文信息  </em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http头发送的是一些附加信息：内容类型</span><br><span class="line">服务器发送响应的日期，HTTP状态码</span><br><span class="line">正文就是用户提交的表单数据。</span><br></pre></td></tr></table></figure></p>
+<p>chrome//net-internals/#dns<br>首先域名解析</p>
+<p>1  chrome 先搜索自身的DNS缓存<br>2  搜索操作系统自身的DNS缓存(浏览器没有找到缓存或缓存已经失效)   chrome//net-internals/#dns 查看缓存是否过期<br>3  读取本地host文件<br>4  浏览器发起一个DNS的一个系统调用<br>5  浏览器获得域名对应的IP地址后，发起HTTP”三次握手”<br>6  TCP/IP 连接起来后，浏览器就可以向服务器发送http请求了使用了比如说，用HTTP的GET方法请求一个根域里的一个域名，协议可以采HTTP1.0的一个协议<br>7  服务器端接受到了这个请求，根据路径参数，经过后端的一些处理之后，把处理后的一个结果数据返回给浏览器，如果是慕课网的页面就会把完整的HTML页面代码返回给浏览器<br>8  浏览器拿到了慕课网的HTML页面代码，在解析和渲染这个页面的时候，里面的js、css、图片静态资源，他们同样也是一个HTTP请求需要经过上面的主要的七个步骤<br>9  浏览器根据拿到的资源对页面进行渲染，最终把一个完整的页面呈现给用户<br><em>运营商的DNS服务器呢首先</em><br>1.查找自身的缓存找到对应的条目<br>2.没有找到会代替我们的服务器发起一个迭代DNS解析请求<br>    运营商服务器吧结果返回操作系统内核    同时缓存起来<br>    操作系统内核把结果返回浏览器<br>    最终浏览器拿到<a href="http://www.imooc.com对应的IP地址" target="_blank" rel="noopener">www.imooc.com对应的IP地址</a><br><strong>Query String参数处理小利器</strong><br><em>querystring.stringify</em> 序列化<br>querystring.stringify({name:’scott’,course:[‘1’,’2’]},’,’,’:’)  第四个参数 默认限制1000 设置为0 就不限制<br><em>querystring.parse</em> 反序列化</p>
+<p><em>querystring.escape(‘&lt;哈哈&gt;’)</em>  转译<br><em>querystring.unescape(‘%3C%E5%93%88%E5%93%88%3E’)</em><br><strong>URL解析好帮手</strong><br>node<br><em>url.parse</em><br>url.parse(‘<a href="http://www.imooc.com/video/6710&#39;" target="_blank" rel="noopener">http://www.imooc.com/video/6710&#39;</a>)  如果第二个参数设置true  则 query将变为一个对象  第三个参数设置为true<br>{<br>protocol: ‘http’,         什么协议 http  ftp<br>slashes:true,              是否//<br>auth:null,<br>host:’<a href="http://www.imooc.com&#39;" target="_blank" rel="noopener">www.imooc.com&#39;</a>,     ip地址或者域名<br>port:null,                   端口 默认80<br>hostname:’<a href="http://www.imooc.com&#39;" target="_blank" rel="noopener">www.imooc.com&#39;</a>,  主机名<br>hash:null,                锚点<br>search:null,        查询字符串参数<br>query:null,            发送数据=号间隔开的  键值称之为参数传<br>pathname:’/video/6710’,     资源路径名<br>path:’/video/6710’,            路径<br>href:’<a href="http://www.imooc.com/video/6710&#39;" target="_blank" rel="noopener">http://www.imooc.com/video/6710&#39;</a>  没被解析的超链接<br>}<br><em>url.format</em><br>url.format({<br>protocol:<br>slashes:<br>auth:<br>host:<br>port:<br>hostname:<br>hash:<br>search:<br>query:<br>pathname:<br>path:<br>href:<br>})<br><em>会将这些解析为 合法的 url地址</em><br><em>url.resolve(‘<a href="http://imooc.com/&#39;,&#39;/course/list&#39;" target="_blank" rel="noopener">http://imooc.com/&#39;,&#39;/course/list&#39;</a>)</em><br><a href="http://imooc.com/course/list" target="_blank" rel="noopener">http://imooc.com/course/list</a><br><strong>命令行体验</strong><br> 目前版本 0.10.34  飙升 0.10.35  io.js也同时发布了1.0.1的版本 标志nodejs分化为两个阵营<br><strong>起一个web服务器</strong><br>const http = require(‘http’);</p>
+<p>const hostname = ‘127.0.0.1’;<br>const port = 3000;</p>
+<p>const server = http.createServer((req, res) =&gt; {   请求体和响应体    <em>req：那个url地址过来的，请求类型 res:告诉服务器给这个请求响应一些内容 要不然一直就是挂起的状态</em><br>  res.statusCode = 200;        //返回的状态码  代表成功<br>  res.setHeader(‘Content-Type’, ‘text/plain’);         //返回的文本内容类型是 纯文本<br>  res.end(‘Hello Nodejs\n’);<br>   <em>这里是匿名的回调函数</em><br>});</p>
+<p>server.listen(port, hostname, () =&gt; {<br>  console.log(<code>Server running at http://${hostname}:${port}/</code>);<br>});<br><em>修改内容没变化 因为没有重启服务器</em><br><em>有请求有返回  五脏俱全啊</em></p>
+<h2 id="Nodejs入门"><a href="#Nodejs入门" class="headerlink" title="Nodejs入门"></a>Nodejs入门</h2><p>[]</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个链接呢 是node学习的根基 没有它  就没有我 哈哈</span><br></pre></td></tr></table></figure>
+<p><a><a href="http://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="noopener">http://www.nodebeginner.org/index-zh-cn.html</a></a><br><strong>处理POST请求</strong><br><em>这里的特定的事件有data事件（表示新的小数据块到达了）以及end事件（表示所有的数据都已经接收完毕）。</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">我们需要告诉Node.js当这些事件触发的时候，回调哪些函数。怎么告诉呢？ 我们通过在request对象上注册监听器（listener） 来实现。这里的request对象是每次接收到HTTP请求时候，都会把该对象传递给onRequest回调函数。</span><br><span class="line">request.addListener(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// called when a new chunk of data was received</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">request.addListener(<span class="string">"end"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// called when all chunks of data have been received</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>以非阻塞操作进行请求响应</strong></p>
+<p><strong>堵塞与非堵塞</strong><br><em>上述代码中，我们引入了一个新的Node.js模块，child_process。之所以用它，是为了实现一个既简单又实用的非阻塞操作：exec()。</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exec()做了什么呢？它从Node.js来执行一个shell命令。在上述例子中，我们用它来获取当前目录下所有的文件（“ls -lah”）,然后，当/startURL请求的时候将文件信息输出到浏览器中。</span><br><span class="line"></span><br><span class="line">上述代码是非常直观的： 创建了一个新的变量content（初始值为“empty”），执行“ls -lah”命令，将结果赋值给content，最后将content返回。</span><br></pre></td></tr></table></figure></p>
+<p><strong>路由给真正的请求处理程序</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">路由，顾名思义，是指我们要针对不同的URL有不同的处理方式。例如处理/start的“业务逻辑”就应该和处理/upload的不同。</span><br></pre></td></tr></table></figure></p>
+<p><em>我们暂时把作为路由目标的函数称为请求处理程序。</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">应用程序需要新的部件，因此加入新的模块 -- 已经无需为此感到新奇了。我们来创建一个叫做requestHandlers的模块，并对于每一个请求处理程序，添加一个占位用函数，随后将这些函数作为模块的方法导出：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Request handler 'start' was called."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Request handler 'upload' was called."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start = start;</span><br><span class="line">exports.upload = upload;</span><br><span class="line">这样我们就可以把请求处理程序和路由模块连接起来，让路由“有路可寻”。</span><br></pre></td></tr></table></figure></p>
+<p><em>不过结果有点令人失望，JavaScript没提供关联数组 – 也可以说它提供了？事实上，在JavaScript中，真正能提供此类功能的是它的对象。</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在C++或C#中，当我们谈到对象，指的是类或者结构体的实例。对象根据他们实例化的模板（就是所谓的类），会拥有不同的属性和方法。但在JavaScript里对象不是这个概念。在JavaScript中，对象就是一个键/值对的集合 -- 你可以把JavaScript的对象想象成一个键为字符串类型的字典。</span><br><span class="line">但如果JavaScript的对象仅仅是键/值对的集合，它又怎么会拥有方法呢？好吧，这里的值可以是字符串、数字或者……函数！</span><br></pre></td></tr></table></figure></p>
+<p><strong>行为驱动执行</strong><br><em>函数式编程</em><br><strong>路由模块</strong><br>    我们需要的所有数据都会包含在request对象中，该对象作为onRequest()回调函数的第一个参数传递。但是为了解析这些数据，我们需要额外的Node.JS模块，它们分别是url和querystring模块。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">                               url.parse(string).query</span><br><span class="line">                                           |</span><br><span class="line">           url.parse(string).pathname      |</span><br><span class="line">                       |                   |</span><br><span class="line">                       |                   |</span><br><span class="line">                     ------ -------------------</span><br><span class="line">http:<span class="comment">//localhost:8888/start?foo=bar&amp;hello=world</span></span><br><span class="line">                                ---       -----</span><br><span class="line">                                 |          |</span><br><span class="line">                                 |          |</span><br><span class="line">              querystring(string)[<span class="string">"foo"</span>]    |</span><br><span class="line">                                            |</span><br><span class="line">                         querystring(string)[<span class="string">"hello"</span>]</span><br><span class="line">当然我们也可以用querystring模块来解析POST请求体中的参数，稍后会有演示。</span><br></pre></td></tr></table></figure></p>
+<p><strong>服务端的模块放在哪里</strong><br><em>exports可以导出函数</em></p>
+<p><strong>服务器是如何请求的</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当我们的回调启动，我们的onRequest()函数被触发的时候，有两个参数被传入：request和response，他们都是对象，你可以使用他们的方法来处理http请求的细节(比如向发出请求的浏览器发回一些东西)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_今天先到这里。。明天贼尴尬。。居然没去成。。平常上班你怎么那么准时，到了这种时候却起不来，啊啊啊。。我都不信啊，我也是有毒。。居然没定闹钟。。额 。老天爷。你为什么要这样。。好吧 。。今天还看了看东西。给自己点赞+<span class="number">1</span>_ <span class="number">2016</span>/<span class="number">7</span>/<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>_开始_<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以我们的代码就是：收到请求，使用response.writeHead()函数发送一个状态<span class="number">200</span>和HTTP头的内容类型(content-type),使用response.write()函数在HTTP相应主体中发送文本<span class="string">"hello World"</span>,最后我们调用response.end()完成响应</span><br></pre></td></tr></table></figure></p>
+<p><em>目前来说，我们对请求的细节并不在意，所以我们没有使用request对象</em></p>
+<p><strong>基于事件驱动的回调</strong><br>为什么我们要用这种方式呢(上一章节)<br><em>这个问题不好回答，不过这是nodejs原生的工作方式。他是事件驱动的，这也是他为什么这么快的原因</em><br><em>作者的理解，我自己也理解写下</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当我们使用http.createServer方法的同时，我们当然不只是想要一个侦听某个端口的服务器，我们还要它在服务器收到一个http请求的时候做点什么。</span><br></pre></td></tr></table></figure></p>
+<p>问题来了，这是异步的：请求任何时候都可能到达，但是我们服务器却跑在一个单进程中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php的时候可以一点都不用担心，任何时候当有请求进入的时候，网页服务器(通过apache)就为这一请求新建一个进程，并且开始从头到尾执行相应的PHP脚步</span><br></pre></td></tr></table></figure></p>
+<p>那么在nodejs程序中，当一个新的请求到达8888端口的时候，我们怎么控制流程呢<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们不知道这件事情什么时候发生，但是我们现在有一个处理请求的地方：他就是我们传递过去的那个函数。至于他是被预先定义的函数还是匿名函数，就无关紧要了。这个就是传说中的*回调*。我们给某个方法传递一个函数，这个方法在有相应事件发生时调用这个函数来进行回调</span><br></pre></td></tr></table></figure></p>
+<p>让我们再来琢磨琢磨这个新概念。我们怎么证明，在创建完服务器之后，即使没有HTTP请求进来、我们的回调函数也没有被调用的情况下，我们的代码还继续有效呢？我们试试这个：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Request received."</span>);</span><br><span class="line">  response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">  response.write(<span class="string">"Hello World"</span>);</span><br><span class="line">  response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started."</span>);</span><br></pre></td></tr></table></figure></p>
+<p><em>执行这串代码后  第一次回出现 Server has started.<br>当访问这个页面时 就会在命令行输出 Request received. 这就是事件回调</em><br><em>这就是事件驱动的异步服务器端JavaScript和它的回调啦！</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*（请注意，当我们在服务器访问网页时，我们的服务器可能会输出两次“Request received.”。那是因为大部分服务器都会在你访问 http:<span class="comment">//localhost:8888 /时尝试读取 http://localhost:8888/favicon.ico ) *</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>创建server.js文件</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">  response.write(<span class="string">"Hello World"</span>);</span><br><span class="line">  response.end();</span><br><span class="line">&#125;).listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure></p>
+<p><em><a href="http://localhost:8888/，" target="_blank" rel="noopener">http://localhost:8888/，</a></em><br><em>分析HTTP服务器</em><br>第一行是nodejs 自带的一个http模块  将其赋值给 http变量<br><em>接下来调用http模块提供的函数: createServer 。这个函数返回一个对象，这个对象有一个叫做listen的方法，这个方法有一个数值参数，指定http服务器监听的端口号</em><br>我们本来可以用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer();</span><br><span class="line">server.listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这样的代码启动服务器<br><em>他的第一个参数是传递一个函数啊 怪不得</em><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params">word</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(word);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execute</span>(<span class="params">someFunction, value</span>) </span>&#123;</span><br><span class="line">  someFunction(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">execute(say, <span class="string">"Hello"</span>);</span><br><span class="line">来个例子吧   挺叼的哈</span><br></pre></td></tr></table></figure></p>
+<p>我们不一定要绕这个先定义，在传递的圈子。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execute</span>(<span class="params">someFunction, value</span>) </span>&#123;</span><br><span class="line">  someFunction(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">execute(<span class="function"><span class="keyword">function</span>(<span class="params">word</span>)</span>&#123; <span class="built_in">console</span>.log(word) &#125;, <span class="string">"Hello"</span>);</span><br><span class="line">作者意思是我们还是得遵循渐进么，先接受一点，在js中，一个函数可以作为另一个函数接收一个参数，我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。</span><br></pre></td></tr></table></figure></p>
+<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">PHP</a></p>
+<p>ctrl+shift+j  注释函数<br>查看快捷键    ctrl+shift+l<br><strong>41</strong>.对应文件41Demo2.php<br><em>这章主要讲解了些 图片进行微缩</em><br><em>getimagesize</em> — 取得图像大小<br>创建一个新图  $im = imagecreatetruecolor($_width,$_height);<br>下面的工作是载入原图  $_im = imagecreatefromjpeg(<strong>RIL</strong>.’12.jpe’);<br> imagecopyresampled — 重采样拷贝部分图像并调整大小</p>
+<p> //将新图输出<br>    imagejpeg($im,null,10);<br>    imagedestroy($im);    //关闭第一个句柄<br>    imagedestroy($_im);        //关闭第二个句柄<br><strong>41</strong>.<br><em>加载系统已有字体</em><br>define(‘URL’, dirname(<strong>FILE</strong>).’\‘);<br>header(‘Content-Type:image/png’); - 设置开头<br><em>imagecreatefrompng </em>— 由文件或 URL 创建一个新图象。<br>采用系统提供的字体<br><em>iconv</em> — 字符串按要求的字符编码来转换<br><em>imagecolorallocate</em> — 为一幅图像分配颜色<br><em>imagettftext</em> — 用 TrueType 字体向图像写入文本<br><em>这个是自己写的随机验证码  感觉不错</em><br><em>imagepng</em> - 输出<br><em>imagedestroy</em> - 清除<br><strong>40</strong>.对应章节40Demo2.php<br><em>这章导入一个已有的图片 添加水印</em><br>define(‘URL’, dirname(<strong>FILE</strong>).’\‘);<br><em>imagecreatefrompng — 由文件或 URL 创建一个新图象。</em><br><strong>40</strong>.<br><em>简单的一个验证码</em><br>// mt_rand — 生成更好的随机数<br>//     echo mt_rand(0,15);<br>//  为什么要循环0-15之间的数呢？<br>//  因为要实现最简单的字母和数字搭配<br>//  十六进制 0-9  a-f;<br>//  dechex — 十进制转换为十六进制<br>//  十六进制 0-9都一样的  但是10-15的时候会转换为A-F<br>//     echo dechex(mt_rand(0,15));<br>    for ($i=0;$i&lt;4;$i++) {<br>        @$nmsg .= dechex(mt_rand(0,15));  //会报错 也解决不了 头疼<br>    }</p>
+<p><strong>39</strong>.<br>/*</p>
+<pre><code>* 创建图像的一般流程
+* 1.设定标头，告诉浏览器你要生成的MIME类型
+* 2.创建一个图像区域，以后的操作都将基于此图像区域
+* 3.在空白图像区域绘制填充背景
+* 4.在背景上绘制图像轮廓输入文本
+* 5.输出最终图像。
+* 6.清除所有资源
+* 7.其他页面调用图像
+</code></pre><p><em>/<br>//  </em>1设置标头指定MIME输出类型：<em><br>        header(‘Content-Type: image/png’);<br>//  </em>2新建一个基于调色板的图像<em><br>    $im = imagecreatetruecolor(200, 200);<br>//  </em>为一幅图像分配颜色<em><br>    $color = imagecolorallocate($im, 153,204 ,255 );<br>//  </em>3区域填充<em><br>    imagefill($im, 0, 0, $color);<br>//  </em>4绘制线条<em><br>    $white = imagecolorallocate($im, 0,0,0 );<br>    imageline — 画一条线段<br>    imageline($im, 0, 0, 200, 200, $white);<br>    imagestring — 水平地画一行字符串<br>    imagestring($im,5,80,80,’Mr.jj’,$white);<br>//  </em>5以 PNG 格式将图像输出到浏览器或文件<em><br>    imagepng($im); //要放一个句柄<br>//  </em>第六步 清除所有资源*<br>    imagedestroy($im);</p>
+<p><strong>38</strong>.<br>创建一个常量<br>dirname — 返回路径中的目录部分<br>is_dir — 判断给定文件名是否是一个目录<br> mkdir — 新建目录<br><em>define(‘URL’, dirname(<strong>FILE</strong>).’\images’);</em><br>$UR = str_replace( ‘\‘, ‘/‘,URL);<br>in_array — 检查数组中是否存在某个值<br>is_array — 检测变量是否是数组<br><em>这个章节进行了很多优化和改进</em><br>if (!is_dir(URL)) { <em>这个创建一个常量后，进行各种取值取得目录，如果没有该目录 则自己创建</em><br>       mkdir(URL,0777);<br>}<br><strong>37</strong>.<br><em>这两章都写到一起了，36主要讲了一些根目录PHP.ini的设置</em><br><strong>36</strong>.<br><em>这一章用处很多</em><br>is_uploaded_file()  判断文件是否通过HTTP POST上传的<br>move_uploaded_file — 将上传的文件移动到新位置<br>location.href=’xianshi.php?url=”.’images/‘.$_FILES[‘username’][‘name’].”‘&lt;/ script&gt;”<br><em>大概就是可以将一个图片用户去上传到本网站，成为自己网站的一部分，差不多就是可以达成我们说的  B 2 B 用户对用户</em><br><strong>35</strong>.<br>做一个简单的登陆<br><em>cookie</em><br><em>Session会话</em><br><strong>34</strong>.<br>time — 返回当前的 Unix 时间戳<br>setcookie(‘name’,’wq’);<br>/<em>  </em>cookie限制*</p>
+<ul>
+<li>1、必须在HTML文件的内容输出之前设置</li>
+<li>2、不同的浏览器对cookie的处理不一致，且有时会出现错误的结果</li>
+<li>3、限制是在客户端的。一个浏览器能创建的cookie数量最多为30</li>
+<li>个，并且每个不能超过4KB，每个WEB站点能设置的cookie总量</li>
+<li>不超过20个<br><em>/
+</em>$_COOKIE<em><br><strong>33</strong>.<br>接收所有数据<br>正则判断邮箱<br>PHP可以输出JS代码
+</em>$_GET 可以接收超链接？后的变量值<em><br><strong>32</strong>.<br>header(‘Content-Type:text/html;charset=gbk’);//设置页面编码
+</em>header(‘Location:Demo2.php’); //绝对相对链接都可以<em><br>/</em></li>
+<li>表单元素                 描述</li>
+<li>text input              文本框</li>
+<li>passoword input     密码框</li>
+<li>hidden                   隐藏框</li>
+<li>select                      下拉列表框</li>
+<li>checkbox                复选框</li>
+<li>radio                       单选按钮</li>
+<li>textarea                    区域框</li>
+<li>file                            上传</li>
+<li>submit                     提交按钮</li>
+<li>reset                         重置按钮</li>
+<li>email                 邮箱<br><em>/
+</em>$_POST  $_GET<em><br>isset — 检测变量是否设置<br><strong>31</strong>.<br>explode — 使用一个字符串分割另一个字符串<br>microtime — 返回当前 Unix 时间戳和微秒数  返回两个值<br>localtime — 取得本地时间<br>date_default_timezone_set(‘Asia/Shanghai’);  //有效 //字符串意思 ： 亚洲/上海<br>putenv — 设置环境变量的值  putenv(‘TZ=Asia/Shanghai’)  这种设置已经无效了  不知道为什么 反正用上面那个就行了<br>getlastmod — 获取页面最后修改的时间 :<br>date(‘Y-m-d H:i:s’,getlastmod()+(60</em>60<em>8)) 这种写法后面60</em>60<em>8 == 已秒数增加8小时<br>strtotime(‘2015-12-05 18:13:06’);  //人性化获取时间戳<br>mktime(12,18,2,1,7,2016);   //这种就很反人类吧  //时-分-秒-月-日-年<br>date(‘Y-m-d H:i:s’,mktime(12,18,2,1,7,2016))<br>time()+(60</em>60*8); //时间差写法<br>round — 对浮点数进行四舍五入<br><strong>30</strong>.<br>checkdate — 验证一个格里高里日期  //没有详细的用法<br>gettimeofday — 取得当前时间  //返回数组<br>getdate — 取得日期／时间信息<br>time — 返回当前的 Unix 时间戳  //直接获取时间戳<br><strong>29</strong>.<br>preg_grep — 返回匹配模式的数组条目 //函数搜索数组中的元素。<br>preg_match — 执行一个正则表达式匹配 //第一个当然是正则表达式 第二个要进行匹配的字符串<br>preg_match_all — 执行一个全局正则表达式匹配  //要传3个参数 第三个参数利用二维数组储存<br>//定界正则<br>preg_quote — 转义正则表达式字符<br>preg_replace — 执行一个正则表达式的搜索和替换<br>//取消贪婪<br>1.第一种是利用JS中的?方式<br>2.第二种呢PHP中自己有  用  “U”  直接去除贪婪</li>
+</ul>
+<p>preg_split — 通过一个正则表达式分隔字符串<br>print_r(preg_split(‘/[.w]/‘,<a href="mailto:&#39;qweq.qwe@qwe.q" target="_blank" rel="noopener">&#39;qweq.qwe@qwe.q</a>@<a href="mailto:we@qw.qwe" target="_blank" rel="noopener">we@qw.qwe</a>‘));<br><strong>28</strong>.<br>preg_match — 执行一个正则表达式匹配<br>x表示忽略空白 /php/x;<br><strong>27</strong>.<br>    同28章<br><strong>26</strong>.<br>所有处理中文字符串的都是已mb开头的<br>重点讲5个，其他可以硬套<br> /*</p>
+<pre><code> * mb_strlen();     mb_strlen — 获取字符串的长度
+ * mb_strstr();      mb_strstr — 查找字符串在另一个字符串里的首次出现
+ * mb_strpos();    mb_strpos — 查找字符串在另一个字符串中首次出现的位置
+ * mb_substr();    mb_substr — 获取字符串的部分
+ * mb_substr_count();  mb_substr_count — 统计字符串出现的次数
+ *                                  //对应函数 substr_count();   手册中没有
+ * substr_count — 计算字串出现的次数                                
+ */
+$inname = &apos;名字&apos;;
+mb_strpos($inname,&apos;字&apos;,0,&apos;gbk&apos;);  可以用这个格式硬套其他的 手册看了就会了
+</code></pre><p><strong>25</strong>.<br>    /*</p>
+<pre><code>* strcmp();  strcmp — 二进制安全字符串比较
+* strcasecmp();  strcasecmp — 二进制安全比较字符串（不区分大小写）
+* strnatcmp(); strnatcmp — 使用自然排序算法比较字符串
+*/
+</code></pre><p>strcmp(‘吧’, ‘啊’);  // $st1 &gt; str2 返回大于0 $st1 &lt; $st2 返回小于0<br>strcasecmp(‘a’, ‘A’); //不区分大小写<br>strcmp(‘2’, ‘10’);  //这种是字符比较 所以比较的是第一个值<br>strnatcasecmp(‘2’, ‘10’);  //这个是自然排序法<br>strspn — 计算字符串中全部字符都存在于指定字符集合中的第一段子串的长度。<br>echo strspn(‘sin’, ‘suin po’,0,3);<br>strlen($string); //字符串长度<br>substr_count — 计算字串出现的次数<br>strchr() 是 strstr的别名;<br>strstr(‘qweqdd’, ‘d’,true);  //打印出该字符首次出现位置<br>strpos — 查找字符串首次出现的位置 //最先出现的位置<br>strrpos — 计算指定字符串在目标字符串中最后一次出现的位置 //最后出现的位置<br>// str_replace — 子字符串替换<br>// str_ireplace — str_replace() 的忽略大小写版本<br>// substr_replace — 替换字符串的子串<br>//     echo str_replace(‘.’,’伍德’,’this is .’);<br>//     echo substr_replace(‘this is .’,’$#’,0,5); // 第0个开始取5个 替换为$#<br><strong>24</strong>.<br>/*explode() explode — 使用一个字符串分割另一个字符串</p>
+<pre><code>* implode() implode — 将一个一维数组的值转化为字符串
+* join()  join — 别名 implode()
+*/
+</code></pre><p>strtok — 标记分割字符串<br>substr — 返回字符串的子串<br>str_split — 将字符串转换为数组<br>strrev — 反转字符串         <em>中文不行</em><br><strong>23</strong>.<br>trim — 去除字符串首尾处的空白字符（或者其他字符）<br>ltrim — 删除字符串开头的空白字符（或其他字符）<br>rtrim — 删除字符串末端的空白字符（或者其他字符）<br>   /*</p>
+<pre><code>* chop()  chop — rtrim() 的别名
+* ltrim()  ltrim — 删除字符串开头的空白字符（或其他字符）
+* rtrim()  rtrim — 删除字符串末端的空白字符（或者其他字符）
+* trim()  trim — 去除字符串首尾处的空白字符（或者其他字符）
+*/
+</code></pre><p>nl2br — 在字符串所有新行之前插入 HTML 换行标记 //通常在回帖的时候使用<br>htmlentities 转换所有字符<br>htmlspecialchars($ea);  //转换html代码<br>strip_tags($ea);  //此方法直接将 &lt; strong&gt;删除<br>addslashes($ea);   //  给特殊符号加上转义符<br>stripcslashes($ea);  //将反斜杠去掉<br>//  格式化字符串大小写<br>    /*</p>
+<pre><code>* strtoupper()  函数将字符串转换为大写
+* strtolower()   函数将字符串转换为小写
+* ucfirst()         函数将第一个字母转换为大写
+* ucwords()      函数将每个单词第一个字母转换为大写;
+* 
+* str_pad — 使用另一个字符串填充字符串为指定长度
+*/
+</code></pre><p>str_pad — 使用另一个字符串填充字符串为指定长度  <em>应该不错</em><br><strong>22</strong>.<br>require ‘p.php’;  //如果不存在就停止执行并报错<br>include ‘p.php’;    //如果不存在就报错<br>require_once ‘p’;  //如果调用一次 则不会继续调用<br>//推荐使用require;<br>魔法常量  …</p>
+<p>require(dirname(<strong>FILE</strong>).’\21Demo.php’);  //此写法可以读取读取大目录<br><strong>21</strong>.<br>按引用传递加上&amp;即可<br>global 定义全局变量<br>$GLOBALS[‘a’] = 50;   //超级全局变量，就是一个数组啊<br>include ‘’;  //==链接了一个Php文件吧<br>print_r($_POST);  不知道为什么用到这个<br><strong>20</strong>.<br>    这一章貌似没什么重点 所以当时是跳过了<br><strong>19</strong>.<br>file_exists — 检查文件或目录是否存在<br>filesize — 取得文件大小<br>unlink — 删除文件<br>rewind — 倒回文件指针的位置<br>fseek — 在文件指针中定位<br>ftell — 返回文件指针读/写的位置 //查看当前指针位置<br>fopen — 打开文件或者 URL<br>fgetc — 从文件指针中读取字符<br>fclose — 关闭一个已打开的文件指针<br>文件锁定  –解决问题:假如同时两个客户购买，只能获得一条数据<br>flock — 轻便的咨询文件锁定<br>opendir — 打开目录句柄<br>readdir — 从目录句柄中读取条目<br>closedir($dir); //关闭<br>scandir — 列出指定路径中的文件和目录<br>rmdir — 删除目录<br>rename — 重命名一个文件或目录<br>md5 — 计算字符串的 MD5 散列值  //加密<br>md5_file — 计算指定文件的 MD5 散列值<br>函数传入值的话 直接覆盖 没传值用赋值的<br><strong>18</strong>.<br>fwrite — 写入文件（可安全用于二进制文件）<br>fgetc — 从文件指针中读取字符<br>fgets — 从文件指针中读取一行<br>fpassthru — 输出文件指针处的所有剩余数据<br>//读出文件<br>/*<br>    fgetc($handle); — 从文件指针中读取字符<br>    fgets($handle); — 从文件指针中读取一行<br>    fgetss($handle); — 从文件指针中读取一行并过滤掉 HTML 标记<br>    fread($handle, $length); — 读取文件（可安全用于二进制文件）<br>    fpassthru($handle); — 输出文件指针处的所有剩余数据</p>
+<pre><code>file($filename); — 把整个文件读入一个数组中
+readfile($filename); — 输出一个文件
+file_get_contents($filename); — 将整个文件读入一个字符串 //函数源码自带fclose 关闭 
+*/
+</code></pre><p>//利用while循环完成  feof 测试文件指针是否到了文件结束的位置<br><strong>17</strong>.<br>fopen — 打开文件或者 URL<br>fopen 返回的是资源类型(resource),我们一般称它为句柄，或者叫资源句柄<br>fwrite — 写入文件（可安全用于二进制文件）<br>file_put_contents — 将一个字符串写入文件 //不需要任何其他灵活的事情的时候使用<br><strong>16</strong>.<br>basename — 返回路径中的文件名部分<br>dirname — 返回路径中的目录部分<br>pathinfo — 返回文件路径的信息<br>realpath — 返回规范化的绝对路径名<br>相绝路径<br>filesize — 取得文件大小<br>round — 对浮点数进行四舍五入<br>round(filesize($name)/1024,2);         //这样却得是字节，字节/1024得KB<br>disk_free_space — 返回目录中的可用空间<br>echo round(disk_free_space(‘D:’)/1024,2)/1024/1024;<br>disk_total_space — 返回一个目录的磁盘总大小<br>echo round(disk_total_space(‘G:’)/1024/1024/1024,2);<br>fileatime — 取得文件的上次访问时间<br>date_default_timezone_set — 设定用于一个脚本中所有日期时间函数的默认时区<br>fileatime — 取得文件的上次访问时间<br>filectime — 取得文件的 inode 修改时间<br>filemtime — 取得文件修改时间<br>date(‘Y:m:d ‘.’H:i:s’,fileatime($Basic5));  //应该是可以直接打印出访问时间<br><strong>15</strong>.<br>array_unshift — 在数组开头插入一个或多个单元<br>array_push — 将一个或多个单元压入数组的末尾（入栈）<br>array_shift($userNames); //删除开头<br>array_pop($userNames); //删除末尾<br>array_rand — 从数组中随机取出一个或多个单元<br>array_rand($userNames,2);  //返回数组中随机或多个键(key) </p>
+<p>gettype — 获取变量的类型</p>
+<p>current($array);   //获取指针当前的元素<br>next — 将数组中的内部指针向前移动一位<br>reset — 将数组的内部指针指向第一个单元<br>prev — 将数组的内部指针倒回一位<br>pos — current() 的别名<br>end — 将数组的内部指针指向最后一个单元<br>array_count_values($array)  统计数组中所有值出现的次数<br>extract — 从数组中将变量导入到当前的符号表  //将数组中字符串键(key)设置为变量<br>初始化 $z=$ci=’’;<br><strong>14</strong>.<br>sort — 对数组排序<br>asort — 对数组进行排序并保持索引关系<br>foreach 语法结构提供了遍历数组的简单方式。foreach 仅能够应用于数组和对象，如果尝试应用于其他数据类型的变量，或者未初始化的变量将发出错误信息。有两种语法：<br>each — 返回数组中当前的键／值对并将数组指针向前移动一步<br>while ($a = each ($fn)) {     //按顺序打印<br>        echo ‘&lt; br /&gt;’.$a[‘key’].’=&gt;’.$a[‘value’];<br>}<br>count — 计算数组中的单元数目或对象中的属性个数<br>krsort — 对数组按照键名逆向排序<br>sort(); asort(); ksort();  a的是排序后不改变key关系<br>k是按key排序<br>rsort(); arsort(); krsort();  全部+上r 代表降序<br>shuffle — 将数组打乱<br>array_reverse — 返回一个单元顺序相反的数组<br>rsort — 对数组逆向排序</p>
+<p>//array打头的一般创建一个新数组进行返回 当然是一般喽<br><strong>13</strong>.<br>list — 把数组中的值赋给一些变量<br>each — 返回数组中当前的键／值对并将数组指针向前移动一步<br>13章还有个小练习，虽然很简单，但是也是一番努力得来的<br><strong>12</strong>.<br>reset — 将数组的内部指针指向第一个单元<br>array_unique — 移除数组中重复的值<br>array_unique($userNames);   //只能临时删除不能改变原数组<br>array_flip — 交换数组中的键和值<br><strong>11</strong>.<br>each — 返回数组中当前的键／值对并将数组指针向前移动一步<br><strong>10</strong>.<br>range — 建立一个包含指定范围单元的数组<br>    /*</p>
+<pre><code>*  count()和sizeof()统计数组下标的个数
+*  array_count_values($array);统计数组内下标的个数
+*/
+</code></pre><p>is_array — 检测变量是否是数组<br><strong>9</strong>.<br>可以在变量或值前面增加(int)、(integer)、(float)、(double)或(real)实现<br>intval — 获取变量的整数值<br>floatval — 获取变量的浮点值<br>is_numeric — 检测变量是否为数字或数字字符串<br>is_int($var);   is_float($var);  用于检测具体数值类型<br>/<em><br>    $a = ‘10.5’;<br>//     echo intval($a);<br>    echo floatval($a);          //临时转换<br>    settype($a, “float”);    //转换<br>    echo gettype($a);           //查看类型
+ </em>/<br>rand();     //这个是老的函数生成 随机数;<br>mt_rand(0,10);  //比rand快4倍  牛B啊<br>getrandmax();    //最大随机数<br>mt_getrandmax();    //最大随机数<br>    //格式化数据<br>number_format — 以千位分隔符方式格式化一个数字<br>number_format($a,2,’#’,’c’);  //这里后面必须传两个参数才可全部更改<br>/*</p>
+<ul>
+<li>数学函数</li>
+<li>abs();  绝对值</li>
+<li>floor(); 舍去法取整 </li>
+<li>ceil(); 进一法取整</li>
+<li>round(); 四舍五入</li>
+<li>min(); 求最小值或数组中最小值</li>
+<li>max(); 求最大值数组中最大值<br>*/<br>echo pow(2,4);   //2的4次方<br><strong>8</strong>.<br>switch ($w) {<br>  case 1:<pre><code>echo &apos;1&apos;;
+break;
+</code></pre>default :<pre><code>echo &apos;没有&apos;;
+break;
+</code></pre>}<br>//第一种：break  退出循环；第二种 exit 退出程序  ；第三种 continue 退出当前循环<br>break;   //退出循环;<br>exit;         //直接后面的程序都不执行了<br>continue;  //退出此次循环，继续执行<br><strong>7</strong>.<br>/*</li>
+<li>转义序列                                         描述</li>
+<li>\n                                          换行符</li>
+<li>\r                                              回车</li>
+<li>\t                                              水平制表图   相当于tab</li>
+<li>\                                              反斜杠</li>
+<li>\$                                              美元符</li>
+<li>\”                                              双引号<br>*/<br>错误抑制符@<br><strong>Demo</strong>.  对应章节Baisa2/Demo2.php<br>gettype($var);    却得它的类型<br>settype($var, $type);  设置它的类型<br>isset();  和 unset()用来判断一个变量是否存在<br>empty(); 用来判断一个变量是否为空<br>换句话说，””、0、”0”、NULL、FALSE、array()、<br>var $var ;(这个是空的变量，只不过写成VAR而已)<br>以及没有任何属性的对象都将被认为是空的<br>unset — 释放给定的变量<br>isset — 检测变量是否设置<br>empty — 检查一个变量是否为空<br>//类型判断函数<br>is_integer — is_int() 的别名<br>is_int — 检测变量是否是整数<br>//可以通过调用一个函数来实现转换变量数据类型的目的<ul>
+<li>intval()、floatval()、strval();<br><strong>Demo</strong>.  对应章节Baisa2/demo.php<br>print — 输出字符串<br>printf — 输出格式化字符串<br>sprintf — Return a formatted string<br>sprintf(“保留到内存中”);  //返回字符串<br><strong>6</strong>.<br>//超级全局变量<br>/*</li>
+</ul>
+</li>
+<li>$GLOBALS        所有全局变量数组</li>
+<li>$_SERVER         服务器环境变量数组</li>
+<li>$_GET                通过GET方法传递给该脚本的变量数组</li>
+<li>$_POST               通过POST方法传递给该脚本的变量数组</li>
+<li>$_COOKIE         cookie数组变量</li>
+<li>$_FLLES            与文件上载相关的变量数组</li>
+<li>$_ENV                环境变量数组</li>
+<li>$_REQUEST        所有用户输入的变量数组</li>
+<li>$_SESSION        会话变量数组<br>*/<br>define — 定义一个常量<br>除了自定义常量外，PHP还预定了许多常量。了解这些常量的简单方法就是运行phpinfo();命令</li>
+</ul>
+<p>应用场景    快捷键    功能<br>查看快捷键    ctrl+shift+l    显示所有快捷键列表<br>查看和修改快捷键    　    打开Window-&gt;Preferences-&gt;General-&gt;keys<br>修改字体字号    　    打开Window-&gt;Preferences-&gt;General-&gt;Appearance-&gt;Colors and Fonts，找到Basic-&gt;Text Font<br>行操作    ctrl+alt+↓    复制当前行到下一行<br>ctrl+d    删除当前行<br>ctrl+↓    当前行下移一行<br>ctrl+↑    当前行上移一行<br>end    跳转到当前行末尾<br>ctrl+Backspace     删除光标前一个单词，如前面是符号，就删除一个符号,前面是一个单词就删除一个单词<br>alter+→    在编辑过的位置前进<br>alter+←    在编辑过的位置后退<br>ctrl+home    光标移到文件头<br>ctrl+end    光标移到文件尾<br>shift+home    选中从光标处到行首的文字<br>shift+end    选中从光标处到行末的文字<br>ctrl+/（数字键）    收起/展开代码段<br>shift+enter    在当前行的下一行插入空行<br>ctrl+shift+enter    在当前行的前一行插入空行<br>ctrl+Q    定位到最后编辑的地方<br>ctrl+shift+X     当前选中的文本全部变为大写<br>ctrl+shift+Y    当前选中的文本全部变为小写<br>注释操作    ctrl+/    添加/取消行注释<br>ctrl+shift+/    块注释<br>ctrl+shift+\    取消块注释<br>函数操作    Alt+/    代码提示助手<br>ctrl    函数跳转，按住ctrl键，鼠标点击函数名<br>Ctrl+Shift+J     给自定义函数或者方法添加注释<br>面向对象操作    ctrl+O    快速大纲, 列出当前文件中的所有变量、函数和方法，对阅读类文件时很有用<br>ctrl+shift+M    搜索方法名<br>ctrl+T    快速显示当前类的继承结构<br>查找操作    ctrl+f    打开本文件的搜索/替换 ，只搜索当前文件<br>ctrl+k    查找下一个<br>ctrl+shift+k    查找上一个<br>ctrl+h    全文检索，打开搜索替换窗口 ，可搜索整个工作空间<br>ctrl+l    转到当前文件的某一行<br>CTRL+E    搜索编辑器中已打开的文件名<br>文件操作    ctrl+w    关闭当前文件<br>ctrl+m    当前编辑窗口最大化/还原<br>ctrl+N    新建文件<br>ctrl+p    打印当前文件<br>ALT+ENTER    查看当前文档的属性<br>ctrl+F12    打开任务(任务：个人定义某一个特定的工作集,如你要完成一个注册模块，有三个文件config.phpregister.class.php register.php|你可以将这些文件保存成一个任务register ,只要打开register就能同时打开这三个文件| )<br>ctrl+F9    激活任务<br>ctrl+shift+F9    取消任务<br>F11    调试当前文件<br>ctrl+F11    运行当前文件<br>alt+→    下一个编辑的页面<br>alt+←    前一个编辑的页面<br>ctrl+shift+E    显示当前打开的所有的文件<br>代码格式化    Tab    增加代码缩进<br>Shift+Tab    减少代码缩进<br>CTRL+SHIFT+F    当前文件代码格式化<br>调试快捷键    F5    单步调试进入函数内部（单步进入）<br>F6    单步调试不进入函数内部（跳过）<br>F7    由函数内部返回到调用处（跳出）<br>F8    一直执行到下一个断点<br>F9    添加/删除断点 所有代码部分<br>F10    逐过程。单步执行调试文件到下一行<br>F11    逐语句。单步执行到下一被执行的行<br>F12    概要文件URL。打开profile URL对话框<br>Shift+F8    添加监视点。打开添加监视点对话框<br>Shift+F11    跳出。单步执行到返回后执行的第一行<br>Shift+F10    执行代码到光标所在行。<br>Ctrl+F5    无中断的执行脚本<br>Shift+F5    停止调试器<br>Ctrl+Alt+B    在浏览器中显示</p>
+<h2 id="Jquery总结"><a href="#Jquery总结" class="headerlink" title="Jquery总结"></a>Jquery总结</h2><p><a href="https://github.com/DemoorBug/comprehensive" target="_blank" rel="noopener">Jquery总结</a></p>
+<p>toggleClass(“class1″)           <em>如果原来没有class1就添加class1，如果原来有class1就移除class1</em><br>attr(“className”,”class1″)<br>addClass(“class1″) .removeClass(“class2″)     <em>addClass 添加class  removeClass(“class2″) 移除</em><br>_      移除所有<br>$(“div”).removeClass(function() {<br>      return $(this).attr(‘class’);<br>});<br>_</p>
+<ul>
+<li>添加递归元素   index可以获取递增数<br>自 jQuery 1.4开始,  .addClass() 方法允许我们通过传递一个用来设置样式类名的函数。<br>$(“ul li:last”).addClass(function(index) {<br>return “item-“ + index;<br>});<br>*<br>_<br>toggle 绑定两个或多个处理程序绑定到匹配的元素，用来执行在交替的点击。<br>_<br><strong>前面所学 制作鼠标拖拽</strong>4.21  11：31<br>_<br>$.fn.extend({<br>drag : function () {<br>var aDiv = 0,<pre><code>cDIv = 0,
+This = this;
+</code></pre>this.mousedown(function(ev){<pre><code>aDiv = ev.pageX - $(this).offset().left;
+cDIv = ev.pageY - $(this).offset().top;
+$(document).mousemove(function(ev){
+    console.log(aDiv)
+    This.css(&apos;left&apos;,ev.pageX - aDiv);
+    This.css(&apos;top&apos;,ev.pageY - cDIv);
+    console.log(&apos;s&apos;)
+});
+$(document).mouseup(function(){
+    $(this).off()
+})
+return false;  //不知道有什么用
+</code></pre>})<br>}<br>})<br>$(‘#drag’).drag()<br>_<br><strong>$   插件</strong>4.21<br>$<br>-$.extend        扩展工具方法下的插件形式  $.xxx()<br>$.extend({<pre><code>leftTime : function(ind){
+    return ind.replace(/^\s+/,&apos;&apos;);                    //leftTime为去掉左空格方法
+}
+</code></pre>})<br>$.fn<br>  -$.fn.extend       扩展到jQ对象下的插件形式   $().xxx()<br><strong>$下的方法</strong>4.21<br>ajax() : json形式的配置参数<br>-url success<br>-error contentType<br>-data type<br>-dataType cache timeout<br>抽象出来的方法</li>
+<li><p>参数是一个json形式<br>$.ajax({</p>
+<pre><code>url : ‘地址’，
+data : &apos;name=hell&amp;age=20&apos;,
+type : &apos;POST&apos;,
+success : function (data) {
+    data 请求成功后返回的一个内容
+    成功后的回调函数
+},
+error : function () {
+    失败的回调
+},
+contentType : 请求头信息,
+dataType : 返回数据类型,
+cache : 是否缓存,
+timeout : 是否有延迟
+</code></pre><p>})<br>*<br>-get()<br>-post()<br>-getJSON()<br><strong>$下的方法</strong>4.20<br><em>$下的方法</em>       不仅可以给jq对象用  还可以用于原生js  <em>工具方法</em><br>type()                 $.type(‘les’);       检测参数类型   更加强大  可以区分[]  data  正则  null<br>trim()                 $.trim(‘ |            les      |’); 去空格<br>inArray()            和indexof 差不多  $.inArray(‘b’,arr)    arr= [‘a’,’b’,’c’]   有的话返回相应位置  没有从头开始数<br>proxy()             改变this指向        $.proxy(函数,指向) () 直接可以去执行   $.proxy(函数,指向,参数) (参数) 直接可以去执行<br>noConflict()       避免冲突    jquery  == $  别人的库说不定也是使用的这个 为了避免冲突 var miaov = $.noConflict()<br>parseJSON()     将字符串 解析为json类型     直接就可以解析ajax数据   $.parseJSON( “{‘name’:’names’}”  ).name<br>makeArray()    把类数组转换为真正的数组    类数组就是 var aDiv = document.getElementsByTagName(‘div’);<br>这就叫做类数组             $.makeArray(aDiv).push();这样就不会报错了</p>
+</li>
+</ul>
+<p><strong>动画</strong>4.20<br>animate()               //第一个参数是个json  {}  第二个参数时间 第三个参数 运动形式 默认：swing慢快慢   linear匀速    第四个参数回调   可以写链式调用  == 回调函数<br>stop()                     停止运动  默认只会知足当前运动   stop(true) 阻止后续运动  第二个参数  直接到达目标点<br><em>finish() 立即停止到你所有你指定的目标点</em><br>delay()                   延迟  参数秒算起<br>delegate()             事件委托<br>_<br>$(‘ul’).delegate(‘li’,’click’,function(){<br>        $(this).css(‘background’,’red’);<br>})<br>_<br>undelegate()          $(‘ul’).undelegate()  阻止事件委托<br>trigger()                   //主动触发    $(‘ul’).delegate(‘li’,’click’,function(){alert(‘w’)})    <em>$(‘ul’).trigger(‘click’);</em><br>ev.data<br>ev.target<br>ev.type<br>_<br>on(‘click’,{name:’hello’},function(ev){<br>    ev.data  就是这个json {name:’hello’} 这个整体<br>    ev.data.name          ==  ‘hello’<br>    ev.target   当前事件源  我操作的是谁<br>    ev.type  当前操作的事件类型<br>})<br>_<br><strong>DOM操作</strong>4.20<br>parents()                //当前操作节点的所有祖先节点，参数筛选功能<br>closest()                //获取最近指定的祖先节点(包含当前元素自身)，必须要写筛选的参数<br>siblings()               //获得所有的兄弟节点   有参数，筛选功能<br>nextAll()                 //下面所有的兄弟节点<br>prevAll()                 //上面所有的兄弟节点<br>parentsUntil()         //  <em>Until 截止的意思</em>        所有祖先节点 指定位置<br>nextUntil()             //截止到你指定的位置 就不会继续了  <em>当然是填写参数</em><br>prevUntil()<br>clone()                  可以接受一个参数，作用复制之前的操作行为    参数为<em>布尔值</em><br> //$(div).clone().appendTo( $(‘span’) );  //这个属性用于复制节点<br>wrap()                  包装       $(‘span’).wrap(‘&lt; div &gt;’);    给span元素包装div<br>wrapAll()               整体包装   将集合中的元素 外围整体嵌套一个div  <em>元素不在一起 将元素剪贴过来 更改DOM节点</em><br>wrapInner()         内部包装     div添加到了span 节点里<br>unwrap()               删除包装  删除父级<br>add()                     将元素组合到一起  进行后续操作   $(div).add(‘span’).css(‘background’,’red’)  两个元素都更改<br>slice()                     选取的意思  有一组集合   $(div).slice(2,5) 第二个到第四个<br>serialize()            <em>可以将input    Name  Value  穿连到一起  有助于数据提交 get post</em><br>serializeArray()      <em>还可以直接转换为数组形式</em><br><strong>项目中应用</strong><br>siblings()   获得匹配元素集合中每个元素的兄弟元素,可以提供一个可选的选择器。。<br>animate()   根据一组 CSS 属性，执行自定义动画。<br>size()     length == size()<br>.parent() 取得匹配元素集合中，每个元素的父元素，可以提供一个可选的选择器。<br>toggleClass()  在匹配的元素集合中的每个元素上添加或删除一个或多个样式类,取决于这个样式类是否存在或值切换属性。即：如果存在（不存在）就删除（添加）一个类。<br>.stop()  停止匹配元素当前正在运行的动画。<br>.fadeIn() 通过淡入的方式显示匹配元素。<br>.children()   获得匹配元素集合中每个元素的子元素，选择器选择性筛选。<br>.contents()  获得匹配元素集合中每个元素的子元素，包括文字和注释节点。<br><strong>基础篇</strong>:<br>get()  :  下标和length属性      <em>就是把jq转换为原生的js</em>    _$(‘div’).get(0).innerHTML _<br>outerWidth() : 针对隐藏元素和参数true    <em>可以获取隐藏元素的 width height</em><br>text() :   合体的特例        <em>和html()区别在于 只能获取文本 不能获取标签</em><br>remove() : detach()           <em>var oDiv = remove() 删除所有操作  $(‘body’).append(oDiv)进行恢复 也是无法完成的   detach() 删除了 但是它保留了所有操作</em><br>$() : $(document).ready()</p>
+<p><strong>17</strong>:<br>$()方法<br>hover()            <em>hover 移入的效果 模拟css中的hover   两个参数 移入移出</em><br>show()             <em>隐藏    传参  时间参数</em>    改变高和display<br>hide()             <em>显示</em><br>fadeIn()         <em>淡入  同意有时间 默认400</em><br>fadeOut()         <em>淡出</em>       $(‘div’).fadeOut(500);          改变透明度<br>fadeTo()            <em>半透明</em>  fadeTo(900,.5,function(){alert(‘d’) }<br>slideDown()     <em>向下展开</em><br>slideUp()          <em>向上卷曲</em><br><strong>13</strong>:<br>_ jq 中的 禁止右击<br>    $(document).ready(function(){<br>            $(document).bind(“contextmenu”,function(e){<br>                return false;      //即阻止冒泡，又阻止默认事件<br>            });<br>        });<br>_<br>$()常用方法<br>ev               <em>//鼠标事件 event对象</em><br>pageX          <em>ev.pageX     获取当前鼠标位置</em><br>which          <em>键盘键值</em><br>preventDefault             <em>阻止默认事件</em><br>stopPropagetion         <em>阻止冒泡</em><br>one()                           <em>事件执行一次</em><br>offset()                     <em>$(‘div’).offset().top;  获得元素距离屏幕的左距离</em> 算margin<br>position()                     <em>从定位后算起  父元素设置定位  就从父元素算起</em><br>offsetParent()             <em>获取有定位的父级</em><br>val()                         <em>获取val值  加参数后== 修改</em><br>size()                     <em>类似于length  获取长度</em><br>each()                      <em>就是jq中的循环</em><br><em><br>    $(‘li’).each(function (i,value) {<br>            alert(i +’–’+ $(value).html());<br>        })
+</em><br>_   拖拽<br>$(document).ready(function () {<br>        var disx = 0;<br>        var disy = 0;<br>    $(‘div’).mousedown(function (ev) {<br>        disx = ev.pageX - $(this).offset().left ;<br>        disy = ev.pageY - $(this).offset().top ;</p>
+<pre><code>    $(document).mousemove(function (ev) {
+        $(&apos;div&apos;).css(&apos;left&apos;,ev.pageX - disx);
+        $(&apos;div&apos;).css(&apos;top&apos;,ev.pageY - disy);
+    })
+    $(document).mouseup(function (ev) {
+        $(document).off();
+    })
+    return false;
+})
+</code></pre><p>})<br>_<br><strong>12</strong>:<br>弹窗<br><em>如何创建一个DIV </em> $(‘<div>‘)  这样就是创建<br><em>滚动条事件和窗口调整事件  onresize  onscroll</em><br><strong>9</strong>:<br>$() 常用方法<br>addClass()                       添加样式<br>removeClass()                 删除样式<br>width()                         实际 width 没有单位  只能获得原始宽     <em> windth </em><br>innerWidth()                     不能获得border 宽                                _windth + padding _<br>outerWidth()                 可以获得所有属性 总和起来的宽     给个参数true 就能获得 <em>windth + padding + border + margin</em><br>_ /<em>———————jq中的节点操作———————–</em>/ _<br>insertBefore()                 节点操作  讲一个点 移动到一个节点前<br>                              <em>$(‘span’).insertBefore( $(‘div’) ) ;                  将 div  移动到 span前</em><br>before()<br>                    _ $(‘span’).before( $(‘div’) ) ;   span前面必须是div       也是调换位置_<br>inserAfter()<br>                    <em>$(‘span’).inserAfter( $(‘div’) );     将div移动到 span 后</em><br>after()<br>                    <em>和  before() 类似</em><br>appendTo()                       添加到一个指定节点的最后<br>                    <em>$(‘div’).appendTo( $(‘span’) );  这样就将  div 放置在span里最后的位置</em><br>append()<br>                    <em>和  before() 类似</em><br>prependTo()<br>                    <em>$(‘div’).prependTo( $(‘span’) );   div 放置在span里开始的位置</em><br>prepend()<br>                        <em>和  before() 类似</em><br> _ /<em>——————————————–</em>/ _<br>remove()               <em>删除节点</em><br>on()                              <em>这个就是事件了   click()  == on(‘click’,function(){})</em>  更加强大 可以自定义事件 <em>还可以继续添加其他事件 空格隔开 简直6</em></div></p>
+<ul>
+<li>G森形式   (不知道是什么东东)localstorage<pre><code>$(&apos;div&apos;).on(
+    &apos;click&apos; : function () {
+        alert(&apos;123&apos;);
+    },
+    &apos;mouseover&apos; : function () {
+        alert(&apos;456&apos;);
+    }
+)
+</code></pre><em><br>$(this).off()                     <em>这个就是 关闭点击事件     也是可以传参的  关闭指定事件</em><br>scrollTop()                    </em>滚动距离<em><br><strong>5</strong>:<br>$()下的常用方法<br>has()           包含意思     $(‘div’).has(‘span’).css(‘bakcground’,’red’);    //div中包含span 变红<br>not()              filter 反义词<br>filter()            过滤<br>next()              下一个兄弟节点<br>prev()             上一个兄弟节点<br>find()           查找的意思<br>eq()                      eq二联     饿 其实 相当于  js中的下标<br>index()          索引      当前元素在所有兄弟节点中的位置<br>attr()                                 </em>设置属性  后面会说和其他有什么不同proper deta<em><br><strong>2</strong>:
+</em>API<em><br>$(‘li:first’).css(‘background’,’red’);                   </em>//第一个<em> first
+</em>$(‘li:last’).css(‘background’,’red’); <em>        //最后一个  last<br>$(‘li:eq(2)’).css(‘background’,’red’);         </em>//选择第二个<em>  eq(2)
+</em>$(‘li:even’).css(‘background’,’red’);<em>        //奇数行<br>$(‘li:odd’).css(‘background’,’red’);       </em>//偶数行<em> 
+</em>$(‘li’).filter(‘.box’)<em>                //过滤                 筛选元素集合中匹配表达式 或 通过传递函数测试的 那些元素集合。<br>$(‘li’).filter(‘[title = href]’)                   </em>//筛选出’[title = href]’’   title = href的<em>
+</em>innerHTML == html()*<pre><code>*onclick  == click()*
+</code></pre><em>$(this)</em></li>
+</ul>
+<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><p><a href="https://github.com/DemoorBug/comprehensive" target="_blank" rel="noopener">mongodb</a></p>
+<p><strong> mongoDB基本使用</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">db.dropDatabase()  删除数据库</span><br><span class="line">show dbs  查看所有表</span><br><span class="line">use imooc  切换数据库 并且自己创建</span><br><span class="line">*在mongo中我们将一个表称作一个集合*</span><br><span class="line">db.imooc_collection.insert(&#123;x:1&#125;)   插入json格式</span><br><span class="line">show collections  查看表</span><br><span class="line">db.imooc_collection.find()  查询所有</span><br><span class="line">db.imooc_collection.find(&#123;x:1&#125;)  指定查询</span><br><span class="line">可以使用js语法</span><br><span class="line"><span class="keyword">for</span>(i=3;i&lt;100;i++) db.imooc_collection.insert(&#123;x:i&#125;)</span><br><span class="line">db.imooc_collection.find().count() 进行计数</span><br><span class="line">db.imooc_collection.findOne() </span><br><span class="line"></span><br><span class="line">db.imooc_collection.find().skip(3)前三条.<span class="built_in">limit</span>(2)限制返回2条.sort(&#123;x:1&#125;) 使用x排序 1正序 1-倒叙</span><br><span class="line">db.imooc_collection.updateAt(&#123;x:1&#125;,&#123;x:999&#125;)  更新数据</span><br><span class="line">db.imooc_collection.updateAt(&#123;x:1&#125;,&#123;x:999&#125;,<span class="literal">true</span>)  更改不存在的数据，自动创建</span><br><span class="line">db.imooc_collection.updateAt(&#123;x:1&#125;,&#123;<span class="variable">$set</span>:&#123;x:999&#125;&#125;) <span class="variable">$set</span>操作符为部分操作符</span><br><span class="line">db.imooc_collection.updateAt(&#123;x:1&#125;,&#123;<span class="variable">$set</span>:&#123;x:999&#125;&#125;，<span class="literal">false</span>,<span class="literal">true</span>) 更新多条数据 第四个参数</span><br><span class="line">db.imooc_collection.remove(&#123;c:2&#125;)  remove 删除所有数据</span><br><span class="line">db.imooc_collection.drop()  删除表</span><br><span class="line">show tables</span><br><span class="line">*-------------* </span><br><span class="line">db.imooc_collection.getIndexes()  查看索引</span><br><span class="line">创建成千上万条数据，没有索引将不查找</span><br><span class="line">db.imooc_collection.ensureIndex(&#123;x:1&#125;)   正项排序      -1 逆向排序   建立索引  单建索引</span><br><span class="line"></span><br><span class="line">多建索引与单件索引创建形式相同，区别在于字段的值</span><br><span class="line">	单建索引：值为单一的值，例如字符串，数字或者日期</span><br><span class="line">	多建索引：值具有多个记录，例如数组</span><br><span class="line">*-------------*</span><br><span class="line">db.imooc.ensureIndex(&#123;time:1&#125;,&#123;expireAfterSeconds:30&#125;)     30秒后删除 </span><br><span class="line">db.imooc.insert(&#123;time:new Date()&#125;)   存储在过期索引字段的值必须是指定的时间类型。说明：必须是ISODate或者ISOData数组，不能使用时间戳，否则不能自动删除</span><br><span class="line">如果指定了ISODate数组，则按照最小的时间进行删除</span><br><span class="line">过期索引不能使复合索引</span><br><span class="line">删除时间不是精确</span><br><span class="line">删除过程是由后台每运60S跑一次，而且删除也需要一些时间，所以存在误差</span><br></pre></td></tr></table></figure></p>
+<h2 id="Node-Express快速搭建电影网站"><a href="#Node-Express快速搭建电影网站" class="headerlink" title="Node+Express快速搭建电影网站"></a>Node+Express快速搭建电影网站</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">Node+Express快速搭建电影网站</a></p>
+<p><strong>Node+Express快速搭建电影网站</strong><br>后端是用nodejs来驱动的所以需要：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node.js  在这个基础之上的框架  express可以帮我快速的搭建web应用  jade</span><br><span class="line">数据库 mongoDb (芒古DB) 以及对 mongoDb快速建模的工具也就是 mongoose (芒古思) Moment.js</span><br><span class="line">后端的模板引擎 jade (zhei de)</span><br><span class="line">时间和日期的格式化  Moment.js</span><br></pre></td></tr></table></figure></p>
+<p><em>底下的四个模块都是利用npm安装的   底下的？ 不懂那些</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">前端</span><br><span class="line">jquery  类库 以及 bootstrap 样式框架  他们都是网站前端的静态资源</span><br><span class="line">网站前端的静态资源呢 都存在一个版本的依赖和版本的管理所以这里我需要通过 Bower(鲍尔) 来安装他们  bower 本身也是一个npm模块 需要npm安装</span><br></pre></td></tr></table></figure></p>
+<p><em>本地开发环境</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">后面会用到less编译 样式的合并 语法的检查 包括前后端单元测试的实现 以及服务的自动重启 这几个任务都是通过GRUNT集成 会放到下一期的课程讲  </span><br><span class="line">大概一些模块名字 ：</span><br><span class="line">less cssmin jsHint uglifyJS mocha 不认识 什么鬼</span><br></pre></td></tr></table></figure></p>
+<p><strong>实战开始</strong><br>1.需求分析  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">来看看总共有几个页面 页面都有什么内容 以什么样的交互</span><br></pre></td></tr></table></figure></p>
+<p>2.项目依赖初始化 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对项目所依赖的模块进行一个安装和初始目录的创建</span><br></pre></td></tr></table></figure></p>
+<p>3.入口文件编码  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在后端呢创建一个入口文件，来进行编码</span><br></pre></td></tr></table></figure></p>
+<p>4.创建视图 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建几个主要页面视图 也就是模板 来跑通前后端的流程 也就是说从浏览器发起一个请求到后端，后端接收到之后呢，再返回一段数据，跑通这个前后端流程以后呢 就可以对页面进行样式的开发 和html Dom结构的填充 同时要为早一些模板的数据 这时候页面基本上都有了 我们现在就开始基于页面里面的内容进行提取抽象同时来设计数据库的模型，然后来开发后端逻辑，到这一步位置前后端的逻辑已经实现，还差一步，就是对前端静态资源版本和后端模块版本进行一个配置文件的生成，然后呢整个网站开发结束</span><br></pre></td></tr></table></figure></p>
+<p><em>步骤详情全部在4后</em><br>5.测试前端流程<br>6.样式开发，伪造模板数据<br>7.设计数据库模型<br>8.开发后端逻辑<br>9.配置依赖文件，网站开发结束<br><strong>Node入口文件分析</strong><br><em>项目结构初始化</em></p>
+<ul>
+<li>imooc /<blockquote>
+<p>npm install express<br>npm install jade<br>npm install mongodb<br>npm install bower -g<br>bower install bootstrap<br><em>入口文件编码</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express()</span><br><span class="line"></span><br><span class="line">app.set(&apos;view engine&apos;,&apos;jade&apos;);</span><br><span class="line">app.set(&apos;port&apos;,3000)</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;,function(req,res)&#123;</span><br><span class="line">	res.render(&apos;index&apos;,&#123;title:&apos;imooc&apos;&#125;) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<p><em>这几行代码大概意思是  引入一个express 模块 生成一个web应用的实例 将这个实例的监听端口设置成3000 然后就可以监听来自这个端口过来的请求</em><br><em>创建视图  </em></p>
+<ul>
+<li><p>imooc / </p>
+<ul>
+<li>node_modules/    猫丢斯  安装一些模块的时候安装到此目录</li>
+<li>bower_components/   静态资源 安装到 (鲍尔 康门特) 下</li>
+<li><p>views/           v又特  用来测试的主要视图文件</p>
+<ul>
+<li>index.jade</li>
+<li>detail.jade</li>
+<li>admin.jade</li>
+<li>list.jade</li>
+</ul>
+</li>
+<li><p>app.js   入口文件</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>测试前端流程</em></p>
+<ul>
+<li><p>localhost:3000/</p>
+</li>
+<li><p>localhost:3000/movie/1</p>
+</li>
+<li><p>localhost:3000/admin/movie</p>
+</li>
+<li><p>localhost:3000/admin/list<br><strong>实际编码</strong><br>想创建入口文件  app.js<br>npm install express jade moment mongoose</p>
+</li>
+</ul>
+<p><strong>数据库模型设计</strong><br>Schema  模式<br>Model     模型          &gt;       mongoose  &gt;&gt;       mongodb<br>Documents 文档</p>
+<p>模式定义 模式里面呢 对数据字段进行定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&apos;mongoose&apos;)</span><br><span class="line"></span><br><span class="line">var MovieSchema = new mongoose.Schema(&#123;</span><br><span class="line">	doctor: &apos;String&apos;,</span><br><span class="line">	title: &apos;String&apos;,</span><br><span class="line">	language: &apos;String&apos;,</span><br><span class="line">	country: &apos;String&apos;,</span><br><span class="line">	year: &apos;Number&apos;,</span><br><span class="line">	summary: &apos;String&apos;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>编译模型  调用mongoose 时对传入schemas 时进行编译然后会生成构造函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&apos;mongoose&apos;);</span><br><span class="line">var MovieSchema = require(&apos;../schemas/movie&apos;)</span><br><span class="line"></span><br><span class="line">var Movie = mongoose.model(</span><br><span class="line">	&apos;movie&apos;,</span><br><span class="line">	movieSchema</span><br><span class="line">)</span><br><span class="line">module.exports = Movie</span><br></pre></td></tr></table></figure></p>
+<p>文档实例化   只需要调用这个构造函数 传入一条数据  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var Movie = require(&apos;./models/movie&apos;)</span><br><span class="line"></span><br><span class="line">var movie = new Movie(&#123;</span><br><span class="line">	title : &apos;机械战警&apos;,</span><br><span class="line">	doctor : &apos;何塞·帕迪利亚&apos;,</span><br><span class="line">	year: 2018</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">movie.save(function(err) &#123;</span><br><span class="line">	if (err) return handleError(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>_–_<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">数据库批量查询</span><br><span class="line">var Movie = require(&apos;./models/movie&apos;)</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;,function(req,res)&#123;</span><br><span class="line">	Movie</span><br><span class="line">		.find(&#123;&#125;)  * 查询全部  *       .findOne(&#123;_id:id&#125;) *单条*  </span><br><span class="line">		.exec(function(err,movies)&#123;</span><br><span class="line">			res render(&apos;index&apos;,&#123;</span><br><span class="line">				title:&apos;imooc 首页&apos;,</span><br><span class="line">				movies:movies</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">*单条数据删除*</span><br><span class="line">Movie </span><br><span class="line">	.remove(&#123;_id:id&#125;),function(err,movie) &#123;</span><br><span class="line">		if(err) &#123;</span><br><span class="line">			console.log(err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>开发后端逻辑  目录层次调整</em></p>
+<ul>
+<li>imooc/<pre><code>- node_modules/
+- bower_components/
+- views/
+        - \*.jade
+- models/
+        - movie.js
+- schemas/
+        - movie.js
+app.js
+</code></pre></li>
+</ul>
+<h2 id="定位导航"><a href="#定位导航" class="headerlink" title="定位导航"></a>定位导航</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">定位导航</a></p>
+<p><strong>js编写</strong><br><strong>兼容调试</strong><br><em>解决IE6不支持问题</em><br>IE6不支持  fixed  要用到 hack<br><em>解决IE6下跳变的bug</em></p>
+<ul>
+<li>html, * html body {<pre><code>background-image: url(about:blank);
+background-attachment: fixed;
+</code></pre>  }</li>
+</ul>
+<p>*html #menu {   <!-- //IE6下生效 --><br>    position: absolute;<br>    top: expression(((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+100+’px’);<br>}</p>
+<p><strong>scroll</strong><br>scroll:([data],fn):当用户滚动到指定元素时，会发生scroll事件<br><em>scroll事件适用于所有可滚动的元素和window对象(浏览器窗口)</em><br><em>$(window).scroll(function(){/</em>…<em>/});</em><br><em>scrollTop([val])</em>  获取/设置匹配元素相应滚动条顶部的偏移<br><em>offset();</em> 获取匹配元素的相应偏移。返回的对象包含两个整形属性：top和left，以像素计</p>
+<h2 id="搜索框"><a href="#搜索框" class="headerlink" title="搜索框"></a>搜索框</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">搜索框</a></p>
+<p><strong>Ajax</strong><br>$.get(url,callback,’json’);<br><em>使用json最大的好处就是不用额外的进行一些编码操作</em><br><em>同源策略</em><br>Ajax发生请求的url地址与服务器地址必须是同一域名下<br><em>搭建一个api.bing.com</em><br>使用nginx和fiddler工具设置<br><strong>IE兼容</strong><br><em>&lt; meta http-equiv=”X-UA-Compatible” content=”IE=edge”&gt;</em> 防止IE浏览器进入怪异模式 </p>
+<p><strong>标签讲解</strong><br>&lt; form action=”” target=”_blank” method=”get”&gt;<br>&lt; /form&gt;<br><em>outline:none</em> 默认点击后 text 高亮取消</p>
+<h2 id="画廊笔记"><a href="#画廊笔记" class="headerlink" title="画廊笔记"></a>画廊笔记</h2><p><a href="https://github.com/DemoorBug/comprehensive/tree/master/%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">画廊笔记</a><br><strong>3D效果编写</strong>2016.4.25<br>transition：property duration timing-function delay<br>property 规定设置过渡效果的css属性的名称<br>duration 规定完成过渡效果多少秒或毫秒<br>timing-function  规定速度效果的速度曲线，默认ease<br>dalay 定义过渡效果延迟多久开始，默认0<br><strong>知识</strong><br>-webkit-font-smoothing:antialiased;用于字体平滑<br>&lt; body onselectstart=”return false”&gt;<br> onselectstart=”return false”  防止文字被选中<br>-webkit-perspective:800px; // 支持3D<br>box-sizing: border-box;    // 内容和padd都会在border边框之内去呈现<br>-webkit-transform-style:preserve-3d;    //支持子元素的3D效果<br>-webkit-transform:translate(0px,0px) rotateY(0deg);                     //定义位移以及沿着Y轴旋转<br>-webkit-backface-visibility:hidden;    当元素不面向屏幕时隐藏</p>
+<h2 id="放大镜效果"><a href="#放大镜效果" class="headerlink" title="放大镜效果"></a>放大镜效果</h2><p><a href="https://github.com/DemoorBug/comprehensive" target="_blank" rel="noopener">放大镜效果</a></p>
+<h2 id="瀑布流布局JQ"><a href="#瀑布流布局JQ" class="headerlink" title="瀑布流布局JQ"></a>瀑布流布局JQ</h2><p><a href="https://github.com/DemoorBug/comprehensive" target="_blank" rel="noopener">瀑布流布局JQ</a></p>
+<h2 id="电商网站实战"><a href="#电商网站实战" class="headerlink" title="电商网站实战"></a>电商网站实战</h2><p><a href="https://github.com/DemoorBug/comprehensive" target="_blank" rel="noopener">电商网站实战</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/html5/" rel="tag"># html5</a>
+          
+            <a href="/blog/tags/css3/" rel="tag"># css3</a>
+          
+            <a href="/blog/tags/jquery/" rel="tag"># jquery</a>
+          
+            <a href="/blog/tags/node/" rel="tag"># node</a>
+          
+            <a href="/blog/tags/mongodb/" rel="tag"># mongodb</a>
+          
+            <a href="/blog/tags/php/" rel="tag"># php</a>
+          
+            <a href="/blog/tags/canvas/" rel="tag"># canvas</a>
+          
+            <a href="/blog/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/09/14/vue-qunaerkaifa/" rel="next" title="vue-qunaerkaifa">
+                <i class="fa fa-chevron-left"></i> vue-qunaerkaifa
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/09/14/Newproject/" rel="prev" title="Newproject">
+                Newproject <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DEBUG</p>
+              <p class="site-description motion-element" itemprop="description">go</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前做过的东西，总结一下"><span class="nav-text">以前做过的东西，总结一下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3-JS-实现超炫的散列画廊特效"><span class="nav-text">CSS3+JS 实现超炫的散列画廊特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-APP"><span class="nav-text">WEB APP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas"><span class="nav-text">canvas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3-重要的"><span class="nav-text">css3 重要的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html5-重要的"><span class="nav-text">html5 重要的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#imooc-why-重要的"><span class="nav-text">imooc-why 重要的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svg-没有内容，忘记干什么的了"><span class="nav-text">svg 没有内容，忘记干什么的了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-既-html-标签收集"><span class="nav-text">CSS 既 html 标签收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql笔记"><span class="nav-text">Mysql笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs"><span class="nav-text">Nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs入门"><span class="nav-text">Nodejs入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP"><span class="nav-text">PHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jquery总结"><span class="nav-text">Jquery总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongodb"><span class="nav-text">mongodb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-Express快速搭建电影网站"><span class="nav-text">Node+Express快速搭建电影网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位导航"><span class="nav-text">定位导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索框"><span class="nav-text">搜索框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画廊笔记"><span class="nav-text">画廊笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放大镜效果"><span class="nav-text">放大镜效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#瀑布流布局JQ"><span class="nav-text">瀑布流布局JQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电商网站实战"><span class="nav-text">电商网站实战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018/9/11 00:00
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DEBUG</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <a class="theme-link" target="_blank" href="http://www.696px.com">696px</a>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'demoorbug.github.io/2018/09/14/comprehensive/';
+          this.page.identifier = '2018/09/14/comprehensive/';
+          this.page.title = 'comprehensive';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'frRzxfBf7ILkb3j8VGQAqdIs-gzGzoHsz',
+        appKey: 'XlCDzgMdSzgzFpgyuWY66yYM',
+        placeholder: '智慧如你，不想发表一点想法咩~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="loader">' +
+          '<div class="loader-inner ball-scale-multiple">' +
+          '<div></div>' +
+          '<div></div>' +
+          '<div></div>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".loader").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
