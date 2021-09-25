@@ -468,8 +468,6 @@ export default Hello
 
 高阶组件HOC就是一个函数，接受一个组件作为参数，返回一个新的组件
 
-
-
 # 项目开始
 安装命令
 ```bash
@@ -536,7 +534,42 @@ npm config delete proxy
 npm config delete https-proxy
 // 同理sudo也要删除一遍
 ```
+linux | ubuntu [设置全局代理](https://zhuanlan.zhihu.com/p/58690128)
+
+```bash
+# 修改shell配置文件 ~/.bashrc ~/.zshrc等
+export http_proxy=socks5://127.0.0.1:1024
+export https_proxy=$http_proxy
+
+# 设置setproxy和unsetproxy 可以快捷的开关
+# 需要时先输入命令 setproxy
+# 不需要时输入命令 unsetproxy
+alias setproxy="export http_proxy=socks5://127.0.0.1:1024; export https_proxy=$http_proxy; echo 'HTTP Proxy on';"
+alias unsetproxy="unset http_proxy; unset https_proxy; echo 'HTTP Proxy off';"
+# 设置快捷开关这个倒是不错的想法，不过目前没有应用场景，用上倒是可以借鉴
+```
+
+nvm因为不能sudo执行，安装的node也不能用sudo命令访问，要通过软链接才行
+
+```bash
+# $NVM_DIR 这些常量是.nvm的目录，后面的$(nvm version)，版本号，挺讨巧的
+sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
+sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+```
+
+[sudo时无法使用代理](https://blog.csdn.net/u014789266/article/details/76571763)
+
+```bash
+#在/etc/sudoers中，env_reset下添加
+Defaults env_keep="http_proxy https_proxy ftp_proxy no_proxy
+```
+
+
+
+
+
 上次看的是jest测试，还是结合react的测试更有趣，让我知道了用处
+
 ```ts
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
@@ -594,64 +627,311 @@ describe('test Button component', () => {
 
 ```
 
+------
 
+## 插曲：批量更改文件名，shell脚本
 
+文件结构
 
+```
+  大秧歌
+    - 01.mkv
+      - 01.mkv.xls
+```
+IDM/shell.sh:
+```shell
+#!/bin/bash
 
+for l in `ls 大秧歌`
+  do
+  mv 大秧歌/$l/`ls 大秧歌/$l` 大秧歌压缩/`ls 大秧歌/$l | sed 's/....$//' | sed 's/^/大秧歌./'`
+done
+```
+优化代码:
+```shell
+#!/bin/bash
+mkdrname='大秧歌'
 
+for l in `ls $mkdrname`
+  do
+  mv $mkdrname/$l/`ls $mkdrname/$l` $mkdrname压缩/`ls $mkdrname/$l | sed 's/....$//' | sed 's/^/'$mkdrname'./'`
+done
+```
 
 
 
+如果是直接命令输出脚本，则要用echo关键字
+比如大秧歌目录下执行命令如下:
+```bash
+for s in `ls`; do mv $s `echo $s | sed 's/^/大秧歌./'`; done
+```
 
+处理带有空格文件的时候会循环错误，一个文件有几个空格就循环几次
 
+```bash
+for folder in `ls|tr " " "?"`
+ do
+  # 如果所目录的情况
+  folder=${folder//'?'/' '}
 
+ cd "$folder"
 
+done
 
+ 
 
+## 先把空格用特殊符号代替，然后替换即可。  使用cd时需要添加双引号
+```
 
+> 先把空格用特殊符号代替，然后替换即可。使用cd时需要添加双引号
+>
+> [PS](https://blog.csdn.net/dqswuyundong/article/details/7427467)
 
+改进后
 
+处理带有空格的文件名
 
+```bash
+for s in `ls|tr " " "?"`; do mv "$s" `echo $s | sed 's/..$//'`; done
+```
 
+> 研究了半天，终于搞懂了
 
 
 
+***
 
+## 图标Icon解决方案
 
 
 
+font 字体已经过时
 
+svg 可以采用
 
+[Font Awesome](https://fontawesome.com/icons?d=gallery&m=free)
 
+[react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
 
+```tsx
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+library.add(fas)
+// fas代表了引入所有图标，然后就可以很轻松的用字符串代替了
+<FontAwesomeIcon icon='coffee'/>
+// 或者是这样
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+<FontAwesomeIcon icon='faCoffee'/>
+```
 
+[Sass的each循环](https://sass-lang.com/documentation/at-rules/control/each)
 
+创建一个`With Maps`
 
+```scss
+// _variables.scss
+$theme-colors: 
+(
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark
+)
+
+// Icon/_style.scss
+@each $key, $val in $theme-colors {
+  .icon-#{$key} {
+    color: $val;
+  }
+}
+
+```
+
+**React中制作动画**
+
+动画间隙，这个东西具体叫什么忘记了，不过vue学过，忘了，行吧，不过这东西react的挺简单的
 
+[官网插件推荐](https://reactjs.org/docs/faq-styling.html#can-i-do-animations-in-react)
 
+[react-transition-group这个库用的最多](https://reactcommunity.org/react-transition-group/)
 
+```bash
+yarn add react-transition-group
+yarn add @types/react-transition-group 
+这个typescript的插件官网没有介绍
+```
+
+我人傻了，居然是classNames,我写成className 导致了子组件的className被替代，我还以为组件升级写法变了，研究半天，莫名其妙
+
+```tsx
+<CSSTransition
+    in={menuOpen}
+    timeout={300}
+    classNames='zoom-in-top' // 致命错误classNames 不是 className
+    appear
+    >
+    <ul className={subMenuClasses}>{childrenComponent}</ul>
+</CSSTransition>
+```
 
+莫名其妙的报错，findDomNode
+
+[React官方的解释，没看懂](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+
+react-transition-group的解决方法是4.4.0 换种写法
+
+挺奇怪的，为什么官方不自己封装一下，肯定有其他用处
+
+```tsx
+fucntion SubMenu (){
+	const nodeRef = React.useRef(null)
+	return (
+        <CSSTransition nodeRef={nodeRef}>
+        	<div ref={nodeRef}></div>
+        </CSSTransition>
+    )
+}
+```
+
+
+
+## storybook
+
+[storybook.js.org](storybook.js.org)
+
+```bash
+npx sb init
+安装不成功就换个节点。前面几次都没成功，换了个节点好了
+```
+
+```bash
+git diff
+查看变化，Q退出
+```
+
+真是醉了，搞了半天的styorbook 的props显示问题，老师解决起来很麻烦，因为用的旧版本，新版本直接集成了，谁知道居然也这么麻烦，官方文档也没提，导出的时候不能`export default`导出，不然就会显示寥寥无几的`props`，直接导出组件就行了`export`,还有就是默认值的问题，如果用元组`enum`的话，就会导致默认值是一个变量，很不好理解，目前解决办法就是用`type`声明，不用元组就ok了
+
+
+
+## 自动完成input
+
+```jsx
+// 忽略值
+Omit<InputHTMLAttributes<HTMLElement>, 'size'>
+// 目前用到的场景，继承的时候这个值和当前接口size冲突，必须改名或者这种解决
+// omit删除inputHTMLAttributers中的size属性
+export interface InputProps
+  extends Omit<
+    React.InputHTMLAttributes<HTMLElement>,
+    'size'
+  > {
+  disabled?: boolean
+  size?: 'lg' | 'sm'
+  icon?: IconName
+  prefixs?: string | React.ReactElement
+  append?: string | React.ReactElement
+  theme?: ThemeProps
+}
+因为size属性和input默认属性冲突，所以这里要忽略
+```
 
+[Omit<>](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)
 
+**input 表单，优化** 课程9-3节，对应文件路径src/components/Input/*.tsx
 
+`onChange`如果是input表单上面用，会导致`e`参数是HTMLElement类型，自己增加一个类型检测就行了
 
+```jsx
+// input.tsx
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLElement>, 'size'> {
+    onChange?: (e: React.changeEvent<HTMLInputElement>) => void
+}
+```
 
+受控组件 [Controlled Components](https://reactjs.org/docs/forms.html#controlled-components) 
 
+我的理解是有value，就是受控组件，defaultValue就是非受控组件
 
+如果自己写的组件让别人用，同时输入以上两个参数，就会报错，所以我们必须优化代码，其实我觉得没必要
 
+```tsx
+// input.stories.tsx
+import React from 'react'
+export const Input: React.FC<InputProps> = (props) => {
+	const {...restProps} = props
+    if ('value' in props) { // 如果有value这个值
+        delete restProps.defaultValue // 就删除defaultValue
+    }
+    return <><input {...restProps}></>
+}
+```
 
+如果使用的时候state传入参数为`undefined`或者`null`也会上述报错，`undefined`
 
+被识别为非受控组件
 
+使用：
 
+```jsx
+// input.stories.tsx
+const inputTemplate: Story<InputProps> = args => {
+    const [value, setValue] = useState() //如果这里是空，参数类型就会变成`undefined`
+    return (
+    	<Input {...args} value={value} onChange={e => setValue(e.target.value)} /> // 这样赋值就会报错，因为value类型是undefind，而e.target.value类型是string, 其二 页面改变input值也会warning非受控组件被修改问题
+    )
+}
+```
 
+修复：
 
+```tsx
+// input.tsx
+const valueDefault = (value: any) =>  {
+    if (value === 'undefined' || value === null) {
+        return ''
+    }
+    return value
+}
+if('value' in props) {
+    delete restProps.defaultValue 
+    restProps.value = valueDefalt(restProps.value) //主要代码是这里
+}
+```
 
+## 测试的一个小bug
 
+menu.test.tsx中94行*expect(wrapper.queryByText('drop1')).not.toBeVisible()*报错，理所应当，因为必须要鼠标事件才会显示，以前不知道为什么没发现，写完没测试？？不应该啊
 
+后面还有一个报错[
+waitFor error "MutationObserver is not a constructor" with latest version](https://github.com/testing-library/dom-testing-library/issues/477#) 这个原因是jsdom依赖的jest版本低，可以用一个很麻烦的方法解决，另一个就是更新react-scripts，和jest来解决，我用的第二种
 
+```bash
+yarn upgrade react-script@^
+	- 4.0.1  # 目前的最新版,此版本依赖jest 26.6.0
+yarn upgrade jest@^
+	- 26.6.0
+查看版本以及依赖，npm ls jsdom
 
+// 上面这种更新用法，会导致package不更新，遗留问题？，我好像遇到了，后面用，又消失了这个bug
+```
 
+发现一个新写法，还挺好看+简洁源文件写法：src\components\Input\input.tsx
 
+```tsx
+  const cnames = classNames('viking-input-wrapper', {
+    [`input-size-${size}`]: size,
+    'is-disabled': disabled,
+    'input-group': prepend || append,
+    'input-group-append': !!append,
+    'input-group-prepend': !!prepend
+  })
+  // !!双感叹号，是因为append是string类型，一个感叹号变为布尔值，另一个感叹号变为真正的true还是false，有点绕口，不知道该怎么解释。
+```
 
 
 
@@ -660,7 +940,47 @@ describe('test Button component', () => {
 
 
 
-——————————————————————————————————————
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------
+
+> 这里是另一个ts教程笔记，弃用
+>
 
 # 安装
 ```bash

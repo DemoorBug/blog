@@ -132,6 +132,7 @@ source 配置文件
 
 ##用户和用户组
 ```
+sudo adduser username 创建用户
 /etc/group 存储当前系统中所有用户组信息
 组名称:组密码占位符:组编号:组中用户名列表
 /etc/gshadow 存储当前系统中用户组的密码信息
@@ -203,6 +204,7 @@ vim + /etc/fstab
 ```
 
 ##格式化
+
 ```
 mkfs.ext4 /dev/sdb1
 mkfs -t ext4 /dev/sdb2
@@ -486,3 +488,30 @@ sudo ln -s /home/demoorbug/.nvm/versions/node/v14.5.0/bin/node /usr/local/bin/
 sudo ln -s /home/demoorbug/.nvm/versions/node/v14.5.0/bin/npm /usr/local/bin/
 //done
 ```
+
+# brew 安装
+
+```bash
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/homebrew
+# 环境变量配置
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+source ~/.bashrc
+```
+
+# z 配置
+
+```bash
+brew install z
+brew list z
+vim ~/.bashrc
+. /home/demoorbug/homebrew/Cellar/z/1.9/etc/profile.d/z.sh #这条命令粘贴到.bashrc
+source ~/.bashrc
+```
+
+
+
+```tsx
+
+```
+
