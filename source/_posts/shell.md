@@ -514,4 +514,11 @@ source ~/.bashrc
 ```tsx
 
 ```
+# 技巧
+[https://www.youtube.com/watch?v=gxBis8EgoAg&t=1010s](https://www.youtube.com/watch?v=gxBis8EgoAg&t=1010s)
+```bash
+find packages -type f | grep vue //查找packages下所有带vue带文件
+find packages -type f | grep vue | xargs rm //删除所有筛选到到文件
+```
+
 
