@@ -7,7 +7,7 @@ categories: [Mac, hammerspoon, Alfred]
 
 # 为什么不使用Karabiner-Elements 和 BetterTouchTool
 **Karabiner-Elements**
-我一直在使用[https://karabiner-elements.pqrs.org/](Karabiner-Elements)软件绑定我的键位以及设置Hyper key, 但是有时候这个软件会出bug,比如说偶尔开机会导致软件的映射全部失效,必须重新安装或者重启电脑,这真的很烦人,并且软件更新频率很低, 我这个bug已经好几个月没有解决了,索性就换一款类似产品用,不然太糟心了
+我一直在使用[Karabiner-Elements](https://karabiner-elements.pqrs.org/)软件绑定我的键位以及设置Hyper key, 但是有时候这个软件会出bug,比如说偶尔开机会导致软件的映射全部失效,必须重新安装或者重启电脑,这真的很烦人,并且软件更新频率很低, 我这个bug已经好几个月没有解决了,索性就换一款类似产品用,不然太糟心了
 **BetterTouchTool**
 还是bug问题,我是将`Caps_lock`映射为`Control`,`Control`映射为`Caps_lock`,`Hyper key`我是用的`Caps_lock`映射的(这里可能有点绕),在Karabiner-Elements中功能是正常的,大家各司其职,但是呢这款软件会把以上两个键位全部映射为`Hyper key`,所以最后导致放弃,软件大概有100m左右,我就是要一个小功能而已,完全没必要,折腾了一小时无果卸载了
 
@@ -70,7 +70,7 @@ p
 cd ~/Library/LaunchAgents/
 touch com.local.keyRemppin.plist
 open .
-右键这个com.local.keyRemppin.plist文件>打开方式>其他>文本编辑>右健粘贴自己映射的xml>Command+s保存
+右键com.local.keyRemppin.plist文件>打开方式>其他>文本编辑>右健粘贴自己映射的xml>Command+s保存
 ```
 粘贴好之后打开终端输入:
 ```bash
@@ -134,6 +134,12 @@ end
 hyperFun(keys)
 
 ```
-> 如果大家会用vim的话,可以直接用vim编辑
+如果没有生效的话,可以把Hammerspoon软件退出重新打开,或者点击小图标Reload
+
+> 大家会用vim的话,可以直接用vim编辑
 
 大功告成,之后大家就可以在各种应用里面设置cmd+alt+shift+ctrl+?的快捷键了,终于可以摆脱Karabiner-Elements
+Ps: 
+https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/
+
+https://kalis.me/setup-hyper-key-hammerspoon-macos/
