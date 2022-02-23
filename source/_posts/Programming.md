@@ -321,3 +321,573 @@ class Celsius {
   }
 }
 ```
+# 问题
+我的那个pubg网站的遥测数据应该如何存储以及读取,
+目前解决办法就是最最简单的数组吧,
+如果别人快进呢?
+
+# 异构集合
+包含相同集合的项,称之为:同构集合
+反之包含不同类型集合的项,称之为:异构集合
+
+# 序列化
+```ts
+// 4.4.2
+class Cat {
+  meow(){}
+}
+class Dog {
+  bark(){}
+}
+function serializeCat(cat: Cat): string {
+  return "c" + JSON.stringify(cat)
+}
+function serializeCat(dog: Dog): string {
+  return "c" + JSON.stringify(dog)
+}
+
+function tryDeserializeCat(from: string): Cat | undefined {
+  if (from[0] != "c") return undefined
+  return <Cat>Object.assign(new Cat(), JSON.parse(from.substr(1)))
+}
+
+let catString: string = serializeCat(new Cat())
+let dogString: string = serializeDog(new Dog())
+
+let maybeCat: Cat | undefined = tryDeserializeCat(catString)
+
+if (maybeCat != undefined) {
+  let cat: Cat = <Cat>maybeCat
+  cat.meow()
+}
+maybeCat = tryDeserializeCat(dogString)
+// 这里返回undefined
+
+```
+# 函数类型
+函数类型和签名: 函数的实参类型和返回类型决定了函数的类型. 如果两个函数接受相同的实参, 并返回相同的类型, 那么它们具有相同的类型. 实参集合加上返回类型也称为函数的签名
+
+一等函数: 将函数复制给变量, 并像处理类型系统中的其他值一样处理它们, 就得到了所谓的一等函数. 这意味着将函数视为“一等公民”, 赋予它们与其他值相同的权利: 它们有类型, 可被赋值给变量, 可作为实参传递, 可被检查是否有效 , 以及在兼容情况下可被转换为其他类型
+
+1. 将一个可以处于打开（open）或关闭（closed）状态的简单连接建模为一个状态机。使用connect函数打开连接，使用disconnect关闭连接。
+```ts
+// 函数状态机
+class Connection {
+  private doProcess: () => void = this.connect
+  public switchControl() {
+    this.doProcess()
+  }
+  private connect() {
+    this.doProcess = this.disonnect
+    console.log('closed')
+  }
+  private disonnect() {
+    this.doProcess = this.connect
+    console.log('open')
+  }
+}
+```
+```ts
+// 简单状态机
+enum ControlProcessingMode {
+  Open,
+  Closed
+}
+class ControlProcessing {
+  private mode: ControlProcessingMode = ControlProcessingMode.Open
+  public processIs() {
+    this.processLine()
+  }
+  private processLine(): void {
+    switch (this.mode) {
+      case ControlProcessingMode.Open:
+        this.processOpen()
+        break
+      case ControlProcessingMode.Closed:
+        this.processClosed()
+        break
+    }
+  }
+  processOpen() {
+    this.mode = ControlProcessingMode.Closed
+    console.log('closed')
+  }
+  processClosed() {
+    this.mode = ControlProcessingMode.Open
+    console.log('open')
+  }
+}
+
+```
+
+1. 我们可以把连接建模为状态机，它有两个状态和两个转移。这两个状态为open和closed，这两个转移为从closed转移到open的connect转移，以及从open转移到closed的disconnect转移。
+
+使用process()方法将前面的连接实现为一个函数状态机。对于关闭的连接，process()打开一个连接；对于打开的连接，process()调用read()函数，后者返回一个字符串。如果该字符串为空，则关闭连接；否则，将读取的字符串输出到控制台。read()函数的声明如下：declare function read(): string;。
+
+```ts
+// 函数状态机
+declare function read(): string
+class Connection {
+  private doProcess: () => void = this.processClosedConnection
+  public process(): void {
+    this.doProcess()
+  }
+  private processClosedConnection() {
+    console.log('closed')
+    this.doProcess = this.processOpenConnection
+  }
+  private processOpenConnection() {
+    console.log('open')
+    const value: string = read()
+    if (value.length == 0) {
+      this.doProcess = this.processClosedConnection
+    } else {
+      console.log(value)
+    }
+  }
+}
+```
+# 装饰器
+装饰器模式是一个简单的行为软件设计模式,可扩展对象的行为,而不必修改对象的类. 装饰的对象可以执行其原始实现没有提供的功能
+WidgetFactory装饰器
+```ts
+class Widget {}
+interface IWidgetFactory {
+  makeWidget(): Widget
+}
+class WidgetFactory implements IWidgetFactory {
+  public makeWidget(): Widget {
+    return new Widget()
+  }
+}
+class SingletonDecorator implements IWidgetFactory {
+  private factory: IWidgetFactory
+  private instance: Width | undefined = undefined
+  constructor(factory: IWidgetFactory) {
+    this.factory = factory
+  }
+  public makeWidth(): Width {
+    if (this.instance == undefined) {
+      this.instance = this.factory.makeWidget()
+    }
+    return this.instance
+  }
+}
+```
+
+函数式小部件工厂
+```ts
+class Width {}
+type WidgetFactory = () => Widget
+function makeWidget(): Widget {
+  return new Widget()
+}
+function use10Widget(factory: WidgetFactory) {
+  for(let i = 0; i < 10; i++) {
+    let width = factory()
+    /* ... */
+  }
+}
+
+use10Widget(makeWidget)
+```
+函数式小部件工厂装饰器
+```ts
+class Widget {}
+type WidgetFactory = () => Widget
+function makeWidget(): Widget {
+  return new Widget()
+}
+function singletonDecoratoy(factory: WidgetFactory): WidgetFactory {
+  let instance: Widget | undefined = undefined
+  return (): Widget => {
+    if (instance == undefined) {
+      instance = factory()
+    }
+    return instance
+  }
+}
+function use10Widgets(factory: WidgetFactory) {
+  for(let i = 0; i < 10; i++) {
+    let widget = factory()
+    /* ... */
+  }
+}
+use10Widgets(singletonDecorator(makeWidget))
+```
+现在`use10Widgets()`不会构造10个Widget对象, 而是会调用Iambda(匿名函数), 为所有调用重用相同的Widget实例
+
+习题
+```ts
+class Widget {}
+type WidgetFactory = () => Widget
+function loggingDecorator(factory: WidgetFactory): WidgetFactory {
+  return () => {
+    console.log("Widget created")
+    return factory()
+  }
+} 
+
+```
+
+可恢复函数: 可恢复的函数是跟踪自己状态的函数, 在被调用时, 不会从头开始运行, 而是从上一次返回时所在的状态恢复执行
+在ts中,这种函数不实用return,而是用yileld关键字,这个关键字会刮起函数,将控制权交给调用者. 当再次被调用时, 将从yileld语句恢复执行
+使用yield有另外两个限制: 必须把函数声明为一个生成器(函数加*声明生成器), 并且其返回类型必须是可迭代的迭代器
+可恢复的计数器
+```ts
+function* counter(): IterableItertor<number> {
+  let n: number = 1
+  while (true) {
+    yield n++
+  }
+}
+let counter1: iterableIterator<nubmer> = counter()
+console.log(counter1.next())
+// 1
+console.log(counter1.next())
+// 2
+console.log(counter1.next())
+// 3
+```
+闭包实现
+就是匿名函数调用外部变量,导致自己不会被摧毁,形成闭包
+```ts
+type count = () => number 
+function counter(): count {
+  let i = 0
+  return () => {
+    return i++
+  }
+}
+const coun: count = counter()
+console.log(count())
+console.log(count())
+console.log(count())
+console.log(count())
+```
+
+# 安全反序列化
+any类型很危险,因为不仅可以把任何值赋值any类型, 还可以把any值赋值给其他任何类型, 从而绕过类型检查
+
+unknown和any的区别: 尽管我们可以把任意值赋值给unknown和any,但是使用这两种类型的变量时, 存在一个区别. 对于unknwon的情况, 只有当我们确认一个值具有某个类型(如User)时, 才能把该值用作该类型. 对于any的情况, 我们可以立即把该值用作其他任何类型的值. any会绕过类型检查
+```ts
+class User {
+  name: string
+  constructor(name: string) {
+    this.name = name
+  }
+}
+// 如果把unknown换成any,就可以直接使用greet(),而不用做类型判断isUser()
+function deserialize(input: string): unknown {
+  return JSON.parse(input)
+}
+
+function greet(user: User): void {
+  console.log(`Hi ${user.name}`)
+}
+// 如果user是true,则类型是User,否则类型是any
+function isUser(user: any): user is User {
+  if (user === null || user === undefined) {
+    return false
+  }
+  return typeof user.name === 'string'
+}
+
+// 如果把unknown换成any,就可以直接使用greet(),而不用做类型判断isUser()
+let user: unknown = deserialize('{"name": "John"}')
+if (isUser(user)) {
+  greet(user)
+}
+user = undefined
+if (isUser(user)) {
+  greet(user)
+}
+
+```
+never
+底层类型: 如果一个类型时其他类型的子类型, 那么我们称之为底层类型, 因为它位于子类型层次的地段. 要成为其他类型的子类型, 它必须具有其他类型的成员. 因为我们可以有无限个类型和成员, 所以底层类型也必须有无限个成员. 这是不可能发生的, 所以底层类型始终是一个空类型: 这是我们不能为其创建实际值的类型
+由于never是底层类型, 所以我们能把它赋值给其他任何类型, 这也意味着我们能够从函数中返回该类型. 由于这是向上转换(将某一个值从子类型转换为父类型), 可被隐式完成,因此编译器不会报错.
+```ts
+enum TurnDirection {
+  Left,
+  Right
+}
+function fail(message: string): never {
+  console.error(message)
+  throw new Error(message)
+}
+function turnAngle(turn: TurnDirection): number {
+  switch (trun) {
+    case TurnDirection.Left: return -90
+    case TurnDirection.Right: return 90
+    default: return fail("unknown TurnDirection")
+  }
+}
+
+```
+```ts
+type triangle {
+  name: 'triangle'
+}
+type Square {
+  square: 'square'
+}
+type Circle {
+  circle: 'circle'
+}
+type All = triangle | Square | Circle
+/*
+*/
+type select = triangle | Square
+/*
+*/
+```
+名义和结构子类型: 在名义子类型中, 如果显式声明一个类型是另一个类型的子类型, 则二者构成子类型关系. 在结构子类型中, 如果一个类型具有另一个类型的所有成员, 并且可能还有其他成员, 那么前者是后者的子类型
+
+每当我们使用继承时, 得到的子类型比父类型的属性多. 对于和类型, 则是相反的: 父类型比子类型的类型更多
+```ts
+
+declare const TriangleType: unique symbol
+class Triangle{
+  [TriangleType]: void
+}
+declare const SquareType: unique symbol
+class Square{
+  [SquareType]: void
+}
+declare const CircleType: unique symbol
+class Circle{
+  [CircleType]: void
+}
+declare const EquilateralTrangleType: unique symbol
+class EquilateralTriangle extends Triangle {
+  [EquilateralTrangleType]: void
+}
+/*
+class EquilateralTriangle {
+  [EquilateralTriangleType]: void
+  [Triangle]: void
+}
+*/
+/*
+如果是这样就不能编译:
+declare function makeShape(): Triangle | Square;
+// 因为父类型里面必须包含EquilateralTriangleType
+// 但是makeShape中没有这个类型,所以就不能直接赋值,反之则可以
+declare function draw(i: EquilateralTriangle | Square | Circle): void;
+
+draw(makeShape())
+*/
+declare function makeShape(): EquilateralTriangle | Square;
+declare function draw(i: Triangle | Square | Circle): void;
+/*
+这样则可以编译
+父元素并没有规定必须要有EquilateralTriangle
+而是规定必须有Triangle, EquilateralTriangle中继承了Triangle所以包含
+*/
+
+draw(makeShape())
+
+```
+
+子类型和集合
+```ts
+
+declare const ShapeType: unique symbol
+class Shape {
+  [ShapeType]: void
+}
+declare const TriangleType: unique symbol
+class Triangle extends Shape {
+  [TriangleType]: void
+}
+class LinkedList<T> {
+  value: T
+  next: LinkedList<T> | undefined = undefined
+  constructor(value: T) {
+    this.value = value
+  }
+  append(value: T): LinkedList<T> {
+    this.next = new LinkedList(value)
+    return this.next
+  }
+}
+declare function makeTriangles(): LinkedList<Triangle>
+declare function draw(shapes: LinkedList<Shape>): void
+
+draw(makeTriangles())
+```
+协变: 如果一个类型保留其底层类型的子类型关系, 就称该类型具有协变性. 数组具有协变性, 因为它保留了子类型关系: Triangle是Shape的子类型, 所以triangle[]是Shape[]的子类型
+
+当处理数组和集合(如LinkedList<t>)时, 不同的语言具有不同的行为. 例如,在C#中,必须通过声明接口并使用out关键字(ILinkedList<out T>), 显式指出一个类型(如LinkedList<T>)的协变. 否则, 编译器将不会推断出子系列类型关系
+
+不变性: 如果一个类型不考虑其底层类型的子类型关系, 就称该类型具有不变形. C#中的List<T> 具有不变形, 因为它不考虑子类型关系“Trangle是Shape的子类型”, 所以list<Shape>和List<Triangle>之间不存在子类型-父类型关系
+
+子类型和函数的返回类型
+```ts
+// 7.18
+
+declare const ShapeType: unique symbol
+class Shape {
+  [ShapeType]: void
+}
+declare const TriangleType: unique symbol
+class Triangle extends Shape{
+  [TriangleType]: void
+}
+declare function factory (): Shape
+declare function makeTriangle(): Triangle
+declare function makeShape(): Shape
+function useFactory(Factory: () => Shape): Shape {
+  return factory()
+}
+let shape1: Shape = useFactory(makeShape)
+let shape2: Shape = useFactory(makeTriangle)
+```
+函数的返回类型具有协变性. 
+# 子类型和函数实参类型
+```ts
+declare const ShapeType: unique symbol
+class Shape {
+  [ShapeType]: void
+}
+declare const TriangleType: unique symbol
+class Triangle extends Shape {
+  [TriangleType]: void
+}
+declare function drawShape(shape: Shape): void
+declare function drawTriangle(triangle: Triangle): void
+function render(
+  triangle: Triangle,
+  drawFunc: (argument: Triangle) => void
+): void {
+  drawFunc(triangle)
+}
+render(new Triangle, drawShape)
+// 当期望接收到一个(argument: Triangle) => void
+// 可以使用(argument: Shape) => void
+```
+这个逻辑上时合理的: 我们有一个Triangle,并将其传递给一个可以把它用作实参的绘制函数. 如果函数自身期望收到一个Triangle, 如这里的drawTriangle()函数, 那么这当人可以工作. 但是, 对于期望收到Triangle的父类型函数, 它也应该可以工作. drawShape()希望绘制任何一个形状. 因为它没有使用任何三角形特有的数据, 所以比drawtriangle()更具一般性; 它可以接受任何形状作为实参, 无论这个形状时Triangle还是Shape. 因此, 在这种情况下, 子类型关系反过来了
+
+逆变: 如果一个类型颠倒了其底层类型的子类型关系, 则称该类型具有逆变性. 在大部分编程语言中, 函数的实参上逆变的. 一个接受Triangle作为实参的函数可以被替换为一个接受Shape作为实参的函数. 函数之间的关系与其实参类型之间的关系相反. 如果Triangle是Shape的子类型, 那么接受Triangle作为实参的函数类型是接受Shape作为实参的函数的类型的父类型
+
+在Typescript中, 如果Triangle是Shape 的子类型, 那么函数(argument: Shape) => void和函数类型(agumengt: Triangle) => void 能够彼此替换. 它们实际上互为子类型. 这种属性称为双变形
+双变形: 如果类型的底层类型的子类型关系决定了它们互为子类型, 则称这种类型具有双变形. 在Typescirpt中, 如果Triangle是Shape的子类型, 那么函数类型(argument: Shape) => vodi 和 (arugment: Triangle) => void互为子类型
+
+同样,在Typescript中, 函数实参的双变形可能导致错误的代码通过编译. 本书的一个重要主题是依赖类型系统, 在编译时消除运行时错误. 在Typescript中, 支持常用的Javascript编程模式是有意做出的设计决策
+习题:
+1. 可以
+```ts
+declare const ShapeType: unique symbol
+class Shape {
+  [ShapeType]: void
+}
+declare const TriangleType: unique symbol
+class Triangle extends Shape {
+  [TriangleType]: void
+}
+declare function drawShape(shape: Shape): void
+drawShape(new Triangle)
+```
+2. 否
+```ts
+declare const ShapeType: unique symbol
+class Shape {
+  [ShapeType]: void
+}
+declare const TriangleType: unique symbol
+class Triangle extends Shape {
+  [TriangleType]: void
+}
+declare function drawShape(shape: Triangle): void
+drawShape(new Shape)
+```
+3. 是 集合和数组具有协变性
+4. 可以 逆变,互为子类型
+5. 可以
+6. 不行
+
+卧槽,全对,没毛病哈,哈哈
+
+# 实用接口定义契约
+面向对象编程(Object-Orientend Programming, OOP): OOP是基于对象的概念的一种编程范式, 对象可以包含数据和代码. 数据是对象的状态, 状态是一个或多个方法, 也叫做“消息”. 在面向对象系统中, 通过实用其他对象的方法, 对象之间可以 “对话”或者发送消息
+OOP的两个关键特征是封装和继承. 封装允许隐藏数据的方法, 而继承则使用额外的数据和代码扩展一个类型
+
+哈,抽象类?`abstract`关键字
+```ts
+// 抽象日志系统实现
+abstract class ALogger {
+  abstract log(line: string): void
+}
+class ConsoleLogger extends ALogger {
+  log(line: string): void {
+    console.log(line)
+  }
+}
+```
+```ts
+//日志系统接口实现
+interface ILogger {
+  log(line: sring): void
+}
+class ConsoleLogger implements ILogger {
+  log(line: string): void {
+    console.log(line)
+  }
+}
+```
+这两种方法很相似,并且都可以工作, 但是在这样的一种场景中, 我们应该使用接口, 因为接口指定了一种契约
+接口和契约: 接口(或契约)描述了实现该接口的任何对象都理解的一组消息. 消息是方法, 包括名称、实参和返回类型. 接口没有任何状体. 与实现世界的契约(它们是书面协议)一样, 接口也相当于书面协议, 规定了实现者将提供什么
+
+抽象类能够实现这种行为, 但还可以做更多工作: 抽象类可以包含非抽象的方法和状态. 抽象类和“普通”类, 或者说具体类的唯一区别在于, 我们不能直接创建抽象类的实例. 我们知道, 每当传递抽象类的一个实例(如ALogger实参),实际上是在实用ALogger派生类型(如ConsoleLogger)的实例
+
+```ts
+interface IterableIterator<T> extends Iterable<T> , Iterator<T>{
+
+}
+```
+# 继承数据和行为
+继承是面向对象语言最为熟知的特性之一, 允许创建父类的子类. 子类继承了父类的数据和方法. 显然, 子类是父类的子类型, 因为在期望使用父类的任何地方, 都可以使用子类的实例
+
+继承和“是一个”关系: 继承会在子类型与父类型之间建立“是一个”关系. 如果基类是Shape, 派生类是Circle, 关系就是“Circle是一个Shape”. 这是继承在语义上的含义, 可用来判断是否应该在两个类型之间应用继承
+例: Cat 是一个 Pet 是一个 Animal
+```ts
+class Animal {}
+class Pet extends Animal {}
+class Cat extends Pet {}
+```
+如果没有这层关系,就应该使用组合,而不是继承
+
+# 组合数据和行为
+面向对象编程的一个著名原则是, 只要可能, 就优先选择组合而不是继承. 接下来介绍组合
+```ts
+class Shape {
+  id: string
+  constructor(id: string) {
+    this.id = id
+  }
+}
+class Point {
+  x: number
+  y: number
+  constructor(x: number, y: number) {
+    this.x = x
+    this.y = y
+  }
+}
+
+class Circle extends Shape {
+  center: Point
+  redius: number
+  constructor(id: string, center: Point, redius: number) {
+    super(id)
+    this.center = center
+    this.redius = redius
+  }
+}
+```
+"有一个"经验准则
+正如应用‘是一个‘测试可判断是否让Circle继承Point, 对于组合, 可以应用一个类似的测试: ’有一个‘
+
+Circle(圆是一个形状,所以继承了ID属性) 是一个 Shape(形状) 所有形状都有一个ID
+Circle(圆有一个圆心属性) 有一个 Point(点) 点有x和y坐标
