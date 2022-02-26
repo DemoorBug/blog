@@ -891,3 +891,178 @@ class Circle extends Shape {
 
 Circle(圆是一个形状,所以继承了ID属性) 是一个 Shape(形状) 所有形状都有一个ID
 Circle(圆有一个圆心属性) 有一个 Point(点) 点有x和y坐标
+
+适配器模式:
+```ts
+namespace Geometylibray {
+  export interface Icircle {
+    getCenterX(): number;
+    getCenterY(): number;
+    getDiameter(): number;
+  }
+}
+type Circle = {
+  center: {x: number, y: number};
+  radius: number;
+}
+class CircleAdapter implements Geometylibray.Icircle {
+  private circle: Circle
+  constructor(circle: Circle) {
+    this.circle = circle
+  }
+  getCenterX(): number {
+      return this.circle.center.x
+  }
+  getCenterY(): number {
+      return this.circle.center.y
+  }
+  getDiameter(): number {
+      return this.circle.radius * 2
+  }
+}
+```
+
+混入扩展:
+```ts
+function extend<First, Second>(first: First, second: Second): First & Second {
+  const result: unknown = {}
+  for (const prop in first) {
+    if (first.hasOwnProperty(prop)) {
+      (<First>result)[prop] = first[prop]
+    }
+  }
+  for (const prop in second) {
+    if (second.hasOwnProperty(prop)) {
+      (<Second>result)[prop] = second[prop]
+    }
+  }
+
+  return result as First & Second 
+}
+
+class MeowingPet extends Pet {
+  meow(): void {
+
+  }
+}
+class HunterBehavior {
+  track(): void {
+
+  }
+  stalk(): void {
+
+  }
+  pounce(): void {
+
+  }
+}
+type Cat = MeowingPet & HunterBehavior;
+const fluffy: Cat = extend(new MeoWingPet(), new HunterBehavior())
+```
+
+# 泛型数据结构
+泛型类型: 泛型类型是指参数化一个或多个类型的泛型函数、类、接口等.泛型类型允许我们编写能够使用不同类型的通用代码, 从而实现高度的代码重用
+
+```ts
+class Box<T> {
+  readonly box: T
+  constructor(value: T) {
+    this.box = value
+  }
+}
+```
+
+```ts
+function unbox<T>(box: Box<T>) T {
+  return box.box
+}
+
+```
+
+9.2.3
+```ts
+class Stack<T> {
+  private values: T[] = []
+  push(value: T) {
+    this.values.push(value)
+  }
+  pop(): T{
+    if (this.values.length == 0) throw Error()
+    return this.values.pop()
+  }
+  peek(): T {
+    if (this.values.length == 0) throw Error
+    return thsi.values[this.values.length - 1]
+  }
+}
+```
+
+```ts
+class Pair<T, U> {
+  readonly first: T
+  readonly second: U
+  constructor(first: T, second: U) {
+    this.first = first
+    this.second = second
+  }
+}
+
+```
+# 遍历数据结构
+假设我们想按中序遍历二叉树打印其所有元素的值, 
+中序遍历是指“左子结点-父结点-右子结点”的方式进行递归遍历
+```ts
+// 创建二叉树 & 遍历二叉树
+class BinaryTreeNode<T> {
+  value: T
+  left: BinaryTreeNode<T> | undefined
+  right: BinaryTreeNode<T> | undefined
+  constructor(value: T) {
+    this.value = value
+  }
+}
+
+function printInOrder<T>(root: BinaryTreeNode<T>): void {
+  if (root.left != undefined) {
+    printInOrder(root.left)
+  }
+  console.log(root.value)
+  if (root.right != undefined) {
+    printInOrder(root.right)
+  }
+}
+
+let root: BinaryTreeNode<number> = new BinaryTreeNode(1)
+root.left = new BinaryTreeNode(2)
+root.left.right = new BinaryTreeNode(3)
+root.right = new BinaryTreeNode(4)
+printInOrder(root)
+
+//    1
+//2      4 
+//  3
+
+// print: 2 3 1 4
+```
+打印链表:
+```ts
+class LinkedListNode<T> {
+  value: T
+  next: LinkedListNode<T> | undefined
+  constructor(value: T) {
+    this.value = value
+  }
+}
+function printLinkedList<T>(head: LinkedListNode<T>): void {
+  let current: LinkedListNode<T> | undefiend = head
+  while (current) {
+    console.log(current.value)
+    current = current.next
+  }
+}
+let head: LinkedListNode<string> = new LinkedListNode("hello")
+head.next = new LinkedListNode("World")
+head.next.next = new LinkedListNode("!!!")
+printListedList(head)
+```
+迭代器: 迭代器是能够用来遍历数据结构的一个对象. 它提供一个标准呢接口, 将数据结构的实际形状对客户端隐藏起来
