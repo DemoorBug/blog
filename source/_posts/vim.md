@@ -72,3 +72,17 @@ categories: vim
    or
 
    :%normal @q
+
+技巧48
+ea = 在当前单词结尾后添加
+
+w是指单词而W是指字串,有时候W可以更分辨,类似的还有W,B,E,gE
+
+49:
+t{char}及T{char}命令“知道查到指定字符为止”
+通常, 当我想在当前行内快速移动光标时, 我倾向于在普通模式中使用f{char}和F{char}
+命令; 当与d{mothion}或c{motion}一起使用时, 我会更倾向于使用t{char}及T{char}命令. 换句话说, 我在普通模式中会使用f和F, 而在操作服待决模式中则使用t和T.
+
+var tpl = [
+  '<a href="{url}">{title}</a>'
+]

@@ -494,7 +494,9 @@ styling code(编码方式)
 ESLint是一个在2013年发布的开源项目, 其具有高度可配置性和可扩展性
 安装eslint
 ```bash
-npm i -g eslint eslint-config-airbhb eslint-config-prettier eslit-plugin-import eslint-plugin-jsx-ally eslint-plugin-prettier eslint-plugin-react
+npm i -g eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react
+# 这里最好还是不要使用全局安装,不然别人拿到你的项目,package.json就会找不到该包
+yarn add eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react -D
 ```
 安装完毕后,可以用一下命令执行
 ```bash
@@ -505,16 +507,17 @@ eslint source.ts
 配置:
 通过.eslintrc文件配置,该文件存在于项目的根目录中.
 让我们添加一个typescript配置的eslint:
+> extends里面的差距`:`后面不能带空格,太坑了
 ```json
 {
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "airbnb",
-    "eslint: recommended",
-    "plugin: @typescript-eslint/eslint-recommended",
-    "plugin: @typescript-eslint/recommended",
-    "plugin: prettier/recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "settings": {
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
@@ -701,3 +704,66 @@ UI = f(state)
 
 > yarn 和 npm现在不用代理都很快
 
+# HOOK
+借助eslint-plugin-react-hooks插件来帮助我们
+只在顶层调用HOOKS, 来自官网React文档https://reactjs.org/docs/hooks-rules.html
+
+规则1: 不要在循环、条件或嵌套函数内调用hooks. 
+规则2: 只在React函数中调用hooks https://reactjs.org/docs/hooks-rules.html
+不要再普通的javascript函数中调用Hooks. 可以从React函数组件中调用hooks.
+从自定义hooks调用hooks
+
+class中componentDidMount是生命周期方法,该方法在组件被挂载时执行,并且只运行一次
+compontDidMount等效于:
+```js
+useEffect(() => {
+
+}, [])
+```
+React提供了一个`useLayoutEffect`,
+```js
+useLayoutEffect(() => {
+
+}, [])
+```
+如果你了解React类的生命周期方法是如何工作的,基本上,useEffect的行为与componentDidMount、componentDidUpdate、componentWillUnmount的组合方式相同
+
+# memo
+用memo将一个组件记忆化
+memo高阶组件(HOC)类似于React类的PureComponent, 因为它对Props(道具)进行浅层比较(意思是浅层检测), 所以如果我们试图用相同的道具一直渲染一个组件, 该组件将只渲染一次, 并且会记忆. 重新渲染组件的唯一方法是当一个道具改变其值时. 
+为了修复我们的组件, 以避免我们在输入时的多次渲染, 我们需要将我们的组件包裹在memo hoc中.
+但是传入一个函数为Props时,就会导致不管什么时候都会不一样,所以要使用到useCallback
+
+# useCallback and useMemo
+在语法上useMemo和useCallback非常类似, 但主要的区别是, useMemo记忆一个结果值, 而useCallback记录一个函数
+useMemo
+```js
+const filteredTodoList = useMemo(
+  () =>
+    todoList.filter((todo: Todo) => {
+      console.log('filetering...')
+      return todo.task
+        .toLowerCase()
+        .includes(term.toLowerCase())
+    }),
+  [term, todoList]
+)
+```
+useCallback
+```js
+const handleDelete = useCallback(
+  (taskId: number) => {
+    const newTodoList = todoList.filter(
+      (todo: Todo) => todo.id !== taskId
+    )
+    setTodoList(newTodoList)
+  },
+  [todoList]
+)
+```
+memo: 
+记忆一个组件
+当props改变时重新记忆
+避免了重载
+
+不到万不得已,不要使用这些hooks

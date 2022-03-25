@@ -272,9 +272,9 @@ cd st
 sudo make clean install
 cd ~/dwm
 sudo make clean install
-sudo vim config.h
+# sudo vim config.h # 不用修改也可以,所以就不改了
 # 找到55行的 "/bin/sh" 这里的意思是使用sh终端,但是我们需要使用刚刚编译好的新终端
-# 更改为 "/usr/local/bin/st"
+# 更改为 "/usr/local/bin/st" 
 # 获取目录的方式为 which st
 cd ~
 vim .bash_profile
@@ -324,6 +324,25 @@ pacman -Rsc gnome # 卸载gnome及其依赖, Note: 此操作是递归的,可能�
 # 此操作需格外小心, 执行后需重新安装某些包, 不然程序会出错
 rm -rf /etc/systemd/system/display-manager.service
 ```
+## 安装显卡驱动
+```bash
+sudo pacman -S nvidia nvidia-lts # 大部分显卡都可以这样,一些例外自动查询包可能不起作用, 就需要自己去找相应的源
+```
+安装470xx驱动
+```bash
+sudo git https://aur.archlinux.org/nvidia-470xx-utils.git
+cd nvidia-470xx-utils
+makepkg -si
+# 遇到大坑, 不知道为什么移动网络访问不了nvidia驱动下载地址
+# 解决办法就是用联通手机开启usb共享网络,临时解决
+```
+或者下载官方.run驱动程序,安装
+```bash
+wget https://us.download.nvidia.com/XFree86/Linux-x86_64/470.103.01/NVIDIA-Linux-x86_64-470.103.01.run
+sudo chmod +X NVIDIA-Linux-x86_64-470.103.01.run
+sudo sh NVIDIA-Linux-x86_64-470.103.01.run
+```
+
 
 # DWM官方文档
 要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm
