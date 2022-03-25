@@ -214,6 +214,7 @@ pacman -S nvidia-lts nvidia # 这里安装两个是因为内核安装了两个, 
 
 
 # Arch install DWM 
+(DWM initial setup and config. Icons, Bar Scripts, Keybindings, and Theming.)[https://www.youtube.com/watch?v=zaRzOEoyR4s&t=123s]
 安装一些依赖, 不过和我所看视频有所不一样,这是针对他所在的Ubuntu环境
 
 ```
@@ -294,4 +295,35 @@ exit # 重新登陆
 alt+shift+q # 完全退出
 ```
 
+# 解决出错问题
+## Failed to load module "intel"
+这个问题安装:
+```shell
+sudo pacman -Q xf86-video-intel
+# 如果没有到话, 就安装
+sudo pacman -S xf86-video-intel
+```
+## Failed to load module "nouveau"
+```shell
+sudo pacman -S xf86-video-nouveau
+```
+## 还有修改config.h 55行, 又改回了以前的/bash/sh 应该和这个没有关系
 
+## 安装 or 卸载 gnome
+安装
+```shell
+sudo pacman -S gnome
+sudo pacman -S gnome-tweaks
+systemctl enable gdm
+# Created symlink /etc/systemd/system/display-manager.service -/usr/lib/systemd/system/gdm.service.
+reboot
+```
+卸载
+```shell
+pacman -Rsc gnome # 卸载gnome及其依赖, Note: 此操作是递归的,可能会删除许多可能需要的包
+# 此操作需格外小心, 执行后需重新安装某些包, 不然程序会出错
+rm -rf /etc/systemd/system/display-manager.service
+```
+
+# DWM官方文档
+要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm
