@@ -779,7 +779,7 @@ React会自动添加“px”后缀到内联样式为数字的属性后
 如果设置次属性为true, React将不会警告你属性与元素内容不一致. 它只会对元素一级深度有效, 并且打算作为应急方案. 因此不要过度使用它
 
 ### value
-<input> <select> 和 <textarea> 组件支持value属性. 你可以使用它为组件设置value值, 这对于构建受控组件是非常有帮助的. defaultValue属性对应对是非受控组件属性, 用于设置组件第一次挂载时的value
+`<input> <select>` 和 `<textarea>` 组件支持value属性. 你可以使用它为组件设置value值, 这对于构建受控组件是非常有帮助的. defaultValue属性对应对是非受控组件属性, 用于设置组件第一次挂载时的value
 
 ### ALL Supported html Attributes
 在react16中,任何标准的或自定义的DOm属性都是完全支持的
@@ -1469,7 +1469,7 @@ function MeasureExample() {
 在这个案例中, 我们没有选择使用useRef, 因为当ref是一个对象时它并不会把当前ref的值变化通知我们. 使用callback ref可以确保 即便子组件延迟显示被测量的节点(比如为了响应一次点击), 我们依然能够在父组件接收到相关的信息, 以便更新测量结果
 注意到我们传递了[]作为useCallback的依赖列表. 这确保了ref callback不会在再次渲染时改变, 因为React不会在非必要的时候调用它
 
-在此示例中, 当且仅当组件挂载和卸载时, callback ref才会被调用, 因为渲染的<h1>组件在整个渲染期间始终存在. 如果你希望在每次组件调用大小时都收到通知, 则可能需要使用ResizeObserver或基于其构建的第三方Hook
+在此示例中, 当且仅当组件挂载和卸载时, callback ref才会被调用, 因为渲染的`<h1>`组件在整个渲染期间始终存在. 如果你希望在每次组件调用大小时都收到通知, 则可能需要使用ResizeObserver或基于其构建的第三方Hook
 
 
 如果你愿意, 你可以把这个逻辑抽取出来作为一个可复用的Hook
