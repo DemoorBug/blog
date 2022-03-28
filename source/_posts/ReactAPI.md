@@ -1811,3 +1811,143 @@ function DeepChild(props) {
 ```
 总而言之, 从维护角度来说这样看更加方便(不用不断转发回调), 同时也避免了回调的问题. 像这样向下传递dispatch 是处理深度更新的推荐模式.
 注意, 你依然可以选择将应用state作为props(更显明确) 向下传递或使用context(对很深的更新而言更加方便) 向下传递. 如果你选择使用context来向下传递state, 请使用两种不同的context类型传递state和dispatch --- 由于dispatch context永远不会变, 因此读取它的组件不需要重新渲染, 除非这些组件也需要用到应用程序的state
+
+# React18 Api
+
+## startTransition
+给渲染慢的元素添加startTransition
+```js
+function ClassicAssociationsBubbles({associations}) {
+  const [minScore, setMinScore] = useState(0.1)
+  const data = computeData(minScore)
+  return (
+    <>
+      <Slider value={minScore} onChange={(_, val) => {
+        setMinScore(val)
+      }}>
+      <ExpensiveChart data={data}>
+    </>
+  )
+}
+```
+如果设置新值,将每次更新minScore, 这两个操作绑定在一起,所以更新非常昂贵
+
+React 17 解决方法:
+如果我们有两个用户界面组件, 一个滑块和一个滑块结果. 理想情况下, 滑块和结果都会快速更新. 然而, 在这种情况下, 页面上有太多需要变化, 任何js函数都不可能使所有的更新快到让用户注意不到滞后 -- 因为有太多的工作要做
+如果不能同时更新, 也许可以把它们分成不同状态. 然后, 至少在理论上, 滑块的状态可以和结果分开更新. 这也许不能让我们完全达到目的,但这是react17能做的所有
+先把minScore状态分成两个不同的状态: 一个控制滑块, 一个控制结果:
+```js
+import {useState} from 'react'
+import {Slider} from '@material-ui/core'
+
+function FastSlider({defaultValue, onChange}) {
+  const [value, setValue] = useState(defaultValue)
+  return (
+    <Slider
+      value={value}
+      style={{width: '200px'}}
+      onChange={(e, nextValue) => {
+        setValue(nextValue)
+        onChange(nextValue)
+      }}
+    />
+  )
+}
+
+export default function ClassicAssociationsBubbles() {
+  const [minScore, setMinScore] = useState(0.1)
+  return (
+    <>
+    <div>{minScore}</div>
+    <FastSlider defaultValue={0.1} onChange={(val) => {
+      setMinScore(val)
+    }} />
+    </>
+  )
+}
+```
+但如果你在应用中加载这个, 你会看到没有任何变化. 这是因为React为了提高性能, 将状态更新集中在同一事件中, 这样就不会有两个状态更新紧接着出现. 但现在它们被分开了, 也许我们可以对每个更新做一些不同的事情
+
+增加setTimeout
+```js
+onChange={(e, nextValue) => {
+  setValue(nextValue)
+  setTimeout(() => {
+    onChange(nextValue)
+  }, 0)
+}}
+```
+不过这样还是会有问题, 可以让滑块响应速度变快, 但是在滑块停止移动后, 结果仍会继续更新. 这是因为所有状态更新仍在计划中, 并且将在超时触发时进行更新, 应该是因为没有清除setTime
+
+去抖动:
+```js
+const timeout = useRef(null)
+onChange={(e, nextValue) => {
+  clearTimeout(timeout.current)
+  setValue(nextValue)
+  timeout.current = setTimeout(() => {
+    onChange(nextValue)
+  }, 100)
+}}
+```
+这已经是react17及以下能做的最好的了,还可以用节流方法实现, 不过都是有问题的, 如果渲染速度比100ms快, 程序仍会暂停
+
+### 使用React18 startTransition
+使用startTransition只需要在startTransition中包含第二次更新即可,好方便
+```js
+return (
+  <>
+    <FastSlider defaultValue={0.1} onChange={val => {
+      startTransition(() => { // 好简单
+        setMinScore(val)
+      })
+    }}>
+    <ExpensiveChart data={data}>
+  </>
+)
+```
+React一直在工作. 我们在鼠标移动时处理它们, 以更新滑块的状态, 而当我们不在滑块上工作时, 我们就在做渲染工作
+但我们渲染的是什么呢
+
+我们在渲染结果. 当React完成了第一次滑块的更新渲染后, 它就开始过渲染过度的结果. 由于这个更新是选择了并发渲染, react将做三件事情
+
+Yidlding(屈服): 每个5毫秒, React就会停止工作, 让浏览器做其他工作, 比如运行承诺或触发事件. 这就是为什么前面例子中大块工作现在被切成小块的原因. React把它需要做的所有事情都分成小块工作, 并且很聪明的暂停, 让浏览器处理待定事件(这被称为“Yidlding”). 在我们的例子中, Yielding允许浏览器从滑块中发射更多mousemove事件来告诉React鼠标还在运动
+Interrupting(中断): 当第二个鼠标移动事件出现时, 我们为Slider安排另一个更新来移动它. 但如果我们已经在渲染上一次更新的结果, React如何渲染这个更新呢? 答案是当React再次开始工作时, 它会看到在鼠标移动过程中安排了一个新的紧急更新, 并停止在待定结果上的工作(因为它们反正已经过时了). React切换到渲染紧急的Slider更新, 当这个紧急的工作完成后, 它又回到渲染结果上. 我们称之为“interrupting”因为渲染结果是为了渲染slider而“interrupting”而中断的
+
+Skipping old results(跳过旧结果): 如果React只是开始渲染它正在处理的第一个结果, 那么它将开始建立一个要渲染结果的队列, 这将花费太多时间(就像第一个setTimeout例子). 因此, React所做的反而是跳过旧的工作. 当它从中段中恢复时, 它将从头开始渲染最新的值. 这意味着React只对用户真正需要看到的UI进行渲染, 而不是旧的状态.
+总之, 这意味着你可以尽情的滑动滑块, React将能够同时更新滑块和结果, 为用户实际需要看到的工作进行优化.
+### 添加视觉反馈
+React 18 提供了新的Hook useTransition 这个Hook返回startTransition函数来启动转换, 以及isPending值,该值在转换渲染时为true. 这意味着你可以告诉用户后台正在发生一些事情, 而他们仍然能够与页面进行交互
+```js
+import { useTransition } from 'react
+
+function ClassicAss...() {
+  const [isPending, startTransition] = useTransition()
+  ...
+  return (
+    <>
+      <FastSlider defaultValue={0.1} onChange={val => {
+        startTransition(() => {
+          setMinScore(val)
+        })
+      }}>
+      <ExpensiveChart
+        className={isPending ? 'pending' : 'done'}
+        data={data}
+      />
+    </>
+  )
+}
+.pending {
+  opacity: 0.7;
+  transition: opactiy 0.2s 0.4s linear
+}
+.done {
+  opacity: 1;
+  transition: opacity 0s 0s linear
+}
+
+```
+
+
+此文章中的项目,无法成功运行
