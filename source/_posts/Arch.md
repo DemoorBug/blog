@@ -355,7 +355,7 @@ sudo nmtui # 图形界面管理
 sudo nmcli # 命令行管理
 ```
 ## 使用iwd
-[https://wiki.debian.org/NetworkManager/iwd](NetworkManager/iwd - Debian Wiki)
+[NetworkManager/iwd - Debian Wiki](https://wiki.debian.org/NetworkManager/iwd)
 如果要用这个则必须关闭NetworkManager
 ```bash
 sudo systemctl stop NetworkManager 
@@ -372,7 +372,7 @@ dvice list
 
 ## 驱动安装
 这是最关键的，没驱动就会找不到网络
-[https://wireless.wiki.kernel.org/en/users/Drivers/b43#Supported_devices](网卡对应驱动查询)
+[网卡对应驱动查询 https://wireless.wiki.kernel.org/en/users/Drivers/b43#Supported_devices](https://wireless.wiki.kernel.org/en/users/Drivers/b43#Supported_devices)
 ```bash
 lspci -k # 找到Network这一项，看看有没有kernel字段，如果有的话则表示有驱动，没有就必须根据网卡型号安装对应驱动
 ```
@@ -387,7 +387,7 @@ Network controller: Broadcom Inc. and subsidiaries BCM43142 802.11b/g/n(rev 01)
 sudo pacman -Rcns broadcom-wl
 sudo pacman -Rcns realtek-firmware
 ```
-[https://linux-packages.com/arch-linux/package/broadcom-wl-dkms](Arch Linux 上 的 broadcom-wl-dkms)
+[Arch Linux 上 的 broadcom-wl-dkms](https://linux-packages.com/arch-linux/package/broadcom-wl-dkms)
 通过安装broadcom-wl-dkms解决了我的问题
 ```bash
 sudo pacman -S broadcom-wl-dkms
@@ -413,7 +413,7 @@ lock-never
 keyserver-options timeout=10
 keyserver hkp://keyserver.ubuntu.com:80
 ```
-[https://www.youtube.com/watch?v=_ANJMBryemY](https://www.youtube.com/watch?v=_ANJMBryemY参看视频)
+[https://www.youtube.com/watch?v=_ANJMBryemY参看视频(https://www.youtube.com/watch?v=_ANJMBryemY])
 视频中用的地址都不行，这个地址取自https://unix.stackexchange.com/a/399091
 `gpg --generate-key`参考https://superuser.com/a/1210759
 
