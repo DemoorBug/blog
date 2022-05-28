@@ -343,6 +343,82 @@ sudo chmod +X NVIDIA-Linux-x86_64-470.103.01.run
 sudo sh NVIDIA-Linux-x86_64-470.103.01.run
 ```
 
+# arch wifi
+## 使用networkmanager
+依赖项前面有讲
+```bash
+sudo systemctl enable NetworkManager # 启动networkmanager管理网络，很方便呢
+sudo systemctl enable wpa_supplicant
+sudo reboot
+
+sudo nmtui # 图形界面管理
+sudo nmcli # 命令行管理
+```
+## 使用iwd
+[https://wiki.debian.org/NetworkManager/iwd](NetworkManager/iwd - Debian Wiki)
+如果要用这个则必须关闭NetworkManager
+```bash
+sudo systemctl stop NetworkManager 
+sudo systemctl disable --now wpa_supplicant
+sudo systemctl restart NetworkManager
+
+sudo pacman -S iwd
+sudo systemctl enable iwd
+sudo reboot
+iwctl 
+dvice list 
+# 后续用法上面也有讲
+```
+
+## 驱动安装
+这是最关键的，没驱动就会找不到网络
+[https://wireless.wiki.kernel.org/en/users/Drivers/b43#Supported_devices](网卡对应驱动查询)
+```bash
+lspci -k # 找到Network这一项，看看有没有kernel字段，如果有的话则表示有驱动，没有就必须根据网卡型号安装对应驱动
+```
+```txt
+Network controller: Broadcom Inc. and subsidiaries BCM43142 802.11b/g/n(rev 01)
+```
+这是我的驱动型号，根据查询得知需要使用broadcom-wl驱动，但是呢，使用
+`sudo pacman -S broadcom-wl`安装并重启，再输入`lspci -k`并没有加载，有可能是我前面安装的`realtek-firmware`这是通过`aur`方式安装的。
+解决办法：
+先卸载以前装的这些
+```bash
+sudo pacman -Rcns broadcom-wl
+sudo pacman -Rcns realtek-firmware
+```
+[https://linux-packages.com/arch-linux/package/broadcom-wl-dkms](Arch Linux 上 的 broadcom-wl-dkms)
+通过安装broadcom-wl-dkms解决了我的问题
+```bash
+sudo pacman -S broadcom-wl-dkms
+```
+
+## 其中安装realtek-firmware遇到了`ERROR: One or more PGP signatures could not be verified, arch linux`报错，解决方法如下
+
+这一步不知道是不是必须
+`gpg --generate-key` or `gpg --full-gen-key`
+我用的第一个命令，创建一个key，然后继续
+例如这里报错 FAILED (unknown public key A2C794A986419D8A)
+我们就可以用这条命令
+`gpg --receive-keys A2C794A986419D8A`
+当然了，这里肯定又报错了
+`gpg: keyserver receive failed: Server indicated a failure`
+解决方法：
+编辑此文件 ~/.gnupg/gpg.conf 
+写入如下内容
+```
+no-greeting
+no-permission-warning
+lock-never
+keyserver-options timeout=10
+keyserver hkp://keyserver.ubuntu.com:80
+```
+[https://www.youtube.com/watch?v=_ANJMBryemY](https://www.youtube.com/watch?v=_ANJMBryemY参看视频)
+视频中用的地址都不行，这个地址取自https://unix.stackexchange.com/a/399091
+`gpg --generate-key`参考https://superuser.com/a/1210759
+
+
+
 
 # DWM官方文档
 要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm
