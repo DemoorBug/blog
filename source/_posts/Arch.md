@@ -417,6 +417,101 @@ keyserver hkp://keyserver.ubuntu.com:80
 视频中用的地址都不行，这个地址取自https://unix.stackexchange.com/a/399091
 `gpg --generate-key`参考https://superuser.com/a/1210759
 
+# 问题
+有些bug需要安装久版本的包，但是呢pacman不提供， 这个网址到时有提供https://archive.archlinux.org/packages/ 安装方法
+```bash
+wget https://archive.archlinux.org/packages/l/l3afpad/l3afpad-0.8.18.1.11-5-x86_64.pkg.tar.zst
+pacman -U l3afpad-0.8.18.1.11-5-x86_64.pkg.tar.zst
+```
+
+Error while loading shared libraries: libicuuc.so.59:
+这个问题，通过`pacman -Syy`可以解决 
+`pacman -Syu` 更新源，并升级
+
+
+https://forum.manjaro.org/t/gedit-plugin-warning-when-opening-from-terminal/75437
+```
+** (gedit:3892): WARNING **: 12:37:59.339: Error loading plugin: libaspell.so.15: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.339: Error loading plugin: libhspell.so.0: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.340: Error loading plugin: libnuspell.so.5: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.340: Error loading plugin: libvoikko.so.1: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libaspell.so.15: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libhspell.so.0: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libnuspell.so.5: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libvoikko.so.1: cannot open shared object file: No such file or directory
+
+```
+解决方案：
+```
+sudo pacman -Syyu libvoikko hspell nuspell hunspell aspell
+```
+
+`GLIBCXX_3.4.30` ,这个问题看一个回答说的是服务端错误，把依赖这个项目降级，参考上面的方法
+
+所需密钥丢失： https://github.com/FZUG/repo/issues/73#issuecomment-195919397
+error: key "F9F9FA97A403F63E" could not be looked up remotely
+error: required key missing from keyring
+解决方法1： 删除密钥检查
+
+vim /etc/pacman.conf
+#SigLevel = Required DatabaseOptional
+SigLevel = Never
+
+
+解决方法2： 引入key， 当然了，第二种方法报网络错误了，所以用了第一种
+sudo pacman-key --init
+sudo pacman-key -r 7F2D434B9741E8AC
+
+# 安装输入法
+pacman -S fcitx fcitx-im fcitx-configtool
+
+/etc/profile文件，在文件开头加入三行：
+
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+
+~/.pam_environment 添加：
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=\@im=fcitx
+
+因为用的xorg，所以在~/.xinitrc文件添加fcitx，登录即可启动输入法，当然要在exec dwm之前加此代码
+
+# 用到的一些命令
+lspci -k 查看驱动是否安装，有ker类似字样表示安装了驱动
+fc-list 查看安装的字体及字体名称，格式
+# 配置字体
+这里没想到居然还有说法的
+```bash
+sudo pacman -S wqy-microhei nerdfonts 
+sudo pacman -Ss nerd # 搜索相关字体，我用的是Hurmit，用pacmans -S 字体名下载即可
+fc-list | grep "WenQuanYi"
+fc-list | grep "Hurmit"
+```
+把相关信息填入dwm和st的字体配置文件中即可，比如dwm里面可以填写多条，Hurmit Nerd Font:pixelsize=14:antialias=true:auohint=true:type= 这里的type信息根据fc-list对应字体的style填写
+WenQuanYi Micro Hei:size:10:type=Regular:antialias=true:authint=true
+差不多如此即可  
+
+# 安装yay，以前只知道手动aur安装，yay就是替代手动安装，只要输入yay有的包，aur就会自己安装对应程序
+https://wiki.archlinux.org/title/General_recommendations_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 此链接最后有推荐的大陆软件集合，挺不错的，比如微信，网易云
+
+安装方法：
+```bash
+pacman -S git base-devel 
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+自己安装了，google-chrome和netease-cloud-music，都挺不错的
+
 
 
 
