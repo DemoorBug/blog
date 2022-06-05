@@ -512,7 +512,34 @@ makepkg -si
 ```
 自己安装了，google-chrome和netease-cloud-music，都挺不错的
 
+# 安装了qv2ray 
+通过导入链接形式添加节点关闭后节点消失，问题是我用的旧vmess所以才这样，设置里面勾选旧vmess或者手动新建节点即可
+配置开机启动呢，也很简单，在.xinitrc里面添加`qv2ray &` 再在~/dwm/config.h中添加
+```c
+static const Rule rules[] = {
+    { "qv2ray", NULL, NULL , 1 << 8, 1, -1}
+}
+```
+这个qv2ray如何来的呢，官网有介绍https://dwm.suckless.org/customisation/rules/
+```bash
+xprop | awk '
+	/^WM_CLASS/{sub(/.* =/, "instance:"); sub(/,/, "\nclass:"); print}
+	/^WM_NAME/{sub(/.* =/, "title:"); print}'
+```
+终端输入此命令，然后鼠标点击对应的应用窗口即可得到class名字
 
+莫名其妙的yay安装突然找不到qv2ray，输入yay -S qv2ray直接安装的是qv2ray-dev-git，必须把此命令改成yay -Sa qv2ray， -a的意思是从aur中寻找，不带的话就是从--repo中寻找，莫名其妙的
+
+安装uvw v2.11 这个居然可以这么简单，我是没想到的
+首先呢，通过yay下载aur上的pkg，也可以通过git下载
+```bash
+yay -G uvw
+git checkout ed67184 #如果安装2.10就切换到对应分支即可
+makepkg -si 
+```
+然和配置/etc/pacman.conf 忽略uvw的更先即可
+`sudo /etc/pacman.conf`
+修改如下： IgnorePkg =  uvw
 
 
 # DWM官方文档
