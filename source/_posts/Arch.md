@@ -711,6 +711,10 @@ Section "Monitor"
 	Option	"Disable" "true"
 EndSection
 ```
+PS：
+[此文章有热插拔投屏设置详情](https://blog.csdn.net/liberty1997/article/details/88658763)
+[如上配置文件参考](https://gist.github.com/r0xsh/4d1c7219ee63e4cee0c7fe1077559b28)
+[如上配置文件参考2](https://www.youtube.com/watch?v=lhiLWxJgiAo)
 
 
 # DWM官方文档
