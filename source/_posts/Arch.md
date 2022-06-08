@@ -716,6 +716,19 @@ PS：
 [如上配置文件参考](https://gist.github.com/r0xsh/4d1c7219ee63e4cee0c7fe1077559b28)
 [如上配置文件参考2](https://www.youtube.com/watch?v=lhiLWxJgiAo)
 
+# CPU temperature
+```bash
+yay -S lm_sensors
+sensors-detect # 这里只选了cpu温度
+sensors # 就可以查看温度了
+```
+然后在slstatus的config.h中配置即可
+```bash
+sensors | awk -F '.' '/Package id 0/ {print $1}' | awk -F '+' '{print $2}' | awk '{print$1"°C"}'
+```
+[壁纸在这里下载的](http://simpledesktops.com/)
+[sensors参考](https://wiki.archlinux.org/title/lm_sensors)
+
 
 # DWM官方文档
 要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm
