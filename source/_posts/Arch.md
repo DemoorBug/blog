@@ -658,6 +658,59 @@ static Key keys[] = {
 ```
 其他同理
 
+# 配置开机投屏的设置
+```bash
+xrandr # 打印显示器信息
+
+Screen 0: minimum 8 x 8, current 1920 x 1080, maximum 32767 x 32767
+eDP1 connected primary (normal left inverted right x axis y axis)
+   1366x768      59.99 +  39.94
+   1280x720      59.86    60.00    59.74
+   1024x768      60.00
+   1024x576      60.00    59.90    59.82
+   960x540       60.00    59.63    59.82
+   800x600       60.32    56.25
+   864x486       60.00    59.92    59.57
+   640x480       59.94
+   720x405       59.51    60.00    58.99
+   680x384       60.00
+   640x360       59.84    59.32    60.00
+HDMI1 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 480mm x 270mm
+   1920x1080     60.00*+  59.94
+   1280x1024     60.02
+   1440x900      59.90
+   1280x800      59.91
+   1152x864      75.00
+   1280x720      60.00    59.94
+   1024x768      70.07    60.00
+   800x600       60.32    56.25
+   720x480       60.00    59.94
+   640x480       66.67    60.00    59.94
+   720x400       70.08
+VIRTUAL1 disconnected (normal left inverted right x axis y axis)
+
+```
+其中eDP1是我的笔记本显示器， HDMI1是外接显示器
+```bash
+xrandr --output HDMI1 --primary --auto --output eDP1 --off # 此命令把外接显示器设置为主显示器（因为笔记本是720p的，不设置主显示器就会导致屏幕留白，或者设置--left-of eDP1 也可以解决留白问题），顺带把笔记本显示器关闭
+```
+然后就是每次开机后自动设置投屏及分辨率
+在/etc/X11/xorg.conf.d/ 下创建10-monitor.conf文件，编辑如下内容
+```base
+Section "Monitor"
+	Identifier "HDMI1"
+	## 设置分辨率为1920x1080
+	Option	"PreferredMode" "1920x1080"
+	## 设置为左副屏，因为Primary不知道为什么不起作用，只能用这个代替，不过效果都一样，可以接受
+	Option	"LeftOf" "eDP1"
+EndSection
+
+Section "Monitor"
+	Identifier  "eDP1"
+	## 禁用笔记本屏幕
+	Option	"Disable" "true"
+EndSection
+```
 
 
 # DWM官方文档
