@@ -728,7 +728,55 @@ sensors | awk -F '.' '/Package id 0/ {print $1}' | awk -F '+' '{print $2}' | awk
 ```
 [壁纸在这里下载的](http://simpledesktops.com/)
 [sensors参考](https://wiki.archlinux.org/title/lm_sensors)
+# NVIDIA 驱动设置
+我的显卡仅能用470xx版本的驱动
+```bash
+yay -S nvidia-470xx-ddkms
+```
+某些包不知道是不是必须,没有验证,但是我自己安装了
+[参考自这个youtube视频,对我帮助挺大](https://www.youtube.com/watch?v=AOjOd3wIPu8)
+```bash
+sudo pacman -S xorg-server-devel opencl-nvidia
+```
+创建/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf并写入如下内容:
+```bash
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+EndSection
 
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection
+```
+编辑~/.xinitrc
+```bash
+xrandr --setprovideroutputsource modesetting NVIDIA-0 # 启用nvidia
+xrandr --output HDMI-1-1 --auto --output eDP-1-1 --off # 输出到hdmi-1-1 并且关闭笔记本显示器
+xrandr --dpi 96 # 设置1080p的dpi
+```
+重启并安装测试软件看是否成功
+```bash
+sudo pacman -S neofetch
+glxspheres64
+```
+# 打补丁st
+安装有alpha,anysize,blinking cursor, xresources
+```bash
+lazigit # 1,a,c,patch, 3, c, alpha, enter, q
+patch < st-alpha-* # 写的方便省略 . 如果遇到失败,会保存在一个文件中,自己修改对应内容即可
+lazgit # 3, j, space, j, M, enter , q 
+```
+其他几个同理
+
+[参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 
 # DWM官方文档
 要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm
