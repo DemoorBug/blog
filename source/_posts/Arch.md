@@ -775,6 +775,10 @@ patch < st-alpha-* # 写的方便省略 . 如果遇到失败,会保存在一个�
 lazgit # 3, j, space, j, M, enter , q 
 ```
 其他几个同理
+安装neofetch 直观查看xresources效果
+```
+sudo pacman -S neofetch
+```
 
 [参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 
