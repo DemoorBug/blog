@@ -528,6 +528,44 @@ unzip Fonts.zip
 sudo cp -r Fonts/. /usr/share/fonts/win-font
 fc-list | less # 查看是否安装
 ```
+## 字体讲究是真的多哎
+安装了一堆字体就必须设置优先级,我使用的是arch, 字体使用的配置文件在~/.config/fontconfig/fonts.conf 中设置,也可以在~/.fonts.conf设置不过这个已经抛用的规则
+```bash
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+<alias>
+   <family>serif</family>
+   <prefer>
+     <family>Hurmit Nerd Font Mono</family>
+     <family>ZCOOL QingKe HuangYou</family>
+   </prefer>
+ </alias>
+<alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family>Hurmit Nerd Font Mono</family>
+     <family>ZCOOL QingKe HuangYou</family>
+   </prefer>
+ </alias>
+<alias>
+   <family>monospace</family>
+   <prefer>
+     <family>Hurmit Nerd Font Mono</family>
+     <family>ZCOOL QingKe HuangYou</family>
+   </prefer>
+ </alias>
+</fontconfig>
+```
+这些字体可以在fc-list | less中查看名称,以上是我安装的一些字体
+而且要设置serif,sans-serif,monospace这三个虚拟字体, 应该是某些软件使用类似serif就可以调用系统字体的一种规则吧
+仅仅是设置这个文件还不足以设置全部的字体,还要根据软件是基于gtk或者qt(qt好像可以直接使用上面的配置,不用再进行配置了) 再进行配置
+比如说google-chrome使用gtk3,我们就要再去~/.config/gtk-3.0/settings.ini添加如下内容
+```txt
+[Settings]
+gtk-font-name=ZCOOL QingKe HuangYou
+```
+这样配置之后,chrome的地址栏和选项卡字体都得以更改,太爽了
 
 # 安装yay，以前只知道手动aur安装，yay就是替代手动安装，只要输入yay有的包，aur就会自己安装对应程序
 https://wiki.archlinux.org/title/General_recommendations_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 此链接最后有推荐的大陆软件集合，挺不错的，比如微信，网易云
@@ -783,6 +821,26 @@ sudo pacman -S neofetch
 安装xclip即可
 ```bash
 sudo pacman -S xclip
+```
+还安装了一个copyq,但是还不会用
+
+# 键位改映射
+```bash
+xmodmap -pm | less 
+xmodmap -pke | less
+```
+修改~/.Xmodmap添加如下内容, 删除mod4,lock,control映射,重新设置37键为Super_L(也就是win键),重新设置66为control
+这里37原来是control
+66原为caps_lock
+
+```bash
+remove mod4 = Super_L
+remove lock = Caps_Lock
+remove control = Control_L
+keycode  37 = Super_L NoSymbol Super_L
+keycode  66 = Control_L NoSymbol Control_L
+add mod4 = Super_L
+add control = Control_L
 ```
 
 [参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
