@@ -779,6 +779,11 @@ lazgit # 3, j, space, j, M, enter , q
 ```
 sudo pacman -S neofetch
 ```
+# nvim brower 共享剪切板设置
+安装xclip即可
+```bash
+sudo pacman -S xclip
+```
 
 [参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 
