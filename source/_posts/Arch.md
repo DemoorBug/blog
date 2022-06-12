@@ -837,10 +837,15 @@ xmodmap -pke | less
 remove mod4 = Super_L
 remove lock = Caps_Lock
 remove control = Control_L
+remove mod1 = Alt_L
 keycode  37 = Super_L NoSymbol Super_L
+keycode  133 = Alt_L NoSymbol Alt_L
 keycode  66 = Control_L NoSymbol Control_L
+keycode  64 = Control_L NoSymbol Control_L
+keycode  108 = Escape NoSymbol Escape
 add mod4 = Super_L
 add control = Control_L
+add mod1 = Alt_L
 ```
 
 [参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
