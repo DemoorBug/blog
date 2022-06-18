@@ -504,9 +504,6 @@ libxft-bgra 这个包可以解决dwm用unicode崩溃问题
 
 
 
-## 用到的一些命令
-lspci -k 查看驱动是否安装，有ker类似字样表示安装了驱动
-fc-list 查看安装的字体及字体名称，格式
 ## 配置字体
 这里没想到居然还有说法的
 ```bash
@@ -847,6 +844,13 @@ add mod4 = Super_L
 add control = Control_L
 add mod1 = Alt_L
 ```
+如果使用vscode必须在setting.json添加如下代码,否则不能正常识别108设置的esc键
+"keyboard.dispatch": "keyCode"
+
+## 用到的一些命令
+lspci -k 查看驱动是否安装，有ker类似字样表示安装了驱动
+fc-list 查看安装的字体及字体名称，格式
+locate 感觉类似于win的快速搜索,超好用,安装sudo pacman -S mlocate后必须运行sudo updatedb不如搜索报错,好像是每天会自己更新一次
 
 [参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 
