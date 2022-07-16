@@ -6,6 +6,7 @@ categories: [react]
 ---
 
 # 无障碍
+
 每一个HTML表单控件, 如input和textarea都需要有无障碍标签. 我们需要提供描述性标签, 这些标签也会暴露给屏幕阅读器
 例:
 img标签的alt属性,a标签的内容被视为描述
@@ -45,11 +46,12 @@ React.lazy函数可以让你把动态导入作为一个普通组件来渲染
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'))
 ```
+
 这将在该组件首次渲染时自动加载包含OtherComponent的包.
 React.lazy需要一个必须调用动态import()的函数. 这必须返回一个Promise, 该Promise解析到一个包含React组件的默认导出模块
 然后, lazy组件应该在一个Suspense组件内呈现, 这允许我们在等待lazy组件加载时显示一些(fallback)后备内容(如加载指示器)
-```js
-import React, {Suspense} from 'react
+```jsx
+import React, {Suspense} from 'react'
 const OtherComponent = React.lazy(() => import('./OtherComponent'))
 const AnotherComponent = React.lazy(() => import('./AnotherComponent'))
 function MyComponent() {
@@ -1949,5 +1951,122 @@ function ClassicAss...() {
 
 ```
 
+> 此文章中的项目,无法成功运行
 
-此文章中的项目,无法成功运行
+## 如何处理空Suspense
+不再跳过有缺失或空Suspense 回退的suspense边界.
+替换为,捕捉边界并为fallbacks 渲染空
+暂时的理解是,如果使用Suspense 但是没有提供应有的逻辑而直接嵌套另一个suspense以前的行为是跳过第一个Suspense的fallback.
+新的处理方式是捕捉并呈现fallback, 模拟你提供null组件一样. 这意味着没有使用(挂起)的语意按预期工作, 如果你忘记提供fallback, 就会看到空加载状态
+```jsx
+<Suspense fallback={<Loading />}>   // <--- not used
+  <Suspense>                        // <--- this boundary is used, rendering null for the fallback 使用此边界,并fallback呈现为空
+    <Page />
+  </Suspense>
+</Suspense>
+```
+以前的行为:
+```jsx
+<Suspense fallback={<Loading />}>   // <--- this boundary is used
+  <Suspense>                        // <--- this boundary is skipped, no fallback 跳过此边界, 没有fallback
+    <Page />
+  </Suspense>
+</Suspense>
+```
+## 支持返回null, 而不是必须为一个组件, 不知道是不是这个意思
+允许未定义(undefined)的东西被渲染, 创建一个跨类型系统的相同类型就变的很容易
+
+## 严格模式的双重渲染问题
+以前是隐藏了双重渲染提示,不过开发人员遇到了问题, 所以他们又改回来, 对我来说好像并不重要, 可以在devtools里面启动或关闭
+
+## 删除 不能在未挂载组件上执行React状态更新
+这样会导致内存泄漏. 要解决这个问题在effect中删除订阅和异步内容
+
+实际在useEffect中调用get, post请求大部分情况不会有内存泄漏,所以删除了此提示
+
+## 升级link 
+这里面提到的好像是link加载css问题, 有nodejs通过writable解决(这个node方法不知道起什么作用), 还有就是通过浏览器解决,但是浏览器解决会不稳定(浏览器兼容问题)
+未来可能可以直接在return的jsx语法中添加link加载css样式
+
+**动态插入**
+可以通过link rel="preload" html5的实现方法, 通过改变link.rel = ‘stylesheet' 实现加载
+
+不过呢,与其用link标签(问题多), 倒不如使用style标签(问题少)
+建议使用包含许多规则的相当大的css文件, 以避免动态插入过多文件
+
+## pipeToNodeWritable -> renderToPipeableStream
+此升级为居然不知道是什么东西, 从来没用过旧的方法, 以后遇到类似问题再来看吧, 现在确实不知道从何下手
+
+## act 专为测试添加的
+目前还没有到测试, 先搁置在这里吧
+
+## 自动批处理
+在react17及之前版本, timeouts, promises, native event(本地事件处理程序)或任何其他事件中, 都不会采用批处理,这导致了性能问题
+在react18 中, 所有这些事件都会被自动批处理
+```js
+function handleClick() {
+  setCount(c => c + 1)
+  setFlag(f => !f)
+}
+// or
+setTimeout(() => {
+  setCount(c => c + 1)
+  setFlag(f => !f)
+}, 1000)
+// or
+fetch(/*...*/).then(() => {
+  setCount(c => c + 1)
+  setFlag(f => !f)
+})
+// or 
+elm.addEventListener('click', () => {
+  setCount(c => c + 1)
+  setFlag(f => !f)
+})
+```
+> react只在一般安全的情况下进行批处理. 每个用户发起的事件, 点击、或按键或Dom在下一个事件之前被完全更新, 这可以确保一个在提交时禁用的表单不会被提交两次
+
+**禁用批处理**
+通常来说批处理没什么问题, 但是某些情况可能依赖于状态更改后立即从DOM读取某些内容. 对于这些问题, 则可以用ReactDOM.flushSync() 选择退出批处理
+```js
+import { flushSync } from 'react-dom'
+
+function handleClick() {
+  flushSync(() => {
+    setCounter(c => c + 1)
+  })
+  flushSync(() => {
+    setFlag(f => !f)
+  })
+}
+```
+通常来说很少使用这项功能
+**Classes**
+中有一个很少见的问题, 就是在setState后立即读取this.state 会导致读取旧值
+
+```js
+handleClick = () => {
+  setTimeout(() => {
+    this.setState({ count } => ({count: count + 1}))
+    console.log(this.state) // 输出{count: 0}
+  })
+}
+```
+通过flushSync解决, 谨慎使用
+```js
+handleClick = () => {
+  setTimeout(() => {
+    flushSync(() => {
+      this.setState({ count } => ({count: count + 1}))
+    })
+    console.log(this.state) // 输出{count: 0}
+  })
+}
+```
+
+Hooks中不存在此问题
+比如上面的handleClick更新完成后, 统一更新,所以不存在此问题
+官方解释: 设置状态并不更新来自useState的现有变量
+
+一些React库使用这个未记录的API来强制对事件处理程序之外的setState进行批处理:
+unstable_batchedUpdates, React18不会删除它,未来版本也许会删除

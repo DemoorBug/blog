@@ -346,3 +346,49 @@ sudo sh NVIDIA-Linux-x86_64-470.103.01.run
 
 # DWM官方文档
 要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm
+
+# dwm 使用diff
+太坑了,官方文档不更新的,diff要手动解决冲突, 而使用别人更新的第三方,可以直接合并
+这个问题找了几个小时,醉了
+```shell
+git clone https://github.com/bakkeby/patches.git
+cp dwm/dwm-alpha-6.3.diff ../dwm/
+cd ../dwm
+git apply dwm-alpha-6.3.diff
+git add . 
+git cammit 'new'
+sudo make clean install
+```
+设置桌面背景及安装xcompmgr(只有安装了这个才能实现背景透明)
+
+```shell
+sudo pacman -S feh
+feh --bg-scale 'name file'.jpg
+# 
+pacman -S xcompmgr transset-df # 这个东西yur里面有
+
+# .xinitrc添加
+xcompmgr &
+# 
+transset .50
+```
+[此链接有详细的git apply 说明 git rebase --abort 终止rebase](https://dwm.suckless.org/customisation/patches_in_git/)
+# 关闭系统
+原来直接运行shutdown或halt不会关闭电源,好坑
+```shell
+halt -p # 关闭系统并关闭电源
+halt -f # 不强制调用shutdown 强制关闭系统
+# shutdown
+shutdown -p now # 关闭系统并关闭电源
+shutdown -H  now # 把机器停下来? 休眠?
+shutdown -r09:35 #9:35重启机器
+```
+
+# 休眠
+命令	操作
+systemctl reboot	重启机器
+systemctl poweroff	关机
+systemctl suspend	挂起-睡眠-保存在內存
+systemctl hibernate	休眠-断电-保存在硬盘
+systemctl hybrid-sleep	混合休眠模式（同时休眠到硬盘并挂起）
+
