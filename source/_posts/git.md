@@ -111,6 +111,12 @@ git commit --amend // 就会进入编辑模式
 ```bash
 git clone git@github.com:DemoorBug/pubg-api.git // 项目地址
 ```
+# 解决不能git pull origin master
+因为两台电脑分别更新了同一个文件且一台没有提交,所以不能直接使用以上命令.
+[我该如何处理这个 Git 警告？“不鼓励在不指定如何协调不同分支的情况下进行拉取”](https://stackoverflow.com/questions/62653114/how-can-i-deal-with-this-git-warning-pulling-without-specifying-how-to-reconci)
+```bash
+git pull --ff-only
+```
 
 # win10 系统激活
 
