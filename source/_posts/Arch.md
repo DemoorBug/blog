@@ -343,6 +343,516 @@ sudo chmod +X NVIDIA-Linux-x86_64-470.103.01.run
 sudo sh NVIDIA-Linux-x86_64-470.103.01.run
 ```
 
+# arch wifi
+## 使用networkmanager
+依赖项前面有讲
+```bash
+sudo systemctl enable NetworkManager # 启动networkmanager管理网络，很方便呢
+sudo systemctl enable wpa_supplicant
+sudo reboot
+
+sudo nmtui # 图形界面管理
+sudo nmcli # 命令行管理
+```
+## 使用iwd
+[NetworkManager/iwd - Debian Wiki](https://wiki.debian.org/NetworkManager/iwd)
+如果要用这个则必须关闭NetworkManager
+```bash
+sudo systemctl stop NetworkManager 
+sudo systemctl disable --now wpa_supplicant
+sudo systemctl restart NetworkManager
+
+sudo pacman -S iwd
+sudo systemctl enable iwd
+sudo reboot
+iwctl 
+dvice list 
+# 后续用法上面也有讲
+```
+
+## 驱动安装
+这是最关键的，没驱动就会找不到网络
+[网卡对应驱动查询 https://wireless.wiki.kernel.org/en/users/Drivers/b43#Supported_devices](https://wireless.wiki.kernel.org/en/users/Drivers/b43#Supported_devices)
+```bash
+lspci -k # 找到Network这一项，看看有没有kernel字段，如果有的话则表示有驱动，没有就必须根据网卡型号安装对应驱动
+```
+```txt
+Network controller: Broadcom Inc. and subsidiaries BCM43142 802.11b/g/n(rev 01)
+```
+这是我的驱动型号，根据查询得知需要使用broadcom-wl驱动，但是呢，使用
+`sudo pacman -S broadcom-wl`安装并重启，再输入`lspci -k`并没有加载，有可能是我前面安装的`realtek-firmware`这是通过`aur`方式安装的。
+解决办法：
+先卸载以前装的这些
+```bash
+sudo pacman -Rcns broadcom-wl
+sudo pacman -Rcns realtek-firmware
+```
+[Arch Linux 上 的 broadcom-wl-dkms](https://linux-packages.com/arch-linux/package/broadcom-wl-dkms)
+通过安装broadcom-wl-dkms解决了我的问题
+```bash
+sudo pacman -S broadcom-wl-dkms
+```
+
+## 其中安装realtek-firmware遇到了`ERROR: One or more PGP signatures could not be verified, arch linux`报错，解决方法如下
+
+这一步不知道是不是必须
+`gpg --generate-key` or `gpg --full-gen-key`
+我用的第一个命令，创建一个key，然后继续
+例如这里报错 FAILED (unknown public key A2C794A986419D8A)
+我们就可以用这条命令
+`gpg --receive-keys A2C794A986419D8A`
+当然了，这里肯定又报错了
+`gpg: keyserver receive failed: Server indicated a failure`
+解决方法：
+编辑此文件 ~/.gnupg/gpg.conf 
+写入如下内容
+```
+no-greeting
+no-permission-warning
+lock-never
+keyserver-options timeout=10
+keyserver hkp://keyserver.ubuntu.com:80
+```
+[https://www.youtube.com/watch?v=_ANJMBryemY参看视频(https://www.youtube.com/watch?v=_ANJMBryemY])
+视频中用的地址都不行，这个地址取自https://unix.stackexchange.com/a/399091
+`gpg --generate-key`参考https://superuser.com/a/1210759
+
+# 问题
+有些bug需要安装久版本的包，但是呢pacman不提供， 这个网址到时有提供https://archive.archlinux.org/packages/ 安装方法
+```bash
+wget https://archive.archlinux.org/packages/l/l3afpad/l3afpad-0.8.18.1.11-5-x86_64.pkg.tar.zst
+pacman -U l3afpad-0.8.18.1.11-5-x86_64.pkg.tar.zst
+```
+
+Error while loading shared libraries: libicuuc.so.59:
+这个问题，通过`pacman -Syy`可以解决 
+`pacman -Syu` 更新源，并升级
+
+
+https://forum.manjaro.org/t/gedit-plugin-warning-when-opening-from-terminal/75437
+```
+** (gedit:3892): WARNING **: 12:37:59.339: Error loading plugin: libaspell.so.15: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.339: Error loading plugin: libhspell.so.0: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.340: Error loading plugin: libnuspell.so.5: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.340: Error loading plugin: libvoikko.so.1: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libaspell.so.15: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libhspell.so.0: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libnuspell.so.5: cannot open shared object file: No such file or directory
+
+** (gedit:3892): WARNING **: 12:37:59.341: Error loading plugin: libvoikko.so.1: cannot open shared object file: No such file or directory
+
+```
+解决方案：
+```
+sudo pacman -Syyu libvoikko hspell nuspell hunspell aspell
+```
+
+`GLIBCXX_3.4.30` ,这个问题看一个回答说的是服务端错误，把依赖这个项目降级，参考上面的方法
+
+所需密钥丢失： https://github.com/FZUG/repo/issues/73#issuecomment-195919397
+error: key "F9F9FA97A403F63E" could not be looked up remotely
+error: required key missing from keyring
+解决方法1： 删除密钥检查
+
+vim /etc/pacman.conf
+#SigLevel = Required DatabaseOptional
+SigLevel = Never
+
+
+解决方法2： 引入key， 当然了，第二种方法报网络错误了，所以用了第一种
+sudo pacman-key --init
+sudo pacman-key -r 7F2D434B9741E8AC
+
+# 安装输入法
+pacman -S fcitx fcitx-im fcitx-configtool
+
+/etc/profile文件，在文件开头加入三行：
+
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+
+~/.pam_environment 添加：
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=\@im=fcitx
+
+因为用的xorg，所以在~/.xinitrc文件添加fcitx，登录即可启动输入法，当然要在exec dwm之前加此代码
+
+## 以前安装的是fcitx，换成fcitx5
+https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+```bash
+sudo pacman -Rcns fcitx
+sudo pacman -S fcitx5-im fcitx-chinese-addons # 其中呢fcitx-im里面就包含fcitx5，fcitx5-configtool，qt，gtk。 fcitx-chinese-addons 包含所用到的语言框架，比如五笔，拼音之类
+yay -S fcitx5-skin-fluentdark-git # 这是皮肤，用着还不错
+```
+我用的是pinyin这个中文框架
+开启了云联想，源改为baidu，并且安装了离线字库
+```bash
+sudo pacman -S Fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki # 这俩是离线字库
+```
+## unicode
+https://wiki.archlinux.org/title/Fonts#Non-latin_scripts
+ttf-joypixels unicode图标，最后还是没用，用微软的解决方案
+libxft-bgra 这个包可以解决dwm用unicode崩溃问题
+
+
+
+## 配置字体
+这里没想到居然还有说法的
+```bash
+sudo pacman -S wqy-microhei nerdfonts 
+sudo pacman -Ss nerd # 搜索相关字体，我用的是Hurmit，用pacmans -S 字体名下载即可
+fc-list | grep "WenQuanYi"
+fc-list | grep "Hurmit"
+```
+把相关信息填入dwm和st的字体配置文件中即可，比如dwm里面可以填写多条，Hurmit Nerd Font:pixelsize=14:antialias=true:auohint=true:type= 这里的type信息根据fc-list对应字体的style填写
+WenQuanYi Micro Hei:size:10:type=Regular:antialias=true:authint=true
+差不多如此即可  
+
+## 如果只安装wqy字体就会导致很多字没有，比如“䵈”字就没有，目前只能通过复制微软字体库解决
+```bash
+# 把win字体打包成zip，通过scp发送到linux
+scp Fonts.zip usename@ip:~
+# linux中解压
+unzip Fonts.zip
+sudo cp -r Fonts/. /usr/share/fonts/win-font
+fc-list | less # 查看是否安装
+```
+## 字体讲究是真的多哎
+安装了一堆字体就必须设置优先级,我使用的是arch, 字体使用的配置文件在~/.config/fontconfig/fonts.conf 中设置,也可以在~/.fonts.conf设置不过这个已经抛用的规则
+```bash
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+<alias>
+   <family>serif</family>
+   <prefer>
+     <family>Hurmit Nerd Font Mono</family>
+     <family>ZCOOL QingKe HuangYou</family>
+   </prefer>
+ </alias>
+<alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family>Hurmit Nerd Font Mono</family>
+     <family>ZCOOL QingKe HuangYou</family>
+   </prefer>
+ </alias>
+<alias>
+   <family>monospace</family>
+   <prefer>
+     <family>Hurmit Nerd Font Mono</family>
+     <family>ZCOOL QingKe HuangYou</family>
+   </prefer>
+ </alias>
+</fontconfig>
+```
+这些字体可以在fc-list | less中查看名称,以上是我安装的一些字体
+而且要设置serif,sans-serif,monospace这三个虚拟字体, 应该是某些软件使用类似serif就可以调用系统字体的一种规则吧
+仅仅是设置这个文件还不足以设置全部的字体,还要根据软件是基于gtk或者qt(qt好像可以直接使用上面的配置,不用再进行配置了) 再进行配置
+比如说google-chrome使用gtk3,我们就要再去~/.config/gtk-3.0/settings.ini添加如下内容
+```txt
+[Settings]
+gtk-font-name=ZCOOL QingKe HuangYou
+```
+这样配置之后,chrome的地址栏和选项卡字体都得以更改,太爽了
+
+# 安装yay，以前只知道手动aur安装，yay就是替代手动安装，只要输入yay有的包，aur就会自己安装对应程序
+https://wiki.archlinux.org/title/General_recommendations_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 此链接最后有推荐的大陆软件集合，挺不错的，比如微信，网易云
+
+安装方法：
+```bash
+pacman -S git base-devel 
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+自己安装了，google-chrome和netease-cloud-music，都挺不错的
+
+# 安装了qv2ray 
+通过导入链接形式添加节点关闭后节点消失，问题是我用的旧vmess所以才这样，设置里面勾选旧vmess或者手动新建节点即可
+配置开机启动呢，也很简单，在.xinitrc里面添加`qv2ray &` 再在~/dwm/config.h中添加
+```c
+static const Rule rules[] = {
+    { "qv2ray", NULL, NULL , 1 << 8, 1, -1}
+}
+```
+这个qv2ray如何来的呢，官网有介绍https://dwm.suckless.org/customisation/rules/
+```bash
+xprop | awk '
+	/^WM_CLASS/{sub(/.* =/, "instance:"); sub(/,/, "\nclass:"); print}
+	/^WM_NAME/{sub(/.* =/, "title:"); print}'
+```
+终端输入此命令，然后鼠标点击对应的应用窗口即可得到class名字
+
+莫名其妙的yay安装突然找不到qv2ray，输入yay -S qv2ray直接安装的是qv2ray-dev-git，必须把此命令改成yay -Sa qv2ray， -a的意思是从aur中寻找，不带的话就是从--repo中寻找，莫名其妙的
+
+安装uvw v2.11 这个居然可以这么简单，我是没想到的
+首先呢，通过yay下载aur上的pkg，也可以通过git下载
+```bash
+yay -G uvw
+git checkout ed67184 #如果安装2.10就切换到对应分支即可
+makepkg -si 
+```
+然和配置/etc/pacman.conf 忽略uvw的更先即可
+`sudo /etc/pacman.conf`
+修改如下： IgnorePkg =  uvw
+
+# 分辨率
+```bash
+xrandr -q #查看分辨率
+#我的第一个显示器叫 eDP1，把这里Virtual-1
+xrandr --output Virtual-1 --mode 1920*1080 --rate 60 # 设置分辨率
+```
+# 壁纸
+```bash
+feh --bg-fill --randomize /usr/share/backgrounds/archlinux/* #这个文件夹每次随机壁纸
+# 注意，启动项里面分辨率要在壁纸之前设置
+```
+
+# 音频配置
+
+我默认已经有音频驱动
+lspci -k | less
+```bash
+sudo pacman -S alsa-utils # 音频管理
+amixer sget Master # 并没有显示音频
+
+aplay -l 里面有很多设备，找到HDA Intel PCH自己对应的设备号
+```
+编辑/etc/asound.conf或者~/.asoundrc
+```bash
+defaults.pcm.card 1 # 对应aplay中
+defaults.pcm.device 0 # 对应aplay中
+defaults.ctl.card 1 
+```
+pcm选项决定用来播放音频的设备，而ctl选项决定那个声卡能够由控制工具（如 alsamixer）使用。
+重启即可，或者重启音频设备
+https://segmentfault.com/a/1190000002918394
+# slstatus 配置
+打开config.h
+```bash
+static const struct arg args[] = {
+        /* function format          argument */
+        { disk_free, "%s 丨 ",           "/home" },
+        { cpu_perc, "%s%% 丨 ",           NULL },
+        { ram_perc, "%s%% 丨 ",           NULL },
+        { run_command, "%s 丨 ",         "amixer sget Master | awk -F '[][]' '{ print $2 }' | sed '/^\s*$/d'" },
+        { run_command, "%s 丨 ",         " light -G | awk '{if( $1 == 100)  {print 100} else {print 1+int($1)}}'" },
+        { datetime, "%s ",           "%m/%d %R" },
+};
+```
+第一个磁盘空间
+第二个cpu占用
+第三内存占用
+第四个是通过amixer显示的音量
+第五个通过light显示屏幕亮度
+第六个显示当前时间年月时间
+[c date time](https://zetcode.com/articles/cdatetime/)
+[awk if语法](https://blog.csdn.net/xiyangyang052/article/details/45462505)
+[awk 运算符](https://blog.csdn.net/xiyangyang052/article/details/45675027)
+
+# 屏幕亮度配置用的是light，当然这是笔记本控制亮度，如果有/sys/class/backlight/intel_backlight/ 目录就可以使用light
+https://wiki.archlinux.org/title/Backlight_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+https://wiki.archlinux.org/title/Backlight_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Backlight_utilities
+```bash
+sudo pacman -S light
+sudo usermod -a -G video [YourUserName] # 这里把用户加入video用户组，否则运行light调节亮度必须管理员权限
+light -A 10 # 增加10亮度
+light -U 10 # 减少10亮度
+```
+
+# 配置dwm快捷键设置音量及屏幕亮度
+
+dwm目录下添加lightup.sh,lightdown.sh
+```bash
+# lightup.sh
+#!/bin/bash
+light -A 10
+
+# lightdown.sh
+#!/bin/bash
+light -U 10
+```
+```bash
+chmod +x lightup.sh lightdown.sh #授予执行权限
+```
+编辑config.h
+```c
+static const char *lightup[] = { "/home/debug/.config/dwm/lightup.sh", NULL }  
+static Key keys[] = {
+	{MODKEY, XK_F3, spawn, {.v = lightup}}
+}
+```
+其他同理
+
+# 配置开机投屏的设置
+```bash
+xrandr # 打印显示器信息
+
+Screen 0: minimum 8 x 8, current 1920 x 1080, maximum 32767 x 32767
+eDP1 connected primary (normal left inverted right x axis y axis)
+   1366x768      59.99 +  39.94
+   1280x720      59.86    60.00    59.74
+   1024x768      60.00
+   1024x576      60.00    59.90    59.82
+   960x540       60.00    59.63    59.82
+   800x600       60.32    56.25
+   864x486       60.00    59.92    59.57
+   640x480       59.94
+   720x405       59.51    60.00    58.99
+   680x384       60.00
+   640x360       59.84    59.32    60.00
+HDMI1 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 480mm x 270mm
+   1920x1080     60.00*+  59.94
+   1280x1024     60.02
+   1440x900      59.90
+   1280x800      59.91
+   1152x864      75.00
+   1280x720      60.00    59.94
+   1024x768      70.07    60.00
+   800x600       60.32    56.25
+   720x480       60.00    59.94
+   640x480       66.67    60.00    59.94
+   720x400       70.08
+VIRTUAL1 disconnected (normal left inverted right x axis y axis)
+
+```
+其中eDP1是我的笔记本显示器， HDMI1是外接显示器
+```bash
+xrandr --output HDMI1 --primary --auto --output eDP1 --off # 此命令把外接显示器设置为主显示器（因为笔记本是720p的，不设置主显示器就会导致屏幕留白，或者设置--left-of eDP1 也可以解决留白问题），顺带把笔记本显示器关闭
+```
+然后就是每次开机后自动设置投屏及分辨率
+在/etc/X11/xorg.conf.d/ 下创建10-monitor.conf文件，编辑如下内容
+```base
+Section "Monitor"
+	Identifier "HDMI1"
+	## 设置分辨率为1920x1080
+	Option	"PreferredMode" "1920x1080"
+	## 设置为左副屏，因为Primary不知道为什么不起作用，只能用这个代替，不过效果都一样，可以接受
+	Option	"LeftOf" "eDP1"
+EndSection
+
+Section "Monitor"
+	Identifier  "eDP1"
+	## 禁用笔记本屏幕
+	Option	"Disable" "true"
+EndSection
+```
+PS：
+[此文章有热插拔投屏设置详情](https://blog.csdn.net/liberty1997/article/details/88658763)
+[如上配置文件参考](https://gist.github.com/r0xsh/4d1c7219ee63e4cee0c7fe1077559b28)
+[如上配置文件参考2](https://www.youtube.com/watch?v=lhiLWxJgiAo)
+
+# CPU temperature
+```bash
+yay -S lm_sensors
+sensors-detect # 这里只选了cpu温度
+sensors # 就可以查看温度了
+```
+然后在slstatus的config.h中配置即可
+```bash
+sensors | awk -F '.' '/Package id 0/ {print $1}' | awk -F '+' '{print $2}' | awk '{print$1"°C"}'
+```
+[壁纸在这里下载的](http://simpledesktops.com/)
+[sensors参考](https://wiki.archlinux.org/title/lm_sensors)
+# NVIDIA 驱动设置
+我的显卡仅能用470xx版本的驱动
+```bash
+yay -S nvidia-470xx-ddkms
+```
+某些包不知道是不是必须,没有验证,但是我自己安装了
+[参考自这个youtube视频,对我帮助挺大](https://www.youtube.com/watch?v=AOjOd3wIPu8)
+```bash
+sudo pacman -S xorg-server-devel opencl-nvidia
+```
+创建/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf并写入如下内容:
+```bash
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection
+```
+编辑~/.xinitrc
+```bash
+xrandr --setprovideroutputsource modesetting NVIDIA-0 # 启用nvidia
+xrandr --output HDMI-1-1 --auto --output eDP-1-1 --off # 输出到hdmi-1-1 并且关闭笔记本显示器
+xrandr --dpi 96 # 设置1080p的dpi
+```
+重启并安装测试软件看是否成功
+```bash
+sudo pacman -S neofetch
+glxspheres64
+```
+# 打补丁st
+安装有alpha,anysize,blinking cursor, xresources
+```bash
+lazigit # 1,a,c,patch, 3, c, alpha, enter, q
+patch < st-alpha-* # 写的方便省略 . 如果遇到失败,会保存在一个文件中,自己修改对应内容即可
+lazgit # 3, j, space, j, M, enter , q 
+```
+其他几个同理
+安装neofetch 直观查看xresources效果
+```
+sudo pacman -S neofetch
+```
+# nvim brower 共享剪切板设置
+安装xclip即可
+```bash
+sudo pacman -S xclip
+```
+还安装了一个copyq,但是还不会用
+
+# 键位改映射
+```bash
+xmodmap -pm | less 
+xmodmap -pke | less
+```
+修改~/.Xmodmap添加如下内容, 删除mod4,lock,control映射,重新设置37键为Super_L(也就是win键),重新设置66为control
+这里37原来是control
+66原为caps_lock
+
+```bash
+remove mod4 = Super_L
+remove lock = Caps_Lock
+remove control = Control_L
+remove mod1 = Alt_L
+keycode  37 = Super_L NoSymbol Super_L
+keycode  133 = Alt_L NoSymbol Alt_L
+keycode  66 = Control_L NoSymbol Control_L
+keycode  64 = Control_L NoSymbol Control_L
+keycode  108 = Escape NoSymbol Escape
+add mod4 = Super_L
+add control = Control_L
+add mod1 = Alt_L
+```
+如果使用vscode必须在setting.json添加如下代码,否则不能正常识别108设置的esc键
+"keyboard.dispatch": "keyCode"
+
+## 用到的一些命令
+lspci -k 查看驱动是否安装，有ker类似字样表示安装了驱动
+fc-list 查看安装的字体及字体名称，格式
+locate 感觉类似于win的快速搜索,超好用,安装sudo pacman -S mlocate后必须运行sudo updatedb不如搜索报错,好像是每天会自己更新一次
+
+[参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 
 # DWM官方文档
 要启动dwm, 理想情况下你应该设置一个~/.xinitrc, 其中至少有exec dwm

@@ -17,6 +17,8 @@ cat id_rsa.pub // 将打印出来的复制到 github.com>settings>SSH and GPG Ke
 key
 git config --global user.name "DEBUG"
 git config --global user.email  "demoorbug@gmail.com"
+git -T git@github.com # 输入此命令如显示一下内容则表示设置成功
+# Hi DemoorBug! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 # 本地项目替换线上项目
