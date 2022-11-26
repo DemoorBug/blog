@@ -852,6 +852,12 @@ lspci -k 查看驱动是否安装，有ker类似字样表示安装了驱动
 fc-list 查看安装的字体及字体名称，格式
 locate 感觉类似于win的快速搜索,超好用,安装sudo pacman -S mlocate后必须运行sudo updatedb不如搜索报错,好像是每天会自己更新一次
 
+mac 中使用`mdfind`
+```txt
+https://apple.stackexchange.com/questions/383610/when-should-we-enable-the-locate-command-on-a-mac
+it seems mdfind is like a command line version of the Finder or Spotlight on a Mac so we can mdfind image... and to use find, we actually have to specify .jpg or .png or .gif... so far, find . -iname '*iphone* to find all file with filenames having the word iphone, case insensitive, is almost
+```
+
 [参考自arch wifi](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 
 # DWM官方文档
