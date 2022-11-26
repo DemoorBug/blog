@@ -805,9 +805,9 @@ glxspheres64
 # 打补丁st
 安装有alpha,anysize,blinking cursor, xresources
 ```bash
-lazigit # 1,a,c,patch, 3, c, alpha, enter, q
+lazygit # 1,a,c,patch, 3, c, alpha, enter, q
 patch < st-alpha-* # 写的方便省略 . 如果遇到失败,会保存在一个文件中,自己修改对应内容即可
-lazgit # 3, j, space, j, M, enter , q 
+lazygit # 3, j, space, j, M, enter , q 
 ```
 其他几个同理
 安装neofetch 直观查看xresources效果
