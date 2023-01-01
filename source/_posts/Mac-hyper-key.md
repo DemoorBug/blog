@@ -12,7 +12,7 @@ categories: [Mac, hammerspoon, Alfred]
 还是bug问题,我是将`Caps_lock`映射为`Control`,`Control`映射为`Caps_lock`,`Hyper key`我是用的`Caps_lock`映射的(这里可能有点绕),在Karabiner-Elements中功能是正常的,大家各司其职,但是呢这款软件会把以上两个键位全部映射为`Hyper key`,所以最后导致放弃,软件大概有100m左右,我就是要一个小功能而已,完全没必要,折腾了一小时无果卸载了
 
 # 用hidutil 和 hammerspoon 实现Hyper key
-**hidutil**
+**hidutil** 这个网站是设置键盘映射用的，下面这些文件保存在~/Library/LaunchAgents/com.local.KeyRemapping.plist目录，下面这些设置是用的左commad改esc，这是因为以前的人体工学键盘是左右comad互换了(是因为以前的键盘都是win键盘，而这个是直接mac模式，所以有这样的问题)
 首先打开这个网址[hidutil key remapping generator for MacOS](https://hidutil-generator.netlify.app/)
 
 选择From key,To key设置自己需要映射的快捷键,我这里遇到一个坑,就是left_command实际上映射的是右边的command的键,这里大家最好自己实践一下
