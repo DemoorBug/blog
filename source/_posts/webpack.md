@@ -1372,6 +1372,8 @@ module: {
   - `filename` 指定输出目录，目录，文件名，都可以
   - `minify` 是否压缩生成html文件
   - `chunks` 指定entry的chunk，不然的话多页面应用就会把所有的加进来
+  - `chunks` 以前到备注含糊不清，再看回来吧自己看懵了，这个chunks数组写的就是build之后的js文件，比如运行时的runtime文件，和公用代码common
+    - https://blog.windstone.cc/front-end-engineering/build/webpack/webpack-runtime.html 这个网站就讲得很细
   - `inject` 这个默认是true，改为false就是手动插入
 
 安装 HtmlWebpackPlugin
