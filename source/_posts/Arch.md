@@ -5,6 +5,15 @@ tags: [Arch]
 categories: [linux]
 ---
 
+# wsl2中设置代理方法，
+首先v2ray打开局域网允许，这里遇到的坑是因为放到c盘的v2ray导致没有管理员运行，打开此设置看似开启实则没有开启，必须管理员运行v2ray
+然后在~/.config/fish/config.fish 
+中添加如下代码即可
+set windows_host (cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+set -x ALL_PROXY socks5://$windows_host:10808 
+这个端口不是本地监听端口，是打开v2ray主界面信息下面那条有socks和http端口
+
+
 # 安装Arch linux 完整指南
 ## 制作Usb启动盘
 下载最新的映像制作usb启动盘
