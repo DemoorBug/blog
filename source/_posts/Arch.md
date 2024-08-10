@@ -116,6 +116,7 @@ systemctl enable sshd # 这将确保openssh在你的计算机启动时启动
 ```
 开机启动wifi的包
 ```shell
+重要：这里还必须安装arch的基础包pacman -S linux-firmware，否则可能导致wifi无法使用，我安装上之后第一时间链接WiFi还是不行，开热点链接后就好了，莫名其妙 
 pacman -S networkmanager wpa_supplicant wireless_tools netctl # 不知道为什么为这里没有100m大小, 只有几十m, 可能这就是导致我启动没有自动连接wifi的原因
 pacman -S dialog # 可选包, 该包只是对话框, 对话框要做的是给我们的图像用户界面无法正常工作的情况下, 我们能够使用类似wifi菜单,并通过命令行连接到wifi. 安装的时候有一个链接没有响应,但没关系它确实找到了软件并安装了软件
 systemctl enable NetworkManager # 启用网络管理器
