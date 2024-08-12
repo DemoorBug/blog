@@ -919,3 +919,11 @@ systemctl suspend	挂起-睡眠-保存在內存
 systemctl hibernate	休眠-断电-保存在硬盘
 systemctl hybrid-sleep	混合休眠模式（同时休眠到硬盘并挂起）
 
+# 合盖休眠关闭
+```
+这个文件修改为一下内容/etc/systemd/logind.conf
+[Manager]
+HandleLidSwitch=ignore
+输入此命令重载服务，但是我这里报错，重启后生效了
+sudo systemctl restart systemd-logind
+```
