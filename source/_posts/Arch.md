@@ -927,3 +927,58 @@ HandleLidSwitch=ignore
 输入此命令重载服务，但是我这里报错，重启后生效了
 sudo systemctl restart systemd-logind
 ```
+
+
+# 没有音频问题，但是有驱动，设备也存在，就是没法用，首先参考了自己博客中音频驱动的设置
+首先：
+1. 安装sudo pacman -S alsa-utils
+2. 输入amixer sget Master,这个命令查看当前音量
+3. alsamixer 是这个音频管理界面设置音量的
+4. lspci -k |less 查看是否有audio驱动
+5. aplay -l查看输出设备，记住case和device两个设备之值，把他们写入到～/.asoundrc
+6. default.pcm.card 0
+default.pcm.device 0
+default.ctl.card 0
+7. 居然还不行，最后安装了pulseauduio
+8. systemctl --user start pulseaudio.service 重启后莫名其妙解决了，可以有声音了
+
+# 网络问题
+网络出现问题，插上网线后网络可以用，但是很多网页打开之间403,开qv2ray也不行
+最后通过开启networkManager就解决了，很奇怪
+sudo systemctl enable NetworkManager
+sudo systemctl start NetworkManager
+nmcli和nmtui可以来管理这些东西
+我还安装了这个sudo pacman -S network-manager-applet状态栏显示网络配置
+nm-applet是相关命令
+
+# 使用kde文件管理器
+根据官网说明https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
+安装并更改配置文件后，还要安装kde的相关软件，200多mb
+sudo pacman -S dolphin,这个软件安装好后提示qt版本过低，安装了qt6-base 6.8又提示和6.7不兼容，然后又更新了qt6-wayland到6.8解决
+
+# nvm无法联网和安装
+因为用了代理，我这个代理有点毛病，noproxy取消代理后，重新nvm install node成功安装
+omf install nvm是安装的fish相关的一些东西，必须还得安装本体，去github官网前俩curl或者wget安装本体就可以了
+fish用proxy配置了代理后就可以所有在fish中打开的应用都走代理，很棒
+
+# 软件启动用了rifo
+根据youtube视频在.config/rifo/config.rasi配置了rifo
+然后在hyprland.conf 中添加exec-once=rofi -show drun
+# 安装udiskie可以自动识别usb设备
+同样在hyprland.conf添加exec-once=udiskie
+这些是根据官网信息添加的
+# 密钥过期错误，当我安装某个软件提示密钥过期
+sudo pamcan -S archlinux-keyring更新密钥就可以了
+还尝试了其他命令:
+sudo pacman -Sc
+sudo pacman -Syy
+# 关于下载youtube视频使用了yt-dlp命令
+yt-dlp --list-subs -F [链接]  这个是查看字幕列表和视频信息的命令配合|less使用更佳
+yt-dlp -f 'bv[ext=webm]+ba[ext=m4a]' --embed-metadata--merge-output-format mp4 --sub-langs zh-Hans [链接] 这个命令是下载最清的音频和视频，还有中文字幕，如果字幕是自动翻译的，必须-sub-auto-lang，加上auto否则会找不到字幕
+# 屏幕亮度调节软件
+sudu pacman -S ddcutil
+sudo modprobe i2c-dev
+ddcutil detect 查看显示器信息
+ddcutil setvcp 10 50 10表示调节亮度 50表示亮度是多少0-100
+
+# rm -rf不使用太危险了，用trash-cli替代
